@@ -1,22 +1,11 @@
 run:
-  go: "1.24"
+  go: "1.26"
   timeout: 5m
 
 issues:
   exclude-dirs:
     - node_modules
     - .git
-  exclude-files:
-    - ".*_test\\.go$"
-  exclude:
-    - "G103"
-    - "G104"
-    - "G204"
-    - "G301"
-    - "G302"
-    - "G304"
-    - "G305"
-    - "G307"
 
 linters:
   disable-all: true
