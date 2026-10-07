@@ -184,7 +184,7 @@ func (e *BiometricsEngine) MatchIris(image []byte) (string, float64) {
 	hash := sha256.Sum256(image)
 	confidence := float64(hash[0]%100) / 100.0
 	if confidence < 0.3 {
-		confidence += 0.5 
+		confidence += 0.5
 	}
 	return fmt.Sprintf("iris_%x", hash[:4]), math.Round(confidence*10000) / 10000
 }
@@ -273,12 +273,12 @@ func (e *BiometricsEngine) measureContrast(image []byte) float64 {
 }
 
 type BiometricEnrollment struct {
-	CitizenID    string    `json:"citizenId"`
-	Modality     string    `json:"modality"`
-	TemplateHash string    `json:"templateHash"`
-	QualityScore float64   `json:"qualityScore"`
+	CitizenID    string          `json:"citizenId"`
+	Modality     string          `json:"modality"`
+	TemplateHash string          `json:"templateHash"`
+	QualityScore float64         `json:"qualityScore"`
 	Vector       BiometricVector `json:"-"`
-	CapturedAt   time.Time `json:"capturedAt"`
+	CapturedAt   time.Time       `json:"capturedAt"`
 }
 
 func (e *BiometricsEngine) EnrollFace(citizenID string, image []byte) (*BiometricEnrollment, error) {
