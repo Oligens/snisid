@@ -141,7 +141,7 @@ func TestFuseRecords_ConfidenceLow_ManualReview(t *testing.T) {
 	}}
 	dcpj := Record{Agency: "dcpj", ID: "DCPJ-001", Data: map[string]interface{}{
 		"gender": "M",
-	})
+	}}
 
 	fused := m.FuseRecords(oni, dgi, anh, dcpj)
 	assert.Equal(t, "MANUAL_REVIEW", fused.Status)
