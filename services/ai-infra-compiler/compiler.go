@@ -21,7 +21,7 @@ type ClusterState struct {
 
 type NodeStatus struct {
 	Name            string  `json:"name"`
-	CPU Capacity    float64 `json:"cpu_capacity"`
+	CPUCapacity    float64 `json:"cpu_capacity"`
 	CPULimit       float64 `json:"cpu_limit"`
 	MemoryCapacity float64 `json:"memory_capacity"`
 	MemoryLimit    float64 `json:"memory_limit"`

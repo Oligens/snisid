@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, CheckCircle, AlertTriangle, FileText, Lock, RefreshCw } from 'lucide-react';
+import { Shield, CheckCircle, AlertTriangle, FileText, Lock, RefreshCw, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const KpiCard: React.FC<{ title: string; value: string; icon: React.ReactNode; trend: string }> = ({ title, value, icon, trend }) => (

@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Gitleaks
         uses: gitleaks/gitleaks-action@v2
         env:
@@ -52,6 +54,44 @@ jobs:
       - name: NPM audit
         working-directory: frontend
         run: npm audit --audit-level=high
+
+  go-workspace:
+    name: Validate all Go workspace modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: true
+      - name: Test every workspace module
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t modules < <(python3 - <<'PY'
+          from pathlib import Path
+          modules = ["."]
+          in_use = False
+          for raw in Path("go.work").read_text().splitlines():
+              line = raw.strip()
+              if line == "use (":
+                  in_use = True
+                  continue
+              if in_use and line == ")":
+                  in_use = False
+                  continue
+              if in_use and line and not line.startswith("//"):
+                  modules.append(line)
+          print("\n".join(dict.fromkeys(modules)))
+          PY
+          )
+          for module in "${modules[@]}"; do
+            echo "=== Validating ${module} ==="
+            (cd "${module}" && go test ./... -count=1)
+            (cd "${module}" && go vet ./...)
+            (cd "${module}" && go build ./...)
+          done
 
   tests:
     name: Build & tests
