@@ -3,7 +3,7 @@ package digitaltwin
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"\n\t"github.com/stretchr/testify/require"
 )
 
 func TestStep_IncreaseControl(t *testing.T) {
