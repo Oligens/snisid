@@ -219,7 +219,7 @@ class Settings(BaseSettings):
     service_name: str = "snisid"
     service_version: str = "1.0.0"
     debug: bool = False
-    host: str = "0.0.0.0"
+    host: str = Field(default_factory=lambda: os.getenv("SNISID_HOST", "127.0.0.1"))
     port: int = 8000
     workers: int = 4
     cors_origins: list[str] = Field(default_factory=lambda: ["*"])
