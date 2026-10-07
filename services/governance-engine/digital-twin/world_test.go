@@ -63,11 +63,3 @@ func TestRunImpactForecast_ChainIntegrity(t *testing.T) {
 	assert.InDelta(t, 0.45, states[1].FraudRate, 0.001)
 	assert.InDelta(t, 0.54, states[2].FraudRate, 0.001)
 }
-
-func require.Len(t *testing.T, obj interface{}, length int) {
-	if v, ok := obj.([]WorldState); ok {
-		if len(v) != length {
-			t.Errorf("expected length %d, got %d", length, len(v))
-		}
-	}
-}
