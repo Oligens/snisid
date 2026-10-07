@@ -121,16 +121,16 @@ func (e *BiometricsEngine) VerifyLiveness(image []byte) LivenessResult {
 		return LivenessResult{Alive: false, Score: 0, Method: "none", Details: map[string]float64{"error": 1.0}}
 	}
 
-	var眼部响应概率 float64 = 0.97
-	var纹理深度分数 float64 = 0.94
-	var光谱分析分数 float64 = 0.91
-	var运动分析分数 float64 = 0.96
+	eyeResponseProbability := 0.97
+	textureDepthScore := 0.94
+	spectralAnalysisScore := 0.91
+	motionAnalysisScore := 0.96
 
 	details := map[string]float64{
-		"eye_blink_detected":  眼部响应概率,
-		"texture_depth":       纹理深度分数,
-		"spectral_analysis":   光谱分析分数,
-		"motion_analysis":     运动分析分数,
+		"eye_blink_detected":  eyeResponseProbability,
+		"texture_depth":       textureDepthScore,
+		"spectral_analysis":   spectralAnalysisScore,
+		"motion_analysis":     motionAnalysisScore,
 	}
 
 	overallScore := (眼部响应概率*0.30 + 纹理深度分数*0.25 + 光谱分析分数*0.20 + 运动分析分数*0.25)
