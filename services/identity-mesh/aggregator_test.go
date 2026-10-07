@@ -68,7 +68,7 @@ func TestFuseRecords_Conflict_Detected(t *testing.T) {
 	}}
 	dcpj := Record{Agency: "dcpj", ID: "DCPJ-012", Data: map[string]interface{}{
 		"gender": "F",
-		}})
+	}}
 
 	fused := m.FuseRecords(oni, dgi, anh, dcpj)
 	assert.Equal(t, "CONFLICT", fused.Status)
@@ -123,10 +123,10 @@ func TestFuseRecords_ConfidenceLow_ManualReview(t *testing.T) {
 	m := NewIdentityMesh("SNISID-HTI", nil)
 
 	oni := Record{Agency: "oni", ID: "NNU-005", Data: map[string]interface{}{
-		"firstName": "A",
-		"lastName":  "B",
-		"dob":       "2000-01-01",
-		"gender":    "M",
+		"firstName":   "A",
+		"lastName":    "B",
+		"dob":         "2000-01-01",
+		"gender":      "M",
 		"nationality": "HTI",
 	}}
 	dgi := Record{Agency: "dgi", ID: "DGI-001", Data: map[string]interface{}{
@@ -142,7 +142,7 @@ func TestFuseRecords_ConfidenceLow_ManualReview(t *testing.T) {
 	}}
 	dcpj := Record{Agency: "dcpj", ID: "DCPJ-001", Data: map[string]interface{}{
 		"gender": "M",
-		}})
+	}}
 
 	fused := m.FuseRecords(oni, dgi, anh, dcpj)
 	assert.Equal(t, "MANUAL_REVIEW", fused.Status)
@@ -154,8 +154,8 @@ func TestPersistToGraph_NoNeo4j(t *testing.T) {
 		NNU:    "NNU-TEST",
 		Status: "VERIFIED",
 		AgencyRecords: map[string]string{"oni": "NNU-TEST"},
-		Confidence: ConfidenceScore{Overall: 0.95},
-		LastUpdated: time.Now().UTC(),
+		Confidence:    ConfidenceScore{Overall: 0.95},
+		LastUpdated:   time.Now().UTC(),
 	}
 
 	err := m.persistToGraph(context.Background(), fused)
