@@ -16,7 +16,7 @@ jobs:
     name: Security scanning
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Gitleaks
@@ -43,14 +43,14 @@ jobs:
       - name: Safety
         run: safety check -r backend/requirements.txt
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - name: Frontend install
         working-directory: frontend
-        run: npm install
+        run: npm ci
       - name: NPM audit
         working-directory: frontend
         run: npm audit --audit-level=high
@@ -59,12 +59,21 @@ jobs:
     name: Build & tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v7
         with:
           go-version: "1.26.x"
           cache: true
+      - name: Install protobuf compiler
+        run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+      - name: Install Go protobuf generators
+        run: |
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.12
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Generate Go protobuf sources
+        run: bash scripts/generate-go-proto.sh
       - name: Go formatting
         run: test -z "$(gofmt -l .)"
       - name: Go vet
@@ -84,14 +93,14 @@ jobs:
         working-directory: backend
         run: python -m pytest
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
+          node-version: "24"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - name: Frontend tests
         working-directory: frontend
-        run: npm install && npm run test -- --run
+        run: npm ci && npm run test -- --run
       - name: Frontend build
         working-directory: frontend
         run: npm run build
