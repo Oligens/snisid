@@ -1,5 +1,5 @@
 # SNISID — Master Makefile
-.PHONY: all build build-all test test-short test-race coverage lint vet run-identity-api run-fraud-engine docker-up docker-down docker-logs docker-build db-migrate db-rollback clean deps deps-update help
+.PHONY: all build build-all test test-short test-race coverage lint vet proto run-identity-api run-fraud-engine docker-up docker-down docker-logs docker-build db-migrate db-rollback clean deps deps-update help
 
 all: lint test build
 
@@ -34,6 +34,9 @@ lint: ## Analyse statique sans ignorer les erreurs
 
 vet:
 	go vet ./...
+
+proto: ## Génère les sources Go à partir des protobuf Nexus
+	bash scripts/generate-go-proto.sh
 
 run-identity-api:
 	go run ./services/identity-api/cmd
