@@ -107,8 +107,8 @@ type IGPNHNotifier interface {
 
 type BehavioralAnalyzer struct {
 	alertRepo repository.AlertRepository
-	kafka   EventPublisher
-	igpnh   IGPNHNotifier
+	kafka     EventPublisher
+	igpnh     IGPNHNotifier
 }
 
 func NewBehavioralAnalyzer(alertRepo repository.AlertRepository, kafka EventPublisher, igpnh IGPNHNotifier) *BehavioralAnalyzer {

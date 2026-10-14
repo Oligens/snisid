@@ -24,31 +24,31 @@ const (
 type SentenceType string
 
 const (
-	SentencePrison          SentenceType = "PRISON"
-	SentenceSuspended       SentenceType = "SUSPENDED"
-	SentenceFine            SentenceType = "FINE"
+	SentencePrison           SentenceType = "PRISON"
+	SentenceSuspended        SentenceType = "SUSPENDED"
+	SentenceFine             SentenceType = "FINE"
 	SentenceCommunityService SentenceType = "COMMUNITY_SERVICE"
-	SentenceDeathPenalty    SentenceType = "DEATH_PENALTY"
-	SentenceAcquittal       SentenceType = "ACQUITTAL"
-	SentenceProbation       SentenceType = "PROBATION"
+	SentenceDeathPenalty     SentenceType = "DEATH_PENALTY"
+	SentenceAcquittal        SentenceType = "ACQUITTAL"
+	SentenceProbation        SentenceType = "PROBATION"
 )
 
 type MovementType string
 
 const (
-	MovementRecordCreated      MovementType = "RECORD_CREATED"
-	MovementArrestAdded        MovementType = "ARREST_ADDED"
-	MovementConvictionAdded    MovementType = "CONVICTION_ADDED"
-	MovementAliasAdded         MovementType = "ALIAS_ADDED"
-	MovementAliasRemoved       MovementType = "ALIAS_REMOVED"
-	MovementRecordExpunged     MovementType = "RECORD_EXPUNGED"
-	MovementRecordReactivated  MovementType = "RECORD_REACTIVATED"
-	MovementCertificateIssued  MovementType = "CERTIFICATE_ISSUED"
+	MovementRecordCreated     MovementType = "RECORD_CREATED"
+	MovementArrestAdded       MovementType = "ARREST_ADDED"
+	MovementConvictionAdded   MovementType = "CONVICTION_ADDED"
+	MovementAliasAdded        MovementType = "ALIAS_ADDED"
+	MovementAliasRemoved      MovementType = "ALIAS_REMOVED"
+	MovementRecordExpunged    MovementType = "RECORD_EXPUNGED"
+	MovementRecordReactivated MovementType = "RECORD_REACTIVATED"
+	MovementCertificateIssued MovementType = "CERTIFICATE_ISSUED"
 )
 
 type CertificateResult string
 
 const (
-	CertificateClean    CertificateResult = "CLEAN"
+	CertificateClean     CertificateResult = "CLEAN"
 	CertificateHasRecord CertificateResult = "HAS_RECORD"
 )

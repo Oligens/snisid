@@ -21,9 +21,9 @@ type AIClient interface {
 }
 
 type ScoringResult struct {
-	Score      float64  `json:"score"`
-	RiskLevel  string   `json:"risk_level"`
-	Factors    []string `json:"factors"`
+	Score     float64  `json:"score"`
+	RiskLevel string   `json:"risk_level"`
+	Factors   []string `json:"factors"`
 }
 
 func NewScoringEngine(aiClient AIClient, state StateStore, logger *zap.Logger) *ScoringEngine {

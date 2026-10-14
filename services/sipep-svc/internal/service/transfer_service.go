@@ -10,10 +10,10 @@ import (
 )
 
 type TransferService struct {
-	inmateRepo   domain.InmateRepository
+	inmateRepo    domain.InmateRepository
 	detentionRepo domain.DetentionRepository
-	transferRepo domain.TransferRepository
-	eventPub     domain.EventPublisher
+	transferRepo  domain.TransferRepository
+	eventPub      domain.EventPublisher
 }
 
 func NewTransferService(
@@ -23,19 +23,19 @@ func NewTransferService(
 	eventPub domain.EventPublisher,
 ) *TransferService {
 	return &TransferService{
-		inmateRepo:   inmateRepo,
+		inmateRepo:    inmateRepo,
 		detentionRepo: detentionRepo,
-		transferRepo: transferRepo,
-		eventPub:     eventPub,
+		transferRepo:  transferRepo,
+		eventPub:      eventPub,
 	}
 }
 
 type TransferRequest struct {
-	InmateID        string `json:"inmate_id" binding:"required"`
-	ToFacility      string `json:"to_facility" binding:"required"`
-	TransferReason  string `json:"transfer_reason"`
-	AuthorizedBy    string `json:"authorized_by" binding:"required"`
-	TransportUnit   string `json:"transport_unit"`
+	InmateID       string `json:"inmate_id" binding:"required"`
+	ToFacility     string `json:"to_facility" binding:"required"`
+	TransferReason string `json:"transfer_reason"`
+	AuthorizedBy   string `json:"authorized_by" binding:"required"`
+	TransportUnit  string `json:"transport_unit"`
 }
 
 func (s *TransferService) ProcessTransfer(ctx context.Context, req TransferRequest) (*domain.Transfer, error) {
@@ -81,11 +81,11 @@ func (s *TransferService) ProcessTransfer(ctx context.Context, req TransferReque
 	_ = s.inmateRepo.Update(ctx, inmate)
 
 	_ = s.eventPub.Publish("sipep.inmate.transferred", map[string]interface{}{
-		"transfer_id":  transfer.TransferID,
-		"inmate_id":    inmateID,
+		"transfer_id":   transfer.TransferID,
+		"inmate_id":     inmateID,
 		"from_facility": fromFacility,
-		"to_facility":  req.ToFacility,
-		"transfer_at":  time.Now(),
+		"to_facility":   req.ToFacility,
+		"transfer_at":   time.Now(),
 	})
 
 	return transfer, nil

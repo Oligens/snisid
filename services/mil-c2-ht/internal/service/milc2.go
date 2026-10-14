@@ -20,7 +20,7 @@ type MilC2ServiceInterface interface {
 }
 
 type MilC2Service struct {
-	repo    repository.MilC2Repo
+	repo     repository.MilC2Repo
 	producer *kafka.Producer
 }
 

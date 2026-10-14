@@ -1,4 +1,4 @@
-﻿package main
+package main
 
 import (
 	"context"
@@ -114,5 +114,3 @@ func getEnv(k, def string) string {
 	}
 	return def
 }
-
-

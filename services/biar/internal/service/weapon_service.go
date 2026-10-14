@@ -45,10 +45,10 @@ func (s *WeaponService) DeclareIllicitWeapon(ctx context.Context, req domain.Cre
 		SeizingOfficer:   req.SeizingOfficer,
 		CaseReference:    req.CaseReference,
 
-		FromPersonID:     req.FromPersonID,
-		GangID:           req.GangID,
-		CrimeCategory:    req.CrimeCategory,
-		AssociatedCases:  req.AssociatedCases,
+		FromPersonID:    req.FromPersonID,
+		GangID:          req.GangID,
+		CrimeCategory:   req.CrimeCategory,
+		AssociatedCases: req.AssociatedCases,
 
 		OriginCountry:    req.OriginCountry,
 		TransitCountries: req.TransitCountries,

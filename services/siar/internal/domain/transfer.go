@@ -7,52 +7,52 @@ import (
 )
 
 type Transfer struct {
-	TransferID   uuid.UUID    `json:"transfer_id"`
-	FirearmID    uuid.UUID    `json:"firearm_id"`
-	FromOwnerID  *uuid.UUID   `json:"from_owner_id,omitempty"`
-	FromOwnerName string     `json:"from_owner_name,omitempty"`
-	ToOwnerID    *uuid.UUID   `json:"to_owner_id,omitempty"`
-	ToOwnerName  string       `json:"to_owner_name,omitempty"`
-	TransferType TransferType `json:"transfer_type"`
-	TransferDate time.Time    `json:"transfer_date"`
-	PermitRef    string       `json:"permit_ref,omitempty"`
-	AuthorizedBy *uuid.UUID   `json:"authorized_by,omitempty"`
-	Notes        string       `json:"notes,omitempty"`
-	CreatedAt    time.Time    `json:"created_at"`
+	TransferID    uuid.UUID    `json:"transfer_id"`
+	FirearmID     uuid.UUID    `json:"firearm_id"`
+	FromOwnerID   *uuid.UUID   `json:"from_owner_id,omitempty"`
+	FromOwnerName string       `json:"from_owner_name,omitempty"`
+	ToOwnerID     *uuid.UUID   `json:"to_owner_id,omitempty"`
+	ToOwnerName   string       `json:"to_owner_name,omitempty"`
+	TransferType  TransferType `json:"transfer_type"`
+	TransferDate  time.Time    `json:"transfer_date"`
+	PermitRef     string       `json:"permit_ref,omitempty"`
+	AuthorizedBy  *uuid.UUID   `json:"authorized_by,omitempty"`
+	Notes         string       `json:"notes,omitempty"`
+	CreatedAt     time.Time    `json:"created_at"`
 }
 
 type CreateTransferRequest struct {
-	FirearmID    uuid.UUID    `json:"firearm_id" binding:"required"`
-	FromOwnerID  *uuid.UUID   `json:"from_owner_id"`
-	FromOwnerName string     `json:"from_owner_name"`
-	ToOwnerID    *uuid.UUID   `json:"to_owner_id"`
-	ToOwnerName  string       `json:"to_owner_name"`
-	TransferType TransferType `json:"transfer_type" binding:"required"`
-	TransferDate time.Time    `json:"transfer_date" binding:"required"`
-	PermitRef    string       `json:"permit_ref"`
-	Notes        string       `json:"notes"`
+	FirearmID     uuid.UUID    `json:"firearm_id" binding:"required"`
+	FromOwnerID   *uuid.UUID   `json:"from_owner_id"`
+	FromOwnerName string       `json:"from_owner_name"`
+	ToOwnerID     *uuid.UUID   `json:"to_owner_id"`
+	ToOwnerName   string       `json:"to_owner_name"`
+	TransferType  TransferType `json:"transfer_type" binding:"required"`
+	TransferDate  time.Time    `json:"transfer_date" binding:"required"`
+	PermitRef     string       `json:"permit_ref"`
+	Notes         string       `json:"notes"`
 }
 
 type Seizure struct {
-	SeizureID      uuid.UUID      `json:"seizure_id"`
-	FirearmID      *uuid.UUID     `json:"firearm_id,omitempty"`
-	SerialNumber   string         `json:"serial_number,omitempty"`
-	Make           string         `json:"make,omitempty"`
-	Model          string         `json:"model,omitempty"`
-	SeizureDate    time.Time      `json:"seizure_date"`
-	SeizingUnit    string         `json:"seizing_unit"`
-	SeizingOfficer *uuid.UUID    `json:"seizing_officer,omitempty"`
-	LocationDesc   string         `json:"location_desc,omitempty"`
-	DeptCode       string         `json:"dept_code,omitempty"`
-	Context        string         `json:"context,omitempty"`
-	FromPersonID   *uuid.UUID    `json:"from_person_id,omitempty"`
-	FromPersonName string        `json:"from_person_name,omitempty"`
-	GangID         *uuid.UUID    `json:"gang_id,omitempty"`
-	CaseReference  string        `json:"case_reference,omitempty"`
-	DisposedOf     bool          `json:"disposed_of"`
-	DisposalMethod string        `json:"disposal_method,omitempty"`
-	CreatedBy      *uuid.UUID    `json:"created_by,omitempty"`
-	CreatedAt      time.Time     `json:"created_at"`
+	SeizureID      uuid.UUID  `json:"seizure_id"`
+	FirearmID      *uuid.UUID `json:"firearm_id,omitempty"`
+	SerialNumber   string     `json:"serial_number,omitempty"`
+	Make           string     `json:"make,omitempty"`
+	Model          string     `json:"model,omitempty"`
+	SeizureDate    time.Time  `json:"seizure_date"`
+	SeizingUnit    string     `json:"seizing_unit"`
+	SeizingOfficer *uuid.UUID `json:"seizing_officer,omitempty"`
+	LocationDesc   string     `json:"location_desc,omitempty"`
+	DeptCode       string     `json:"dept_code,omitempty"`
+	Context        string     `json:"context,omitempty"`
+	FromPersonID   *uuid.UUID `json:"from_person_id,omitempty"`
+	FromPersonName string     `json:"from_person_name,omitempty"`
+	GangID         *uuid.UUID `json:"gang_id,omitempty"`
+	CaseReference  string     `json:"case_reference,omitempty"`
+	DisposedOf     bool       `json:"disposed_of"`
+	DisposalMethod string     `json:"disposal_method,omitempty"`
+	CreatedBy      *uuid.UUID `json:"created_by,omitempty"`
+	CreatedAt      time.Time  `json:"created_at"`
 }
 
 type CreateSeizureRequest struct {

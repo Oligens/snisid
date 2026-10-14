@@ -44,7 +44,7 @@ func MapToHTTPStatus(code ErrorCode) int {
 func RespondWithError(c *gin.Context, err error) {
 	// Extract TraceID/CorrelationID
 	traceID := c.GetString("X-Correlation-ID") // Assuming telemetry middleware set this
-	
+
 	// Default generic fallback
 	httpStatus := http.StatusInternalServerError
 	resp := ErrorResponse{}
@@ -54,7 +54,7 @@ func RespondWithError(c *gin.Context, err error) {
 
 	if customErr, ok := err.(*Error); ok {
 		httpStatus = MapToHTTPStatus(customErr.Code)
-		
+
 		if customErr.Code == Internal {
 			// Log the true underlying error and stack trace for internal failures
 			logger.Error(c.Request.Context(), "internal server error: "+customErr.Error(), customErr.Err)
@@ -76,7 +76,7 @@ func RespondWithError(c *gin.Context, err error) {
 // RespondWithErrorStd securely translates and writes an error to a standard http.ResponseWriter.
 func RespondWithErrorStd(w http.ResponseWriter, r *http.Request, err error) {
 	traceID := r.Header.Get("X-Correlation-ID")
-	
+
 	httpStatus := http.StatusInternalServerError
 	resp := ErrorResponse{}
 	resp.Error.Code = string(Internal)

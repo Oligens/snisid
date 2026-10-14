@@ -20,20 +20,20 @@ type Matcher interface {
 }
 
 type SearchService struct {
-	milvusRepo  *milvus.VectorRepo
+	milvusRepo      *milvus.VectorRepo
 	fingerprintRepo FingerprintRepo
-	subjectRepo SubjectRepo
-	matcher     Matcher
-	vectorizer  Vectorizer
+	subjectRepo     SubjectRepo
+	matcher         Matcher
+	vectorizer      Vectorizer
 }
 
 func NewSearchService(mr *milvus.VectorRepo, fpr FingerprintRepo, sr SubjectRepo, m Matcher, vz Vectorizer) *SearchService {
 	return &SearchService{
-		milvusRepo:  mr,
+		milvusRepo:      mr,
 		fingerprintRepo: fpr,
-		subjectRepo: sr,
-		matcher:     m,
-		vectorizer:  vz,
+		subjectRepo:     sr,
+		matcher:         m,
+		vectorizer:      vz,
 	}
 }
 

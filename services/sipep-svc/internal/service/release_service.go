@@ -10,9 +10,9 @@ import (
 )
 
 type ReleaseService struct {
-	inmateRepo   domain.InmateRepository
+	inmateRepo    domain.InmateRepository
 	detentionRepo domain.DetentionRepository
-	eventPub     domain.EventPublisher
+	eventPub      domain.EventPublisher
 }
 
 func NewReleaseService(
@@ -21,9 +21,9 @@ func NewReleaseService(
 	eventPub domain.EventPublisher,
 ) *ReleaseService {
 	return &ReleaseService{
-		inmateRepo:   inmateRepo,
+		inmateRepo:    inmateRepo,
 		detentionRepo: detentionRepo,
-		eventPub:     eventPub,
+		eventPub:      eventPub,
 	}
 }
 

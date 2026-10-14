@@ -15,10 +15,10 @@ var ErrRecordNotFound = errors.New("casier judiciaire non trouvé")
 var ErrPersonNotFound = errors.New("personne SNISID introuvable")
 
 type RecordService struct {
-	mu      sync.RWMutex
-	records map[uuid.UUID]*domain.CriminalRecord
+	mu       sync.RWMutex
+	records  map[uuid.UUID]*domain.CriminalRecord
 	bySNISID map[uuid.UUID]uuid.UUID
-	seq     int
+	seq      int
 }
 
 func NewRecordService() *RecordService {

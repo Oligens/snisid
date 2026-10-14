@@ -14,22 +14,28 @@ import (
 )
 
 type mockService struct {
-	createUnitFn func(domain.MilitaryUnit) error
+	createUnitFn  func(domain.MilitaryUnit) error
 	getDeployedFn func() ([]domain.MilitaryUnit, error)
-	createOpFn   func(domain.Operation) error
-	getActiveFn  func() ([]domain.Operation, error)
-	submitFn     func(uuid.UUID, domain.TacticalReport) error
-	timelineFn   func(uuid.UUID) ([]domain.TacticalReport, error)
-	copFn        func() (*domain.CommonOperatingPicture, error)
+	createOpFn    func(domain.Operation) error
+	getActiveFn   func() ([]domain.Operation, error)
+	submitFn      func(uuid.UUID, domain.TacticalReport) error
+	timelineFn    func(uuid.UUID) ([]domain.TacticalReport, error)
+	copFn         func() (*domain.CommonOperatingPicture, error)
 }
 
-func (m *mockService) CreateUnit(u domain.MilitaryUnit) error { return m.createUnitFn(u) }
+func (m *mockService) CreateUnit(u domain.MilitaryUnit) error           { return m.createUnitFn(u) }
 func (m *mockService) GetDeployedUnits() ([]domain.MilitaryUnit, error) { return m.getDeployedFn() }
-func (m *mockService) CreateOperation(o domain.Operation) error { return m.createOpFn(o) }
+func (m *mockService) CreateOperation(o domain.Operation) error         { return m.createOpFn(o) }
 func (m *mockService) GetActiveOperations() ([]domain.Operation, error) { return m.getActiveFn() }
-func (m *mockService) SubmitReport(id uuid.UUID, r domain.TacticalReport) error { return m.submitFn(id, r) }
-func (m *mockService) GetOperationTimeline(id uuid.UUID) ([]domain.TacticalReport, error) { return m.timelineFn(id) }
-func (m *mockService) GetCommonOperatingPicture() (*domain.CommonOperatingPicture, error) { return m.copFn() }
+func (m *mockService) SubmitReport(id uuid.UUID, r domain.TacticalReport) error {
+	return m.submitFn(id, r)
+}
+func (m *mockService) GetOperationTimeline(id uuid.UUID) ([]domain.TacticalReport, error) {
+	return m.timelineFn(id)
+}
+func (m *mockService) GetCommonOperatingPicture() (*domain.CommonOperatingPicture, error) {
+	return m.copFn()
+}
 
 func setupRouter(h *MilC2Handler) *gin.Engine {
 	r := gin.Default()

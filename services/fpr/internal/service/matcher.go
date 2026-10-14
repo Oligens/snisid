@@ -6,9 +6,9 @@ import (
 )
 
 type Minutia struct {
-	X, Y     int
-	Angle    float64
-	Type     string
+	X, Y  int
+	Angle float64
+	Type  string
 }
 
 type FPRMatcher struct {

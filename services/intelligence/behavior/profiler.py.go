@@ -9,17 +9,17 @@ import (
 )
 
 type BehaviorProfile struct {
-	UserID          string    `json:"user_id"`
-	AnomalyScore    float64   `json:"anomaly_score"`
-	NormalizedScore float64   `json:"normalized_score"`
-	FeaturesUsed    []string  `json:"features_used"`
-	IsAnomaly       bool      `json:"is_anomaly"`
+	UserID          string   `json:"user_id"`
+	AnomalyScore    float64  `json:"anomaly_score"`
+	NormalizedScore float64  `json:"normalized_score"`
+	FeaturesUsed    []string `json:"features_used"`
+	IsAnomaly       bool     `json:"is_anomaly"`
 }
 
 type BehavioralProfiler struct {
-	redis       *redis.Client
-	features    []string
-	trained     bool
+	redis         *redis.Client
+	features      []string
+	trained       bool
 	contamination float64
 }
 

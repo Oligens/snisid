@@ -12,11 +12,11 @@ import (
 )
 
 type KafkaConsumer struct {
-	reader      *kafka.Reader
-	radio       *alerter.RadioAlerter
-	sms         *alerter.SMSAlerter
-	push        *alerter.PushAlerter
-	logger      *zap.Logger
+	reader *kafka.Reader
+	radio  *alerter.RadioAlerter
+	sms    *alerter.SMSAlerter
+	push   *alerter.PushAlerter
+	logger *zap.Logger
 }
 
 func NewKafkaConsumer(
@@ -36,11 +36,11 @@ func NewKafkaConsumer(
 }
 
 type AlertCreatedEvent struct {
-	AlertID       string `json:"alert_id"`
-	PlateNumber   string `json:"plate_number"`
-	CrimeCategory string `json:"crime_category"`
-	AlertLevel    string `json:"alert_level"`
-	ReportingUnit string `json:"reporting_unit"`
+	AlertID       string    `json:"alert_id"`
+	PlateNumber   string    `json:"plate_number"`
+	CrimeCategory string    `json:"crime_category"`
+	AlertLevel    string    `json:"alert_level"`
+	ReportingUnit string    `json:"reporting_unit"`
 	Timestamp     time.Time `json:"timestamp"`
 }
 

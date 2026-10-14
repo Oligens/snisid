@@ -9,13 +9,13 @@ import (
 
 type mockDB struct {
 	models.Database
-	profiles   []models.DNAProfile
-	createErr  error
-	getErr     error
-	searchErr  error
-	uploadErr  error
-	expungeErr error
-	hashIdx    map[string]int
+	profiles    []models.DNAProfile
+	createErr   error
+	getErr      error
+	searchErr   error
+	uploadErr   error
+	expungeErr  error
+	hashIdx     map[string]int
 	specimenIdx map[string]int
 }
 
@@ -79,14 +79,28 @@ func (m *mockDB) MarkExpunged(ctx context.Context, id string) error {
 }
 
 func (m *mockDB) CreateIdentityLink(ctx context.Context, l *models.BioIdentityLink) error { return nil }
-func (m *mockDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) { return nil, nil }
-func (m *mockDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) { return nil, nil }
-func (m *mockDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error { return nil }
-func (m *mockDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) { return nil, 0, nil }
-func (m *mockDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) { return nil, nil }
+func (m *mockDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error {
+	return nil
+}
+func (m *mockDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) {
+	return nil, 0, nil
+}
+func (m *mockDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) {
+	return nil, nil
+}
 func (m *mockDB) CreateIdentityTheft(ctx context.Context, i *models.IdentityTheft) error { return nil }
-func (m *mockDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) { return nil, 0, nil }
-func (m *mockDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) { return nil, nil }
+func (m *mockDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) {
+	return nil, 0, nil
+}
+func (m *mockDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) {
+	return nil, nil
+}
 
 func TestDNAIndex_Create(t *testing.T) {
 	mock := newMockDB()

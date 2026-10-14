@@ -76,9 +76,9 @@ func (h *InmateHandler) SearchInmates(c *gin.Context) {
 
 func (h *InmateHandler) Release(c *gin.Context) {
 	var req struct {
-		InmateID  uuid.UUID `json:"inmate_id" binding:"required"`
-		Release   domain.ReleaseRequest `json:"release" binding:"required"`
-		AuthorizedBy uuid.UUID `json:"authorized_by" binding:"required"`
+		InmateID     uuid.UUID             `json:"inmate_id" binding:"required"`
+		Release      domain.ReleaseRequest `json:"release" binding:"required"`
+		AuthorizedBy uuid.UUID             `json:"authorized_by" binding:"required"`
 	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

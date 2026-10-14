@@ -14,10 +14,10 @@ import (
 )
 
 type mockRepo struct {
-	createFunc             func(ctx context.Context, doc *domain.CardDocument) error
+	createFunc               func(ctx context.Context, doc *domain.CardDocument) error
 	findByDocumentNumberFunc func(ctx context.Context, docNumber string) (*domain.CardDocument, error)
-	findByCitizenIDFunc    func(ctx context.Context, citizenID uuid.UUID) ([]domain.CardDocument, error)
-	updateStatusFunc       func(ctx context.Context, documentID uuid.UUID, status domain.CardStatus) error
+	findByCitizenIDFunc      func(ctx context.Context, citizenID uuid.UUID) ([]domain.CardDocument, error)
+	updateStatusFunc         func(ctx context.Context, documentID uuid.UUID, status domain.CardStatus) error
 }
 
 func (m *mockRepo) Create(ctx context.Context, doc *domain.CardDocument) error {
@@ -46,10 +46,10 @@ func TestIssue(t *testing.T) {
 	citizenID := uuid.New()
 
 	tests := []struct {
-		name       string
-		req        domain.IssueRequest
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		req         domain.IssueRequest
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -82,7 +82,7 @@ func TestIssue(t *testing.T) {
 				CitizenID: "bad-uuid",
 				CreatedBy: uuid.New().String(),
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "invalid citizen_id",
 		},
 		{
@@ -92,7 +92,7 @@ func TestIssue(t *testing.T) {
 				CitizenID: citizenID.String(),
 				CreatedBy: "bad-uuid",
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "invalid created_by",
 		},
 		{
@@ -107,7 +107,7 @@ func TestIssue(t *testing.T) {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "create document",
 		},
 	}
@@ -187,10 +187,10 @@ func TestReportLost(t *testing.T) {
 	docID := uuid.New()
 
 	tests := []struct {
-		name       string
-		documentID string
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		documentID  string
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -201,9 +201,9 @@ func TestReportLost(t *testing.T) {
 			},
 		},
 		{
-			name:       "invalid document ID",
-			documentID: "bad-uuid",
-			wantErr:    true,
+			name:        "invalid document ID",
+			documentID:  "bad-uuid",
+			wantErr:     true,
 			errContains: "invalid document_id",
 		},
 		{
@@ -214,7 +214,7 @@ func TestReportLost(t *testing.T) {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "report lost",
 		},
 	}
@@ -239,10 +239,10 @@ func TestRevoke(t *testing.T) {
 	docID := uuid.New()
 
 	tests := []struct {
-		name       string
-		documentID string
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		documentID  string
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -253,9 +253,9 @@ func TestRevoke(t *testing.T) {
 			},
 		},
 		{
-			name:       "invalid document ID",
-			documentID: "bad-uuid",
-			wantErr:    true,
+			name:        "invalid document ID",
+			documentID:  "bad-uuid",
+			wantErr:     true,
 			errContains: "invalid document_id",
 		},
 		{
@@ -266,7 +266,7 @@ func TestRevoke(t *testing.T) {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "revoke",
 		},
 	}

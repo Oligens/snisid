@@ -20,9 +20,9 @@ type TrackResult struct {
 }
 
 type CrossImageTracker struct {
-	Registry     map[string]string  `json:"registry"`
-	SubjectDB    map[string][]float64 `json:"-"` // subjectID -> feature vector
-	mu           sync.RWMutex
+	Registry       map[string]string    `json:"registry"`
+	SubjectDB      map[string][]float64 `json:"-"` // subjectID -> feature vector
+	mu             sync.RWMutex
 	matchThreshold float64
 	minSimilarity  float64
 }

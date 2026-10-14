@@ -21,10 +21,10 @@ type mockRepo struct {
 	getAllReportsFn func() ([]domain.TacticalReport, error)
 }
 
-func (m *mockRepo) CreateUnit(u domain.MilitaryUnit) error        { return m.createUnitFn(u) }
-func (m *mockRepo) GetDeployedUnits() ([]domain.MilitaryUnit, error) { return m.getDeployedFn() }
-func (m *mockRepo) CreateOperation(o domain.Operation) error      { return m.createOpFn(o) }
-func (m *mockRepo) GetActiveOperations() ([]domain.Operation, error) { return m.getActiveOpFn() }
+func (m *mockRepo) CreateUnit(u domain.MilitaryUnit) error             { return m.createUnitFn(u) }
+func (m *mockRepo) GetDeployedUnits() ([]domain.MilitaryUnit, error)   { return m.getDeployedFn() }
+func (m *mockRepo) CreateOperation(o domain.Operation) error           { return m.createOpFn(o) }
+func (m *mockRepo) GetActiveOperations() ([]domain.Operation, error)   { return m.getActiveOpFn() }
 func (m *mockRepo) CreateTacticalReport(r domain.TacticalReport) error { return m.createReportFn(r) }
 func (m *mockRepo) GetReportsByOperation(id uuid.UUID) ([]domain.TacticalReport, error) {
 	return m.getReportsFn(id)

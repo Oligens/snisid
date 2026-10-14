@@ -33,10 +33,10 @@ type Cache interface {
 // ── DNAMatcher — high-level matching pipeline ──────────────────────────────
 
 type DNAMatcher struct {
-	db     models.Database
+	db      models.Database
 	matcher *Matcher
-	cache  Cache
-	events EventPublisher
+	cache   Cache
+	events  EventPublisher
 }
 
 func NewDNAMatcher(db models.Database, cache Cache, events EventPublisher) *DNAMatcher {

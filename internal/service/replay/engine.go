@@ -33,8 +33,8 @@ func NewEngine(brokers []string) *Engine {
 }
 
 func (e *Engine) RunJob(ctx context.Context, job ReplayJob) error {
-	logger.Info(ctx, "Starting replay job", 
-		zap.String("job_id", job.ID), 
+	logger.Info(ctx, "Starting replay job",
+		zap.String("job_id", job.ID),
 		zap.Time("start", job.StartTime),
 	)
 
@@ -51,7 +51,7 @@ func (e *Engine) RunJob(ctx context.Context, job ReplayJob) error {
 func (e *Engine) replayFromKafka(ctx context.Context, job ReplayJob) error {
 	// Placeholder: Using the resilient framework to read and re-publish
 	logger.Info(ctx, "Replaying events from Kafka offsets", zap.String("topic", job.SourceTopic))
-	
+
 	// Simulation of processing loop
 	for i := 0; i < 10; i++ {
 		select {
@@ -65,14 +65,14 @@ func (e *Engine) replayFromKafka(ctx context.Context, job ReplayJob) error {
 				"original":  "...",
 				"timestamp": time.Now().UnixMilli(),
 			}
-			
+
 			if err := e.producer.Publish(ctx, job.ID, event); err != nil {
 				logger.Error(ctx, "Failed to re-publish event", err)
 			}
 			time.Sleep(10 * time.Millisecond) // Throttling
 		}
 	}
-	
+
 	return nil
 }
 

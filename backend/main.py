@@ -63,6 +63,7 @@ from services.identity.queries import (
     GetIdentityHistoryQuery,
     GetIdentityStatsQuery,
 )
+from services.identity.search import router as identity_search_router
 from services.pki.api import create_pki_router
 from services.sd_jwt.api import router as sd_jwt_router
 from services.status_list.api import router as status_list_router
@@ -166,12 +167,14 @@ app.include_router(revocation_router)
 app.include_router(didcomm_mediator_router)
 app.include_router(pex_router)
 app.include_router(bio_adn_router)
+app.include_router(identity_search_router)
 
 
 # ── Request/Response Schemas ───────────────────────────────────────────
 
 class CreateIdentityRequest(BaseModel):
     national_id: str = Field(..., min_length=5, max_length=20)
+    nif: str | None = Field(default=None, min_length=3, max_length=32)
     first_name: str = Field(..., min_length=1, max_length=100)
     last_name: str = Field(..., min_length=1, max_length=100)
     date_of_birth: str = Field(..., pattern=r"^\d{4}-\d{2}-\d{2}$")
@@ -237,6 +240,7 @@ async def create_identity(
 ):
     cmd = CreateIdentityCommand(
         national_id=req.national_id,
+        nif=req.nif,
         first_name=req.first_name,
         last_name=req.last_name,
         date_of_birth=req.date_of_birth,

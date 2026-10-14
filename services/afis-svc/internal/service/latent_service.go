@@ -11,9 +11,9 @@ import (
 )
 
 type LatentService struct {
-	latentRepo  LatentRepo
-	imageRepo   ImageRepo
-	searchSvc   *SearchService
+	latentRepo LatentRepo
+	imageRepo  ImageRepo
+	searchSvc  *SearchService
 }
 
 func NewLatentService(lr LatentRepo, ir ImageRepo, ss *SearchService) *LatentService {
@@ -37,16 +37,16 @@ func (s *LatentService) Submit(ctx context.Context, req domain.LatentSubmission)
 	}
 
 	lp := &domain.LatentPrint{
-		LatentID:      latentID,
-		CaseReference: req.CaseReference,
-		CrimeSceneID:  req.CrimeSceneID,
-		LocationDesc:  req.LocationDesc,
-		DeptCode:      req.DeptCode,
-		FoundAt:       req.FoundAt,
-		ImageRef:      objectName,
+		LatentID:       latentID,
+		CaseReference:  req.CaseReference,
+		CrimeSceneID:   req.CrimeSceneID,
+		LocationDesc:   req.LocationDesc,
+		DeptCode:       req.DeptCode,
+		FoundAt:        req.FoundAt,
+		ImageRef:       objectName,
 		FingerPosition: req.Position,
-		ExaminedBy:    &req.ExaminedBy,
-		CreatedAt:     time.Now(),
+		ExaminedBy:     &req.ExaminedBy,
+		CreatedAt:      time.Now(),
 	}
 
 	if err := s.latentRepo.Create(ctx, lp); err != nil {
@@ -73,7 +73,7 @@ func (s *LatentService) SearchLatent(ctx context.Context, latentID uuid.UUID) ([
 	}
 
 	results, err := s.searchSvc.SearchTenprint(ctx, domain.EnrollmentRequest{
-		SubjectType: domain.SubjectSuspect,
+		SubjectType:  domain.SubjectSuspect,
 		Fingerprints: []domain.FingerprintCapture{capture},
 	})
 	if err != nil {

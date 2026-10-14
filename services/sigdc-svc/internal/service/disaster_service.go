@@ -25,10 +25,10 @@ func (s *DisasterService) DeclareDisaster(req *domain.DeclareDisasterRequest) (*
 	}
 
 	d := &domain.Disaster{
-		DisasterType: domain.DisasterType(req.DisasterType),
-		AlertLevel:   domain.AlertLevel(req.AlertLevel),
-		OnsetDate:    onset,
-		AffectedDepts: req.AffectedDepts,
+		DisasterType:     domain.DisasterType(req.DisasterType),
+		AlertLevel:       domain.AlertLevel(req.AlertLevel),
+		OnsetDate:        onset,
+		AffectedDepts:    req.AffectedDepts,
 		ResponseAgencies: []string{},
 	}
 

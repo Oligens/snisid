@@ -7,6 +7,7 @@ import (
 )
 
 type InvType string
+
 const (
 	InvStandard      InvType = "STANDARD"
 	InvEnhanced      InvType = "ENHANCED"
@@ -15,6 +16,7 @@ const (
 )
 
 type InvStatus string
+
 const (
 	InvPending     InvStatus = "PENDING"
 	InvInProgress  InvStatus = "IN_PROGRESS"
@@ -23,14 +25,16 @@ const (
 )
 
 type ClearanceLevel string
+
 const (
-	ClearUnclassified   ClearanceLevel = "UNCLASSIFIED"
-	ClearConfidential   ClearanceLevel = "CONFIDENTIAL"
-	ClearSecret         ClearanceLevel = "SECRET"
-	ClearTopSecret      ClearanceLevel = "TOP_SECRET"
+	ClearUnclassified ClearanceLevel = "UNCLASSIFIED"
+	ClearConfidential ClearanceLevel = "CONFIDENTIAL"
+	ClearSecret       ClearanceLevel = "SECRET"
+	ClearTopSecret    ClearanceLevel = "TOP_SECRET"
 )
 
 type AlertType string
+
 const (
 	AlertUnauthorizedAccess AlertType = "UNAUTHORIZED_ACCESS"
 	AlertDataExfil          AlertType = "DATA_EXFIL"
@@ -40,6 +44,7 @@ const (
 )
 
 type Severity string
+
 const (
 	SevLow      Severity = "LOW"
 	SevMedium   Severity = "MEDIUM"
@@ -48,15 +53,17 @@ const (
 )
 
 type ThreatStatus string
+
 const (
-	ThreatOpen           ThreatStatus = "OPEN"
-	ThreatInvestigating  ThreatStatus = "INVESTIGATING"
-	ThreatConfirmed      ThreatStatus = "CONFIRMED"
-	ThreatFalsePositive  ThreatStatus = "FALSE_POSITIVE"
-	ThreatMitigated      ThreatStatus = "MITIGATED"
+	ThreatOpen          ThreatStatus = "OPEN"
+	ThreatInvestigating ThreatStatus = "INVESTIGATING"
+	ThreatConfirmed     ThreatStatus = "CONFIRMED"
+	ThreatFalsePositive ThreatStatus = "FALSE_POSITIVE"
+	ThreatMitigated     ThreatStatus = "MITIGATED"
 )
 
 type RelationshipType string
+
 const (
 	RelDiplomatic RelationshipType = "DIPLOMATIC"
 	RelBusiness   RelationshipType = "BUSINESS"
@@ -99,16 +106,16 @@ type InsiderThreatAlert struct {
 }
 
 type ForeignContact struct {
-	ID               uuid.UUID        `json:"id"`
-	SubjectID        string           `json:"subject_id"`
-	ContactName      string           `json:"contact_name"`
-	ForeignGovernment string          `json:"foreign_government"`
-	RelationshipType RelationshipType `json:"relationship_type"`
-	LastContactAt    *time.Time       `json:"last_contact_at,omitempty"`
-	Frequency        *string          `json:"frequency,omitempty"`
-	ApprovedBy       *uuid.UUID       `json:"approved_by,omitempty"`
-	Notes            *string          `json:"notes,omitempty"`
-	CreatedAt        time.Time        `json:"created_at"`
+	ID                uuid.UUID        `json:"id"`
+	SubjectID         string           `json:"subject_id"`
+	ContactName       string           `json:"contact_name"`
+	ForeignGovernment string           `json:"foreign_government"`
+	RelationshipType  RelationshipType `json:"relationship_type"`
+	LastContactAt     *time.Time       `json:"last_contact_at,omitempty"`
+	Frequency         *string          `json:"frequency,omitempty"`
+	ApprovedBy        *uuid.UUID       `json:"approved_by,omitempty"`
+	Notes             *string          `json:"notes,omitempty"`
+	CreatedAt         time.Time        `json:"created_at"`
 }
 
 type CreateInvestigationRequest struct {
@@ -138,12 +145,12 @@ type ReportThreatRequest struct {
 }
 
 type ReportContactRequest struct {
-	SubjectID        string `json:"subject_id" binding:"required"`
-	ContactName      string `json:"contact_name" binding:"required"`
+	SubjectID         string `json:"subject_id" binding:"required"`
+	ContactName       string `json:"contact_name" binding:"required"`
 	ForeignGovernment string `json:"foreign_government" binding:"required"`
-	RelationshipType string `json:"relationship_type" binding:"required"`
-	LastContactAt    string `json:"last_contact_at"`
-	Frequency        string `json:"frequency"`
-	ApprovedBy       string `json:"approved_by"`
-	Notes            string `json:"notes"`
+	RelationshipType  string `json:"relationship_type" binding:"required"`
+	LastContactAt     string `json:"last_contact_at"`
+	Frequency         string `json:"frequency"`
+	ApprovedBy        string `json:"approved_by"`
+	Notes             string `json:"notes"`
 }

@@ -11,11 +11,11 @@ import (
 )
 
 type AlertEvent struct {
-	AlertID       string `json:"alert_id"`
-	PlateNumber   string `json:"plate_number"`
-	CrimeCategory string `json:"crime_category"`
-	AlertLevel    string `json:"alert_level"`
-	ReportingUnit string `json:"reporting_unit"`
+	AlertID       string    `json:"alert_id"`
+	PlateNumber   string    `json:"plate_number"`
+	CrimeCategory string    `json:"crime_category"`
+	AlertLevel    string    `json:"alert_level"`
+	ReportingUnit string    `json:"reporting_unit"`
 	Timestamp     time.Time `json:"timestamp"`
 }
 

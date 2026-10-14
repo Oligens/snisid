@@ -238,10 +238,10 @@ func TestCriminalAlert_RequiresInterpolReport(t *testing.T) {
 
 func TestNewCriminalAlert(t *testing.T) {
 	req := domain.CreateAlertRequest{
-		PlateNumber:  "PP-1234",
-		Make:         "Toyota",
-		Model:        "Land Cruiser",
-		ColorPrimary: "Blanc",
+		PlateNumber:   "PP-1234",
+		Make:          "Toyota",
+		Model:         "Land Cruiser",
+		ColorPrimary:  "Blanc",
 		CrimeCategory: domain.CrimeCategoryVehicleTheft,
 		ReportingUnit: "BLVV",
 		IncidentDate:  time.Now(),

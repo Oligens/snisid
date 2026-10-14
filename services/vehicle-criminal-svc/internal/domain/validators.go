@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	plateRegex    = regexp.MustCompile(`^[A-Z]{1,3}[-\s]?[0-9]{3,6}[A-Z]?$`)
-	vinRegex      = regexp.MustCompile(`^[A-HJ-NPR-Z0-9]{17}$`)
-	statePlateRe  = regexp.MustCompile(`^SE[-\s]?[0-9]{4,6}$`)
+	plateRegex   = regexp.MustCompile(`^[A-Z]{1,3}[-\s]?[0-9]{3,6}[A-Z]?$`)
+	vinRegex     = regexp.MustCompile(`^[A-HJ-NPR-Z0-9]{17}$`)
+	statePlateRe = regexp.MustCompile(`^SE[-\s]?[0-9]{4,6}$`)
 )
 
 func ValidatePlateNumber(plate string) error {

@@ -17,9 +17,9 @@ func TestNewSimulationEngine(t *testing.T) {
 func TestRunScenario_DefaultParameters(t *testing.T) {
 	e := simulator.NewSimulationEngine("test")
 	scenario := simulator.PolicyScenario{
-		PolicyID: "POL-001",
-		Changes:  []string{"lower_threshold"},
-		Region:   "HTI",
+		PolicyID:   "POL-001",
+		Changes:    []string{"lower_threshold"},
+		Region:     "HTI",
 		Population: 1000000,
 	}
 
@@ -86,7 +86,7 @@ func TestConvergenceTime(t *testing.T) {
 
 	multiResult := e.RunScenario(simulator.PolicyScenario{
 		PolicyID: "POL-CONV-3", Changes: []string{"lower_threshold", "add_biometric_check", "add_risk_scoring"},
-		Region:   "HTI",
+		Region: "HTI",
 	})
 	assert.Greater(t, multiResult.ConvergenceTime, singleResult.ConvergenceTime)
 }

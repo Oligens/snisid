@@ -98,10 +98,10 @@ func PackDocuments(title, department, id string) string {
 			{Role: "Ministre de la Santé", SignerID: "MIN-001", Timestamp: "EN ATTENTE", Hash: "-"},
 		},
 	}
-	
+
 	cover, _ := GenerateOfficialCoverPage(data)
 	visa, _ := GenerateVisaCircuitTemplate(data)
-	
+
 	// En production, un moteur comme wkhtmltopdf ou puppeteer convertit ces chaînes en PDF/A.
 	return fmt.Sprintf("<!-- COVER PAGE -->\n%s\n<!-- VISA CIRCUIT -->\n%s", cover, visa)
 }

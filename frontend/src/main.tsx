@@ -6,8 +6,9 @@ import { AuthProvider } from './auth/AuthProvider.tsx';
 import './i18n/config'; // Initialize i18n
 import './index.css';
 
-// Register Service Worker for PWA
-if ('serviceWorker' in navigator) {
+// Register Service Worker for PWA only in production builds.
+// In Vite dev mode, /sw.js is not served as a valid SW script and causes MIME errors.
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js').catch((error) => {
       console.error('ServiceWorker registration failed:', error);

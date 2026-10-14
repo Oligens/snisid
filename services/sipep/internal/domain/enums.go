@@ -22,13 +22,13 @@ const (
 type ReleaseType string
 
 const (
-	ReleaseTypeSentenceServed   ReleaseType = "SENTENCE_SERVED"
-	ReleaseTypeConditional      ReleaseType = "CONDITIONAL_RELEASE"
-	ReleaseTypeBail             ReleaseType = "BAIL"
-	ReleaseTypeJudicialOrder    ReleaseType = "JUDICIAL_ORDER"
-	ReleaseTypeDeath            ReleaseType = "DEATH"
-	ReleaseTypeEscape           ReleaseType = "ESCAPE"
-	ReleaseTypeTransferOut      ReleaseType = "TRANSFER_OUT"
+	ReleaseTypeSentenceServed ReleaseType = "SENTENCE_SERVED"
+	ReleaseTypeConditional    ReleaseType = "CONDITIONAL_RELEASE"
+	ReleaseTypeBail           ReleaseType = "BAIL"
+	ReleaseTypeJudicialOrder  ReleaseType = "JUDICIAL_ORDER"
+	ReleaseTypeDeath          ReleaseType = "DEATH"
+	ReleaseTypeEscape         ReleaseType = "ESCAPE"
+	ReleaseTypeTransferOut    ReleaseType = "TRANSFER_OUT"
 )
 
 type MovementType string
@@ -44,8 +44,8 @@ const (
 type FacilityType string
 
 const (
-	FacilityTypeNational      FacilityType = "NATIONAL"
-	FacilityTypeDepartmental  FacilityType = "DEPARTMENTAL"
-	FacilityTypeLocal         FacilityType = "LOCAL"
-	FacilityTypeSpecialized   FacilityType = "SPECIALIZED"
+	FacilityTypeNational     FacilityType = "NATIONAL"
+	FacilityTypeDepartmental FacilityType = "DEPARTMENTAL"
+	FacilityTypeLocal        FacilityType = "LOCAL"
+	FacilityTypeSpecialized  FacilityType = "SPECIALIZED"
 )

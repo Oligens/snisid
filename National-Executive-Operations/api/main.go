@@ -124,11 +124,11 @@ func CreateDocumentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	doc.Status = "DRAFT"
 	doc.CreatedAt = time.Now()
-	
+
 	if db != nil {
 		db.Create(&doc)
 	}
-	
+
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(doc)
 }
@@ -140,7 +140,7 @@ func ListDocumentsHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		docs = append(docs, Document{ID: "DOC-1", Title: "Mock Doc", Status: "PENDING_SIG"})
 	}
-	
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(docs)
 }

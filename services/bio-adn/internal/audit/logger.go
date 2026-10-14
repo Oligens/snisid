@@ -13,17 +13,17 @@ import (
 )
 
 type Entry struct {
-	EventType   string         `json:"event_type"`
-	TableName   string         `json:"table_name"`
-	RecordID    string         `json:"record_id"`
-	OfficerNIU  string         `json:"officer_niu"`
-	AgencyCode  string         `json:"agency_code"`
-	Purpose     string         `json:"purpose"`
-	CaseNumber  string         `json:"case_number,omitempty"`
-	Action      string         `json:"action"`
-	Details     map[string]any `json:"details,omitempty"`
-	Signature   string         `json:"signature"`
-	CreatedAt   int64          `json:"created_at"`
+	EventType  string         `json:"event_type"`
+	TableName  string         `json:"table_name"`
+	RecordID   string         `json:"record_id"`
+	OfficerNIU string         `json:"officer_niu"`
+	AgencyCode string         `json:"agency_code"`
+	Purpose    string         `json:"purpose"`
+	CaseNumber string         `json:"case_number,omitempty"`
+	Action     string         `json:"action"`
+	Details    map[string]any `json:"details,omitempty"`
+	Signature  string         `json:"signature"`
+	CreatedAt  int64          `json:"created_at"`
 }
 
 type Logger struct {

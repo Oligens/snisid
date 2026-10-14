@@ -20,29 +20,29 @@ import (
 type EventType string
 
 const (
-	EventIdentity    EventType = "IDENTITY"
-	EventFraud       EventType = "FRAUD"
-	EventBiometrics  EventType = "BIOMETRICS"
-	EventFPR         EventType = "FPR"
-	EventVehicle     EventType = "VEHICLE"
-	EventAlert       EventType = "ALERT"
+	EventIdentity   EventType = "IDENTITY"
+	EventFraud      EventType = "FRAUD"
+	EventBiometrics EventType = "BIOMETRICS"
+	EventFPR        EventType = "FPR"
+	EventVehicle    EventType = "VEHICLE"
+	EventAlert      EventType = "ALERT"
 )
 
 type FederatedEvent struct {
-	ID              string    `json:"id"`
-	SourceCountry   string    `json:"source_country"`
-	TargetCountry   string    `json:"target_country"`
-	EventType       EventType `json:"event_type"`
-	Payload         []byte    `json:"payload"`
-	Signature       string    `json:"signature"`
-	Timestamp       int64     `json:"timestamp"`
-	CorrelationID   string    `json:"correlation_id"`
-	RetryCount      int       `json:"retry_count"`
+	ID            string    `json:"id"`
+	SourceCountry string    `json:"source_country"`
+	TargetCountry string    `json:"target_country"`
+	EventType     EventType `json:"event_type"`
+	Payload       []byte    `json:"payload"`
+	Signature     string    `json:"signature"`
+	Timestamp     int64     `json:"timestamp"`
+	CorrelationID string    `json:"correlation_id"`
+	RetryCount    int       `json:"retry_count"`
 }
 
 type OutboundQueue struct {
-	Events   []QueuedEvent `json:"events"`
-	mu       sync.Mutex
+	Events []QueuedEvent `json:"events"`
+	mu     sync.Mutex
 }
 
 type QueuedEvent struct {
@@ -60,29 +60,29 @@ type Ack struct {
 }
 
 type FederationGateway struct {
-	GatewayID       string
-	sharedSecret    []byte
-	privateKeyPath  string
-	certPath        string
-	peers           map[string]string // country -> endpoint URL
-	outbox          *OutboundQueue
-	client          *http.Client
-	maxRetries      int
-	baseBackoff     time.Duration
+	GatewayID      string
+	sharedSecret   []byte
+	privateKeyPath string
+	certPath       string
+	peers          map[string]string // country -> endpoint URL
+	outbox         *OutboundQueue
+	client         *http.Client
+	maxRetries     int
+	baseBackoff    time.Duration
 }
 
 func NewFederationGateway(gatewayID string, sharedSecret string, peers map[string]string) *FederationGateway {
 	return &FederationGateway{
-		GatewayID:   gatewayID,
+		GatewayID:    gatewayID,
 		sharedSecret: []byte(sharedSecret),
-		peers:       peers,
-		outbox:      &OutboundQueue{},
+		peers:        peers,
+		outbox:       &OutboundQueue{},
 		client: &http.Client{
 			Timeout: 30 * time.Second,
 			Transport: &http.Transport{
-				MaxIdleConns:        20,
-				IdleConnTimeout:     90 * time.Second,
-				DisableCompression:  false,
+				MaxIdleConns:       20,
+				IdleConnTimeout:    90 * time.Second,
+				DisableCompression: false,
 			},
 		},
 		maxRetries:  5,
@@ -149,10 +149,10 @@ func (g *FederationGateway) normalize(data []byte, eventType EventType) ([]byte,
 
 func (g *FederationGateway) normalizeIdentity(raw, out map[string]interface{}) {
 	fieldMap := map[string]string{
-		"last_name":    "family_name",
-		"first_name":   "given_name",
+		"last_name":     "family_name",
+		"first_name":    "given_name",
 		"date_of_birth": "birth_date",
-		"national_id":  "national_id",
+		"national_id":   "national_id",
 	}
 	for src, dst := range fieldMap {
 		if v, ok := raw[src]; ok {
@@ -318,10 +318,10 @@ func (g *FederationGateway) HandleIncoming(event FederatedEvent) (*Ack, error) {
 	ctx := context.Background()
 	if !g.VerifySignature(event.Payload, event.Signature) {
 		return &Ack{
-			EventID:  event.ID,
-			Received: true,
+			EventID:   event.ID,
+			Received:  true,
 			Processed: false,
-			Error:    "invalid signature",
+			Error:     "invalid signature",
 		}, fmt.Errorf("invalid signature for event %s", event.ID)
 	}
 

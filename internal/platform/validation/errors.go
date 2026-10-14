@@ -24,7 +24,7 @@ func TranslateError(err error, op string) error {
 			}
 			errMessages = append(errMessages, msg)
 		}
-		
+
 		fullMessage := "Validation failed: " + strings.Join(errMessages, "; ")
 		return errors.New(errors.InvalidArgument, fullMessage, op, err)
 	}

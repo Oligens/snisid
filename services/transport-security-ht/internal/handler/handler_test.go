@@ -19,12 +19,12 @@ import (
 
 type mockTransportSvc struct {
 	service.TransportService
-	logScreeningFn       func(ctx context.Context, s *domain.PassengerScreening) error
+	logScreeningFn        func(ctx context.Context, s *domain.PassengerScreening) error
 	getRecentScreeningsFn func(ctx context.Context) ([]domain.PassengerScreening, error)
-	addNoFlyEntryFn      func(ctx context.Context, p *domain.NoFlyPassenger) error
-	checkNoFlyFn         func(ctx context.Context, identityRef string) (*domain.NoFlyPassenger, error)
-	getZonesByAirportFn  func(ctx context.Context, airportCode string) ([]domain.AirportSecurityZone, error)
-	reportBreachFn       func(ctx context.Context, zoneID uuid.UUID) error
+	addNoFlyEntryFn       func(ctx context.Context, p *domain.NoFlyPassenger) error
+	checkNoFlyFn          func(ctx context.Context, identityRef string) (*domain.NoFlyPassenger, error)
+	getZonesByAirportFn   func(ctx context.Context, airportCode string) ([]domain.AirportSecurityZone, error)
+	reportBreachFn        func(ctx context.Context, zoneID uuid.UUID) error
 }
 
 func (m *mockTransportSvc) LogScreening(ctx context.Context, s *domain.PassengerScreening) error {

@@ -27,13 +27,13 @@ func (s *IntegrityService) OpenCase(req *domain.OpenCaseRequest) (*domain.Integr
 	}
 
 	c := &domain.IntegrityCase{
-		OfficerSNISIDID: officerID,
-		AllegationType:  domain.AllegationType(req.AllegationType),
-		Severity:        domain.Severity(req.Severity),
-		Status:          domain.Reported,
+		OfficerSNISIDID:   officerID,
+		AllegationType:    domain.AllegationType(req.AllegationType),
+		Severity:          domain.Severity(req.Severity),
+		Status:            domain.Reported,
 		AllegationSummary: req.AllegationSummary,
-		ReportingDate:   time.Now(),
-		CreatedBy:       uuid.New(),
+		ReportingDate:     time.Now(),
+		CreatedBy:         uuid.New(),
 	}
 
 	if req.GangID != "" {
@@ -56,10 +56,10 @@ func (s *IntegrityService) SubmitWhistleblower(req *domain.SubmitWhistleblowerRe
 	token := generateToken(64)
 
 	wr := &domain.WhistleblowerReport{
-		ReportToken:      token,
-		AllegationType:   domain.AllegationType(req.AllegationType),
-		Description:      req.Description,
-		SubmissionDate:   time.Now(),
+		ReportToken:    token,
+		AllegationType: domain.AllegationType(req.AllegationType),
+		Description:    req.Description,
+		SubmissionDate: time.Now(),
 	}
 
 	if req.SeverityEstimate != "" {

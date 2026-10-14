@@ -10,12 +10,12 @@ import (
 )
 
 type ScreeningService struct {
-	deporteeRepo  domain.DeporteeRepository
-	foreignRepo   domain.ForeignRecordRepository
-	fbiClient     domain.FBIRecordClient
-	interpClient  domain.InterpolClient
-	afisClient    domain.AFISClient
-	eventPub      domain.EventPublisher
+	deporteeRepo domain.DeporteeRepository
+	foreignRepo  domain.ForeignRecordRepository
+	fbiClient    domain.FBIRecordClient
+	interpClient domain.InterpolClient
+	afisClient   domain.AFISClient
+	eventPub     domain.EventPublisher
 }
 
 func NewScreeningService(
@@ -37,10 +37,10 @@ func NewScreeningService(
 }
 
 type ScreenRequest struct {
-	DeporteeID        string `json:"deportee_id" binding:"required"`
-	FingerprintData   string `json:"fingerprint_data"`
-	FBINumber         string `json:"fbi_number"`
-	GangName          string `json:"gang_name"`
+	DeporteeID      string `json:"deportee_id" binding:"required"`
+	FingerprintData string `json:"fingerprint_data"`
+	FBINumber       string `json:"fbi_number"`
+	GangName        string `json:"gang_name"`
 }
 
 func (s *ScreeningService) ScreenDeportee(ctx context.Context, req ScreenRequest) (*domain.ScreeningResult, error) {

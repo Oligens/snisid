@@ -49,7 +49,7 @@ func (m *ModelMetrics) CalculateDrift() {
 	if len(m.Predictions) < 10 {
 		return
 	}
-	
+
 	// Mock Drift: Mean absolute deviation from 0.5 baseline
 	var sum float64
 	for _, p := range m.Predictions {
@@ -57,7 +57,7 @@ func (m *ModelMetrics) CalculateDrift() {
 	}
 	avg := sum / float64(len(m.Predictions))
 	m.DriftScore = math.Abs(avg - 0.5)
-	
+
 	if m.DriftScore > 0.2 {
 		logger.Warn(context.Background(), "MLOPS: Significant model drift detected.")
 	}

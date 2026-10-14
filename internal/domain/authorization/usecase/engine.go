@@ -19,10 +19,10 @@ type AuthorizationEngine interface {
 }
 
 type opaEngine struct {
-	repo         repository.PolicyRepository
-	producer     events.ProducerInterface
+	repo          repository.PolicyRepository
+	producer      events.ProducerInterface
 	compiledQuery *rego.PreparedEvalQuery
-	mu           sync.RWMutex
+	mu            sync.RWMutex
 }
 
 func NewOPAEngine(repo repository.PolicyRepository, producer events.ProducerInterface) AuthorizationEngine {
@@ -57,7 +57,7 @@ func (e *opaEngine) RefreshPolicies(ctx context.Context) error {
 	// Prepare rego options
 	options := []func(*rego.Rego){
 		rego.Query("data.snisid.abac.allow"), // Default entrypoint
-		rego.Store(nil), // Ideally an in-memory store for data
+		rego.Store(nil),                      // Ideally an in-memory store for data
 	}
 
 	// Load modules
@@ -130,14 +130,14 @@ func (e *opaEngine) logDecision(req *entity.AuthorizationRequest, dec *entity.Au
 	if e.producer == nil {
 		return
 	}
-	
+
 	evt := map[string]interface{}{
-		"userId":     req.Subject.UserID,
-		"action":     req.Action,
-		"resource":   req.Resource,
-		"allowed":    dec.Allowed,
-		"reason":     dec.Reason,
-		"timestamp":  time.Now().UTC(),
+		"userId":    req.Subject.UserID,
+		"action":    req.Action,
+		"resource":  req.Resource,
+		"allowed":   dec.Allowed,
+		"reason":    dec.Reason,
+		"timestamp": time.Now().UTC(),
 	}
 
 	_ = e.producer.Publish(context.Background(), req.Subject.UserID, evt)

@@ -1,4 +1,4 @@
-﻿package main
+package main
 
 import (
 	"context"
@@ -14,8 +14,8 @@ import (
 )
 
 func main() {
-logger, _ := zap.NewProduction()
-defer logger.Sync()
+	logger, _ := zap.NewProduction()
+	defer logger.Sync()
 
 	brokers := strings.Split(os.Getenv("KAFKA_BROKERS"), ",")
 	if len(brokers) == 0 || brokers[0] == "" {
@@ -28,20 +28,20 @@ defer logger.Sync()
 		GroupID: os.Getenv("KAFKA_GROUP_ID"),
 	}
 
-consumer := snkafka.NewConsumer(cfg, logger)
+	consumer := snkafka.NewConsumer(cfg, logger)
 
-ctx, cancel := context.WithCancel(context.Background())
-defer cancel()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
-go func() {
-sig := make(chan os.Signal, 1)
-signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
-<-sig
-cancel()
-}()
+	go func() {
+		sig := make(chan os.Signal, 1)
+		signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
+		<-sig
+		cancel()
+	}()
 
-consumer.Start(ctx, func(ctx context.Context, msg kafkago.Message) error {
-fmt.Println("Received risk event:", string(msg.Value))
-return nil
-})
+	consumer.Start(ctx, func(ctx context.Context, msg kafkago.Message) error {
+		fmt.Println("Received risk event:", string(msg.Value))
+		return nil
+	})
 }

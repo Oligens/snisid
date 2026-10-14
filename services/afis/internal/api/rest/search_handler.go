@@ -30,9 +30,9 @@ func (h *SearchHandler) SearchTenprint(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"results":    results,
-		"hit_count":  len(results),
-		"threshold":  service.MinMatchScore,
+		"results":   results,
+		"hit_count": len(results),
+		"threshold": service.MinMatchScore,
 	})
 }
 
@@ -50,8 +50,8 @@ func (h *SearchHandler) SearchLatent(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"results":    results,
-		"hit_count":  len(results),
-		"threshold":  service.MinMatchScore,
+		"results":   results,
+		"hit_count": len(results),
+		"threshold": service.MinMatchScore,
 	})
 }

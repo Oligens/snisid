@@ -220,11 +220,11 @@ func TestGetCRL(t *testing.T) {
 	caID := uuid.New()
 	now := time.Now()
 	crl := &domain.CRL{
-		CRLID:      uuid.New(),
-		CAID:       caID,
-		CRLNumber:  1,
+		CRLID:       uuid.New(),
+		CAID:        caID,
+		CRLNumber:   1,
 		PublishedAt: now,
-		NextUpdate: now.AddDate(0, 0, 1),
+		NextUpdate:  now.AddDate(0, 0, 1),
 	}
 
 	tests := []struct {

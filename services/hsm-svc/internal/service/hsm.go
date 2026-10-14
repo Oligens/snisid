@@ -71,20 +71,20 @@ func (s *HSMService) GenerateKey(ctx context.Context, req domain.KeyGenerationRe
 
 	now := time.Now().UTC()
 	hsmKey := &domain.HSMKey{
-		KeyID:        keyID,
-		KeyLabel:     req.Label,
-		Algorithm:    req.Algorithm,
-		KeySize:      req.KeySize,
-		State:        domain.KeyStateActive,
-		Usages:       req.Usages,
-		SlotID:       req.SlotID,
+		KeyID:         keyID,
+		KeyLabel:      req.Label,
+		Algorithm:     req.Algorithm,
+		KeySize:       req.KeySize,
+		State:         domain.KeyStateActive,
+		Usages:        req.Usages,
+		SlotID:        req.SlotID,
 		IsExtractable: req.Extractable,
-		PublicKeyPEM: publicKeyPEM,
-		KeyHash:      keyHash,
-		ExpiresAt:    expiresAt,
-		CreatedAt:    now,
-		UpdatedAt:    now,
-		CreatedBy:    req.CreatedBy,
+		PublicKeyPEM:  publicKeyPEM,
+		KeyHash:       keyHash,
+		ExpiresAt:     expiresAt,
+		CreatedAt:     now,
+		UpdatedAt:     now,
+		CreatedBy:     req.CreatedBy,
 	}
 
 	if err := s.repo.CreateKey(ctx, hsmKey); err != nil {

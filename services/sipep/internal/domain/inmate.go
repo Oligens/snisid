@@ -27,23 +27,23 @@ type Inmate struct {
 }
 
 type Detention struct {
-	DetentionID          uuid.UUID     `json:"detention_id"`
-	InmateID             uuid.UUID     `json:"inmate_id"`
-	Facility             string        `json:"facility"`
+	DetentionID          uuid.UUID      `json:"detention_id"`
+	InmateID             uuid.UUID      `json:"inmate_id"`
+	Facility             string         `json:"facility"`
 	DetentionBasis       DetentionBasis `json:"detention_basis"`
-	LegalStatus          LegalStatus   `json:"legal_status"`
-	CaseReference        string        `json:"case_reference,omitempty"`
-	CourtName            string        `json:"court_name,omitempty"`
-	ArrestingAuthority   string        `json:"arresting_authority,omitempty"`
-	WarrantNumber        string        `json:"warrant_number,omitempty"`
-	IntakeDate           time.Time     `json:"intake_date"`
-	IntakeOfficer        uuid.UUID     `json:"intake_officer"`
-	SentenceDurationDays *int          `json:"sentence_duration_days,omitempty"`
-	ReleaseDate          *time.Time    `json:"release_date,omitempty"`
-	ReleaseType          *ReleaseType  `json:"release_type,omitempty"`
-	ReleasingAuthority   string        `json:"releasing_authority,omitempty"`
-	Notes                string        `json:"notes,omitempty"`
-	CreatedAt            time.Time     `json:"created_at"`
+	LegalStatus          LegalStatus    `json:"legal_status"`
+	CaseReference        string         `json:"case_reference,omitempty"`
+	CourtName            string         `json:"court_name,omitempty"`
+	ArrestingAuthority   string         `json:"arresting_authority,omitempty"`
+	WarrantNumber        string         `json:"warrant_number,omitempty"`
+	IntakeDate           time.Time      `json:"intake_date"`
+	IntakeOfficer        uuid.UUID      `json:"intake_officer"`
+	SentenceDurationDays *int           `json:"sentence_duration_days,omitempty"`
+	ReleaseDate          *time.Time     `json:"release_date,omitempty"`
+	ReleaseType          *ReleaseType   `json:"release_type,omitempty"`
+	ReleasingAuthority   string         `json:"releasing_authority,omitempty"`
+	Notes                string         `json:"notes,omitempty"`
+	CreatedAt            time.Time      `json:"created_at"`
 }
 
 type Facility struct {
@@ -77,29 +77,29 @@ type Movement struct {
 }
 
 type Visit struct {
-	VisitID      uuid.UUID `json:"visit_id"`
-	InmateID     uuid.UUID `json:"inmate_id"`
-	VisitorName  string    `json:"visitor_name"`
-	VisitorID    string    `json:"visitor_id,omitempty"`
-	Relationship string    `json:"relationship,omitempty"`
-	VisitDate    time.Time `json:"visit_date"`
+	VisitID      uuid.UUID  `json:"visit_id"`
+	InmateID     uuid.UUID  `json:"inmate_id"`
+	VisitorName  string     `json:"visitor_name"`
+	VisitorID    string     `json:"visitor_id,omitempty"`
+	Relationship string     `json:"relationship,omitempty"`
+	VisitDate    time.Time  `json:"visit_date"`
 	CheckIn      *time.Time `json:"check_in,omitempty"`
 	CheckOut     *time.Time `json:"check_out,omitempty"`
 	AuthorizedBy *uuid.UUID `json:"authorized_by,omitempty"`
-	Notes        string    `json:"notes,omitempty"`
-	CreatedAt    time.Time `json:"created_at"`
+	Notes        string     `json:"notes,omitempty"`
+	CreatedAt    time.Time  `json:"created_at"`
 }
 
 type HealthEvent struct {
-	EventID          uuid.UUID `json:"event_id"`
-	InmateID         uuid.UUID `json:"inmate_id"`
-	EventType        string    `json:"event_type"`
-	EventDate        time.Time `json:"event_date"`
-	Description      string    `json:"description,omitempty"`
-	TreatingFacility string    `json:"treating_facility,omitempty"`
-	Outcome          string    `json:"outcome,omitempty"`
+	EventID          uuid.UUID  `json:"event_id"`
+	InmateID         uuid.UUID  `json:"inmate_id"`
+	EventType        string     `json:"event_type"`
+	EventDate        time.Time  `json:"event_date"`
+	Description      string     `json:"description,omitempty"`
+	TreatingFacility string     `json:"treating_facility,omitempty"`
+	Outcome          string     `json:"outcome,omitempty"`
 	ReportedBy       *uuid.UUID `json:"reported_by,omitempty"`
-	CreatedAt        time.Time `json:"created_at"`
+	CreatedAt        time.Time  `json:"created_at"`
 }
 
 type ReleaseRequest struct {
@@ -109,22 +109,22 @@ type ReleaseRequest struct {
 }
 
 type IntakeRequest struct {
-	SNISIDPersonID      uuid.UUID      `json:"snisid_person_id" binding:"required"`
-	Facility            string         `json:"facility" binding:"required"`
-	CellBlock           string         `json:"cell_block,omitempty"`
-	DetentionBasis      DetentionBasis `json:"detention_basis" binding:"required"`
-	LegalStatus         LegalStatus    `json:"legal_status"`
-	CaseReference       string         `json:"case_reference,omitempty"`
-	CourtName           string         `json:"court_name,omitempty"`
-	ArrestingAuthority  string         `json:"arresting_authority,omitempty"`
-	WarrantNumber       string         `json:"warrant_number,omitempty"`
-	IntakeOfficer       uuid.UUID      `json:"intake_officer" binding:"required"`
-	IsMinor             bool           `json:"is_minor"`
-	IsFemale            bool           `json:"is_female"`
-	HasSpecialNeeds     bool           `json:"has_special_needs"`
-	SpecialNeedsNotes   string         `json:"special_needs_notes,omitempty"`
-	SentenceDurationDays *int          `json:"sentence_duration_days,omitempty"`
-	ExpectedReleaseDate *time.Time     `json:"expected_release_date,omitempty"`
+	SNISIDPersonID       uuid.UUID      `json:"snisid_person_id" binding:"required"`
+	Facility             string         `json:"facility" binding:"required"`
+	CellBlock            string         `json:"cell_block,omitempty"`
+	DetentionBasis       DetentionBasis `json:"detention_basis" binding:"required"`
+	LegalStatus          LegalStatus    `json:"legal_status"`
+	CaseReference        string         `json:"case_reference,omitempty"`
+	CourtName            string         `json:"court_name,omitempty"`
+	ArrestingAuthority   string         `json:"arresting_authority,omitempty"`
+	WarrantNumber        string         `json:"warrant_number,omitempty"`
+	IntakeOfficer        uuid.UUID      `json:"intake_officer" binding:"required"`
+	IsMinor              bool           `json:"is_minor"`
+	IsFemale             bool           `json:"is_female"`
+	HasSpecialNeeds      bool           `json:"has_special_needs"`
+	SpecialNeedsNotes    string         `json:"special_needs_notes,omitempty"`
+	SentenceDurationDays *int           `json:"sentence_duration_days,omitempty"`
+	ExpectedReleaseDate  *time.Time     `json:"expected_release_date,omitempty"`
 }
 
 type TransferRequest struct {
@@ -137,9 +137,9 @@ type TransferRequest struct {
 }
 
 type OccupancyReport struct {
-	Facility       string `json:"facility"`
-	DepartmentCode string `json:"department_code"`
-	CurrentCount   int    `json:"current_count"`
-	Capacity       int    `json:"capacity"`
+	Facility       string  `json:"facility"`
+	DepartmentCode string  `json:"department_code"`
+	CurrentCount   int     `json:"current_count"`
+	Capacity       int     `json:"capacity"`
 	OccupancyRate  float64 `json:"occupancy_rate"`
 }

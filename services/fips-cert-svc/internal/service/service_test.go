@@ -60,10 +60,10 @@ func TestNewFIPSService(t *testing.T) {
 
 func TestRegisterModule(t *testing.T) {
 	tests := []struct {
-		name       string
-		mod        domain.CryptoModule
-		repo       *mockFIPSRepo
-		wantErr    bool
+		name        string
+		mod         domain.CryptoModule
+		repo        *mockFIPSRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -89,7 +89,7 @@ func TestRegisterModule(t *testing.T) {
 			repo: &mockFIPSRepo{
 				createModuleFunc: func(ctx context.Context, m *domain.CryptoModule) error { return errors.New("db error") },
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "register module",
 		},
 	}
@@ -128,9 +128,9 @@ func TestListModules(t *testing.T) {
 func TestSubmitValidation(t *testing.T) {
 	moduleID := uuid.New()
 	tests := []struct {
-		name       string
-		repo       *mockFIPSRepo
-		wantErr    bool
+		name    string
+		repo    *mockFIPSRepo
+		wantErr bool
 	}{
 		{
 			name: "success",

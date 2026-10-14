@@ -46,19 +46,19 @@ func (s *CardService) Issue(ctx context.Context, req domain.IssueRequest) (*doma
 	expiryDate := time.Date(now.Year()+10, now.Month(), now.Day(), 0, 0, 0, 0, time.UTC)
 
 	doc := &domain.CardDocument{
-		DocumentID:             uuid.New(),
-		DocumentNumber:         generateDocNumber(docType, now.Year(), 1),
-		DocType:                docType,
-		CitizenID:              citizenID,
-		Status:                 domain.CardIssued,
-		IssueDate:              now,
-		ExpiryDate:             expiryDate,
-		IssuingOffice:          strPtr(req.IssuingOffice),
+		DocumentID:              uuid.New(),
+		DocumentNumber:          generateDocNumber(docType, now.Year(), 1),
+		DocType:                 docType,
+		CitizenID:               citizenID,
+		Status:                  domain.CardIssued,
+		IssueDate:               now,
+		ExpiryDate:              expiryDate,
+		IssuingOffice:           strPtr(req.IssuingOffice),
 		PersonalizationFacility: "Imprimerie Nationale PAP",
-		PhotoRef:               strPtr(req.PhotoRef),
-		SignatureRef:           strPtr(req.SignatureRef),
-		SLTDReported:           false,
-		CreatedBy:              createdBy,
+		PhotoRef:                strPtr(req.PhotoRef),
+		SignatureRef:            strPtr(req.SignatureRef),
+		SLTDReported:            false,
+		CreatedBy:               createdBy,
 	}
 
 	if err := s.repo.Create(ctx, doc); err != nil {

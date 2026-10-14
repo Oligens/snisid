@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/avast/retry-go/v4"
-	"github.com/sony/gobreaker"
 	"github.com/snisid/platform/internal/platform/logger"
+	"github.com/sony/gobreaker"
 )
 
 type CircuitBreaker struct {

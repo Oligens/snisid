@@ -24,9 +24,9 @@ func TestEnroll_10Fingers_Valid(t *testing.T) {
 	}
 
 	req := domain.EnrollmentRequest{
-		SubjectType:  domain.SubjectCriminal,
+		SubjectType:   domain.SubjectCriminal,
 		EnrollingUnit: "DCPJ-PAP",
-		Fingerprints: fps,
+		Fingerprints:  fps,
 	}
 	_ = req
 
@@ -35,7 +35,7 @@ func TestEnroll_10Fingers_Valid(t *testing.T) {
 
 func TestEnroll_MissingThumb_Rejected(t *testing.T) {
 	req := domain.EnrollmentRequest{
-		SubjectType:  domain.SubjectSuspect,
+		SubjectType:   domain.SubjectSuspect,
 		EnrollingUnit: "BRH",
 		Fingerprints: []domain.FingerprintCapture{
 			{Position: domain.FingerRightIndex, ImageBase64: "aW1hZ2U=", NFIQ2Score: 70},

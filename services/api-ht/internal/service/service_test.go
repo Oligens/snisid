@@ -12,16 +12,16 @@ import (
 )
 
 type mockAPIRepo struct {
-	createAccountFn     func(ctx context.Context, acc *domain.DeveloperAccount) error
+	createAccountFn      func(ctx context.Context, acc *domain.DeveloperAccount) error
 	findAccountByEmailFn func(ctx context.Context, email string) (*domain.DeveloperAccount, error)
-	createAPIKeyFn      func(ctx context.Context, key *domain.APIKey) error
-	findKeyByValueFn    func(ctx context.Context, keyValue string) (*domain.APIKey, error)
-	findKeysByAccountFn func(ctx context.Context, accountID uuid.UUID) ([]domain.APIKey, error)
-	revokeKeyFn         func(ctx context.Context, id uuid.UUID) error
-	findKeyByIDFn       func(ctx context.Context, id uuid.UUID) (*domain.APIKey, error)
-	listCatalogFn       func(ctx context.Context) ([]domain.APIEndpoint, error)
-	listUsageByKeyFn    func(ctx context.Context, keyID uuid.UUID) ([]domain.UsageLog, error)
-	logUsageFn          func(ctx context.Context, log *domain.UsageLog) error
+	createAPIKeyFn       func(ctx context.Context, key *domain.APIKey) error
+	findKeyByValueFn     func(ctx context.Context, keyValue string) (*domain.APIKey, error)
+	findKeysByAccountFn  func(ctx context.Context, accountID uuid.UUID) ([]domain.APIKey, error)
+	revokeKeyFn          func(ctx context.Context, id uuid.UUID) error
+	findKeyByIDFn        func(ctx context.Context, id uuid.UUID) (*domain.APIKey, error)
+	listCatalogFn        func(ctx context.Context) ([]domain.APIEndpoint, error)
+	listUsageByKeyFn     func(ctx context.Context, keyID uuid.UUID) ([]domain.UsageLog, error)
+	logUsageFn           func(ctx context.Context, log *domain.UsageLog) error
 }
 
 func (m *mockAPIRepo) CreateAccount(ctx context.Context, acc *domain.DeveloperAccount) error {
@@ -254,9 +254,9 @@ func TestRevokeKey(t *testing.T) {
 			wantErr: true,
 		},
 		{
-			name:  "already revoked",
-			keyID: kid,
-			key:   &domain.APIKey{ID: kid, IsActive: false},
+			name:    "already revoked",
+			keyID:   kid,
+			key:     &domain.APIKey{ID: kid, IsActive: false},
 			wantErr: true,
 		},
 	}

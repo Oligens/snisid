@@ -166,9 +166,9 @@ func TestVerify_MilvusError(t *testing.T) {
 
 func TestVerify_ConfidenceNormalization(t *testing.T) {
 	tests := []struct {
-		distance     float32
-		wantMin      float32
-		wantMax      float32
+		distance float32
+		wantMin  float32
+		wantMax  float32
 	}{
 		{0.0, 90.0, 100.0},
 		{5.0, 50.0, 50.0},

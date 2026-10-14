@@ -3,10 +3,10 @@ package domain
 type DetentionBasis string
 
 const (
-	DetentionBasisPreventive   DetentionBasis = "PREVENTIVE"
-	DetentionBasisSentenced    DetentionBasis = "SENTENCED"
+	DetentionBasisPreventive     DetentionBasis = "PREVENTIVE"
+	DetentionBasisSentenced      DetentionBasis = "SENTENCED"
 	DetentionBasisAdministrative DetentionBasis = "ADMINISTRATIVE"
-	DetentionBasisContempt     DetentionBasis = "CONTEMPT"
+	DetentionBasisContempt       DetentionBasis = "CONTEMPT"
 )
 
 type LegalStatus string

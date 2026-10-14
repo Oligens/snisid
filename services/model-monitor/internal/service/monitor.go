@@ -1,11 +1,11 @@
 package service
 
 import (
-	"math"
-	"sync"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/snisid/platform/internal/platform/logger"
+	"math"
+	"sync"
 )
 
 var (
@@ -48,7 +48,7 @@ func (m *Metrics) Update(pred float64, label int, version string) {
 	}
 
 	m.Predictions = append(m.Predictions, pred)
-	
+
 	// Update Prometheus
 	acc := float64(m.Correct) / float64(m.Total)
 	modelAccuracy.WithLabelValues(version).Set(acc)
@@ -68,7 +68,7 @@ func (m *Metrics) CalculateDrift(baseline float64, version string) float64 {
 	}
 	currentMean := sum / float64(len(m.Predictions))
 	drift := math.Abs(currentMean - baseline)
-	
+
 	modelDrift.WithLabelValues(version).Set(drift)
 	return drift
 }

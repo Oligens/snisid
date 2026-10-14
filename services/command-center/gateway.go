@@ -9,10 +9,10 @@ import (
 )
 
 type LiveEvent struct {
-	Type        string      `json:"type"`
-	Severity    string      `json:"severity"`
-	Source      string      `json:"source"`
-	Payload     interface{} `json:"payload"`
+	Type     string      `json:"type"`
+	Severity string      `json:"severity"`
+	Source   string      `json:"source"`
+	Payload  interface{} `json:"payload"`
 }
 
 var (
@@ -35,7 +35,7 @@ func Broadcast(event LiveEvent) {
 func Stream(ws *websocket.Conn) {
 	logger.Info(context.Background(), "COMMAND-CENTER: New national supervisor connected via WebSocket.")
 	ch := make(chan LiveEvent, 100)
-	
+
 	subMu.Lock()
 	subscribers[ch] = true
 	subMu.Unlock()

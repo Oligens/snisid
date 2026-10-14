@@ -27,8 +27,12 @@ type mockPKIRepo struct {
 func (m *mockPKIRepo) CreateForeignCA(ctx context.Context, ca *domain.ForeignCA) error {
 	return m.createForeignCAFunc(ctx, ca)
 }
-func (m *mockPKIRepo) FindForeignCAByID(ctx context.Context, id uuid.UUID) (*domain.ForeignCA, error) { return nil, nil }
-func (m *mockPKIRepo) ListForeignCAs(ctx context.Context) ([]domain.ForeignCA, error) { return nil, nil }
+func (m *mockPKIRepo) FindForeignCAByID(ctx context.Context, id uuid.UUID) (*domain.ForeignCA, error) {
+	return nil, nil
+}
+func (m *mockPKIRepo) ListForeignCAs(ctx context.Context) ([]domain.ForeignCA, error) {
+	return nil, nil
+}
 func (m *mockPKIRepo) CreateCrossCert(ctx context.Context, cert *domain.CrossCertificate) error {
 	return m.createCrossCertFunc(ctx, cert)
 }
@@ -59,10 +63,10 @@ func TestNewPKIBridgeService(t *testing.T) {
 
 func TestRegisterForeignCA(t *testing.T) {
 	tests := []struct {
-		name       string
-		ca         domain.ForeignCA
-		repo       *mockPKIRepo
-		wantErr    bool
+		name    string
+		ca      domain.ForeignCA
+		repo    *mockPKIRepo
+		wantErr bool
 	}{
 		{
 			name: "success",

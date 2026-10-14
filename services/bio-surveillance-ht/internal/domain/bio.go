@@ -40,10 +40,10 @@ const (
 type FacilityType string
 
 const (
-	FacilityHospital     FacilityType = "HOSPITAL"
-	FacilityClinic       FacilityType = "CLINIC"
-	FacilityLab          FacilityType = "LAB"
-	FacilityPharmacy     FacilityType = "PHARMACY"
+	FacilityHospital      FacilityType = "HOSPITAL"
+	FacilityClinic        FacilityType = "CLINIC"
+	FacilityLab           FacilityType = "LAB"
+	FacilityPharmacy      FacilityType = "PHARMACY"
 	FacilityEmergencyPost FacilityType = "EMERGENCY_POST"
 )
 
@@ -57,74 +57,74 @@ const (
 )
 
 type DiseaseAlert struct {
-	ID                uuid.UUID        `json:"id"`
-	DiseaseName       string           `json:"disease_name"`
-	PathogenType      PathogenType     `json:"pathogen_type"`
-	Icd10Code         string           `json:"icd10_code"`
-	AlertLevel        AlertLevel       `json:"alert_level"`
-	FirstCaseDetected time.Time        `json:"first_case_detected_at"`
-	SymptomsHallmark  *string          `json:"symptoms_hallmark,omitempty"`
-	TransmissionMode  TransmissionMode `json:"transmission_mode"`
-	IncubationDays    int              `json:"incubation_days"`
-	FatalityRate      float64          `json:"fatality_rate"`
-	CasesConfirmed    int              `json:"cases_confirmed"`
-	CasesSuspected    int              `json:"cases_suspected"`
-	CasesDeaths       int              `json:"cases_deaths"`
-	AffectedRegions   pq.StringArray   `json:"affected_regions"`
-	SourceLab         *string          `json:"source_lab,omitempty"`
-	WhoAlertRef       *string          `json:"who_alert_ref,omitempty"`
-	ContainmentMeasures *string        `json:"containment_measures,omitempty"`
-	CreatedAt         time.Time        `json:"created_at"`
+	ID                  uuid.UUID        `json:"id"`
+	DiseaseName         string           `json:"disease_name"`
+	PathogenType        PathogenType     `json:"pathogen_type"`
+	Icd10Code           string           `json:"icd10_code"`
+	AlertLevel          AlertLevel       `json:"alert_level"`
+	FirstCaseDetected   time.Time        `json:"first_case_detected_at"`
+	SymptomsHallmark    *string          `json:"symptoms_hallmark,omitempty"`
+	TransmissionMode    TransmissionMode `json:"transmission_mode"`
+	IncubationDays      int              `json:"incubation_days"`
+	FatalityRate        float64          `json:"fatality_rate"`
+	CasesConfirmed      int              `json:"cases_confirmed"`
+	CasesSuspected      int              `json:"cases_suspected"`
+	CasesDeaths         int              `json:"cases_deaths"`
+	AffectedRegions     pq.StringArray   `json:"affected_regions"`
+	SourceLab           *string          `json:"source_lab,omitempty"`
+	WhoAlertRef         *string          `json:"who_alert_ref,omitempty"`
+	ContainmentMeasures *string          `json:"containment_measures,omitempty"`
+	CreatedAt           time.Time        `json:"created_at"`
 }
 
 type VaccinationCampaign struct {
-	ID               uuid.UUID      `json:"id"`
-	CampaignName     string         `json:"campaign_name"`
-	TargetDisease    string         `json:"target_disease"`
-	VaccineType      string         `json:"vaccine_type"`
-	TargetPopulation int            `json:"target_population"`
-	DosesAdministered int           `json:"doses_administered"`
-	CoveragePct      float64        `json:"coverage_pct"`
-	RegionsActive    pq.StringArray `json:"regions_active"`
-	StartDate        time.Time      `json:"start_date"`
-	EndDate          *time.Time     `json:"end_date,omitempty"`
-	CoordinatorAgency string        `json:"coordinator_agency"`
-	CreatedAt        time.Time      `json:"created_at"`
+	ID                uuid.UUID      `json:"id"`
+	CampaignName      string         `json:"campaign_name"`
+	TargetDisease     string         `json:"target_disease"`
+	VaccineType       string         `json:"vaccine_type"`
+	TargetPopulation  int            `json:"target_population"`
+	DosesAdministered int            `json:"doses_administered"`
+	CoveragePct       float64        `json:"coverage_pct"`
+	RegionsActive     pq.StringArray `json:"regions_active"`
+	StartDate         time.Time      `json:"start_date"`
+	EndDate           *time.Time     `json:"end_date,omitempty"`
+	CoordinatorAgency string         `json:"coordinator_agency"`
+	CreatedAt         time.Time      `json:"created_at"`
 }
 
 type HealthFacility struct {
-	ID              uuid.UUID    `json:"id"`
-	FacilityName    string       `json:"facility_name"`
-	FacilityType    FacilityType `json:"facility_type"`
-	Region          string       `json:"region"`
-	Commune         string       `json:"commune"`
-	DeptCode        string       `json:"dept_code"`
-	CapacityBeds    int          `json:"capacity_beds"`
-	BedsAvailable   int          `json:"beds_available"`
-	StockStatus     StockStatus  `json:"stock_status"`
-	HasVentilators  bool         `json:"has_ventilators"`
-	HasAmbulance    bool         `json:"has_ambulance"`
-	LastReportAt    *time.Time   `json:"last_report_at,omitempty"`
-	CreatedAt       time.Time    `json:"created_at"`
+	ID             uuid.UUID    `json:"id"`
+	FacilityName   string       `json:"facility_name"`
+	FacilityType   FacilityType `json:"facility_type"`
+	Region         string       `json:"region"`
+	Commune        string       `json:"commune"`
+	DeptCode       string       `json:"dept_code"`
+	CapacityBeds   int          `json:"capacity_beds"`
+	BedsAvailable  int          `json:"beds_available"`
+	StockStatus    StockStatus  `json:"stock_status"`
+	HasVentilators bool         `json:"has_ventilators"`
+	HasAmbulance   bool         `json:"has_ambulance"`
+	LastReportAt   *time.Time   `json:"last_report_at,omitempty"`
+	CreatedAt      time.Time    `json:"created_at"`
 }
 
 type CreateDiseaseAlertRequest struct {
-	DiseaseName       string `json:"disease_name"`
-	PathogenType      string `json:"pathogen_type"`
-	Icd10Code         string `json:"icd10_code"`
-	AlertLevel        string `json:"alert_level"`
-	FirstCaseDetected string `json:"first_case_detected,omitempty"`
-	SymptomsHallmark  string `json:"symptoms_hallmark,omitempty"`
-	TransmissionMode  string `json:"transmission_mode"`
-	IncubationDays    int    `json:"incubation_days"`
-	FatalityRate      float64 `json:"fatality_rate"`
-	CasesConfirmed    int    `json:"cases_confirmed"`
-	CasesSuspected    int    `json:"cases_suspected"`
-	CasesDeaths       int    `json:"cases_deaths"`
-	AffectedRegions   []string `json:"affected_regions"`
-	SourceLab         string `json:"source_lab,omitempty"`
-	WhoAlertRef       string `json:"who_alert_ref,omitempty"`
-	ContainmentMeasures string `json:"containment_measures,omitempty"`
+	DiseaseName         string   `json:"disease_name"`
+	PathogenType        string   `json:"pathogen_type"`
+	Icd10Code           string   `json:"icd10_code"`
+	AlertLevel          string   `json:"alert_level"`
+	FirstCaseDetected   string   `json:"first_case_detected,omitempty"`
+	SymptomsHallmark    string   `json:"symptoms_hallmark,omitempty"`
+	TransmissionMode    string   `json:"transmission_mode"`
+	IncubationDays      int      `json:"incubation_days"`
+	FatalityRate        float64  `json:"fatality_rate"`
+	CasesConfirmed      int      `json:"cases_confirmed"`
+	CasesSuspected      int      `json:"cases_suspected"`
+	CasesDeaths         int      `json:"cases_deaths"`
+	AffectedRegions     []string `json:"affected_regions"`
+	SourceLab           string   `json:"source_lab,omitempty"`
+	WhoAlertRef         string   `json:"who_alert_ref,omitempty"`
+	ContainmentMeasures string   `json:"containment_measures,omitempty"`
 }
 
 type CreateVaccinationCampaignRequest struct {

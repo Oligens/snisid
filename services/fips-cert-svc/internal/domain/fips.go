@@ -18,46 +18,46 @@ const (
 type ValidationStatus string
 
 const (
-	StatusPending    ValidationStatus = "PENDING"
-	StatusInReview   ValidationStatus = "IN_REVIEW"
-	StatusValidated  ValidationStatus = "VALIDATED"
-	StatusRejected   ValidationStatus = "REJECTED"
-	StatusExpired    ValidationStatus = "EXPIRED"
+	StatusPending   ValidationStatus = "PENDING"
+	StatusInReview  ValidationStatus = "IN_REVIEW"
+	StatusValidated ValidationStatus = "VALIDATED"
+	StatusRejected  ValidationStatus = "REJECTED"
+	StatusExpired   ValidationStatus = "EXPIRED"
 )
 
 type CertAlgo string
 
 const (
-	AlgoAES    CertAlgo = "AES"
-	AlgoRSA    CertAlgo = "RSA"
-	AlgoECDSA  CertAlgo = "ECDSA"
-	AlgoSHA    CertAlgo = "SHA"
-	AlgoHMAC   CertAlgo = "HMAC"
-	AlgoDRBG   CertAlgo = "DRBG"
+	AlgoAES   CertAlgo = "AES"
+	AlgoRSA   CertAlgo = "RSA"
+	AlgoECDSA CertAlgo = "ECDSA"
+	AlgoSHA   CertAlgo = "SHA"
+	AlgoHMAC  CertAlgo = "HMAC"
+	AlgoDRBG  CertAlgo = "DRBG"
 )
 
 type CryptoModule struct {
-	ModuleID       uuid.UUID     `json:"module_id"`
-	Name           string        `json:"name"`
-	Version        string        `json:"version"`
-	Vendor         string        `json:"vendor"`
-	FIPSLevel      FIPSLevel     `json:"fips_level"`
-	Algorithms     []CertAlgo    `json:"algorithms"`
-	CertNumber     *string       `json:"cert_number,omitempty"`
-	ValidationDate *time.Time    `json:"validation_date,omitempty"`
-	ExpiryDate     *time.Time    `json:"expiry_date,omitempty"`
+	ModuleID       uuid.UUID        `json:"module_id"`
+	Name           string           `json:"name"`
+	Version        string           `json:"version"`
+	Vendor         string           `json:"vendor"`
+	FIPSLevel      FIPSLevel        `json:"fips_level"`
+	Algorithms     []CertAlgo       `json:"algorithms"`
+	CertNumber     *string          `json:"cert_number,omitempty"`
+	ValidationDate *time.Time       `json:"validation_date,omitempty"`
+	ExpiryDate     *time.Time       `json:"expiry_date,omitempty"`
 	Status         ValidationStatus `json:"status"`
-	CreatedAt      time.Time     `json:"created_at"`
-	UpdatedAt      time.Time     `json:"updated_at"`
+	CreatedAt      time.Time        `json:"created_at"`
+	UpdatedAt      time.Time        `json:"updated_at"`
 }
 
 type SecurityPolicy struct {
-	PolicyID      uuid.UUID `json:"policy_id"`
-	ModuleID      uuid.UUID `json:"module_id"`
-	DocumentRef   string    `json:"document_ref"`
-	Version       string    `json:"version"`
-	ApprovedDate  time.Time `json:"approved_date"`
-	Hash          string    `json:"hash"`
+	PolicyID     uuid.UUID `json:"policy_id"`
+	ModuleID     uuid.UUID `json:"module_id"`
+	DocumentRef  string    `json:"document_ref"`
+	Version      string    `json:"version"`
+	ApprovedDate time.Time `json:"approved_date"`
+	Hash         string    `json:"hash"`
 }
 
 type CVEScanResult struct {
@@ -71,12 +71,12 @@ type CVEScanResult struct {
 }
 
 type ComplianceReport struct {
-	ServiceName     string         `json:"service_name"`
-	OverallStatus   string         `json:"overall_status"`
-	ModuleCount     int            `json:"module_count"`
-	ValidatedCount  int            `json:"validated_count"`
-	PendingCount    int            `json:"pending_count"`
-	ExpiredCount    int            `json:"expired_count"`
-	OpenCVEs        int            `json:"open_cves"`
-	LastChecked     time.Time      `json:"last_checked"`
+	ServiceName    string    `json:"service_name"`
+	OverallStatus  string    `json:"overall_status"`
+	ModuleCount    int       `json:"module_count"`
+	ValidatedCount int       `json:"validated_count"`
+	PendingCount   int       `json:"pending_count"`
+	ExpiredCount   int       `json:"expired_count"`
+	OpenCVEs       int       `json:"open_cves"`
+	LastChecked    time.Time `json:"last_checked"`
 }

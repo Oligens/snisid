@@ -9,8 +9,8 @@ import (
 )
 
 type RecordHandler struct {
-	recordSvc  *service.RecordService
-	chargeSvc  *service.ChargeService
+	recordSvc *service.RecordService
+	chargeSvc *service.ChargeService
 }
 
 func NewRecordHandler(rs *service.RecordService, cs *service.ChargeService) *RecordHandler {

@@ -9,12 +9,12 @@ import (
 )
 
 type InMemoryRepository struct {
-	mu       sync.RWMutex
-	members  map[uuid.UUID]*domain.CriminalMember
-	notes    map[uuid.UUID][]*domain.IntelNote
+	mu        sync.RWMutex
+	members   map[uuid.UUID]*domain.CriminalMember
+	notes     map[uuid.UUID][]*domain.IntelNote
 	sightings map[uuid.UUID][]*domain.Sighting
-	links    []*domain.CrossGangLink
-	nextSeq  int
+	links     []*domain.CrossGangLink
+	nextSeq   int
 }
 
 func NewInMemoryRepository() *InMemoryRepository {

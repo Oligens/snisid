@@ -25,11 +25,11 @@ func (s *VictimService) RegisterVictim(req *domain.RegisterVictimRequest) (*doma
 	}
 
 	victim := &domain.Victim{
-		CrimeType:    domain.CrimeType(req.CrimeType),
-		VictimStatus: domain.VictimStatus(req.VictimStatus),
-		IncidentDate: id,
+		CrimeType:      domain.CrimeType(req.CrimeType),
+		VictimStatus:   domain.VictimStatus(req.VictimStatus),
+		IncidentDate:   id,
 		PerpetratorIDs: []uuid.UUID{},
-		CreatedBy:    uuid.New(),
+		CreatedBy:      uuid.New(),
 	}
 
 	if req.FullName != "" {
@@ -70,13 +70,13 @@ func (s *VictimService) CreateMassIncident(req *domain.CreateMassIncidentRequest
 	}
 
 	mi := &domain.MassIncident{
-		IncidentName: req.IncidentName,
-		CrimeType:    domain.CrimeType(req.CrimeType),
-		IncidentDate: id,
-		VictimCount:  req.VictimCount,
-		DocumentedBy: []string{},
+		IncidentName:    req.IncidentName,
+		CrimeType:       domain.CrimeType(req.CrimeType),
+		IncidentDate:    id,
+		VictimCount:     req.VictimCount,
+		DocumentedBy:    []string{},
 		LinkedVictimIDs: []uuid.UUID{},
-		CreatedBy:    uuid.New(),
+		CreatedBy:       uuid.New(),
 	}
 
 	if req.DeptCode != "" {

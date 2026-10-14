@@ -12,13 +12,13 @@ const (
 type CaseStatus string
 
 const (
-	CaseStatusOpen           CaseStatus = "OPEN"
-	CaseStatusPendingTrial   CaseStatus = "PENDING_TRIAL"
-	CaseStatusConvicted      CaseStatus = "CONVICTED"
-	CaseStatusAcquitted      CaseStatus = "ACQUITTED"
-	CaseStatusDismissed      CaseStatus = "DISMISSED"
-	CaseStatusAppealPending  CaseStatus = "APPEAL_PENDING"
-	CaseStatusExpunged       CaseStatus = "EXPUNGED"
+	CaseStatusOpen          CaseStatus = "OPEN"
+	CaseStatusPendingTrial  CaseStatus = "PENDING_TRIAL"
+	CaseStatusConvicted     CaseStatus = "CONVICTED"
+	CaseStatusAcquitted     CaseStatus = "ACQUITTED"
+	CaseStatusDismissed     CaseStatus = "DISMISSED"
+	CaseStatusAppealPending CaseStatus = "APPEAL_PENDING"
+	CaseStatusExpunged      CaseStatus = "EXPUNGED"
 )
 
 type SentenceType string
@@ -36,6 +36,6 @@ const (
 type CertificateResult string
 
 const (
-	CertificateResultClean    CertificateResult = "CLEAN"
+	CertificateResultClean     CertificateResult = "CLEAN"
 	CertificateResultHasRecord CertificateResult = "HAS_RECORD"
 )

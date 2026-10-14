@@ -64,7 +64,7 @@ func TestCreateProtectee_Success(t *testing.T) {
 	body, _ := json.Marshal(domain.CreateProtecteeRequest{
 		FullName: "Jean Dupont", OfficialTitle: "Ministre",
 		ProtectionLevel: "CABINET_MINISTER", RiskAssessment: "HIGH",
-		PrimaryAgentID: "550e8400-e29b-41d4-a716-446655440000",
+		PrimaryAgentID:     "550e8400-e29b-41d4-a716-446655440000",
 		SecureVehiclePlate: "AA-001-BB",
 	})
 	w := httptest.NewRecorder()
@@ -95,7 +95,7 @@ func TestCreateMovementPlan_Success(t *testing.T) {
 	r, _ := setupExecTest()
 	body, _ := json.Marshal(domain.CreateMovementPlanRequest{
 		ProtecteeID: "550e8400-e29b-41d4-a716-446655440000",
-		EventName: "Sommet", Date: "2026-07-15T09:00:00Z",
+		EventName:   "Sommet", Date: "2026-07-15T09:00:00Z",
 		DepartureLocation: "Palais", ArrivalLocation: "Aéroport",
 		TransportMode: "MOTORCADE",
 	})
@@ -118,7 +118,7 @@ func TestCreateThreat_Success(t *testing.T) {
 	r, _ := setupExecTest()
 	body, _ := json.Marshal(domain.CreateThreatAssessmentRequest{
 		ProtecteeID: "550e8400-e29b-41d4-a716-446655440000",
-		ThreatType: "DIRECT_THREAT", ThreatLevel: "CRITICAL",
+		ThreatType:  "DIRECT_THREAT", ThreatLevel: "CRITICAL",
 		AssessedBy: "550e8400-e29b-41d4-a716-446655440001",
 	})
 	w := httptest.NewRecorder()

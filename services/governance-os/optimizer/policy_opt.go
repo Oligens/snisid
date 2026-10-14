@@ -12,39 +12,39 @@ import (
 )
 
 type PolicyUpdate struct {
-	Version        string        `json:"version"`
-	SuggestedDelta string        `json:"suggested_delta"`
-	Confidence     float64       `json:"confidence"`
-	Domain         string        `json:"domain"`
-	Rationale      string        `json:"rationale"`
-	RiskLevel      string        `json:"risk_level"` // LOW, MEDIUM, HIGH
-	RequiresHuman  bool          `json:"requires_human"`
+	Version        string  `json:"version"`
+	SuggestedDelta string  `json:"suggested_delta"`
+	Confidence     float64 `json:"confidence"`
+	Domain         string  `json:"domain"`
+	Rationale      string  `json:"rationale"`
+	RiskLevel      string  `json:"risk_level"` // LOW, MEDIUM, HIGH
+	RequiresHuman  bool    `json:"requires_human"`
 }
 
 type EnforcementOutcome struct {
-	PolicyID     string  `json:"policy_id"`
-	Action       string  `json:"action"`
-	Success      bool    `json:"success"`
+	PolicyID       string  `json:"policy_id"`
+	Action         string  `json:"action"`
+	Success        bool    `json:"success"`
 	FraudPrevented float64 `json:"fraud_prevented"`
-	FalsePositive bool    `json:"false_positive"`
-	Timestamp    int64   `json:"timestamp"`
-	Region       string  `json:"region"`
+	FalsePositive  bool    `json:"false_positive"`
+	Timestamp      int64   `json:"timestamp"`
+	Region         string  `json:"region"`
 }
 
 type PolicyOptimizer struct {
-	ID                 string
-	mu                 sync.Mutex
-	outcomeHistory     []EnforcementOutcome
-	minDataPoints      int
-	learningRate       float64
+	ID             string
+	mu             sync.Mutex
+	outcomeHistory []EnforcementOutcome
+	minDataPoints  int
+	learningRate   float64
 }
 
 func NewPolicyOptimizer(id string) *PolicyOptimizer {
 	return &PolicyOptimizer{
-		ID:            id,
+		ID:             id,
 		outcomeHistory: []EnforcementOutcome{},
-		minDataPoints: 100,
-		learningRate:  0.05,
+		minDataPoints:  100,
+		learningRate:   0.05,
 	}
 }
 
@@ -74,9 +74,9 @@ func (o *PolicyOptimizer) computeOptimizations(outcomes []EnforcementOutcome) []
 	var updates []PolicyUpdate
 
 	regionStats := make(map[string]struct {
-		total    int
-		success  int
-		fraud    float64
+		total   int
+		success int
+		fraud   float64
 	})
 	for _, oc := range outcomes {
 		s := regionStats[oc.Region]
@@ -171,7 +171,7 @@ func (o *PolicyOptimizer) GetStats() map[string]interface{} {
 	defer o.mu.Unlock()
 
 	return map[string]interface{}{
-		"total_outcomes": len(o.outcomeHistory),
+		"total_outcomes":  len(o.outcomeHistory),
 		"min_data_points": o.minDataPoints,
 		"learning_rate":   o.learningRate,
 	}

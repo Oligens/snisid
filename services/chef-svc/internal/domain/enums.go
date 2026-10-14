@@ -16,10 +16,10 @@ const (
 type MemberStatus string
 
 const (
-	StatusActive       MemberStatus = "ACTIVE"
-	StatusArrested     MemberStatus = "ARRESTED"
-	StatusDetained     MemberStatus = "DETAINED"
-	StatusDeceased     MemberStatus = "DECEASED"
-	StatusFledCountry  MemberStatus = "FLED_COUNTRY"
-	StatusUnknown      MemberStatus = "UNKNOWN"
+	StatusActive      MemberStatus = "ACTIVE"
+	StatusArrested    MemberStatus = "ARRESTED"
+	StatusDetained    MemberStatus = "DETAINED"
+	StatusDeceased    MemberStatus = "DECEASED"
+	StatusFledCountry MemberStatus = "FLED_COUNTRY"
+	StatusUnknown     MemberStatus = "UNKNOWN"
 )

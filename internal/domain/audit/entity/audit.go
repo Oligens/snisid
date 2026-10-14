@@ -9,7 +9,7 @@ type AuditEvent struct {
 	Actor         string    `json:"actor" gorm:"index"`
 	Action        string    `json:"action"`
 	Resource      string    `json:"resource" gorm:"index"`
-	Status        string    `json:"status"` // success, failed, denied
+	Status        string    `json:"status"`  // success, failed, denied
 	Payload       string    `json:"payload"` // JSON stringified for hashing stability
 	PreviousHash  string    `json:"previousHash"`
 	Hash          string    `json:"hash"`

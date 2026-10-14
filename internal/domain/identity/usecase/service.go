@@ -107,7 +107,7 @@ func (s *service) publishEvent(ctx context.Context, eventType string, ident *ent
 	}
 
 	// Topic routing can be done here or producer can just publish to the topic it was configured with.
-	// For now, assuming producer is configured for an 'identity-events' topic, 
+	// For now, assuming producer is configured for an 'identity-events' topic,
 	// we use eventType as the key or embedded in payload.
 	_ = s.producer.Publish(ctx, ident.ID, evt)
 }

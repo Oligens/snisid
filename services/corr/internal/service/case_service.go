@@ -11,7 +11,7 @@ import (
 )
 
 type CaseService struct {
-	caseRepo   repository.CaseRepository
+	caseRepo    repository.CaseRepository
 	officerRepo repository.OfficerRepository
 }
 
@@ -37,7 +37,7 @@ func (s *CaseService) CreateCase(ctx context.Context, req domain.CreateCaseReque
 		IncidentDateFrom:  req.IncidentDateFrom,
 		IncidentDateTo:    req.IncidentDateTo,
 
-		GangID:          req.GangID,
+		GangID:           req.GangID,
 		FinancialGainUSD: req.FinancialGainUSD,
 
 		ReportedByType:         req.ReportedByType,

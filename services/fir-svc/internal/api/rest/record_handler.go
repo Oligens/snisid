@@ -1,10 +1,10 @@
 package rest
 
 import (
-	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/snisid/platform/services/fir-svc/internal/service"
+	"net/http"
 )
 
 type RecordHandler struct {
@@ -67,13 +67,13 @@ func (h *RecordHandler) AddArrest(c *gin.Context) {
 	}
 
 	var arrest struct {
-		ArrestDate      string `json:"arrest_date" binding:"required"`
-		ArrestingUnit   string `json:"arresting_unit" binding:"required"`
-		ArrestLocation  string `json:"arrest_location"`
-		DeptCode        string `json:"dept_code"`
-		ChargesText     string `json:"charges_text" binding:"required"`
-		OffenseClass    string `json:"offense_class" binding:"required"`
-		CaseReference   string `json:"case_reference"`
+		ArrestDate     string `json:"arrest_date" binding:"required"`
+		ArrestingUnit  string `json:"arresting_unit" binding:"required"`
+		ArrestLocation string `json:"arrest_location"`
+		DeptCode       string `json:"dept_code"`
+		ChargesText    string `json:"charges_text" binding:"required"`
+		OffenseClass   string `json:"offense_class" binding:"required"`
+		CaseReference  string `json:"case_reference"`
 	}
 	if err := c.ShouldBindJSON(&arrest); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

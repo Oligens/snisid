@@ -18,10 +18,10 @@ type EventBackbone struct {
 func NewEventBackbone(brokers []string) *EventBackbone {
 	return &EventBackbone{
 		Writer: &kafka.Writer{
-			Addr:     kafka.TCP(brokers...),
-			Topic:    "snisid.fraud.signals",
-			Balancer: &kafka.LeastBytes{},
-			Async:    false, // Exactly-once semantics (sync writing)
+			Addr:        kafka.TCP(brokers...),
+			Topic:       "snisid.fraud.signals",
+			Balancer:    &kafka.LeastBytes{},
+			Async:       false, // Exactly-once semantics (sync writing)
 			MaxAttempts: 5,
 		},
 		DLQ: &kafka.Writer{

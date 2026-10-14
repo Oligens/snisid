@@ -15,29 +15,29 @@ const (
 )
 
 type AgeAttestationRequest struct {
-	RequestID       uuid.UUID `json:"request_id"`
-	IdentityID      uuid.UUID `json:"identity_id"`
-	DateOfBirth     time.Time `json:"date_of_birth"`
-	RequestedAt     time.Time `json:"requested_at"`
+	RequestID   uuid.UUID `json:"request_id"`
+	IdentityID  uuid.UUID `json:"identity_id"`
+	DateOfBirth time.Time `json:"date_of_birth"`
+	RequestedAt time.Time `json:"requested_at"`
 }
 
 type AgeAttestation struct {
-	AttestationID   uuid.UUID  `json:"attestation_id"`
-	IdentityID      uuid.UUID  `json:"identity_id"`
-	DateOfBirth     time.Time  `json:"date_of_birth"`
-	IssuedAt        time.Time  `json:"issued_at"`
-	ExpiresAt       time.Time  `json:"expires_at"`
-	IsRevoked       bool       `json:"is_revoked"`
-	RevokedAt       *time.Time `json:"revoked_at,omitempty"`
+	AttestationID uuid.UUID  `json:"attestation_id"`
+	IdentityID    uuid.UUID  `json:"identity_id"`
+	DateOfBirth   time.Time  `json:"date_of_birth"`
+	IssuedAt      time.Time  `json:"issued_at"`
+	ExpiresAt     time.Time  `json:"expires_at"`
+	IsRevoked     bool       `json:"is_revoked"`
+	RevokedAt     *time.Time `json:"revoked_at,omitempty"`
 }
 
 type AgeClaim struct {
-	ClaimID        uuid.UUID  `json:"claim_id"`
-	AttestationID  uuid.UUID  `json:"attestation_id"`
-	VerifierID     string     `json:"verifier_id"`
-	Bracket        AgeBracket `json:"bracket"`
-	IsSatisfied    bool       `json:"is_satisfied"`
-	ClaimedAt      time.Time  `json:"claimed_at"`
+	ClaimID       uuid.UUID  `json:"claim_id"`
+	AttestationID uuid.UUID  `json:"attestation_id"`
+	VerifierID    string     `json:"verifier_id"`
+	Bracket       AgeBracket `json:"bracket"`
+	IsSatisfied   bool       `json:"is_satisfied"`
+	ClaimedAt     time.Time  `json:"claimed_at"`
 }
 
 type ZKProof struct {
@@ -49,9 +49,9 @@ type ZKProof struct {
 }
 
 type VerifierRequest struct {
-	RequestID    uuid.UUID  `json:"request_id"`
-	VerifierID   string     `json:"verifier_id"`
-	Bracket      AgeBracket `json:"bracket"`
-	RequestedAt  time.Time  `json:"requested_at"`
-	IsApproved   bool       `json:"is_approved"`
+	RequestID   uuid.UUID  `json:"request_id"`
+	VerifierID  string     `json:"verifier_id"`
+	Bracket     AgeBracket `json:"bracket"`
+	RequestedAt time.Time  `json:"requested_at"`
+	IsApproved  bool       `json:"is_approved"`
 }

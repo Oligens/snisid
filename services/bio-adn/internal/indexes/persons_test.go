@@ -9,11 +9,11 @@ import (
 
 type mockPersonsDB struct {
 	models.Database
-	wanted     []models.WantedPerson
-	createErr  error
-	queryErr   error
-	getErr     error
-	updateErr  error
+	wanted    []models.WantedPerson
+	createErr error
+	queryErr  error
+	getErr    error
+	updateErr error
 }
 
 func newMockPersonsDB() *mockPersonsDB {
@@ -67,7 +67,9 @@ func (m *mockPersonsDB) UpdateWantedStatus(ctx context.Context, id, status strin
 }
 
 func (m *mockPersonsDB) CreateForeignFugitive(ctx context.Context, f *models.ForeignFugitive) error {
-	if m.createErr != nil { return m.createErr }
+	if m.createErr != nil {
+		return m.createErr
+	}
 	return nil
 }
 
@@ -135,44 +137,92 @@ func (m *mockPersonsDB) RecordGangMemberReview(ctx context.Context, id string) e
 	return nil
 }
 
-func (m *mockPersonsDB) CreateLabEquipment(ctx context.Context, e *models.LabEquipment) error { return nil }
-func (m *mockPersonsDB) QueryLabEquipment(ctx context.Context, labCode string) ([]models.LabEquipment, error) { return nil, nil }
-func (m *mockPersonsDB) GetLabEquipmentByID(ctx context.Context, id string) (*models.LabEquipment, error) { return nil, nil }
-func (m *mockPersonsDB) UpdateEquipmentCalibration(ctx context.Context, id, calibrationDate, calibrationDue, status string) error { return nil }
-func (m *mockPersonsDB) CreateStaffTraining(ctx context.Context, t *models.StaffTraining) error { return nil }
-func (m *mockPersonsDB) QueryStaffTraining(ctx context.Context, staffNIU string) ([]models.StaffTraining, error) { return nil, nil }
-func (m *mockPersonsDB) GetStaffTrainingByID(ctx context.Context, id string) (*models.StaffTraining, error) { return nil, nil }
-func (m *mockPersonsDB) CheckDuplicateSpecimen(ctx context.Context, specimen string) (bool, error) { return false, nil }
-func (m *mockPersonsDB) MarkSpecimenSubmitted(ctx context.Context, specimen, sampleID string) error { return nil }
-func (m *mockPersonsDB) RecordCrossDeptHit(ctx context.Context, h *models.NdisCrossDeptHit) error { return nil }
-func (m *mockPersonsDB) QueryCrossDeptHits(ctx context.Context, sdis, matchType string, limit, offset int) ([]models.NdisCrossDeptHit, int, error) { return nil, 0, nil }
-func (m *mockPersonsDB) GetNdisStats(ctx context.Context) (*models.NdisStats, error) { return &models.NdisStats{}, nil }
+func (m *mockPersonsDB) CreateLabEquipment(ctx context.Context, e *models.LabEquipment) error {
+	return nil
+}
+func (m *mockPersonsDB) QueryLabEquipment(ctx context.Context, labCode string) ([]models.LabEquipment, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) GetLabEquipmentByID(ctx context.Context, id string) (*models.LabEquipment, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) UpdateEquipmentCalibration(ctx context.Context, id, calibrationDate, calibrationDue, status string) error {
+	return nil
+}
+func (m *mockPersonsDB) CreateStaffTraining(ctx context.Context, t *models.StaffTraining) error {
+	return nil
+}
+func (m *mockPersonsDB) QueryStaffTraining(ctx context.Context, staffNIU string) ([]models.StaffTraining, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) GetStaffTrainingByID(ctx context.Context, id string) (*models.StaffTraining, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) CheckDuplicateSpecimen(ctx context.Context, specimen string) (bool, error) {
+	return false, nil
+}
+func (m *mockPersonsDB) MarkSpecimenSubmitted(ctx context.Context, specimen, sampleID string) error {
+	return nil
+}
+func (m *mockPersonsDB) RecordCrossDeptHit(ctx context.Context, h *models.NdisCrossDeptHit) error {
+	return nil
+}
+func (m *mockPersonsDB) QueryCrossDeptHits(ctx context.Context, sdis, matchType string, limit, offset int) ([]models.NdisCrossDeptHit, int, error) {
+	return nil, 0, nil
+}
+func (m *mockPersonsDB) GetNdisStats(ctx context.Context) (*models.NdisStats, error) {
+	return &models.NdisStats{}, nil
+}
 func (m *mockPersonsDB) CreateNdisReport(ctx context.Context, r *models.NdisReport) error { return nil }
-func (m *mockPersonsDB) QueryNdisReports(ctx context.Context) ([]models.NdisReport, error) { return nil, nil }
-func (m *mockPersonsDB) CreateInterpolSubmission(ctx context.Context, s *models.InterpolSubmission) error { return nil }
-func (m *mockPersonsDB) CountInterpolSubmissionsThisWeek(ctx context.Context) (int, error) { return 0, nil }
-func (m *mockPersonsDB) CreateIdentityLink(ctx context.Context, l *models.BioIdentityLink) error { return nil }
-func (m *mockPersonsDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) { return nil, nil }
-func (m *mockPersonsDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) { return nil, nil }
-func (m *mockPersonsDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error { return nil }
-func (m *mockPersonsDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) { return nil, 0, nil }
-func (m *mockPersonsDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) { return nil, nil }
-func (m *mockPersonsDB) CreateIdentityTheft(ctx context.Context, i *models.IdentityTheft) error { return nil }
-func (m *mockPersonsDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) { return nil, 0, nil }
-func (m *mockPersonsDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) { return nil, nil }
+func (m *mockPersonsDB) QueryNdisReports(ctx context.Context) ([]models.NdisReport, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) CreateInterpolSubmission(ctx context.Context, s *models.InterpolSubmission) error {
+	return nil
+}
+func (m *mockPersonsDB) CountInterpolSubmissionsThisWeek(ctx context.Context) (int, error) {
+	return 0, nil
+}
+func (m *mockPersonsDB) CreateIdentityLink(ctx context.Context, l *models.BioIdentityLink) error {
+	return nil
+}
+func (m *mockPersonsDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error {
+	return nil
+}
+func (m *mockPersonsDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) {
+	return nil, 0, nil
+}
+func (m *mockPersonsDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) {
+	return nil, nil
+}
+func (m *mockPersonsDB) CreateIdentityTheft(ctx context.Context, i *models.IdentityTheft) error {
+	return nil
+}
+func (m *mockPersonsDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) {
+	return nil, 0, nil
+}
+func (m *mockPersonsDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) {
+	return nil, nil
+}
 
 func TestPersonsIndex_CreateWanted(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	err := idx.CreateWanted(context.Background(), &models.WantedPerson{
-		RecordID:     "WP-001",
-		LastName:     "Pierre",
-		FirstName:    "Jean",
-		WarrantType:  "ARREST",
-		Charges:      []string{"Vol à main armée"},
-		DangerLevel:  "HIGH",
+		RecordID:       "WP-001",
+		LastName:       "Pierre",
+		FirstName:      "Jean",
+		WarrantType:    "ARREST",
+		Charges:        []string{"Vol à main armée"},
+		DangerLevel:    "HIGH",
 		EnteringAgency: "PNH-DELMAS",
-		Status:       "ACTIVE",
+		Status:         "ACTIVE",
 	})
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
@@ -186,9 +236,9 @@ func TestPersonsIndex_CreateWanted_EmptyWarrantType(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	err := idx.CreateWanted(context.Background(), &models.WantedPerson{
-		RecordID:  "WP-002",
-		LastName:  "Dupont",
-		Charges:   []string{"Fraude"},
+		RecordID: "WP-002",
+		LastName: "Dupont",
+		Charges:  []string{"Fraude"},
 	})
 	if err == nil {
 		t.Fatal("expected error for empty warrant_type")
@@ -316,7 +366,7 @@ func TestPersonsIndex_CreateForeignFugitive(t *testing.T) {
 	idx := NewPersonsIndex(mock)
 	err := idx.CreateForeignFugitive(context.Background(), &models.ForeignFugitive{
 		InterpolNoticeNumber: "RED-2026-001",
-		LastName: "Garcia", IssuingCountry: "COL",
+		LastName:             "Garcia", IssuingCountry: "COL",
 	})
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
@@ -338,8 +388,12 @@ func TestPersonsIndex_QueryForeignFugitives(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryForeignFugitives(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if total != 0 { t.Fatalf("expected 0 total") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if total != 0 {
+		t.Fatalf("expected 0 total")
+	}
 	_ = results
 }
 
@@ -347,8 +401,12 @@ func TestPersonsIndex_GetForeignFugitive(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetForeignFugitive(context.Background(), "FUG-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }
 
 func TestPersonsIndex_CreateUnidentifiedPerson(t *testing.T) {
@@ -358,23 +416,32 @@ func TestPersonsIndex_CreateUnidentifiedPerson(t *testing.T) {
 		DiscoveryDate: "2026-06-01", DiscoveryLocation: "Rue Centre",
 		EnteringAgency: "PNH",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_QueryUnidentifiedPersons(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryUnidentifiedPersons(context.Background(), "", "", 0, 0, 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetUnidentifiedPerson(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetUnidentifiedPerson(context.Background(), "NID-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }
 
 func TestPersonsIndex_CreateTerrorismWatch(t *testing.T) {
@@ -384,7 +451,9 @@ func TestPersonsIndex_CreateTerrorismWatch(t *testing.T) {
 		LastName: "Mohamed", ThreatType: "RADICALISATION",
 		EnteringAgency: "DCPJ", ApprovedByDirector: "DIR", ApprovedByPG: "PG",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_CreateTerrorismWatch_RequiresApproval(t *testing.T) {
@@ -403,16 +472,23 @@ func TestPersonsIndex_QueryTerrorismWatches(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryTerrorismWatches(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetTerrorismWatch(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetTerrorismWatch(context.Background(), "TER-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }
 
 func TestPersonsIndex_CreateProtectionOrder(t *testing.T) {
@@ -423,23 +499,32 @@ func TestPersonsIndex_CreateProtectionOrder(t *testing.T) {
 		BeneficiaryName: "Marie", ProtectedPerson: "Marie", RestrainedPerson: "Pierre",
 		Restrictions: []string{"distance 500m"}, IssueDate: "2026-06-01",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_QueryProtectionOrders(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryProtectionOrders(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetActiveProtectionOrders(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	orders, err := idx.GetActiveProtectionOrders(context.Background(), "NIU-123")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if orders == nil { t.Fatal("expected empty slice, not nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if orders == nil {
+		t.Fatal("expected empty slice, not nil")
+	}
 }
 
 func TestPersonsIndex_CreateSupervisedRelease(t *testing.T) {
@@ -450,23 +535,32 @@ func TestPersonsIndex_CreateSupervisedRelease(t *testing.T) {
 		StartDate: "2026-06-01", Conditions: []string{"pointage"},
 		SupervisingOfficer: "OFF X", SupervisingAgency: "SPA",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_QuerySupervisedReleases(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QuerySupervisedReleases(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetSupervisedRelease(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetSupervisedRelease(context.Background(), "LIB-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }
 
 func TestPersonsIndex_CreateViolenceRecord(t *testing.T) {
@@ -477,23 +571,32 @@ func TestPersonsIndex_CreateViolenceRecord(t *testing.T) {
 		IncidentType: "DOMESTIC_VIOLENCE", IncidentDate: "2026-06-01",
 		Location: "Delmas 33", ArrestingAgency: "PNH-DELMAS", RiskLevel: "HIGH",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_QueryViolenceRecords(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryViolenceRecords(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetViolenceRecord(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetViolenceRecord(context.Background(), "VIO-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }
 
 func TestPersonsIndex_CreateIdentityTheft(t *testing.T) {
@@ -504,21 +607,30 @@ func TestPersonsIndex_CreateIdentityTheft(t *testing.T) {
 		VictimNIU: "NIU-IDV-001", FraudType: "CIN_FRAUD",
 		ReportDate: "2026-06-01", ReportingAgency: "PNH-DELMAS",
 	})
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 }
 
 func TestPersonsIndex_QueryIdentityThefts(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	results, total, err := idx.QueryIdentityThefts(context.Background(), "", "", "", 10, 0)
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	_ = results; _ = total
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	_ = results
+	_ = total
 }
 
 func TestPersonsIndex_GetIdentityTheft(t *testing.T) {
 	mock := newMockPersonsDB()
 	idx := NewPersonsIndex(mock)
 	got, err := idx.GetIdentityTheft(context.Background(), "IDV-001")
-	if err != nil { t.Fatalf("unexpected error: %v", err) }
-	if got != nil { t.Fatal("expected nil") }
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if got != nil {
+		t.Fatal("expected nil")
+	}
 }

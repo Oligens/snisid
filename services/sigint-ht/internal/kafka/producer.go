@@ -22,9 +22,9 @@ type Event struct {
 
 func NewProducer(brokers []string, topic string) *Producer {
 	w := &kafka.Writer{
-		Addr:     kafka.TCP(brokers...),
-		Topic:    topic,
-		Balancer: &kafka.LeastBytes{},
+		Addr:         kafka.TCP(brokers...),
+		Topic:        topic,
+		Balancer:     &kafka.LeastBytes{},
 		BatchTimeout: 10 * time.Millisecond,
 	}
 	return &Producer{writer: w}

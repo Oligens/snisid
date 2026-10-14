@@ -27,7 +27,7 @@ func LogAccess(actor, action, resource, justification string) {
 	}
 
 	data, _ := json.Marshal(entry)
-	
+
 	// In production, this goes to an immutable WORM S3 bucket or Audit Kafka topic
 	logger.Info(context.Background(), fmt.Sprintf("NEXUS-AUDIT: %s", string(data)))
 }

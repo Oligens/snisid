@@ -24,22 +24,22 @@ func NewInfraProtService(repo repository.Repository, producer *kafka.Producer) *
 func (s *InfraProtService) CreateAsset(ctx context.Context, req domain.CreateAssetRequest) (*domain.CriticalAsset, error) {
 	now := time.Now().UTC()
 	a := &domain.CriticalAsset{
-		ID:                   uuid.New(),
-		AssetName:            req.AssetName,
-		Sector:               domain.Sector(req.Sector),
-		OwnerEntity:          req.OwnerEntity,
-		LocationLat:          req.LocationLat,
-		LocationLng:          req.LocationLng,
-		Region:               req.Region,
-		DeptCode:             req.DeptCode,
-		Criticality:          domain.Criticality(req.Criticality),
-		CyberMaturityScore:   req.CyberMaturityScore,
+		ID:                    uuid.New(),
+		AssetName:             req.AssetName,
+		Sector:                domain.Sector(req.Sector),
+		OwnerEntity:           req.OwnerEntity,
+		LocationLat:           req.LocationLat,
+		LocationLng:           req.LocationLng,
+		Region:                req.Region,
+		DeptCode:              req.DeptCode,
+		Criticality:           domain.Criticality(req.Criticality),
+		CyberMaturityScore:    req.CyberMaturityScore,
 		PhysicalSecurityScore: req.PhysicalSecurityScore,
-		ContactName:          req.ContactName,
-		ContactPhone:         req.ContactPhone,
-		HasBackupGenerator:   req.HasBackupGenerator,
-		HasCyberInsurance:    req.HasCyberInsurance,
-		CreatedAt:            now,
+		ContactName:           req.ContactName,
+		ContactPhone:          req.ContactPhone,
+		HasBackupGenerator:    req.HasBackupGenerator,
+		HasCyberInsurance:     req.HasCyberInsurance,
+		CreatedAt:             now,
 	}
 	if req.LastCISAAssessmentAt != "" {
 		t, err := time.Parse(time.RFC3339, req.LastCISAAssessmentAt)

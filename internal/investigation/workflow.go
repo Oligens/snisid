@@ -3,10 +3,10 @@ package investigation
 import "fmt"
 
 type Task struct {
-	ID        string
-	Action    string
-	Priority  int
-	Status    string // PENDING, DONE, FAILED
+	ID       string
+	Action   string
+	Priority int
+	Status   string // PENDING, DONE, FAILED
 }
 
 type WorkflowEngine struct{}

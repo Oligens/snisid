@@ -213,10 +213,10 @@ func TestCreateThreatAssessment(t *testing.T) {
 		{
 			name: "success",
 			req: domain.CreateThreatAssessmentRequest{
-				ProtecteeID: uuid.New().String(),
-				ThreatType:  "DIRECT_THREAT",
-				ThreatLevel: "CRITICAL",
-				AssessedBy:  uuid.New().String(),
+				ProtecteeID:  uuid.New().String(),
+				ThreatType:   "DIRECT_THREAT",
+				ThreatLevel:  "CRITICAL",
+				AssessedBy:   uuid.New().String(),
 				ThreatDetail: "Menace directe reçue par canal diplomatique",
 			},
 		},

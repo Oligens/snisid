@@ -10,8 +10,8 @@ import (
 	"syscall"
 
 	"github.com/gin-gonic/gin"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	_ "github.com/lib/pq"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/snisid/sigint-ht/internal/handler"
 	sigintKafka "github.com/snisid/sigint-ht/internal/kafka"
@@ -152,5 +152,3 @@ func main() {
 	<-quit
 	log.Println("shutting down sigint-ht server...")
 }
-
-

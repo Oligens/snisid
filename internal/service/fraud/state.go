@@ -16,10 +16,10 @@ type StateStore interface {
 }
 
 type FraudState struct {
-	Velocity      int64     `json:"velocity"`
-	LastAmount    float64   `json:"last_amount"`
-	LastActivity  time.Time `json:"last_activity"`
-	WindowStart   time.Time `json:"window_start"`
+	Velocity     int64     `json:"velocity"`
+	LastAmount   float64   `json:"last_amount"`
+	LastActivity time.Time `json:"last_activity"`
+	WindowStart  time.Time `json:"window_start"`
 }
 
 type RedisStateStore struct {

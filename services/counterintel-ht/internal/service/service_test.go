@@ -12,14 +12,14 @@ import (
 )
 
 type mockRepo struct {
-	createInvestigationFn       func(ctx context.Context, inv *domain.BackgroundInvestigation) error
-	getInvestigationFn          func(ctx context.Context, id uuid.UUID) (*domain.BackgroundInvestigation, error)
-	getPendingInvestigationsFn  func(ctx context.Context) ([]domain.BackgroundInvestigation, error)
-	updateInvestigationFn       func(ctx context.Context, inv *domain.BackgroundInvestigation) error
-	createThreatAlertFn         func(ctx context.Context, alert *domain.InsiderThreatAlert) error
-	getActiveThreatsFn          func(ctx context.Context) ([]domain.InsiderThreatAlert, error)
-	createForeignContactFn      func(ctx context.Context, fc *domain.ForeignContact) error
-	getContactsBySubjectFn      func(ctx context.Context, subjectID string) ([]domain.ForeignContact, error)
+	createInvestigationFn      func(ctx context.Context, inv *domain.BackgroundInvestigation) error
+	getInvestigationFn         func(ctx context.Context, id uuid.UUID) (*domain.BackgroundInvestigation, error)
+	getPendingInvestigationsFn func(ctx context.Context) ([]domain.BackgroundInvestigation, error)
+	updateInvestigationFn      func(ctx context.Context, inv *domain.BackgroundInvestigation) error
+	createThreatAlertFn        func(ctx context.Context, alert *domain.InsiderThreatAlert) error
+	getActiveThreatsFn         func(ctx context.Context) ([]domain.InsiderThreatAlert, error)
+	createForeignContactFn     func(ctx context.Context, fc *domain.ForeignContact) error
+	getContactsBySubjectFn     func(ctx context.Context, subjectID string) ([]domain.ForeignContact, error)
 }
 
 func (m *mockRepo) CreateInvestigation(ctx context.Context, inv *domain.BackgroundInvestigation) error {
@@ -126,10 +126,10 @@ func TestReportThreat(t *testing.T) {
 
 func TestReportContact(t *testing.T) {
 	req := domain.ReportContactRequest{
-		SubjectID:        "sub-001",
-		ContactName:      "John Doe",
+		SubjectID:         "sub-001",
+		ContactName:       "John Doe",
 		ForeignGovernment: "Atlantis",
-		RelationshipType: "DIPLOMATIC",
+		RelationshipType:  "DIPLOMATIC",
 	}
 	repo := &mockRepo{
 		createForeignContactFn: func(ctx context.Context, fc *domain.ForeignContact) error {

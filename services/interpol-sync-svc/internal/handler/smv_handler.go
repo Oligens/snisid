@@ -71,7 +71,7 @@ func (h *SMVHandler) SyncPending(ctx context.Context) error {
 
 func (h *SMVHandler) syncRecord(ctx context.Context, record PendingSync) error {
 	payload, _ := json.Marshal(map[string]string{
-		"alert_id":    record.AlertID,
+		"alert_id":     record.AlertID,
 		"plate_number": record.PlateNum,
 	})
 

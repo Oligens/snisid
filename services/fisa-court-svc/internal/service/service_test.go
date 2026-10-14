@@ -11,28 +11,36 @@ import (
 )
 
 type mockRepo struct {
-	createWarrantFn   func(ctx context.Context, w *domain.SurveillanceWarrant) error
-	updateWarrantFn   func(ctx context.Context, w *domain.SurveillanceWarrant) error
-	getWarrantFn      func(ctx context.Context, id uuid.UUID) (*domain.SurveillanceWarrant, error)
+	createWarrantFn     func(ctx context.Context, w *domain.SurveillanceWarrant) error
+	updateWarrantFn     func(ctx context.Context, w *domain.SurveillanceWarrant) error
+	getWarrantFn        func(ctx context.Context, id uuid.UUID) (*domain.SurveillanceWarrant, error)
 	getActiveWarrantsFn func(ctx context.Context) ([]domain.SurveillanceWarrant, error)
-	createReportFn    func(ctx context.Context, r *domain.SurveillanceReport) error
-	getDocketByTermFn func(ctx context.Context, term string) (*domain.FISADocket, error)
-	upsertDocketFn    func(ctx context.Context, d *domain.FISADocket) error
+	createReportFn      func(ctx context.Context, r *domain.SurveillanceReport) error
+	getDocketByTermFn   func(ctx context.Context, term string) (*domain.FISADocket, error)
+	upsertDocketFn      func(ctx context.Context, d *domain.FISADocket) error
 }
 
-func (m *mockRepo) CreateWarrant(ctx context.Context, w *domain.SurveillanceWarrant) error { return m.createWarrantFn(ctx, w) }
-func (m *mockRepo) UpdateWarrant(ctx context.Context, w *domain.SurveillanceWarrant) error { return m.updateWarrantFn(ctx, w) }
+func (m *mockRepo) CreateWarrant(ctx context.Context, w *domain.SurveillanceWarrant) error {
+	return m.createWarrantFn(ctx, w)
+}
+func (m *mockRepo) UpdateWarrant(ctx context.Context, w *domain.SurveillanceWarrant) error {
+	return m.updateWarrantFn(ctx, w)
+}
 func (m *mockRepo) GetWarrant(ctx context.Context, id uuid.UUID) (*domain.SurveillanceWarrant, error) {
 	return m.getWarrantFn(ctx, id)
 }
 func (m *mockRepo) GetActiveWarrants(ctx context.Context) ([]domain.SurveillanceWarrant, error) {
 	return m.getActiveWarrantsFn(ctx)
 }
-func (m *mockRepo) CreateReport(ctx context.Context, r *domain.SurveillanceReport) error { return m.createReportFn(ctx, r) }
+func (m *mockRepo) CreateReport(ctx context.Context, r *domain.SurveillanceReport) error {
+	return m.createReportFn(ctx, r)
+}
 func (m *mockRepo) GetDocketByTerm(ctx context.Context, term string) (*domain.FISADocket, error) {
 	return m.getDocketByTermFn(ctx, term)
 }
-func (m *mockRepo) UpsertDocket(ctx context.Context, d *domain.FISADocket) error { return m.upsertDocketFn(ctx, d) }
+func (m *mockRepo) UpsertDocket(ctx context.Context, d *domain.FISADocket) error {
+	return m.upsertDocketFn(ctx, d)
+}
 
 func TestFileWarrant(t *testing.T) {
 	repo := &mockRepo{

@@ -60,7 +60,7 @@ func (o *orchestrator) executeCriticalPlaybook(ctx context.Context, incident *en
 
 	// Step 2: Flag for Manual Review
 	incident.Status = entity.StatusContained
-	
+
 	logger.Info(ctx, fmt.Sprintf("SOC: Incident %s contained autonomously", incident.ID))
 	return nil
 }

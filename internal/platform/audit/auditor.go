@@ -36,7 +36,7 @@ func (a *Auditor) Log(ctx context.Context, action, actor, target, reason string)
 		Timestamp:  time.Now().UTC(),
 		Compliance: true,
 	}
-	
+
 	data, _ := json.Marshal(event)
 	return a.producer.Publish(ctx, event.ID, data)
 }

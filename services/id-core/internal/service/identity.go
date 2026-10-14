@@ -17,12 +17,12 @@ import (
 )
 
 type IdentityService struct {
-	repo            repository.Repository
-	milvusClient    *milvus.Client
-	producer        *kafka.Producer
-	ninGenerator    *nin.Generator
-	bioThreshold    float64
-	demoThreshold   float64
+	repo          repository.Repository
+	milvusClient  *milvus.Client
+	producer      *kafka.Producer
+	ninGenerator  *nin.Generator
+	bioThreshold  float64
+	demoThreshold float64
 }
 
 func NewIdentityService(
@@ -181,13 +181,13 @@ func (s *IdentityService) publishEvent(ctx context.Context, eventType string, ci
 		return
 	}
 	evt := kafka.Event{
-		EventType: eventType,
-		CitizenID: citizen.CitizenID.String(),
-		NIN:       citizen.NIN,
+		EventType:     eventType,
+		CitizenID:     citizen.CitizenID.String(),
+		NIN:           citizen.NIN,
 		CorrelationID: uuid.New().String(),
-		ActorID:   actorID,
-		Timestamp: time.Now().UTC(),
-		Data:      citizen,
+		ActorID:       actorID,
+		Timestamp:     time.Now().UTC(),
+		Data:          citizen,
 	}
 	if err := s.producer.Publish(ctx, evt); err != nil {
 		log.Printf("failed to publish event: %v", err)

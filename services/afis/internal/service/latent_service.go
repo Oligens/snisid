@@ -11,11 +11,11 @@ import (
 )
 
 type LatentService struct {
-	mu       sync.RWMutex
-	latents  map[uuid.UUID]*domain.LatentPrint
-	search   *SearchService
-	quality  *QualityService
-	seq      int
+	mu      sync.RWMutex
+	latents map[uuid.UUID]*domain.LatentPrint
+	search  *SearchService
+	quality *QualityService
+	seq     int
 }
 
 func NewLatentService(search *SearchService, quality *QualityService) *LatentService {

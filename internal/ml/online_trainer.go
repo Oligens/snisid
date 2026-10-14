@@ -1,9 +1,9 @@
 package ml
 
 import (
+	"fmt"
 	"math"
 	"sync"
-	"fmt"
 )
 
 type OnlineModel struct {

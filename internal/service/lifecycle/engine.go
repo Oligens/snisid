@@ -22,9 +22,9 @@ func NewEngine(v *Validator, p events.ProducerInterface) *Engine {
 }
 
 func (e *Engine) Transition(ctx context.Context, id string, from, to State, reason, principal string) error {
-	logger.Info(ctx, "Attempting state transition", 
-		zap.String("identity_id", id), 
-		zap.String("from", string(from)), 
+	logger.Info(ctx, "Attempting state transition",
+		zap.String("identity_id", id),
+		zap.String("from", string(from)),
 		zap.String("to", string(to)),
 	)
 

@@ -37,14 +37,14 @@ func (s *PKIBridgeService) RegisterForeignCA(ctx context.Context, ca domain.Fore
 
 func (s *PKIBridgeService) IssueCrossCert(ctx context.Context, subject string, issuerCAID uuid.UUID, serialNumber string, notBefore, notAfter time.Time, certPEM string) (*domain.CrossCertificate, error) {
 	cert := &domain.CrossCertificate{
-		CrossCertID:   uuid.New(),
-		Subject:       subject,
-		IssuerCAID:    issuerCAID,
-		SerialNumber:  serialNumber,
-		NotBefore:     notBefore,
-		NotAfter:      notAfter,
+		CrossCertID:    uuid.New(),
+		Subject:        subject,
+		IssuerCAID:     issuerCAID,
+		SerialNumber:   serialNumber,
+		NotBefore:      notBefore,
+		NotAfter:       notAfter,
 		CertificatePEM: certPEM,
-		CreatedAt:     time.Now().UTC(),
+		CreatedAt:      time.Now().UTC(),
 	}
 
 	if err := s.repo.CreateCrossCert(ctx, cert); err != nil {

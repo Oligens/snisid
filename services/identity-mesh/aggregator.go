@@ -25,18 +25,18 @@ type ConfidenceScore struct {
 }
 
 type FusedIdentity struct {
-	NNU            string                    `json:"nnu"`
-	AgencyRecords  map[string]string         `json:"agencyRecords"`
-	Confidence     ConfidenceScore           `json:"confidence"`
-	Status         string                    `json:"status"`
-	MatchedFields  map[string][]string       `json:"matchedFields"`
-	ConflictFields map[string][]interface{}  `json:"conflictFields"`
-	GraphNeo4jID   string                    `json:"graphNeo4jId,omitempty"`
-	LastUpdated    time.Time                 `json:"lastUpdated"`
+	NNU            string                   `json:"nnu"`
+	AgencyRecords  map[string]string        `json:"agencyRecords"`
+	Confidence     ConfidenceScore          `json:"confidence"`
+	Status         string                   `json:"status"`
+	MatchedFields  map[string][]string      `json:"matchedFields"`
+	ConflictFields map[string][]interface{} `json:"conflictFields"`
+	GraphNeo4jID   string                   `json:"graphNeo4jId,omitempty"`
+	LastUpdated    time.Time                `json:"lastUpdated"`
 }
 
 type IdentityMesh struct {
-	PlatformID string
+	PlatformID  string
 	neo4jDriver neo4j.DriverWithContext
 }
 
@@ -133,7 +133,7 @@ func (m *IdentityMesh) FuseRecords(oni, dgi, anh, dcpj Record) FusedIdentity {
 	}
 
 	fused := FusedIdentity{
-		NNU:   oni.ID,
+		NNU: oni.ID,
 		AgencyRecords: map[string]string{
 			"oni":  oni.ID,
 			"dgi":  dgi.ID,

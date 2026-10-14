@@ -13,24 +13,24 @@ import (
 )
 
 type ClusterState struct {
-	Nodes       []NodeStatus    `json:"nodes"`
-	Pods        []PodStatus     `json:"pods"`
-	Namespaces  []string        `json:"namespaces"`
-	CollectedAt time.Time       `json:"collected_at"`
+	Nodes       []NodeStatus `json:"nodes"`
+	Pods        []PodStatus  `json:"pods"`
+	Namespaces  []string     `json:"namespaces"`
+	CollectedAt time.Time    `json:"collected_at"`
 }
 
 type NodeStatus struct {
-	Name            string  `json:"name"`
-	CPUCapacity    float64 `json:"cpu_capacity"`
-	CPULimit       float64 `json:"cpu_limit"`
-	MemoryCapacity float64 `json:"memory_capacity"`
-	MemoryLimit    float64 `json:"memory_limit"`
-	GPUCount       int     `json:"gpu_count"`
-	AllocatableCPU float64 `json:"allocatable_cpu"`
-	AllocatableMem float64 `json:"allocatable_mem"`
-	HealthScore    float64 `json:"health_score"`
+	Name           string            `json:"name"`
+	CPUCapacity    float64           `json:"cpu_capacity"`
+	CPULimit       float64           `json:"cpu_limit"`
+	MemoryCapacity float64           `json:"memory_capacity"`
+	MemoryLimit    float64           `json:"memory_limit"`
+	GPUCount       int               `json:"gpu_count"`
+	AllocatableCPU float64           `json:"allocatable_cpu"`
+	AllocatableMem float64           `json:"allocatable_mem"`
+	HealthScore    float64           `json:"health_score"`
 	Labels         map[string]string `json:"labels"`
-	Taints         []Taint  `json:"taints"`
+	Taints         []Taint           `json:"taints"`
 }
 
 type Taint struct {
@@ -40,27 +40,27 @@ type Taint struct {
 }
 
 type PodStatus struct {
-	Name              string  `json:"name"`
-	Namespace         string  `json:"namespace"`
-	NodeName          string  `json:"node_name"`
-	CPURequest        float64 `json:"cpu_request"`
-	MemoryRequest     float64 `json:"memory_request"`
-	CPULimit          float64 `json:"cpu_limit"`
-	MemoryLimit       float64 `json:"memory_limit"`
-	RestartCount      int     `json:"restart_count"`
-	Phase             string  `json:"phase"`
-	QoSClass          string  `json:"qos_class"`
-	HasGPU            bool    `json:"has_gpu"`
+	Name          string  `json:"name"`
+	Namespace     string  `json:"namespace"`
+	NodeName      string  `json:"node_name"`
+	CPURequest    float64 `json:"cpu_request"`
+	MemoryRequest float64 `json:"memory_request"`
+	CPULimit      float64 `json:"cpu_limit"`
+	MemoryLimit   float64 `json:"memory_limit"`
+	RestartCount  int     `json:"restart_count"`
+	Phase         string  `json:"phase"`
+	QoSClass      string  `json:"qos_class"`
+	HasGPU        bool    `json:"has_gpu"`
 }
 
 type ScalingDecision struct {
-	Namespace     string `json:"namespace"`
-	Deployment    string `json:"deployment"`
-	CurrentReplicas int  `json:"current_replicas"`
-	TargetReplicas  int  `json:"target_replicas"`
-	Reason        string `json:"reason"`
-	Priority      int    `json:"priority"` // 1=critical, 2=high, 3=normal
-	GeneratedAt   time.Time `json:"generated_at"`
+	Namespace       string    `json:"namespace"`
+	Deployment      string    `json:"deployment"`
+	CurrentReplicas int       `json:"current_replicas"`
+	TargetReplicas  int       `json:"target_replicas"`
+	Reason          string    `json:"reason"`
+	Priority        int       `json:"priority"` // 1=critical, 2=high, 3=normal
+	GeneratedAt     time.Time `json:"generated_at"`
 }
 
 type ScalingPlan struct {
@@ -69,8 +69,8 @@ type ScalingPlan struct {
 }
 
 type ScalingSummary struct {
-	TotalActions int `json:"total_actions"`
-	CriticalActions int `json:"critical_actions"`
+	TotalActions    int     `json:"total_actions"`
+	CriticalActions int     `json:"critical_actions"`
 	EstimatedCPU    float64 `json:"estimated_cpu_savings"`
 	EstimatedMem    float64 `json:"estimated_mem_savings"`
 }
@@ -86,10 +86,10 @@ type HealingPlan struct {
 }
 
 type HealingAction struct {
-	Target      string `json:"target"`       // node name or deployment name
-	ActionType  string `json:"action_type"`  // DRAIN, CORDON, RESTART, EVICT
-	Reason      string `json:"reason"`
-	Priority    int    `json:"priority"`
+	Target     string `json:"target"`      // node name or deployment name
+	ActionType string `json:"action_type"` // DRAIN, CORDON, RESTART, EVICT
+	Reason     string `json:"reason"`
+	Priority   int    `json:"priority"`
 }
 
 type PlacementPlan struct {
@@ -141,13 +141,13 @@ func (c *AIInfraCompiler) Compile(state ClusterState) (*InfrastructurePlan, erro
 
 func (c *AIInfraCompiler) analyzeScaling(state ClusterState) *ScalingPlan {
 	type deploymentInfo struct {
-		namespace      string
-		name           string
-		pods           []PodStatus
-		avgCPU         float64
-		avgMemory      float64
-		cpuLimitTotal  float64
-		memLimitTotal  float64
+		namespace     string
+		name          string
+		pods          []PodStatus
+		avgCPU        float64
+		avgMemory     float64
+		cpuLimitTotal float64
+		memLimitTotal float64
 	}
 
 	deployments := make(map[string]*deploymentInfo)
@@ -235,8 +235,8 @@ func (c *AIInfraCompiler) analyzeScaling(state ClusterState) *ScalingPlan {
 	})
 
 	summary := ScalingSummary{
-		TotalActions:    len(decisions),
-		EstimatedCPU:    calculateEstimatedSavings(decisions),
+		TotalActions: len(decisions),
+		EstimatedCPU: calculateEstimatedSavings(decisions),
 	}
 
 	for _, d := range decisions {
@@ -380,7 +380,7 @@ func calculateEstimatedSavings(decisions []ScalingDecision) float64 {
 	var savings float64
 	for _, d := range decisions {
 		if d.TargetReplicas < d.CurrentReplicas {
-			savings += float64(d.CurrentReplicas - d.TargetReplicas) * 0.5
+			savings += float64(d.CurrentReplicas-d.TargetReplicas) * 0.5
 		}
 	}
 	return savings

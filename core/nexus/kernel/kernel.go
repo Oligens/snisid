@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	nexusv1 "github.com/snisid/platform/api/proto/nexus/v1"
 	"github.com/segmentio/kafka-go"
+	nexusv1 "github.com/snisid/platform/api/proto/nexus/v1"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -46,7 +46,7 @@ func NewKernel(kafkaBrokers []string) *Kernel {
 
 func (k *Kernel) Start(ctx context.Context) {
 	fmt.Println("🧬 NEXUS-KERNEL: Sovereign Distributed Kernel Operational.")
-	
+
 	// Main Kernel Loop
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()

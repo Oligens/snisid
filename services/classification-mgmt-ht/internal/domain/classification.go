@@ -7,63 +7,65 @@ import (
 )
 
 type SensitivityLevel string
+
 const (
-	SensPublic     SensitivityLevel = "PUBLIC"
-	SensInternal   SensitivityLevel = "INTERNAL"
+	SensPublic       SensitivityLevel = "PUBLIC"
+	SensInternal     SensitivityLevel = "INTERNAL"
 	SensConfidential SensitivityLevel = "CONFIDENTIAL"
-	SensSecret     SensitivityLevel = "SECRET"
-	SensTopSecret  SensitivityLevel = "TOP_SECRET"
+	SensSecret       SensitivityLevel = "SECRET"
+	SensTopSecret    SensitivityLevel = "TOP_SECRET"
 )
 
 type AuditAction string
+
 const (
-	ActionClassify    AuditAction = "CLASSIFY"
-	ActionDowngrade   AuditAction = "DOWNGRADE"
-	ActionUpgrade     AuditAction = "UPGRADE"
-	ActionDeclassify  AuditAction = "DECLASSIFY"
-	ActionDestroy     AuditAction = "DESTROY"
+	ActionClassify   AuditAction = "CLASSIFY"
+	ActionDowngrade  AuditAction = "DOWNGRADE"
+	ActionUpgrade    AuditAction = "UPGRADE"
+	ActionDeclassify AuditAction = "DECLASSIFY"
+	ActionDestroy    AuditAction = "DESTROY"
 )
 
 type ClassificationRule struct {
-	ID                uuid.UUID        `json:"id"`
-	DataType          string           `json:"data_type"`
-	SensitivityLevel  SensitivityLevel `json:"sensitivity_level"`
-	HandlingCaveats   []string         `json:"handling_caveats"`
-	DisseminationLimit *string         `json:"dissemination_limit,omitempty"`
-	EncryptionRequired bool            `json:"encryption_required"`
-	AccessControlMFA  bool             `json:"access_control_mfa"`
-	AuditLogging      bool             `json:"audit_logging"`
-	RetentionDays     int              `json:"retention_days"`
-	DestructionRequired bool           `json:"destruction_required"`
-	CreatedBy         uuid.UUID        `json:"created_by"`
-	Active            bool             `json:"active"`
-	CreatedAt         time.Time        `json:"created_at"`
-	UpdatedAt         time.Time        `json:"updated_at"`
+	ID                  uuid.UUID        `json:"id"`
+	DataType            string           `json:"data_type"`
+	SensitivityLevel    SensitivityLevel `json:"sensitivity_level"`
+	HandlingCaveats     []string         `json:"handling_caveats"`
+	DisseminationLimit  *string          `json:"dissemination_limit,omitempty"`
+	EncryptionRequired  bool             `json:"encryption_required"`
+	AccessControlMFA    bool             `json:"access_control_mfa"`
+	AuditLogging        bool             `json:"audit_logging"`
+	RetentionDays       int              `json:"retention_days"`
+	DestructionRequired bool             `json:"destruction_required"`
+	CreatedBy           uuid.UUID        `json:"created_by"`
+	Active              bool             `json:"active"`
+	CreatedAt           time.Time        `json:"created_at"`
+	UpdatedAt           time.Time        `json:"updated_at"`
 }
 
 type DataTag struct {
-	ID                  uuid.UUID        `json:"id"`
-	ResourceURI         string           `json:"resource_uri"`
-	ClassificationTop   SensitivityLevel `json:"classification_top_level"`
-	ClassificationAtomic string          `json:"classification_atomic"`
-	HandlingCaveats     []string         `json:"handling_caveats"`
-	OwnerAgency         string           `json:"owner_agency"`
-	TaggedBy            uuid.UUID        `json:"tagged_by"`
-	TaggedAt            time.Time        `json:"tagged_at"`
-	ExpiresAt           *time.Time       `json:"expires_at,omitempty"`
+	ID                   uuid.UUID        `json:"id"`
+	ResourceURI          string           `json:"resource_uri"`
+	ClassificationTop    SensitivityLevel `json:"classification_top_level"`
+	ClassificationAtomic string           `json:"classification_atomic"`
+	HandlingCaveats      []string         `json:"handling_caveats"`
+	OwnerAgency          string           `json:"owner_agency"`
+	TaggedBy             uuid.UUID        `json:"tagged_by"`
+	TaggedAt             time.Time        `json:"tagged_at"`
+	ExpiresAt            *time.Time       `json:"expires_at,omitempty"`
 }
 
 type ClassificationAudit struct {
-	ID                    uuid.UUID    `json:"id"`
-	ResourceURI           string       `json:"resource_uri"`
-	Action                AuditAction  `json:"action"`
-	FromLevel             *string      `json:"from_level,omitempty"`
-	ToLevel               *string      `json:"to_level,omitempty"`
-	Rationale             *string      `json:"rationale,omitempty"`
-	AuthorizedBy          uuid.UUID    `json:"authorized_by"`
-	ClassificationAuthority string     `json:"classification_authority"`
-	Timestamp             time.Time    `json:"timestamp"`
-	IPAddress             string       `json:"ip_address"`
+	ID                      uuid.UUID   `json:"id"`
+	ResourceURI             string      `json:"resource_uri"`
+	Action                  AuditAction `json:"action"`
+	FromLevel               *string     `json:"from_level,omitempty"`
+	ToLevel                 *string     `json:"to_level,omitempty"`
+	Rationale               *string     `json:"rationale,omitempty"`
+	AuthorizedBy            uuid.UUID   `json:"authorized_by"`
+	ClassificationAuthority string      `json:"classification_authority"`
+	Timestamp               time.Time   `json:"timestamp"`
+	IPAddress               string      `json:"ip_address"`
 }
 
 type CreateRuleRequest struct {
@@ -89,14 +91,14 @@ type TagResourceRequest struct {
 }
 
 type LogAuditRequest struct {
-	ResourceURI           string `json:"resource_uri" binding:"required"`
-	Action                string `json:"action" binding:"required"`
-	FromLevel             string `json:"from_level"`
-	ToLevel               string `json:"to_level"`
-	Rationale             string `json:"rationale"`
-	AuthorizedBy          string `json:"authorized_by" binding:"required"`
+	ResourceURI             string `json:"resource_uri" binding:"required"`
+	Action                  string `json:"action" binding:"required"`
+	FromLevel               string `json:"from_level"`
+	ToLevel                 string `json:"to_level"`
+	Rationale               string `json:"rationale"`
+	AuthorizedBy            string `json:"authorized_by" binding:"required"`
 	ClassificationAuthority string `json:"classification_authority" binding:"required"`
-	IPAddress             string `json:"ip_address" binding:"required"`
+	IPAddress               string `json:"ip_address" binding:"required"`
 }
 
 type DashboardStats struct {

@@ -108,5 +108,3 @@ func getEnv(k, def string) string {
 	}
 	return def
 }
-
-

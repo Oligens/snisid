@@ -84,7 +84,7 @@ func TestEnroll_Invalid_EmptyCaptures(t *testing.T) {
 	req := domain.EnrollmentRequest{
 		SubjectType:   domain.SubjectCriminal,
 		EnrollingUnit: "DCPJ",
-		Fingerprints: []domain.FingerprintCapture{},
+		Fingerprints:  []domain.FingerprintCapture{},
 	}
 
 	_, _, err := enrollment.Enroll(context.Background(), req, uuid.New())

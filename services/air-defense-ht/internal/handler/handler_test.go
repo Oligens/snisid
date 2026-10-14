@@ -23,13 +23,17 @@ type mockService struct {
 	checkFn     func(string) (*domain.NoFlyListEntry, error)
 }
 
-func (m *mockService) IngestRadarContact(c domain.RadarContact) error   { return m.ingestFn(c) }
-func (m *mockService) GetActiveTracks() ([]domain.RadarContact, error)    { return m.getActiveFn() }
-func (m *mockService) GetTrackByID(id uuid.UUID) (*domain.RadarContact, error) { return m.getByIDFn(id) }
-func (m *mockService) OpenIncident(i domain.AirDefenseIncident) error    { return m.openIncFn(i) }
-func (m *mockService) ResolveIncident(id uuid.UUID) error                { return m.resolveFn(id) }
-func (m *mockService) AddNoFlyEntry(e domain.NoFlyListEntry) error       { return m.addNoFlyFn(e) }
-func (m *mockService) CheckNoFly(identity string) (*domain.NoFlyListEntry, error) { return m.checkFn(identity) }
+func (m *mockService) IngestRadarContact(c domain.RadarContact) error  { return m.ingestFn(c) }
+func (m *mockService) GetActiveTracks() ([]domain.RadarContact, error) { return m.getActiveFn() }
+func (m *mockService) GetTrackByID(id uuid.UUID) (*domain.RadarContact, error) {
+	return m.getByIDFn(id)
+}
+func (m *mockService) OpenIncident(i domain.AirDefenseIncident) error { return m.openIncFn(i) }
+func (m *mockService) ResolveIncident(id uuid.UUID) error             { return m.resolveFn(id) }
+func (m *mockService) AddNoFlyEntry(e domain.NoFlyListEntry) error    { return m.addNoFlyFn(e) }
+func (m *mockService) CheckNoFly(identity string) (*domain.NoFlyListEntry, error) {
+	return m.checkFn(identity)
+}
 
 func setupRouter(h *AirDefenseHandler) *gin.Engine {
 	r := gin.Default()

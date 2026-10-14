@@ -24,9 +24,9 @@ func NewVectorRepo(c client.Client, collection string, dim int) *VectorRepo {
 }
 
 type Candidate struct {
-	PrintID       string
-	SubjectID     string
-	Score         float64
+	PrintID        string
+	SubjectID      string
+	Score          float64
 	NationalAFISID string
 }
 

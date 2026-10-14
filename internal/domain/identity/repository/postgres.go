@@ -29,7 +29,7 @@ func (r *postgresRepository) Create(ctx context.Context, ident *entity.Identity,
 		if err := tx.Create(ident).Error; err != nil {
 			return err
 		}
-		
+
 		history := r.buildHistory(ident, reason, changedBy)
 		return tx.Create(&history).Error
 	})
@@ -41,7 +41,7 @@ func (r *postgresRepository) Update(ctx context.Context, ident *entity.Identity,
 		if err := tx.Save(ident).Error; err != nil {
 			return err
 		}
-		
+
 		history := r.buildHistory(ident, reason, changedBy)
 		return tx.Create(&history).Error
 	})

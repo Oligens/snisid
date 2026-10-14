@@ -8,27 +8,27 @@ import (
 )
 
 type ProtectionOrder struct {
-	OrderID            uuid.UUID   `json:"order_id"`
-	OrderNumber        string      `json:"order_number"`
-	OrderType          OrderType   `json:"order_type"`
-	Status             OrderStatus `json:"status"`
-	ProtectedPersonID  uuid.UUID   `json:"protected_person_id"`
-	SubjectPersonID    uuid.UUID   `json:"subject_person_id"`
-	SubjectFIRID       *uuid.UUID  `json:"subject_fir_id,omitempty"`
-	ExclusionRadiusM   int         `json:"exclusion_radius_m"`
-	ExclusionAddresses []string    `json:"exclusion_addresses"`
-	NoContactModes     []string    `json:"no_contact_modes"`
-	GeographicBanGeoJSON string   `json:"geographic_ban_geojson"`
-	IssuingCourt       string      `json:"issuing_court"`
-	IssuingJudge       string      `json:"issuing_judge"`
-	IssueDate          time.Time   `json:"issue_date"`
-	ExpiryDate         time.Time   `json:"expiry_date"`
-	IsRenewable        bool        `json:"is_renewable"`
-	ViolationCount     int         `json:"violation_count"`
-	LastViolationAt    *time.Time  `json:"last_violation_at,omitempty"`
-	CreatedBy          uuid.UUID   `json:"created_by"`
-	CreatedAt          time.Time   `json:"created_at"`
-	UpdatedAt          time.Time   `json:"updated_at"`
+	OrderID              uuid.UUID   `json:"order_id"`
+	OrderNumber          string      `json:"order_number"`
+	OrderType            OrderType   `json:"order_type"`
+	Status               OrderStatus `json:"status"`
+	ProtectedPersonID    uuid.UUID   `json:"protected_person_id"`
+	SubjectPersonID      uuid.UUID   `json:"subject_person_id"`
+	SubjectFIRID         *uuid.UUID  `json:"subject_fir_id,omitempty"`
+	ExclusionRadiusM     int         `json:"exclusion_radius_m"`
+	ExclusionAddresses   []string    `json:"exclusion_addresses"`
+	NoContactModes       []string    `json:"no_contact_modes"`
+	GeographicBanGeoJSON string      `json:"geographic_ban_geojson"`
+	IssuingCourt         string      `json:"issuing_court"`
+	IssuingJudge         string      `json:"issuing_judge"`
+	IssueDate            time.Time   `json:"issue_date"`
+	ExpiryDate           time.Time   `json:"expiry_date"`
+	IsRenewable          bool        `json:"is_renewable"`
+	ViolationCount       int         `json:"violation_count"`
+	LastViolationAt      *time.Time  `json:"last_violation_at,omitempty"`
+	CreatedBy            uuid.UUID   `json:"created_by"`
+	CreatedAt            time.Time   `json:"created_at"`
+	UpdatedAt            time.Time   `json:"updated_at"`
 }
 
 type ProtectionOrderRepository interface {
@@ -51,10 +51,10 @@ type OPRCheckResult struct {
 }
 
 type ViolationRequest struct {
-	OrderID      uuid.UUID `json:"order_id" binding:"required"`
-	ViolationType string   `json:"violation_type" binding:"required"`
-	LocationDesc string    `json:"location_desc"`
-	DeptCode     string    `json:"dept_code"`
+	OrderID       uuid.UUID `json:"order_id" binding:"required"`
+	ViolationType string    `json:"violation_type" binding:"required"`
+	LocationDesc  string    `json:"location_desc"`
+	DeptCode      string    `json:"dept_code"`
 }
 
 type ViolationEvent struct {

@@ -36,6 +36,6 @@ func (h *HealingEngine) RollbackToLastValid() {
 		logger.Error(context.Background(), "HEALING-ENGINE: No valid snapshot available. Escalating to global lock mode.")
 		return
 	}
-	
+
 	fmt.Printf("HEALING-ENGINE: Restoring system to math-verified state from t=%d. Resetting policies and isolating contaminated vectors.\n", h.LastValidState.Timestamp)
 }

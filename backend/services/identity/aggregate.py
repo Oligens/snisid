@@ -49,6 +49,7 @@ class IdentityAggregate:
 
         # State
         self._national_id: str = ""
+        self._nif: str | None = None
         self._first_name: str = ""
         self._last_name: str = ""
         self._middle_name: str | None = None
@@ -83,6 +84,10 @@ class IdentityAggregate:
         return self._national_id
 
     @property
+    def nif(self) -> str | None:
+        return self._nif
+
+    @property
     def status(self) -> str:
         return self._status
 
@@ -105,6 +110,7 @@ class IdentityAggregate:
         agency_id: str,
         actor_id: str,
         correlation_id: str | None = None,
+        nif: str | None = None,
     ) -> IdentityAggregate:
         """
         Create a new identity. Factory method.
@@ -136,6 +142,7 @@ class IdentityAggregate:
             agency_id=agency_id,
             actor_id=actor_id,
             correlation_id=correlation_id,
+            nif=nif.strip() if nif else None,
         )
         aggregate._raise_event(event)
         return aggregate
@@ -155,7 +162,7 @@ class IdentityAggregate:
         # Filter out unchanged fields
         allowed_fields = {
             "first_name", "last_name", "middle_name", "phone",
-            "email", "marital_status", "photo_url",
+            "email", "marital_status", "photo_url", "nif",
         }
         filtered = {k: v for k, v in changes.items() if k in allowed_fields}
         if not filtered:
@@ -359,6 +366,7 @@ class IdentityAggregate:
     def _when_identity_created(self, event: IdentityCreated) -> None:
         data = event.data
         self._national_id = data["national_id"]
+        self._nif = data.get("nif")
         self._first_name = data["first_name"]
         self._last_name = data["last_name"]
         self._date_of_birth = data["date_of_birth"]
@@ -441,6 +449,7 @@ class IdentityAggregate:
         """Serialize current state as a snapshot."""
         return {
             "national_id": self._national_id,
+            "nif": self._nif,
             "first_name": self._first_name,
             "last_name": self._last_name,
             "middle_name": self._middle_name,

@@ -206,13 +206,13 @@ type testRecord struct {
 	id, nnu, fullName, firstName, lastName, dob, taxID string
 }
 
-func (r *testRecord) GetID() string            { return r.id }
-func (r *testRecord) GetNNU() string           { return r.nnu }
-func (r *testRecord) GetFullName() string      { return r.fullName }
-func (r *testRecord) GetFirstName() string     { return r.firstName }
-func (r *testRecord) GetLastName() string      { return r.lastName }
-func (r *testRecord) GetDOB() string           { return r.dob }
-func (r *testRecord) GetTaxID() string         { return r.taxID }
+func (r *testRecord) GetID() string        { return r.id }
+func (r *testRecord) GetNNU() string       { return r.nnu }
+func (r *testRecord) GetFullName() string  { return r.fullName }
+func (r *testRecord) GetFirstName() string { return r.firstName }
+func (r *testRecord) GetLastName() string  { return r.lastName }
+func (r *testRecord) GetDOB() string       { return r.dob }
+func (r *testRecord) GetTaxID() string     { return r.taxID }
 
 func TestGetCoeffs_ThreadSafe(t *testing.T) {
 	resetCoeffs()

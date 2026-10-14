@@ -34,15 +34,33 @@ func (m *mockLAPIDB) QueryPlateClones(ctx context.Context, plate string) (int, e
 	return 0, nil
 }
 
-func (m *mockLAPIDB) CreateIdentityLink(ctx context.Context, l *models.BioIdentityLink) error { return nil }
-func (m *mockLAPIDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) { return nil, nil }
-func (m *mockLAPIDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) { return nil, nil }
-func (m *mockLAPIDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error { return nil }
-func (m *mockLAPIDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) { return nil, 0, nil }
-func (m *mockLAPIDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) { return nil, nil }
-func (m *mockLAPIDB) CreateIdentityTheft(ctx context.Context, i *models.IdentityTheft) error { return nil }
-func (m *mockLAPIDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) { return nil, 0, nil }
-func (m *mockLAPIDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) { return nil, nil }
+func (m *mockLAPIDB) CreateIdentityLink(ctx context.Context, l *models.BioIdentityLink) error {
+	return nil
+}
+func (m *mockLAPIDB) GetIdentityLinkBySampleID(ctx context.Context, sampleID string) (*models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockLAPIDB) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) {
+	return nil, nil
+}
+func (m *mockLAPIDB) CreateViolenceRecord(ctx context.Context, v *models.ViolenceRecord) error {
+	return nil
+}
+func (m *mockLAPIDB) QueryViolenceRecords(ctx context.Context, niu, incidentType, status string, limit, offset int) ([]models.ViolenceRecord, int, error) {
+	return nil, 0, nil
+}
+func (m *mockLAPIDB) GetViolenceRecordByID(ctx context.Context, id string) (*models.ViolenceRecord, error) {
+	return nil, nil
+}
+func (m *mockLAPIDB) CreateIdentityTheft(ctx context.Context, i *models.IdentityTheft) error {
+	return nil
+}
+func (m *mockLAPIDB) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType, status string, limit, offset int) ([]models.IdentityTheft, int, error) {
+	return nil, 0, nil
+}
+func (m *mockLAPIDB) GetIdentityTheftByID(ctx context.Context, id string) (*models.IdentityTheft, error) {
+	return nil, nil
+}
 
 func TestLAPICache_HitFound(t *testing.T) {
 	mr, err := miniredis.Run()

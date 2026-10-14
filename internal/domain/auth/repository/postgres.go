@@ -11,7 +11,7 @@ type AuthRepository interface {
 	CreateUser(ctx context.Context, user *entity.UserCredentials) error
 	GetUserByUsername(ctx context.Context, username string) (*entity.UserCredentials, error)
 	UpdateUser(ctx context.Context, user *entity.UserCredentials) error
-	
+
 	RegisterWebAuthn(ctx context.Context, cred *entity.WebAuthnCredential) error
 	GetWebAuthnCredentials(ctx context.Context, userID string) ([]entity.WebAuthnCredential, error)
 }

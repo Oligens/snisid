@@ -12,33 +12,33 @@ import (
 type CompatibilityLevel int
 
 const (
-	Compatible       CompatibilityLevel = 3
-	PartialOverlap   CompatibilityLevel = 2
-	RequiresReview   CompatibilityLevel = 1
-	Incompatible     CompatibilityLevel = 0
+	Compatible     CompatibilityLevel = 3
+	PartialOverlap CompatibilityLevel = 2
+	RequiresReview CompatibilityLevel = 1
+	Incompatible   CompatibilityLevel = 0
 )
 
 type PolicyNode struct {
-	Country     string                     `json:"country"`
-	Policy      compiler.CompiledPolicy    `json:"policy"`
-	Constraints []PolicyConstraint         `json:"constraints"`
-	TrustScore  float64                    `json:"trust_score"`
+	Country     string                  `json:"country"`
+	Policy      compiler.CompiledPolicy `json:"policy"`
+	Constraints []PolicyConstraint      `json:"constraints"`
+	TrustScore  float64                 `json:"trust_score"`
 }
 
 type PolicyConstraint struct {
-	Domain      string `json:"domain"`       // DATA_RETENTION, BIOMETRIC_SHARING, FPR_CROSSCHECK
-	Rule        string `json:"rule"`
-	Strictness  int    `json:"strictness"`   // 1-10
+	Domain     string `json:"domain"` // DATA_RETENTION, BIOMETRIC_SHARING, FPR_CROSSCHECK
+	Rule       string `json:"rule"`
+	Strictness int    `json:"strictness"` // 1-10
 }
 
 type ProofEdge struct {
-	From             string             `json:"from"`
-	To               string             `json:"to"`
-	Valid            bool               `json:"valid"`
-	Compatibility    CompatibilityLevel `json:"compatibility_level"`
-	VerifiedAt       int64              `json:"verified_at"`
-	Confidence       float64            `json:"confidence"`
-	Violations       []string           `json:"violations,omitempty"`
+	From          string             `json:"from"`
+	To            string             `json:"to"`
+	Valid         bool               `json:"valid"`
+	Compatibility CompatibilityLevel `json:"compatibility_level"`
+	VerifiedAt    int64              `json:"verified_at"`
+	Confidence    float64            `json:"confidence"`
+	Violations    []string           `json:"violations,omitempty"`
 }
 
 type GlobalPolicyLattice struct {

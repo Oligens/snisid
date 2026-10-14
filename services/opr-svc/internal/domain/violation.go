@@ -27,14 +27,14 @@ type ViolationRepository interface {
 }
 
 type WitnessProtection struct {
-	ProtectionID       uuid.UUID `json:"protection_id"`
-	ProtectedPersonID  uuid.UUID `json:"protected_person_id"`
-	ThreatLevel        string    `json:"threat_level"`
-	GangID             *uuid.UUID `json:"gang_id,omitempty"`
-	AliasAssigned      string    `json:"alias_assigned"`
-	AssignedUnit       string    `json:"assigned_unit"`
-	IsActive           bool      `json:"is_active"`
-	CreatedAt          time.Time `json:"created_at"`
+	ProtectionID      uuid.UUID  `json:"protection_id"`
+	ProtectedPersonID uuid.UUID  `json:"protected_person_id"`
+	ThreatLevel       string     `json:"threat_level"`
+	GangID            *uuid.UUID `json:"gang_id,omitempty"`
+	AliasAssigned     string     `json:"alias_assigned"`
+	AssignedUnit      string     `json:"assigned_unit"`
+	IsActive          bool       `json:"is_active"`
+	CreatedAt         time.Time  `json:"created_at"`
 }
 
 type WitnessProtectionRepository interface {

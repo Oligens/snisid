@@ -13,7 +13,7 @@ import (
 func main() {
 	broker := getEnv("KAFKA_BROKER", "localhost:9092")
 	topic := getEnv("REPLAY_TOPIC", "identity.created")
-	
+
 	// Seeking to 24 hours ago
 	startTime := time.Now().Add(-24 * time.Hour)
 
@@ -36,7 +36,7 @@ func main() {
 			break
 		}
 		fmt.Printf("REPLAY_MSG: %s\n", string(m.Value))
-		
+
 		// Stop if we reached the current time
 		if m.Time.After(time.Now().Add(-1 * time.Minute)) {
 			fmt.Println("REPLAY: Caught up to real-time. Termination complete.")

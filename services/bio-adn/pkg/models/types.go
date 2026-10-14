@@ -11,9 +11,9 @@ type Allele struct {
 type IndexType string
 
 const (
-	IndexConvicted    IndexType = "BIO-CON"
-	IndexArrestee     IndexType = "BIO-ARR"
-	IndexForensic     IndexType = "BIO-FSC"
+	IndexConvicted     IndexType = "BIO-CON"
+	IndexArrestee      IndexType = "BIO-ARR"
+	IndexForensic      IndexType = "BIO-FSC"
 	IndexMissingPerson IndexType = "BIO-DIS"
 	IndexUnidentified  IndexType = "BIO-RNI"
 )
@@ -52,28 +52,28 @@ type DNAProfile struct {
 }
 
 type WantedPerson struct {
-	RecordID       string   `json:"record_id"`
-	RecordNumber   string   `json:"record_number"`
-	NIU            string   `json:"niu,omitempty"`
-	LastName       string   `json:"last_name,omitempty"`
-	FirstName      string   `json:"first_name,omitempty"`
-	Aliases        []string `json:"aliases,omitempty"`
-	DateOfBirth    string   `json:"date_of_birth,omitempty"`
-	Gender         string   `json:"gender,omitempty"`
-	Nationality    string   `json:"nationality,omitempty"`
-	WarrantType    string   `json:"warrant_type"`
-	WarrantNumber  string   `json:"warrant_number,omitempty"`
-	IssuingCourt   string   `json:"issuing_court,omitempty"`
-	IssuingDate    string   `json:"issuing_date"`
-	Charges        []string `json:"charges"`
-	DangerLevel    string   `json:"danger_level"`
-	ArmedDangerous bool     `json:"armed_dangerous"`
-	EnteringAgency string   `json:"entering_agency"`
-	MCOContact     string   `json:"mco_contact,omitempty"`
-	Status         string   `json:"status"`
-	ExpiryDate     string   `json:"expiry_date,omitempty"`
+	RecordID        string   `json:"record_id"`
+	RecordNumber    string   `json:"record_number"`
+	NIU             string   `json:"niu,omitempty"`
+	LastName        string   `json:"last_name,omitempty"`
+	FirstName       string   `json:"first_name,omitempty"`
+	Aliases         []string `json:"aliases,omitempty"`
+	DateOfBirth     string   `json:"date_of_birth,omitempty"`
+	Gender          string   `json:"gender,omitempty"`
+	Nationality     string   `json:"nationality,omitempty"`
+	WarrantType     string   `json:"warrant_type"`
+	WarrantNumber   string   `json:"warrant_number,omitempty"`
+	IssuingCourt    string   `json:"issuing_court,omitempty"`
+	IssuingDate     string   `json:"issuing_date"`
+	Charges         []string `json:"charges"`
+	DangerLevel     string   `json:"danger_level"`
+	ArmedDangerous  bool     `json:"armed_dangerous"`
+	EnteringAgency  string   `json:"entering_agency"`
+	MCOContact      string   `json:"mco_contact,omitempty"`
+	Status          string   `json:"status"`
+	ExpiryDate      string   `json:"expiry_date,omitempty"`
 	EnteringOfficer string   `json:"entering_officer,omitempty"`
-	InterpolNotice string   `json:"interpol_notice,omitempty"`
+	InterpolNotice  string   `json:"interpol_notice,omitempty"`
 }
 
 type WantedQuery struct {
@@ -113,19 +113,19 @@ type StolenVehicle struct {
 }
 
 type StolenFirearm struct {
-	RecordID      string  `json:"record_id"`
-	RecordNumber  string  `json:"record_number"`
-	SerialNumber  string  `json:"serial_number"`
-	Make          string  `json:"make,omitempty"`
-	Model         string  `json:"model,omitempty"`
-	Caliber       string  `json:"caliber,omitempty"`
-	FirearmType   string  `json:"firearm_type,omitempty"`
-	BarrelLength  float64 `json:"barrel_length,omitempty"`
-	TheftDate     string  `json:"theft_date"`
-	TheftLocation string  `json:"theft_location,omitempty"`
-	OwnerNIU      string  `json:"owner_niu,omitempty"`
-	Status        string  `json:"status"`
-	EnteringAgency string `json:"entering_agency"`
+	RecordID       string  `json:"record_id"`
+	RecordNumber   string  `json:"record_number"`
+	SerialNumber   string  `json:"serial_number"`
+	Make           string  `json:"make,omitempty"`
+	Model          string  `json:"model,omitempty"`
+	Caliber        string  `json:"caliber,omitempty"`
+	FirearmType    string  `json:"firearm_type,omitempty"`
+	BarrelLength   float64 `json:"barrel_length,omitempty"`
+	TheftDate      string  `json:"theft_date"`
+	TheftLocation  string  `json:"theft_location,omitempty"`
+	OwnerNIU       string  `json:"owner_niu,omitempty"`
+	Status         string  `json:"status"`
+	EnteringAgency string  `json:"entering_agency"`
 }
 
 type StolenDocument struct {
@@ -177,92 +177,92 @@ type StolenArticle struct {
 }
 
 type ForeignFugitive struct {
+	RecordID             string   `json:"record_id"`
+	RecordNumber         string   `json:"record_number"`
+	InterpolNoticeNumber string   `json:"interpol_notice_number"`
+	NoticeType           string   `json:"notice_type"`
+	LastName             string   `json:"last_name"`
+	FirstName            string   `json:"first_name,omitempty"`
+	Aliases              []string `json:"aliases,omitempty"`
+	DateOfBirth          string   `json:"date_of_birth,omitempty"`
+	Gender               string   `json:"gender,omitempty"`
+	Nationality          string   `json:"nationality,omitempty"`
+	Charges              []string `json:"charges"`
+	IssuingCountry       string   `json:"issuing_country"`
+	EnteringAgency       string   `json:"entering_agency"`
+	Status               string   `json:"status"`
+}
+
+type UnidentifiedPerson struct {
+	RecordID            string `json:"record_id"`
+	RecordNumber        string `json:"record_number"`
+	DiscoveryDate       string `json:"discovery_date"`
+	DiscoveryLocation   string `json:"discovery_location"`
+	DiscoveryDepartment string `json:"discovery_department,omitempty"`
+	EstimatedAgeMin     int    `json:"estimated_age_min,omitempty"`
+	EstimatedAgeMax     int    `json:"estimated_age_max,omitempty"`
+	Gender              string `json:"gender,omitempty"`
+	EstimatedHeightCM   int    `json:"estimated_height_cm,omitempty"`
+	EstimatedWeightKG   int    `json:"estimated_weight_kg,omitempty"`
+	HairColor           string `json:"hair_color,omitempty"`
+	EyeColor            string `json:"eye_color,omitempty"`
+	DistinctiveFeatures string `json:"distinctive_features,omitempty"`
+	ClothingDescription string `json:"clothing_description,omitempty"`
+	DNASampleRef        string `json:"dna_sample_ref,omitempty"`
+	FingerprintRef      string `json:"fingerprint_ref,omitempty"`
+	DentalRecordsRef    string `json:"dental_records_ref,omitempty"`
+	EnteringAgency      string `json:"entering_agency"`
+	Status              string `json:"status"`
+}
+
+type TerrorismWatch struct {
 	RecordID           string   `json:"record_id"`
 	RecordNumber       string   `json:"record_number"`
-	InterpolNoticeNumber string `json:"interpol_notice_number"`
-	NoticeType         string   `json:"notice_type"`
+	NIU                string   `json:"niu,omitempty"`
 	LastName           string   `json:"last_name"`
 	FirstName          string   `json:"first_name,omitempty"`
 	Aliases            []string `json:"aliases,omitempty"`
 	DateOfBirth        string   `json:"date_of_birth,omitempty"`
-	Gender             string   `json:"gender,omitempty"`
 	Nationality        string   `json:"nationality,omitempty"`
-	Charges            []string `json:"charges"`
-	IssuingCountry     string   `json:"issuing_country"`
+	RiskLevel          string   `json:"risk_level"`
+	ThreatType         string   `json:"threat_type"`
+	Groups             []string `json:"groups,omitempty"`
+	LastKnownLocation  string   `json:"last_known_location,omitempty"`
 	EnteringAgency     string   `json:"entering_agency"`
+	ApprovedByDirector string   `json:"approved_by_director"`
+	ApprovedByPG       string   `json:"approved_by_pg"`
 	Status             string   `json:"status"`
 }
 
-type UnidentifiedPerson struct {
-	RecordID           string `json:"record_id"`
-	RecordNumber       string `json:"record_number"`
-	DiscoveryDate      string `json:"discovery_date"`
-	DiscoveryLocation  string `json:"discovery_location"`
-	DiscoveryDepartment string `json:"discovery_department,omitempty"`
-	EstimatedAgeMin    int    `json:"estimated_age_min,omitempty"`
-	EstimatedAgeMax    int    `json:"estimated_age_max,omitempty"`
-	Gender             string `json:"gender,omitempty"`
-	EstimatedHeightCM  int    `json:"estimated_height_cm,omitempty"`
-	EstimatedWeightKG  int    `json:"estimated_weight_kg,omitempty"`
-	HairColor          string `json:"hair_color,omitempty"`
-	EyeColor           string `json:"eye_color,omitempty"`
-	DistinctiveFeatures string `json:"distinctive_features,omitempty"`
-	ClothingDescription string `json:"clothing_description,omitempty"`
-	DNASampleRef       string `json:"dna_sample_ref,omitempty"`
-	FingerprintRef     string `json:"fingerprint_ref,omitempty"`
-	DentalRecordsRef   string `json:"dental_records_ref,omitempty"`
-	EnteringAgency     string `json:"entering_agency"`
-	Status             string `json:"status"`
-}
-
-type TerrorismWatch struct {
-	RecordID        string   `json:"record_id"`
-	RecordNumber    string   `json:"record_number"`
-	NIU             string   `json:"niu,omitempty"`
-	LastName        string   `json:"last_name"`
-	FirstName       string   `json:"first_name,omitempty"`
-	Aliases         []string `json:"aliases,omitempty"`
-	DateOfBirth     string   `json:"date_of_birth,omitempty"`
-	Nationality     string   `json:"nationality,omitempty"`
-	RiskLevel       string   `json:"risk_level"`
-	ThreatType      string   `json:"threat_type"`
-	Groups          []string `json:"groups,omitempty"`
-	LastKnownLocation string `json:"last_known_location,omitempty"`
-	EnteringAgency  string   `json:"entering_agency"`
-	ApprovedByDirector string `json:"approved_by_director"`
-	ApprovedByPG    string   `json:"approved_by_pg"`
-	Status          string   `json:"status"`
-}
-
 type ProtectionOrder struct {
-	RecordID        string   `json:"record_id"`
-	RecordNumber    string   `json:"record_number"`
-	OrderType       string   `json:"order_type"`
-	IssuingCourt    string   `json:"issuing_court"`
-	IssuingJudge    string   `json:"issuing_judge"`
-	BeneficiaryNIU  string   `json:"beneficiary_niu,omitempty"`
-	BeneficiaryName string   `json:"beneficiary_name"`
-	RestrainedPerson string  `json:"restrained_person"`
-	Restrictions    []string `json:"restrictions"`
-	IssueDate       string   `json:"issue_date"`
-	ExpirationDate  string   `json:"expiration_date,omitempty"`
-	EmergencyContact string  `json:"emergency_contact,omitempty"`
-	Status          string   `json:"status"`
+	RecordID         string   `json:"record_id"`
+	RecordNumber     string   `json:"record_number"`
+	OrderType        string   `json:"order_type"`
+	IssuingCourt     string   `json:"issuing_court"`
+	IssuingJudge     string   `json:"issuing_judge"`
+	BeneficiaryNIU   string   `json:"beneficiary_niu,omitempty"`
+	BeneficiaryName  string   `json:"beneficiary_name"`
+	RestrainedPerson string   `json:"restrained_person"`
+	Restrictions     []string `json:"restrictions"`
+	IssueDate        string   `json:"issue_date"`
+	ExpirationDate   string   `json:"expiration_date,omitempty"`
+	EmergencyContact string   `json:"emergency_contact,omitempty"`
+	Status           string   `json:"status"`
 }
 
 type SupervisedRelease struct {
-	RecordID         string   `json:"record_id"`
-	RecordNumber     string   `json:"record_number"`
-	NIU              string   `json:"niu"`
-	LastName         string   `json:"last_name"`
-	FirstName        string   `json:"first_name,omitempty"`
-	SupervisionType  string   `json:"supervision_type"`
-	StartDate        string   `json:"start_date"`
-	EndDate          string   `json:"end_date,omitempty"`
-	Conditions       []string `json:"conditions"`
-	SupervisingOfficer string `json:"supervising_officer"`
-	SupervisingAgency string `json:"supervising_agency"`
-	Status           string   `json:"status"`
+	RecordID           string   `json:"record_id"`
+	RecordNumber       string   `json:"record_number"`
+	NIU                string   `json:"niu"`
+	LastName           string   `json:"last_name"`
+	FirstName          string   `json:"first_name,omitempty"`
+	SupervisionType    string   `json:"supervision_type"`
+	StartDate          string   `json:"start_date"`
+	EndDate            string   `json:"end_date,omitempty"`
+	Conditions         []string `json:"conditions"`
+	SupervisingOfficer string   `json:"supervising_officer"`
+	SupervisingAgency  string   `json:"supervising_agency"`
+	Status             string   `json:"status"`
 }
 
 type StolenSecurity struct {
@@ -336,12 +336,12 @@ type NdisReport struct {
 }
 
 type InterpolSubmission struct {
-	ID             string   `json:"id"`
-	SampleIDs      []string `json:"sample_ids"`
-	Reason         string   `json:"reason"`
-	CaseNumber     string   `json:"case_number,omitempty"`
-	Status         string   `json:"status"`
-	SubmittedAt    string   `json:"submitted_at,omitempty"`
+	ID          string   `json:"id"`
+	SampleIDs   []string `json:"sample_ids"`
+	Reason      string   `json:"reason"`
+	CaseNumber  string   `json:"case_number,omitempty"`
+	Status      string   `json:"status"`
+	SubmittedAt string   `json:"submitted_at,omitempty"`
 }
 
 type SdisNode struct {
@@ -382,32 +382,32 @@ type SdisQualityReview struct {
 }
 
 type ViolenceRecord struct {
-	RecordID       string `json:"record_id"`
-	RecordNumber   string `json:"record_number"`
-	NIU            string `json:"niu,omitempty"`
-	LastName       string `json:"last_name,omitempty"`
-	FirstName      string `json:"first_name,omitempty"`
-	IncidentType   string `json:"incident_type"`
-	IncidentDate   string `json:"incident_date"`
-	Location       string `json:"location"`
-	VictimNIU      string `json:"victim_niu,omitempty"`
-	VictimName     string `json:"victim_name,omitempty"`
+	RecordID        string `json:"record_id"`
+	RecordNumber    string `json:"record_number"`
+	NIU             string `json:"niu,omitempty"`
+	LastName        string `json:"last_name,omitempty"`
+	FirstName       string `json:"first_name,omitempty"`
+	IncidentType    string `json:"incident_type"`
+	IncidentDate    string `json:"incident_date"`
+	Location        string `json:"location"`
+	VictimNIU       string `json:"victim_niu,omitempty"`
+	VictimName      string `json:"victim_name,omitempty"`
 	ArrestingAgency string `json:"arresting_agency"`
-	CourtCaseRef   string `json:"court_case_ref,omitempty"`
-	RiskLevel      string `json:"risk_level"`
-	Status         string `json:"status"`
+	CourtCaseRef    string `json:"court_case_ref,omitempty"`
+	RiskLevel       string `json:"risk_level"`
+	Status          string `json:"status"`
 }
 
 type IdentityTheft struct {
-	RecordID          string `json:"record_id"`
-	RecordNumber      string `json:"record_number"`
-	VictimNIU         string `json:"victim_niu"`
-	VictimName        string `json:"victim_name,omitempty"`
-	FraudType         string `json:"fraud_type"`
-	DocumentTypeUsed  string `json:"document_type_used,omitempty"`
-	PerpetratorKnown  bool   `json:"perpetrator_known"`
-	PerpetratorName   string `json:"perpetrator_name,omitempty"`
-	ReportDate        string `json:"report_date"`
-	ReportingAgency   string `json:"reporting_agency"`
-	Status            string `json:"status"`
+	RecordID         string `json:"record_id"`
+	RecordNumber     string `json:"record_number"`
+	VictimNIU        string `json:"victim_niu"`
+	VictimName       string `json:"victim_name,omitempty"`
+	FraudType        string `json:"fraud_type"`
+	DocumentTypeUsed string `json:"document_type_used,omitempty"`
+	PerpetratorKnown bool   `json:"perpetrator_known"`
+	PerpetratorName  string `json:"perpetrator_name,omitempty"`
+	ReportDate       string `json:"report_date"`
+	ReportingAgency  string `json:"reporting_agency"`
+	Status           string `json:"status"`
 }

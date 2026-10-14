@@ -57,10 +57,10 @@ func TestCreateAgreement(t *testing.T) {
 			req: domain.DataExchangeAgreement{
 				ProviderAgencyID: providerID,
 				ConsumerAgencyID: consumerID,
-				ServiceName:     "identity-verify",
-				AllowedFields:   []string{"full_name", "dob"},
-				LegalBasis:      strPtr("LOI-2025-001"),
-				RateLimitPerMin: 500,
+				ServiceName:      "identity-verify",
+				AllowedFields:    []string{"full_name", "dob"},
+				LegalBasis:       strPtr("LOI-2025-001"),
+				RateLimitPerMin:  500,
 			},
 			repo: &mockRepo{
 				createAgreementFunc: func(ctx context.Context, a *domain.DataExchangeAgreement) error { return nil },
@@ -71,7 +71,7 @@ func TestCreateAgreement(t *testing.T) {
 			req: domain.DataExchangeAgreement{
 				ProviderAgencyID: providerID,
 				ConsumerAgencyID: consumerID,
-				ServiceName:     "bio-verify",
+				ServiceName:      "bio-verify",
 			},
 			repo: &mockRepo{
 				createAgreementFunc: func(ctx context.Context, a *domain.DataExchangeAgreement) error { return nil },
@@ -82,7 +82,7 @@ func TestCreateAgreement(t *testing.T) {
 			req: domain.DataExchangeAgreement{
 				ProviderAgencyID: providerID,
 				ConsumerAgencyID: consumerID,
-				ServiceName:     "fail",
+				ServiceName:      "fail",
 			},
 			repo: &mockRepo{
 				createAgreementFunc: func(ctx context.Context, a *domain.DataExchangeAgreement) error {

@@ -62,11 +62,11 @@ func (h *Handler) RegisterForeignCA(c *gin.Context) {
 func (h *Handler) IssueCrossCert(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	var req struct {
-		Subject       string `json:"subject"`
-		IssuerCAID    string `json:"issuer_ca_id"`
-		SerialNumber  string `json:"serial_number"`
-		NotBefore     string `json:"not_before"`
-		NotAfter      string `json:"not_after"`
+		Subject        string `json:"subject"`
+		IssuerCAID     string `json:"issuer_ca_id"`
+		SerialNumber   string `json:"serial_number"`
+		NotBefore      string `json:"not_before"`
+		NotAfter       string `json:"not_after"`
 		CertificatePEM string `json:"certificate_pem"`
 	}
 	if err := json.Unmarshal(body, &req); err != nil {

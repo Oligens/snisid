@@ -9,9 +9,9 @@ import (
 )
 
 type RiskForecast struct {
-	UserID      string  `json:"user_id"`
-	Probability float64 `json:"probability"`
-	RiskLevel   string  `json:"risk_level"`
+	UserID      string   `json:"user_id"`
+	Probability float64  `json:"probability"`
+	RiskLevel   string   `json:"risk_level"`
 	Factors     []string `json:"factors"`
 }
 

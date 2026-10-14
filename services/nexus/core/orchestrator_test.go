@@ -45,11 +45,11 @@ func (m *mockStateManager) UpdateTaskStatus(ctx context.Context, id string, stat
 
 type mockAgent struct {
 	mock.Mock
-	id   string
-	typ  string
+	id  string
+	typ string
 }
 
-func (a *mockAgent) ID() string { return a.id }
+func (a *mockAgent) ID() string   { return a.id }
 func (a *mockAgent) Type() string { return a.typ }
 func (a *mockAgent) CanHandle(task *Task) bool {
 	return a.Called(task).Bool(0)
@@ -91,7 +91,7 @@ func TestSubmitTask_Success(t *testing.T) {
 	state.On("SaveTask", mock.Anything, mock.Anything).Return(nil)
 
 	resp, err := o.SubmitTask(context.Background(), &nexusv1.TaskDefinition{
-		Type: "fraud_analysis",
+		Type:    "fraud_analysis",
 		Payload: map[string]string{"citizen_id": "CIT-001"},
 	})
 	require.NoError(t, err)

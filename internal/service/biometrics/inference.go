@@ -181,9 +181,9 @@ func (e *TFServingInferenceEngine) GenerateEmbedding(ctx context.Context, imageD
 }
 
 type GRPCInferenceEngine struct {
-	conn    *grpc.ClientConn
+	conn     *grpc.ClientConn
 	endpoint string
-	timeout time.Duration
+	timeout  time.Duration
 }
 
 func NewGRPCInferenceEngine(endpoint string, timeout time.Duration) (*GRPCInferenceEngine, error) {
@@ -207,9 +207,9 @@ func NewGRPCInferenceEngine(endpoint string, timeout time.Duration) (*GRPCInfere
 		return nil, fmt.Errorf("grpc dial: %w", err)
 	}
 	return &GRPCInferenceEngine{
-		conn:    conn,
+		conn:     conn,
 		endpoint: endpoint,
-		timeout: timeout,
+		timeout:  timeout,
 	}, nil
 }
 

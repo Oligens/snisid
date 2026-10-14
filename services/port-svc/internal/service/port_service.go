@@ -9,7 +9,7 @@ import (
 
 type PortService struct {
 	repo domain.ContainerRepository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewPortService(repo domain.ContainerRepository, log *zap.Logger) *PortService {

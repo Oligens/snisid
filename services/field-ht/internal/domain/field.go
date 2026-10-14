@@ -10,10 +10,10 @@ import (
 type MissionStatus string
 
 const (
-	MissionStatusPlanned     MissionStatus = "PLANNED"
-	MissionStatusInProgress  MissionStatus = "IN_PROGRESS"
-	MissionStatusCompleted   MissionStatus = "COMPLETED"
-	MissionStatusCancelled   MissionStatus = "CANCELLED"
+	MissionStatusPlanned    MissionStatus = "PLANNED"
+	MissionStatusInProgress MissionStatus = "IN_PROGRESS"
+	MissionStatusCompleted  MissionStatus = "COMPLETED"
+	MissionStatusCancelled  MissionStatus = "CANCELLED"
 )
 
 type MobileUnit struct {
@@ -27,15 +27,15 @@ type MobileUnit struct {
 }
 
 type Mission struct {
-	ID             uuid.UUID      `json:"id"`
-	Title          string         `json:"title"`
-	Description    *string        `json:"description,omitempty"`
-	Status         MissionStatus  `json:"status"`
-	AssignedUnitID *uuid.UUID     `json:"assigned_unit_id,omitempty"`
-	DeptCode       string         `json:"dept_code"`
-	StartedAt      *time.Time     `json:"started_at,omitempty"`
-	CompletedAt    *time.Time     `json:"completed_at,omitempty"`
-	CreatedAt      time.Time      `json:"created_at"`
+	ID             uuid.UUID     `json:"id"`
+	Title          string        `json:"title"`
+	Description    *string       `json:"description,omitempty"`
+	Status         MissionStatus `json:"status"`
+	AssignedUnitID *uuid.UUID    `json:"assigned_unit_id,omitempty"`
+	DeptCode       string        `json:"dept_code"`
+	StartedAt      *time.Time    `json:"started_at,omitempty"`
+	CompletedAt    *time.Time    `json:"completed_at,omitempty"`
+	CreatedAt      time.Time     `json:"created_at"`
 }
 
 type MissionLog struct {

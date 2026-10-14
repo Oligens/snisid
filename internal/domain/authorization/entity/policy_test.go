@@ -142,9 +142,9 @@ func TestSubjectData_EmptyRoles(t *testing.T) {
 
 func TestAuthorizationRequest_NilAttributes(t *testing.T) {
 	req := AuthorizationRequest{
-		Subject:    SubjectData{UserID: "usr-003"},
-		Action:     "delete",
-		Resource:   "enrollment:ID-456",
+		Subject:  SubjectData{UserID: "usr-003"},
+		Action:   "delete",
+		Resource: "enrollment:ID-456",
 	}
 	if req.Attributes != nil {
 		t.Error("Attributes should be nil if not set")

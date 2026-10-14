@@ -121,7 +121,7 @@ func TestRenewWarrant_Success(t *testing.T) {
 func TestFileReport_Success(t *testing.T) {
 	r := setupRouter()
 	body, _ := json.Marshal(domain.FileReportRequest{
-		WarrantID: "550e8400-e29b-41d4-a716-446655440000",
+		WarrantID:            "550e8400-e29b-41d4-a716-446655440000",
 		ReportingPeriodStart: "2025-01-01T00:00:00Z",
 		ReportingPeriodEnd:   "2025-03-31T00:00:00Z",
 		SubmittedBy:          "550e8400-e29b-41d4-a716-446655440000",

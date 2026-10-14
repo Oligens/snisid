@@ -27,8 +27,8 @@ func main() {
 
 	r.POST("/v1/match-face", func(c *gin.Context) {
 		var req struct {
-			Image    string                        `json:"image"`
-			Enrolled []biometrics.BiometricVector  `json:"enrolled"`
+			Image    string                       `json:"image"`
+			Enrolled []biometrics.BiometricVector `json:"enrolled"`
 		}
 		if err := c.BindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -58,8 +58,8 @@ func main() {
 
 	r.POST("/v1/match-fingerprint", func(c *gin.Context) {
 		var req struct {
-			Template  string   `json:"template"`
-			Enrolled  []string `json:"enrolled"`
+			Template string   `json:"template"`
+			Enrolled []string `json:"enrolled"`
 		}
 		if err := c.BindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

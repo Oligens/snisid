@@ -136,9 +136,9 @@ func TestJWT_TokenWithDifferentRoles(t *testing.T) {
 	svc := newTestJWTService(15 * time.Minute)
 
 	tests := []struct {
-		name    string
-		role    string
-		agency  string
+		name   string
+		role   string
+		agency string
 	}{
 		{"admin ONI", "admin", "ONI"},
 		{"viewer DGI", "viewer", "DGI"},

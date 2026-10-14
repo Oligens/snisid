@@ -21,7 +21,7 @@ func NewBorderService(repo domain.BorderRepository, log *zap.Logger) *BorderServ
 
 func (s *BorderService) ProcessCrossing(req *domain.CrossingRequest) (*domain.Crossing, *domain.CrossingResult, error) {
 	result := &domain.CrossingResult{
-		Clearance:  domain.ClearanceGranted,
+		Clearance:   domain.ClearanceGranted,
 		IsDangerous: false,
 	}
 

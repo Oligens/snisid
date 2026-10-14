@@ -109,11 +109,11 @@ func TestStepUpAssurance(t *testing.T) {
 	}
 
 	tests := []struct {
-		name       string
-		citizenID  string
-		repo       *mockRepo
-		wantLevel  domain.AssuranceLevel
-		wantErr    bool
+		name        string
+		citizenID   string
+		repo        *mockRepo
+		wantLevel   domain.AssuranceLevel
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -137,7 +137,7 @@ func TestStepUpAssurance(t *testing.T) {
 					return nil, errors.New("assurance not found")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "identity not found",
 		},
 		{
@@ -151,7 +151,7 @@ func TestStepUpAssurance(t *testing.T) {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "step-up failed",
 		},
 	}

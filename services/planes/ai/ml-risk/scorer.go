@@ -11,36 +11,36 @@ import (
 )
 
 type ModelInput struct {
-	Amount          float64   `json:"amount"`
-	Velocity        float64   `json:"velocity"`
-	HourOfDay       int       `json:"hour_of_day"`
-	DayOfWeek       int       `json:"day_of_week"`
-	IsWeekend       bool      `json:"is_weekend"`
-	IsNewDevice     bool      `json:"is_new_device"`
-	IsNewLocation   bool      `json:"is_new_location"`
-	FailedAttempts  int       `json:"failed_attempts"`
-	AccountAgeDays  int       `json:"account_age_days"`
+	Amount           float64 `json:"amount"`
+	Velocity         float64 `json:"velocity"`
+	HourOfDay        int     `json:"hour_of_day"`
+	DayOfWeek        int     `json:"day_of_week"`
+	IsWeekend        bool    `json:"is_weekend"`
+	IsNewDevice      bool    `json:"is_new_device"`
+	IsNewLocation    bool    `json:"is_new_location"`
+	FailedAttempts   int     `json:"failed_attempts"`
+	AccountAgeDays   int     `json:"account_age_days"`
 	TransactionCount int     `json:"transaction_count"`
-	AvgTransaction  float64   `json:"avg_transaction"`
+	AvgTransaction   float64 `json:"avg_transaction"`
 }
 
 type FeatureWeights struct {
-	Amount          float64 `json:"amount"`
-	Velocity        float64 `json:"velocity"`
-	HourAnomaly     float64 `json:"hour_anomaly"`
-	NewDevice       float64 `json:"new_device"`
-	NewLocation     float64 `json:"new_location"`
-	FailedAttempts  float64 `json:"failed_attempts"`
-	AccountAge      float64 `json:"account_age"`
-	TransactionDev  float64 `json:"transaction_deviation"`
+	Amount         float64 `json:"amount"`
+	Velocity       float64 `json:"velocity"`
+	HourAnomaly    float64 `json:"hour_anomaly"`
+	NewDevice      float64 `json:"new_device"`
+	NewLocation    float64 `json:"new_location"`
+	FailedAttempts float64 `json:"failed_attempts"`
+	AccountAge     float64 `json:"account_age"`
+	TransactionDev float64 `json:"transaction_deviation"`
 }
 
 type MLService struct {
-	ModelVersion string
-	weights      FeatureWeights
-	mu           sync.RWMutex
+	ModelVersion      string
+	weights           FeatureWeights
+	mu                sync.RWMutex
 	predictionHistory []float64
-	threshold    float64
+	threshold         float64
 }
 
 func NewMLService(modelVersion string) *MLService {

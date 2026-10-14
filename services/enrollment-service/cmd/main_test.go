@@ -310,5 +310,5 @@ func TestExpiredEnrollment(t *testing.T) {
 	enrollment, err := svc.CreateEnrollment(req)
 	require.NoError(t, err)
 	assert.True(t, enrollment.ExpiresAt.After(time.Now()))
-	assert.True(t, enrollment.ExpiresAt.Before(time.Now().Add(96 * time.Hour)))
+	assert.True(t, enrollment.ExpiresAt.Before(time.Now().Add(96*time.Hour)))
 }

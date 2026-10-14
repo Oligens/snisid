@@ -151,8 +151,8 @@ func TestFuseRecords_ConfidenceLow_ManualReview(t *testing.T) {
 func TestPersistToGraph_NoNeo4j(t *testing.T) {
 	m := NewIdentityMesh("SNISID-HTI", nil)
 	fused := FusedIdentity{
-		NNU:    "NNU-TEST",
-		Status: "VERIFIED",
+		NNU:           "NNU-TEST",
+		Status:        "VERIFIED",
 		AgencyRecords: map[string]string{"oni": "NNU-TEST"},
 		Confidence:    ConfidenceScore{Overall: 0.95},
 		LastUpdated:   time.Now().UTC(),

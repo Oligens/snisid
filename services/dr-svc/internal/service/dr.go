@@ -62,9 +62,9 @@ func (s *DRService) ExecuteFailover(ctx context.Context, planID uuid.UUID) (*dom
 	}
 
 	exec := &domain.FailoverExecution{
-		ExecutionID: uuid.New(),
-		PlanID:      planID,
-		StartedAt:   time.Now().UTC(),
+		ExecutionID:  uuid.New(),
+		PlanID:       planID,
+		StartedAt:    time.Now().UTC(),
 		IsSuccessful: false,
 	}
 
@@ -105,13 +105,13 @@ func (s *DRService) RunDRTest(ctx context.Context, planID uuid.UUID, testName st
 	}
 
 	result := &domain.DRTestResult{
-		TestID:     uuid.New(),
-		PlanID:     planID,
-		TestName:   testName,
-		StartedAt:  time.Now().UTC(),
-		CompletedAt: time.Now().UTC().Add(30 * time.Second),
+		TestID:       uuid.New(),
+		PlanID:       planID,
+		TestName:     testName,
+		StartedAt:    time.Now().UTC(),
+		CompletedAt:  time.Now().UTC().Add(30 * time.Second),
 		IsSuccessful: true,
-		Details:    fmt.Sprintf("DR test for plan '%s' completed: source=%s target=%s automated=%v",
+		Details: fmt.Sprintf("DR test for plan '%s' completed: source=%s target=%s automated=%v",
 			plan.Name, plan.SourceRegion, plan.TargetRegion, plan.IsAutomated),
 	}
 	if err := s.repo.InsertDRTestResult(ctx, result); err != nil {
@@ -163,10 +163,10 @@ func (s *DRService) GetHealthDashboard(ctx context.Context) (map[string]any, err
 	}
 
 	dashboard := map[string]any{
-		"regions":          regions,
-		"replication":      replication,
-		"healthy_count":    0,
-		"unhealthy_count":  0,
+		"regions":         regions,
+		"replication":     replication,
+		"healthy_count":   0,
+		"unhealthy_count": 0,
 	}
 	healthy := 0
 	unhealthy := 0

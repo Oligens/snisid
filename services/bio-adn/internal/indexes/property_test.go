@@ -9,11 +9,11 @@ import (
 
 type mockPropertyDB struct {
 	models.Database
-	vehicles []models.StolenVehicle
-	firearms []models.StolenFirearm
-	docs     []models.StolenDocument
-	vessels  []models.StolenVessel
-	articles []models.StolenArticle
+	vehicles   []models.StolenVehicle
+	firearms   []models.StolenFirearm
+	docs       []models.StolenDocument
+	vessels    []models.StolenVessel
+	articles   []models.StolenArticle
 	securities []models.StolenSecurity
 }
 

@@ -13,37 +13,37 @@ import (
 type ViolationSeverity int
 
 const (
-	SeverityLow    ViolationSeverity = 1
-	SeverityMedium ViolationSeverity = 2
-	SeverityHigh   ViolationSeverity = 3
+	SeverityLow      ViolationSeverity = 1
+	SeverityMedium   ViolationSeverity = 2
+	SeverityHigh     ViolationSeverity = 3
 	SeverityCritical ViolationSeverity = 4
 )
 
 type Violation struct {
 	ID          string            `json:"id"`
-	Type        string            `json:"type"`        // SECURITY, PERFORMANCE, AVAILABILITY, INTEGRITY
+	Type        string            `json:"type"` // SECURITY, PERFORMANCE, AVAILABILITY, INTEGRITY
 	Description string            `json:"description"`
 	Severity    ViolationSeverity `json:"severity"`
-	Affected    []string          `json:"affected"`    // affected components
+	Affected    []string          `json:"affected"` // affected components
 	DetectedAt  time.Time         `json:"detected_at"`
-	Source      string            `json:"source"`      // monitor, formal verification, audit
+	Source      string            `json:"source"` // monitor, formal verification, audit
 }
 
 type HealingStep struct {
-	Action    string `json:"action"`    // ISOLATE, ROLLBACK, RESTART, RECONFIGURE, SCALE
-	Target    string `json:"target"`
-	Status    string `json:"status"`    // PENDING, IN_PROGRESS, COMPLETED, FAILED
-	StartedAt *time.Time `json:"started_at,omitempty"`
+	Action      string     `json:"action"` // ISOLATE, ROLLBACK, RESTART, RECONFIGURE, SCALE
+	Target      string     `json:"target"`
+	Status      string     `json:"status"` // PENDING, IN_PROGRESS, COMPLETED, FAILED
+	StartedAt   *time.Time `json:"started_at,omitempty"`
 	CompletedAt *time.Time `json:"completed_at,omitempty"`
-	Error     string `json:"error,omitempty"`
+	Error       string     `json:"error,omitempty"`
 }
 
 type HealingPlan struct {
-	Violation   Violation      `json:"violation"`
-	Steps       []HealingStep  `json:"steps"`
-	CreatedAt   time.Time      `json:"created_at"`
-	Completed   bool           `json:"completed"`
-	Success     bool           `json:"success"`
+	Violation Violation     `json:"violation"`
+	Steps     []HealingStep `json:"steps"`
+	CreatedAt time.Time     `json:"created_at"`
+	Completed bool          `json:"completed"`
+	Success   bool          `json:"success"`
 }
 
 type SnapshotStore interface {
@@ -52,11 +52,11 @@ type SnapshotStore interface {
 }
 
 type Healer struct {
-	PlatformID      string
-	snapshotStore   SnapshotStore
-	mu              sync.Mutex
-	activeHealings  map[string]*HealingPlan
-	failureHistory  map[string][]time.Time
+	PlatformID     string
+	snapshotStore  SnapshotStore
+	mu             sync.Mutex
+	activeHealings map[string]*HealingPlan
+	failureHistory map[string][]time.Time
 }
 
 func NewHealer(platformID string, store SnapshotStore) *Healer {

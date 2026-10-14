@@ -31,12 +31,12 @@ const (
 type SubjectType string
 
 const (
-	SubjectSuspect        SubjectType = "SUSPECT"
-	SubjectCriminal       SubjectType = "CRIMINAL"
-	SubjectVictim         SubjectType = "VICTIM"
+	SubjectSuspect         SubjectType = "SUSPECT"
+	SubjectCriminal        SubjectType = "CRIMINAL"
+	SubjectVictim          SubjectType = "VICTIM"
 	SubjectUnknownDeceased SubjectType = "UNKNOWN_DECEASED"
-	SubjectMissingPerson  SubjectType = "MISSING_PERSON"
-	SubjectEmployee       SubjectType = "EMPLOYEE"
+	SubjectMissingPerson   SubjectType = "MISSING_PERSON"
+	SubjectEmployee        SubjectType = "EMPLOYEE"
 )
 
 type TransactionType string

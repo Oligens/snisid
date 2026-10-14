@@ -10,10 +10,10 @@ import (
 )
 
 type Event struct {
-	EventType  string    `json:"event_type"`
-	LicenseID  string    `json:"license_id,omitempty"`
-	Timestamp  time.Time `json:"timestamp"`
-	Data       any       `json:"data"`
+	EventType string    `json:"event_type"`
+	LicenseID string    `json:"license_id,omitempty"`
+	Timestamp time.Time `json:"timestamp"`
+	Data      any       `json:"data"`
 }
 
 type Producer struct {

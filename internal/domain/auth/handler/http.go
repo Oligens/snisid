@@ -53,7 +53,7 @@ func (h *HttpHandler) Login(c *gin.Context) {
 	}
 
 	clientIP := c.ClientIP()
-	
+
 	res, err := h.svc.Login(c.Request.Context(), req.Username, req.Password, clientIP, req.Device)
 	if err != nil {
 		status := http.StatusUnauthorized

@@ -21,7 +21,7 @@ func NewWORMClient() *WORMClient {
 // ArchiveDocument saves the signed PDF/A to the immutable cluster
 func (w *WORMClient) ArchiveDocument(documentID string, finalPdfBytes []byte, signatureHash string) error {
 	log.Printf("[WORM] Archiving document %s to immutable storage...", documentID)
-	
+
 	// Ensure the WORM path exists (simulation)
 	if err := os.MkdirAll(w.ClusterPath, 0755); err != nil {
 		log.Printf("[WORM] Failed to create WORM mount point: %v", err)
@@ -31,7 +31,7 @@ func (w *WORMClient) ArchiveDocument(documentID string, finalPdfBytes []byte, si
 	// In a real Phase 5 integration, this would use a specific WORM driver (e.g. S3 Object Lock, NetApp SnapLock)
 	// Here we simulate writing to a read-only filesystem.
 	filePath := w.ClusterPath + "/" + documentID + "_" + signatureHash[:8] + ".pdf"
-	
+
 	err := os.WriteFile(filePath, finalPdfBytes, 0444) // 0444 = Read Only
 	if err != nil {
 		log.Printf("[WORM] WARNING: Simulation write failed (expected if local disk full): %v", err)

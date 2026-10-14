@@ -23,19 +23,19 @@ func (s *BatchService) CreateBatch(ctx context.Context, req domain.CreateBatchRe
 	batchRef := fmt.Sprintf("BATCH-BIAR-%06d", time.Now().UnixMilli()%1000000)
 
 	batch := &domain.BatchSeizure{
-		BatchID:         uuid.New(),
-		BatchReference:  batchRef,
-		OperationName:   req.OperationName,
-		SeizureDate:     req.SeizureDate,
-		LocationDesc:    req.LocationDesc,
-		DeptCode:        req.DeptCode,
-		TotalWeapons:    len(req.WeaponIDs),
-		WeaponIDs:       req.WeaponIDs,
-		SeizingUnit:     req.SeizingUnit,
-		LeadOfficer:     req.LeadOfficer,
+		BatchID:            uuid.New(),
+		BatchReference:     batchRef,
+		OperationName:      req.OperationName,
+		SeizureDate:        req.SeizureDate,
+		LocationDesc:       req.LocationDesc,
+		DeptCode:           req.DeptCode,
+		TotalWeapons:       len(req.WeaponIDs),
+		WeaponIDs:          req.WeaponIDs,
+		SeizingUnit:        req.SeizingUnit,
+		LeadOfficer:        req.LeadOfficer,
 		PartneringAgencies: req.PartneringAgencies,
-		Notes:           req.Notes,
-		CreatedAt:       time.Now(),
+		Notes:              req.Notes,
+		CreatedAt:          time.Now(),
 	}
 
 	if err := s.batchRepo.Create(ctx, batch); err != nil {

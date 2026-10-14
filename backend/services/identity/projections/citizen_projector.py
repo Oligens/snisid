@@ -38,6 +38,7 @@ class CitizenProjector:
         read_model = CitizenReadModel(
             id=aggregate_id,
             national_id=data["national_id"],
+            nif=data.get("nif"),
             full_name=f"{data['first_name']} {data['last_name']}",
             first_name=data["first_name"],
             last_name=data["last_name"],

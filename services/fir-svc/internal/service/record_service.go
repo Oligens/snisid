@@ -10,11 +10,11 @@ import (
 )
 
 type RecordService struct {
-	repo        domain.CriminalRecordRepository
-	arrestRepo  domain.ArrestRepository
-	convRepo    domain.ConvictionRepository
-	eventPub    domain.EventPublisher
-	snisid      domain.SNISIDClient
+	repo       domain.CriminalRecordRepository
+	arrestRepo domain.ArrestRepository
+	convRepo   domain.ConvictionRepository
+	eventPub   domain.EventPublisher
+	snisid     domain.SNISIDClient
 }
 
 func NewRecordService(
@@ -53,14 +53,14 @@ func (s *RecordService) GetOrCreateRecord(
 	}
 
 	record := &domain.CriminalRecord{
-		RecordID:         uuid.New(),
-		NationalFIRID:    fmt.Sprintf("FIR-HT-%d-%06d", time.Now().Year(), nextSeq),
-		SNISIDPersonID:   snisidPersonID,
+		RecordID:          uuid.New(),
+		NationalFIRID:     fmt.Sprintf("FIR-HT-%d-%06d", time.Now().Year(), nextSeq),
+		SNISIDPersonID:    snisidPersonID,
 		IsHaitianNational: person.Nationality == "HTI",
-		IsActive:         true,
-		IsExpunged:       false,
-		CreatedAt:        time.Now(),
-		UpdatedAt:        time.Now(),
+		IsActive:          true,
+		IsExpunged:        false,
+		CreatedAt:         time.Now(),
+		UpdatedAt:         time.Now(),
 	}
 
 	if err := s.repo.Create(ctx, record); err != nil {

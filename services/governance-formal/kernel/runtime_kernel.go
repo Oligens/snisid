@@ -12,7 +12,7 @@ type GovernanceKernel struct {
 
 func (k *GovernanceKernel) Execute(state compiler.State, action compiler.Action) (compiler.State, error) {
 	fmt.Printf("GOVERNANCE-KERNEL: Verifying safety proof for action %s...\n", action.Name)
-	
+
 	// Proof-Carrying Execution Gate
 	if !k.ActivePolicy(state, action) {
 		fmt.Println("🚨 GOVERNANCE-KERNEL: Policy violation detected. State transition REJECTED.")

@@ -8,17 +8,17 @@ import (
 )
 
 var (
-	ErrInvalidAgency     = errors.New("invalid target agency")
-	ErrExpirationTooFar  = errors.New("consent expiration exceeds maximum allowed duration")
+	ErrInvalidAgency    = errors.New("invalid target agency")
+	ErrExpirationTooFar = errors.New("consent expiration exceeds maximum allowed duration")
 )
 
 type ConsentAgreement struct {
-	ID                 uuid.UUID
-	CitizenNIU         string
-	TargetAgency       string
-	ExpirationDate     time.Time
-	DigitalSignature   string
-	CreatedAt          time.Time
+	ID               uuid.UUID
+	CitizenNIU       string
+	TargetAgency     string
+	ExpirationDate   time.Time
+	DigitalSignature string
+	CreatedAt        time.Time
 }
 
 func NewConsentAgreement(niu, agency string, daysValid int, signature string) (*ConsentAgreement, error) {

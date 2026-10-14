@@ -18,48 +18,48 @@ const (
 type ConfidenceLevel string
 
 const (
-	ConfidenceLow     ConfidenceLevel = "LOW"
+	ConfidenceLow      ConfidenceLevel = "LOW"
 	ConfidenceModerate ConfidenceLevel = "MODERATE"
-	ConfidenceHigh    ConfidenceLevel = "HIGH"
-	ConfidenceCertain ConfidenceLevel = "CERTAIN"
+	ConfidenceHigh     ConfidenceLevel = "HIGH"
+	ConfidenceCertain  ConfidenceLevel = "CERTAIN"
 )
 
 type ActorType string
 
 const (
-	ActorTypeState      ActorType = "STATE"
-	ActorTypeNonState   ActorType = "NON_STATE"
-	ActorTypeCriminal   ActorType = "CRIMINAL"
-	ActorTypeTerrorist  ActorType = "TERRORIST"
-	ActorTypeInsurgent  ActorType = "INSURGENT"
+	ActorTypeState     ActorType = "STATE"
+	ActorTypeNonState  ActorType = "NON_STATE"
+	ActorTypeCriminal  ActorType = "CRIMINAL"
+	ActorTypeTerrorist ActorType = "TERRORIST"
+	ActorTypeInsurgent ActorType = "INSURGENT"
 )
 
 type CorrelationType string
 
 const (
-	CorrelationSupports      CorrelationType = "SUPPORTS"
-	CorrelationContradicts   CorrelationType = "CONTRADICTS"
-	CorrelationIndependent   CorrelationType = "INDEPENDENT"
+	CorrelationSupports    CorrelationType = "SUPPORTS"
+	CorrelationContradicts CorrelationType = "CONTRADICTS"
+	CorrelationIndependent CorrelationType = "INDEPENDENT"
 )
 
 type IntelProduct struct {
-	ProductID          uuid.UUID       `json:"product_id"`
-	Title              string          `json:"title"`
-	Classification     Classification  `json:"classification"`
-	SourceDisciplines  []string        `json:"source_disciplines"`
-	SigintRefs         []string        `json:"sigint_refs"`
-	HumintRefs         []string        `json:"humint_refs"`
-	GeointRefs         []string        `json:"geoint_refs"`
-	OsintRefs          []string        `json:"osint_refs"`
-	AnalystAssessment  string          `json:"analyst_assessment"`
-	ConfidenceLevel    ConfidenceLevel `json:"confidence_level"`
-	RelatedThreatActors []string       `json:"related_threat_actors"`
-	RelatedRegions     []string        `json:"related_regions"`
-	NIERef             *string         `json:"nie_ref,omitempty"`
-	CreatedBy          uuid.UUID       `json:"created_by"`
-	ApprovedBy         *uuid.UUID      `json:"approved_by,omitempty"`
-	ValidFrom          time.Time       `json:"valid_from"`
-	ValidUntil         *time.Time      `json:"valid_until,omitempty"`
+	ProductID           uuid.UUID       `json:"product_id"`
+	Title               string          `json:"title"`
+	Classification      Classification  `json:"classification"`
+	SourceDisciplines   []string        `json:"source_disciplines"`
+	SigintRefs          []string        `json:"sigint_refs"`
+	HumintRefs          []string        `json:"humint_refs"`
+	GeointRefs          []string        `json:"geoint_refs"`
+	OsintRefs           []string        `json:"osint_refs"`
+	AnalystAssessment   string          `json:"analyst_assessment"`
+	ConfidenceLevel     ConfidenceLevel `json:"confidence_level"`
+	RelatedThreatActors []string        `json:"related_threat_actors"`
+	RelatedRegions      []string        `json:"related_regions"`
+	NIERef              *string         `json:"nie_ref,omitempty"`
+	CreatedBy           uuid.UUID       `json:"created_by"`
+	ApprovedBy          *uuid.UUID      `json:"approved_by,omitempty"`
+	ValidFrom           time.Time       `json:"valid_from"`
+	ValidUntil          *time.Time      `json:"valid_until,omitempty"`
 }
 
 type ThreatActor struct {

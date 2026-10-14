@@ -62,13 +62,13 @@ func (s *AuditService) GenerateReport(ctx context.Context, category domain.Audit
 	}
 
 	report := &domain.AuditReport{
-		ReportID:   uuid.New(),
-		Category:   category,
-		EventCount: len(events),
-		From:       from,
-		To:         to,
+		ReportID:       uuid.New(),
+		Category:       category,
+		EventCount:     len(events),
+		From:           from,
+		To:             to,
 		IntegrityVerif: true,
-		GeneratedAt: time.Now().UTC(),
+		GeneratedAt:    time.Now().UTC(),
 	}
 	return report, nil
 }

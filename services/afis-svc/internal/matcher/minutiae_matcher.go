@@ -11,16 +11,16 @@ import (
 )
 
 type MinutiaPoint struct {
-	X        int
-	Y        int
-	Angle    float64
-	Type     string
-	Quality  int16
+	X       int
+	Y       int
+	Angle   float64
+	Type    string
+	Quality int16
 }
 
 type MinutiaeMatcher struct {
-	mu            sync.RWMutex
-	threshold     float64
+	mu        sync.RWMutex
+	threshold float64
 }
 
 func NewMinutiaeMatcher(threshold float64) *MinutiaeMatcher {

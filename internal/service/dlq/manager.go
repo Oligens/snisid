@@ -20,7 +20,7 @@ type Manager struct {
 
 func NewManager(brokers []string, dlqTopic string) *Manager {
 	consumer := events.NewConsumer(brokers, "dlq-manager-group", dlqTopic)
-	
+
 	return &Manager{
 		consumer:  consumer,
 		producers: make(map[string]events.ProducerInterface),
@@ -40,24 +40,24 @@ func (m *Manager) handleDLQEvent(ctx context.Context, payload []byte) error {
 
 	retryCount, _ := dlqEvt["retryCount"].(float64)
 	originalTopic, _ := dlqEvt["originalTopic"].(string)
-	
+
 	if retryCount < 3 {
-		logger.Info(ctx, "Auto-retrying event", 
-			zap.String("topic", originalTopic), 
+		logger.Info(ctx, "Auto-retrying event",
+			zap.String("topic", originalTopic),
 			zap.Float64("attempt", retryCount+1),
 		)
-		
+
 		// Increment retry and re-publish to original topic
 		dlqEvt["retryCount"] = retryCount + 1
 		return m.getOrCreateProducer(originalTopic).Publish(ctx, fmt.Sprintf("%v", dlqEvt["originalKey"]), dlqEvt)
 	}
 
 	// Max retries reached -> Quarantine
-	logger.Warn(ctx, "EVENT QUARANTINED: max retries reached", 
+	logger.Warn(ctx, "EVENT QUARANTINED: max retries reached",
 		zap.String("topic", originalTopic),
 		zap.Any("correlation_id", dlqEvt["header"].(map[string]interface{})["correlationId"]),
 	)
-	
+
 	// In a real system, we'd save to Postgres here
 	return m.saveToQuarantine(ctx, dlqEvt)
 }

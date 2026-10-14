@@ -214,8 +214,8 @@ func TestSubmitReportHandler(t *testing.T) {
 		wantStatus int
 	}{
 		{
-			name:   "valid report",
-			body:   `{"source_code":"RAVEN-1","classification":"SECRET","content_hash":"abc123","threat_actors":["APT-29"],"veracity_score":0.9}`,
+			name: "valid report",
+			body: `{"source_code":"RAVEN-1","classification":"SECRET","content_hash":"abc123","threat_actors":["APT-29"],"veracity_score":0.9}`,
 			mockFn: func() {
 				mockSvc.On("SubmitReport", mock.AnythingOfType("domain.SubmitReportRequest")).
 					Return(domain.IntelligenceReport{SourceCode: "RAVEN-1", Classification: "SECRET"}, nil)
@@ -229,8 +229,8 @@ func TestSubmitReportHandler(t *testing.T) {
 			wantStatus: http.StatusBadRequest,
 		},
 		{
-			name:   "service error",
-			body:   `{"source_code":"FAIL-1","classification":"SECRET","content_hash":"abc"}`,
+			name: "service error",
+			body: `{"source_code":"FAIL-1","classification":"SECRET","content_hash":"abc"}`,
 			mockFn: func() {
 				mockSvc.On("SubmitReport", mock.AnythingOfType("domain.SubmitReportRequest")).
 					Return(domain.IntelligenceReport{}, errors.New("db error"))
@@ -311,8 +311,8 @@ func TestLogDebriefingHandler(t *testing.T) {
 		wantStatus int
 	}{
 		{
-			name:   "valid debriefing",
-			body:   `{"source_code":"RAVEN-1","officer_id":"550e8400-e29b-41d4-a716-446655440000","session_date":"2026-06-20T10:00:00Z","location_method":"IN_PERSON","topics_covered":["Status update"],"risk_assessment":"Low"}`,
+			name: "valid debriefing",
+			body: `{"source_code":"RAVEN-1","officer_id":"550e8400-e29b-41d4-a716-446655440000","session_date":"2026-06-20T10:00:00Z","location_method":"IN_PERSON","topics_covered":["Status update"],"risk_assessment":"Low"}`,
 			mockFn: func() {
 				mockSvc.On("LogDebriefing", mock.AnythingOfType("domain.LogDebriefingRequest")).
 					Return(domain.DebriefingSession{SourceCode: "RAVEN-1", LocationMethod: "IN_PERSON"}, nil)

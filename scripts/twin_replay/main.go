@@ -24,7 +24,7 @@ func main() {
 
 	// Replay state from a specific point in time
 	replayTime := time.Now().Add(-2 * time.Hour)
-	
+
 	logger.Info(context.Background(), fmt.Sprintf("REPLAY: Mirroring infrastructure state from %s", replayTime.Format(time.RFC3339)))
 
 	ctx := context.Background()
@@ -44,10 +44,10 @@ func main() {
 
 	for result.Next(ctx) {
 		record := result.Record()
-		fmt.Printf("REPLAY_STATE: Pod %s on Node %s Status: %s\n", 
+		fmt.Printf("REPLAY_STATE: Pod %s on Node %s Status: %s\n",
 			record.Values[0], record.Values[2], record.Values[1])
 	}
-	
+
 	logger.Info(context.Background(), "Digital Twin Replay complete.")
 }
 

@@ -69,6 +69,6 @@ func main() {
 			log.Printf("Généré avec succès : %s", filename)
 		}
 	}
-	
+
 	log.Println("Tous les décrets de la Phase 14 ont été générés et sont prêts à être intégrés au Parapheur.")
 }

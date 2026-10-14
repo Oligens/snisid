@@ -16,7 +16,7 @@ var (
 		Help:    "Latency of risk evaluation processing.",
 		Buckets: prometheus.DefBuckets,
 	})
-	
+
 	PolicyDenialsTotal = promauto.NewCounterVec(prometheus.CounterOpts{
 		Name: "snisid_policy_denials_total",
 		Help: "The total number of requests denied by OPA policy.",

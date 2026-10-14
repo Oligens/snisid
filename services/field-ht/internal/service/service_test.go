@@ -12,10 +12,10 @@ import (
 )
 
 type mockFieldRepo struct {
-	createMissionFn    func(ctx context.Context, m *domain.Mission) error
+	createMissionFn     func(ctx context.Context, m *domain.Mission) error
 	getActiveMissionsFn func(ctx context.Context) ([]domain.Mission, error)
-	createMissionLogFn func(ctx context.Context, l *domain.MissionLog) error
-	getCoverageStatsFn func(ctx context.Context) (*domain.CoverageStats, error)
+	createMissionLogFn  func(ctx context.Context, l *domain.MissionLog) error
+	getCoverageStatsFn  func(ctx context.Context) (*domain.CoverageStats, error)
 }
 
 func (m *mockFieldRepo) CreateMission(ctx context.Context, mission *domain.Mission) error {
@@ -108,7 +108,7 @@ func TestGetActiveMissions(t *testing.T) {
 			},
 		},
 		{
-			name: "repo error",
+			name:    "repo error",
 			repoErr: errors.New("query error"),
 			wantErr: true,
 		},

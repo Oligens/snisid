@@ -33,11 +33,11 @@ type Firearm struct {
 	CurrentDeptCode string `json:"current_dept_code,omitempty"`
 	StorageLocation string `json:"storage_location,omitempty"`
 
-	FIRRecordID  *uuid.UUID `json:"fir_record_id,omitempty"`
-	GangID       *uuid.UUID `json:"gang_id,omitempty"`
-	CaseRefs     []string   `json:"case_references,omitempty"`
+	FIRRecordID *uuid.UUID `json:"fir_record_id,omitempty"`
+	GangID      *uuid.UUID `json:"gang_id,omitempty"`
+	CaseRefs    []string   `json:"case_references,omitempty"`
 
-	IARMSRef    string `json:"iarms_ref,omitempty"`
+	IARMSRef     string `json:"iarms_ref,omitempty"`
 	ATFETraceRef string `json:"atf_etrace_ref,omitempty"`
 
 	Notes     string    `json:"notes,omitempty"`

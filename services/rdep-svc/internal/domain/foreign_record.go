@@ -8,19 +8,19 @@ import (
 )
 
 type ForeignRecord struct {
-	ForeignRecordID   uuid.UUID           `json:"foreign_record_id"`
-	DeporteeID        uuid.UUID           `json:"deportee_id"`
-	Country           DeportationCountry  `json:"country"`
-	CourtName         string              `json:"court_name"`
+	ForeignRecordID    uuid.UUID          `json:"foreign_record_id"`
+	DeporteeID         uuid.UUID          `json:"deportee_id"`
+	Country            DeportationCountry `json:"country"`
+	CourtName          string             `json:"court_name"`
 	OffenseDescription string             `json:"offense_description"`
-	OffenseDate       *time.Time          `json:"offense_date,omitempty"`
-	ConvictionDate    *time.Time          `json:"conviction_date,omitempty"`
-	Sentence          string              `json:"sentence"`
-	PrisonServed      string              `json:"prison_served"`
-	FBINumber         string              `json:"fbi_number"`
-	InterpolRef       string              `json:"interpol_ref"`
-	SourceDocument    string              `json:"source_document"`
-	CreatedAt         time.Time           `json:"created_at"`
+	OffenseDate        *time.Time         `json:"offense_date,omitempty"`
+	ConvictionDate     *time.Time         `json:"conviction_date,omitempty"`
+	Sentence           string             `json:"sentence"`
+	PrisonServed       string             `json:"prison_served"`
+	FBINumber          string             `json:"fbi_number"`
+	InterpolRef        string             `json:"interpol_ref"`
+	SourceDocument     string             `json:"source_document"`
+	CreatedAt          time.Time          `json:"created_at"`
 }
 
 func (r *ForeignRecord) HasViolentOffenses() bool {
@@ -36,9 +36,9 @@ func (r *ForeignRecord) HasViolentOffenses() bool {
 }
 
 func containsIgnoreCase(s, substr string) bool {
-	return len(s) >= len(substr) && 
-		(s == substr || len(s) > 0 && len(substr) > 0 && 
-		(s[0:len(substr)] == substr || containsIgnoreCase(s[1:], substr)))
+	return len(s) >= len(substr) &&
+		(s == substr || len(s) > 0 && len(substr) > 0 &&
+			(s[0:len(substr)] == substr || containsIgnoreCase(s[1:], substr)))
 }
 
 type ForeignRecordRepository interface {

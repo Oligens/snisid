@@ -7,30 +7,30 @@ import (
 )
 
 type FlaggedWallet struct {
-	ID                uuid.UUID      `json:"wallet_id" db:"wallet_id"`
-	NationalCryptID   string         `json:"national_crypt_id" db:"national_crypt_id"`
-	WalletAddress     string         `json:"wallet_address" db:"wallet_address"`
-	AssetType         AssetType      `json:"asset_type" db:"asset_type"`
-	BlockchainNetwork *string        `json:"blockchain_network,omitempty" db:"blockchain_network"`
-	SuspicionType     SuspicionType  `json:"suspicion_type" db:"suspicion_type"`
-	SNISIDPersonID    *uuid.UUID     `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
-	GangID            *uuid.UUID     `json:"gang_id,omitempty" db:"gang_id"`
-	EstimatedBalanceUSD *float64     `json:"estimated_balance_usd,omitempty" db:"estimated_balance_usd"`
-	TotalReceivedUSD  *float64       `json:"total_received_usd,omitempty" db:"total_received_usd"`
-	TotalSentUSD      *float64       `json:"total_sent_usd,omitempty" db:"total_sent_usd"`
-	FirstTxDate       *time.Time     `json:"first_tx_date,omitempty" db:"first_tx_date"`
-	LastTxDate        *time.Time     `json:"last_tx_date,omitempty" db:"last_tx_date"`
-	IsSanctioned      bool           `json:"is_sanctioned" db:"is_sanctioned"`
-	OfacSDNRef        *string        `json:"ofac_sdn_ref,omitempty" db:"ofac_sdn_ref"`
-	ChainalysisRef    *string        `json:"chainalysis_ref,omitempty" db:"chainalysis_ref"`
-	EllipticRef       *string        `json:"elliptic_ref,omitempty" db:"elliptic_ref"`
-	SourceIntel       *string        `json:"source_intel,omitempty" db:"source_intel"`
-	LinkedCases       []uuid.UUID    `json:"linked_cases" db:"linked_cases"`
-	IsFrozen          bool           `json:"is_frozen" db:"is_frozen"`
-	FreezeJurisdiction *string       `json:"freeze_jurisdiction,omitempty" db:"freeze_jurisdiction"`
-	CreatedBy         uuid.UUID      `json:"created_by" db:"created_by"`
-	CreatedAt         time.Time      `json:"created_at" db:"created_at"`
-	UpdatedAt         time.Time      `json:"updated_at" db:"updated_at"`
+	ID                  uuid.UUID     `json:"wallet_id" db:"wallet_id"`
+	NationalCryptID     string        `json:"national_crypt_id" db:"national_crypt_id"`
+	WalletAddress       string        `json:"wallet_address" db:"wallet_address"`
+	AssetType           AssetType     `json:"asset_type" db:"asset_type"`
+	BlockchainNetwork   *string       `json:"blockchain_network,omitempty" db:"blockchain_network"`
+	SuspicionType       SuspicionType `json:"suspicion_type" db:"suspicion_type"`
+	SNISIDPersonID      *uuid.UUID    `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
+	GangID              *uuid.UUID    `json:"gang_id,omitempty" db:"gang_id"`
+	EstimatedBalanceUSD *float64      `json:"estimated_balance_usd,omitempty" db:"estimated_balance_usd"`
+	TotalReceivedUSD    *float64      `json:"total_received_usd,omitempty" db:"total_received_usd"`
+	TotalSentUSD        *float64      `json:"total_sent_usd,omitempty" db:"total_sent_usd"`
+	FirstTxDate         *time.Time    `json:"first_tx_date,omitempty" db:"first_tx_date"`
+	LastTxDate          *time.Time    `json:"last_tx_date,omitempty" db:"last_tx_date"`
+	IsSanctioned        bool          `json:"is_sanctioned" db:"is_sanctioned"`
+	OfacSDNRef          *string       `json:"ofac_sdn_ref,omitempty" db:"ofac_sdn_ref"`
+	ChainalysisRef      *string       `json:"chainalysis_ref,omitempty" db:"chainalysis_ref"`
+	EllipticRef         *string       `json:"elliptic_ref,omitempty" db:"elliptic_ref"`
+	SourceIntel         *string       `json:"source_intel,omitempty" db:"source_intel"`
+	LinkedCases         []uuid.UUID   `json:"linked_cases" db:"linked_cases"`
+	IsFrozen            bool          `json:"is_frozen" db:"is_frozen"`
+	FreezeJurisdiction  *string       `json:"freeze_jurisdiction,omitempty" db:"freeze_jurisdiction"`
+	CreatedBy           uuid.UUID     `json:"created_by" db:"created_by"`
+	CreatedAt           time.Time     `json:"created_at" db:"created_at"`
+	UpdatedAt           time.Time     `json:"updated_at" db:"updated_at"`
 }
 
 type CryptoTransaction struct {
@@ -55,54 +55,54 @@ type CryptoTransaction struct {
 }
 
 type ExchangeAccount struct {
-	ID              uuid.UUID  `json:"exchange_id" db:"exchange_id"`
-	SNISIDPersonID  *uuid.UUID `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
-	ExchangeName    string     `json:"exchange_name" db:"exchange_name"`
-	ExchangeCountry *string    `json:"exchange_country,omitempty" db:"exchange_country"`
-	AccountRef      *string    `json:"account_ref,omitempty" db:"account_ref"`
-	KycLevel        *string    `json:"kyc_level,omitempty" db:"kyc_level"`
-	TotalVolumeUSD  *float64   `json:"total_volume_usd,omitempty" db:"total_volume_usd"`
-	IsFlagged       bool       `json:"is_flagged" db:"is_flagged"`
-	FlaggingReason  *string    `json:"flagging_reason,omitempty" db:"flagging_reason"`
-	LegalHoldRequest bool      `json:"legal_hold_request" db:"legal_hold_request"`
-	CreatedAt       time.Time  `json:"created_at" db:"created_at"`
+	ID               uuid.UUID  `json:"exchange_id" db:"exchange_id"`
+	SNISIDPersonID   *uuid.UUID `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
+	ExchangeName     string     `json:"exchange_name" db:"exchange_name"`
+	ExchangeCountry  *string    `json:"exchange_country,omitempty" db:"exchange_country"`
+	AccountRef       *string    `json:"account_ref,omitempty" db:"account_ref"`
+	KycLevel         *string    `json:"kyc_level,omitempty" db:"kyc_level"`
+	TotalVolumeUSD   *float64   `json:"total_volume_usd,omitempty" db:"total_volume_usd"`
+	IsFlagged        bool       `json:"is_flagged" db:"is_flagged"`
+	FlaggingReason   *string    `json:"flagging_reason,omitempty" db:"flagging_reason"`
+	LegalHoldRequest bool       `json:"legal_hold_request" db:"legal_hold_request"`
+	CreatedAt        time.Time  `json:"created_at" db:"created_at"`
 }
 
 type WalletRiskReport struct {
-	WalletAddress    string    `json:"wallet_address"`
-	NationalCryptID  *string   `json:"national_crypt_id,omitempty"`
-	IsSanctioned     bool      `json:"is_sanctioned"`
-	IsFrozen         bool      `json:"is_frozen"`
-	SuspicionType    SuspicionType `json:"suspicion_type"`
-	SuspicionCount   int       `json:"suspicion_count"`
-	RiskScore        int       `json:"risk_score"`
-	IsKnownCriminal  bool      `json:"is_known_criminal"`
-	MixerExposure    bool      `json:"mixer_exposure"`
-	LinkedCases      []uuid.UUID `json:"linked_cases"`
-	Transactions     int       `json:"transaction_count"`
-	AnalyzedAt       time.Time `json:"analyzed_at"`
+	WalletAddress   string        `json:"wallet_address"`
+	NationalCryptID *string       `json:"national_crypt_id,omitempty"`
+	IsSanctioned    bool          `json:"is_sanctioned"`
+	IsFrozen        bool          `json:"is_frozen"`
+	SuspicionType   SuspicionType `json:"suspicion_type"`
+	SuspicionCount  int           `json:"suspicion_count"`
+	RiskScore       int           `json:"risk_score"`
+	IsKnownCriminal bool          `json:"is_known_criminal"`
+	MixerExposure   bool          `json:"mixer_exposure"`
+	LinkedCases     []uuid.UUID   `json:"linked_cases"`
+	Transactions    int           `json:"transaction_count"`
+	AnalyzedAt      time.Time     `json:"analyzed_at"`
 }
 
 type CreateWalletRequest struct {
-	WalletAddress     string        `json:"wallet_address" binding:"required"`
-	AssetType         AssetType     `json:"asset_type" binding:"required"`
-	BlockchainNetwork *string       `json:"blockchain_network,omitempty"`
-	SuspicionType     SuspicionType `json:"suspicion_type" binding:"required"`
-	SNISIDPersonID    *uuid.UUID    `json:"snisid_person_id,omitempty"`
-	GangID            *uuid.UUID    `json:"gang_id,omitempty"`
-	EstimatedBalanceUSD *float64   `json:"estimated_balance_usd,omitempty"`
-	TotalReceivedUSD  *float64      `json:"total_received_usd,omitempty"`
-	TotalSentUSD      *float64      `json:"total_sent_usd,omitempty"`
-	FirstTxDate       *time.Time    `json:"first_tx_date,omitempty"`
-	LastTxDate        *time.Time    `json:"last_tx_date,omitempty"`
-	IsSanctioned      bool          `json:"is_sanctioned"`
-	OfacSDNRef        *string       `json:"ofac_sdn_ref,omitempty"`
-	ChainalysisRef    *string       `json:"chainalysis_ref,omitempty"`
-	EllipticRef       *string       `json:"elliptic_ref,omitempty"`
-	SourceIntel       *string       `json:"source_intel,omitempty"`
-	IsFrozen          bool          `json:"is_frozen"`
-	FreezeJurisdiction *string      `json:"freeze_jurisdiction,omitempty"`
-	CreatedBy         uuid.UUID     `json:"created_by" binding:"required"`
+	WalletAddress       string        `json:"wallet_address" binding:"required"`
+	AssetType           AssetType     `json:"asset_type" binding:"required"`
+	BlockchainNetwork   *string       `json:"blockchain_network,omitempty"`
+	SuspicionType       SuspicionType `json:"suspicion_type" binding:"required"`
+	SNISIDPersonID      *uuid.UUID    `json:"snisid_person_id,omitempty"`
+	GangID              *uuid.UUID    `json:"gang_id,omitempty"`
+	EstimatedBalanceUSD *float64      `json:"estimated_balance_usd,omitempty"`
+	TotalReceivedUSD    *float64      `json:"total_received_usd,omitempty"`
+	TotalSentUSD        *float64      `json:"total_sent_usd,omitempty"`
+	FirstTxDate         *time.Time    `json:"first_tx_date,omitempty"`
+	LastTxDate          *time.Time    `json:"last_tx_date,omitempty"`
+	IsSanctioned        bool          `json:"is_sanctioned"`
+	OfacSDNRef          *string       `json:"ofac_sdn_ref,omitempty"`
+	ChainalysisRef      *string       `json:"chainalysis_ref,omitempty"`
+	EllipticRef         *string       `json:"elliptic_ref,omitempty"`
+	SourceIntel         *string       `json:"source_intel,omitempty"`
+	IsFrozen            bool          `json:"is_frozen"`
+	FreezeJurisdiction  *string       `json:"freeze_jurisdiction,omitempty"`
+	CreatedBy           uuid.UUID     `json:"created_by" binding:"required"`
 }
 
 type AddTransactionRequest struct {

@@ -40,7 +40,7 @@ func (h *HttpHandler) Create(c *gin.Context) {
 	}
 
 	// In real app, extract user from context set by Auth middleware
-	changedBy := "system" 
+	changedBy := "system"
 
 	res, err := h.svc.CreateIdentity(c.Request.Context(), &req, changedBy)
 	if err != nil {
@@ -77,9 +77,15 @@ func (h *HttpHandler) Update(c *gin.Context) {
 	}
 
 	updateFn := func(i *entity.Identity) {
-		if req.FirstName != "" { i.FirstName = req.FirstName }
-		if req.LastName != "" { i.LastName = req.LastName }
-		if req.Agency != "" { i.Agency = req.Agency }
+		if req.FirstName != "" {
+			i.FirstName = req.FirstName
+		}
+		if req.LastName != "" {
+			i.LastName = req.LastName
+		}
+		if req.Agency != "" {
+			i.Agency = req.Agency
+		}
 	}
 
 	res, err := h.svc.UpdateIdentity(c.Request.Context(), id, updateFn, "user updated details", "system")
@@ -92,7 +98,7 @@ func (h *HttpHandler) Update(c *gin.Context) {
 
 func (h *HttpHandler) Flag(c *gin.Context) {
 	id := c.Param("id")
-	
+
 	var req struct {
 		Reason string `json:"reason"`
 	}

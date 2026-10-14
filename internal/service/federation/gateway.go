@@ -32,8 +32,8 @@ func (g *Gateway) Search(ctx context.Context, query string) ([]AgencyResult, err
 	results := make([]AgencyResult, len(g.connectors))
 	var mu sync.Mutex
 
-	logger.Info(ctx, "Starting federated cross-agency search", 
-		zap.String("query", query), 
+	logger.Info(ctx, "Starting federated cross-agency search",
+		zap.String("query", query),
 		zap.Int("connector_count", len(g.connectors)),
 	)
 
@@ -42,7 +42,7 @@ func (g *Gateway) Search(ctx context.Context, query string) ([]AgencyResult, err
 		c := conn
 		eg.Go(func() error {
 			res, err := c.Fetch(ctx, query)
-			
+
 			mu.Lock()
 			if err != nil {
 				logger.Warn(ctx, fmt.Sprintf("Connector %s failed", c.Name()), zap.Error(err))
@@ -51,7 +51,7 @@ func (g *Gateway) Search(ctx context.Context, query string) ([]AgencyResult, err
 				results[idx] = res
 			}
 			mu.Unlock()
-			
+
 			// We return nil to eg.Go because we handle errors internally to allow partial results
 			return nil
 		})

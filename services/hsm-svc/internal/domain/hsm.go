@@ -9,11 +9,11 @@ import (
 type KeyAlgorithm string
 
 const (
-	AlgorithmRSA   KeyAlgorithm = "RSA"
-	AlgorithmEC    KeyAlgorithm = "EC"
-	AlgorithmPQC   KeyAlgorithm = "PQC"
-	AlgorithmAES   KeyAlgorithm = "AES"
-	AlgorithmHMAC  KeyAlgorithm = "HMAC"
+	AlgorithmRSA  KeyAlgorithm = "RSA"
+	AlgorithmEC   KeyAlgorithm = "EC"
+	AlgorithmPQC  KeyAlgorithm = "PQC"
+	AlgorithmAES  KeyAlgorithm = "AES"
+	AlgorithmHMAC KeyAlgorithm = "HMAC"
 )
 
 type KeyState string
@@ -29,30 +29,30 @@ const (
 type KeyUsage string
 
 const (
-	UsageSign       KeyUsage = "SIGN"
-	UsageVerify     KeyUsage = "VERIFY"
-	UsageEncrypt    KeyUsage = "ENCRYPT"
-	UsageDecrypt    KeyUsage = "DECRYPT"
-	UsageWrapKey    KeyUsage = "WRAP_KEY"
-	UsageUnwrapKey  KeyUsage = "UNWRAP_KEY"
+	UsageSign      KeyUsage = "SIGN"
+	UsageVerify    KeyUsage = "VERIFY"
+	UsageEncrypt   KeyUsage = "ENCRYPT"
+	UsageDecrypt   KeyUsage = "DECRYPT"
+	UsageWrapKey   KeyUsage = "WRAP_KEY"
+	UsageUnwrapKey KeyUsage = "UNWRAP_KEY"
 )
 
 type HSMKey struct {
-	KeyID        uuid.UUID    `json:"key_id"`
-	KeyLabel     string       `json:"key_label"`
-	Algorithm    KeyAlgorithm `json:"algorithm"`
-	KeySize      int          `json:"key_size"`
-	State        KeyState     `json:"state"`
-	Usages       []KeyUsage   `json:"usages"`
-	SlotID       int          `json:"slot_id"`
-	IsExtractable bool        `json:"is_extractable"`
-	PublicKeyPEM string       `json:"public_key_pem,omitempty"`
-	KeyHash      string       `json:"key_hash"`
-	RotatedAt    *time.Time   `json:"rotated_at,omitempty"`
-	ExpiresAt    *time.Time   `json:"expires_at,omitempty"`
-	CreatedAt    time.Time    `json:"created_at"`
-	UpdatedAt    time.Time    `json:"updated_at"`
-	CreatedBy    string       `json:"created_by"`
+	KeyID         uuid.UUID    `json:"key_id"`
+	KeyLabel      string       `json:"key_label"`
+	Algorithm     KeyAlgorithm `json:"algorithm"`
+	KeySize       int          `json:"key_size"`
+	State         KeyState     `json:"state"`
+	Usages        []KeyUsage   `json:"usages"`
+	SlotID        int          `json:"slot_id"`
+	IsExtractable bool         `json:"is_extractable"`
+	PublicKeyPEM  string       `json:"public_key_pem,omitempty"`
+	KeyHash       string       `json:"key_hash"`
+	RotatedAt     *time.Time   `json:"rotated_at,omitempty"`
+	ExpiresAt     *time.Time   `json:"expires_at,omitempty"`
+	CreatedAt     time.Time    `json:"created_at"`
+	UpdatedAt     time.Time    `json:"updated_at"`
+	CreatedBy     string       `json:"created_by"`
 }
 
 type HSMSlot struct {
@@ -79,13 +79,13 @@ type KeyGenerationRequest struct {
 }
 
 type KeyGenerationResponse struct {
-	KeyID        uuid.UUID  `json:"key_id"`
-	KeyLabel     string     `json:"key_label"`
+	KeyID        uuid.UUID    `json:"key_id"`
+	KeyLabel     string       `json:"key_label"`
 	Algorithm    KeyAlgorithm `json:"algorithm"`
-	KeySize      int        `json:"key_size"`
-	SlotID       int        `json:"slot_id"`
-	PublicKeyPEM string     `json:"public_key_pem"`
-	CreatedAt    time.Time  `json:"created_at"`
+	KeySize      int          `json:"key_size"`
+	SlotID       int          `json:"slot_id"`
+	PublicKeyPEM string       `json:"public_key_pem"`
+	CreatedAt    time.Time    `json:"created_at"`
 }
 
 type KeyWrapRequest struct {

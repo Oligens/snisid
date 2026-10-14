@@ -41,8 +41,8 @@ func (s *ExpungementService) RequestExpungement(
 	}
 
 	_ = s.eventPub.Publish("fir.record.expunged", map[string]interface{}{
-		"record_id": recordID,
-		"reason":    reason,
+		"record_id":   recordID,
+		"reason":      reason,
 		"expunged_at": time.Now(),
 	})
 

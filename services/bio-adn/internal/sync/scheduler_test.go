@@ -28,7 +28,7 @@ func (m *mockUploadStore) MarkUploaded(ctx context.Context, id, level string) er
 }
 
 type mockEventProducer struct {
-	createdCalled int
+	createdCalled  int
 	uploadedCalled int
 }
 

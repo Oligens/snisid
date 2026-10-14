@@ -1,7 +1,7 @@
 package middleware
 
 import (
-		"bytes"
+	"bytes"
 	"context"
 	"encoding/json"
 	"net/http"

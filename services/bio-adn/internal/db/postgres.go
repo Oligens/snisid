@@ -393,13 +393,19 @@ func (p *Postgres) QueryForeignFugitives(ctx context.Context, lastName, national
 	var args []any
 	argIdx := 1
 	if lastName != "" {
-		where += fmt.Sprintf(" AND last_name ILIKE $%d", argIdx); args = append(args, "%"+lastName+"%"); argIdx++
+		where += fmt.Sprintf(" AND last_name ILIKE $%d", argIdx)
+		args = append(args, "%"+lastName+"%")
+		argIdx++
 	}
 	if nationality != "" {
-		where += fmt.Sprintf(" AND nationality = $%d", argIdx); args = append(args, nationality); argIdx++
+		where += fmt.Sprintf(" AND nationality = $%d", argIdx)
+		args = append(args, nationality)
+		argIdx++
 	}
 	if noticeType != "" {
-		where += fmt.Sprintf(" AND notice_type = $%d", argIdx); args = append(args, noticeType); argIdx++
+		where += fmt.Sprintf(" AND notice_type = $%d", argIdx)
+		args = append(args, noticeType)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_foreign_fugitives `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, interpol_notice_number, notice_type, COALESCE(last_name,''), COALESCE(first_name,''), COALESCE(nationality,''), issuing_country, entering_agency, status FROM per_foreign_fugitives %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
@@ -425,7 +431,9 @@ func (p *Postgres) GetForeignFugitiveByID(ctx context.Context, id string) (*mode
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, interpol_notice_number, notice_type, COALESCE(last_name,''), COALESCE(first_name,''), COALESCE(nationality,''), issuing_country, entering_agency, status FROM per_foreign_fugitives WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.ForeignFugitive
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.InterpolNoticeNumber, &x.NoticeType, &x.LastName, &x.FirstName, &x.Nationality, &x.IssuingCountry, &x.EnteringAgency, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -449,22 +457,32 @@ func (p *Postgres) QueryUnidentifiedPersons(ctx context.Context, dept, gender st
 	var args []any
 	argIdx := 1
 	if dept != "" {
-		where += fmt.Sprintf(" AND discovery_department = $%d", argIdx); args = append(args, dept); argIdx++
+		where += fmt.Sprintf(" AND discovery_department = $%d", argIdx)
+		args = append(args, dept)
+		argIdx++
 	}
 	if gender != "" {
-		where += fmt.Sprintf(" AND gender = $%d", argIdx); args = append(args, gender); argIdx++
+		where += fmt.Sprintf(" AND gender = $%d", argIdx)
+		args = append(args, gender)
+		argIdx++
 	}
 	if ageMin > 0 {
-		where += fmt.Sprintf(" AND estimated_age_max >= $%d", argIdx); args = append(args, ageMin); argIdx++
+		where += fmt.Sprintf(" AND estimated_age_max >= $%d", argIdx)
+		args = append(args, ageMin)
+		argIdx++
 	}
 	if ageMax > 0 {
-		where += fmt.Sprintf(" AND estimated_age_min <= $%d", argIdx); args = append(args, ageMax); argIdx++
+		where += fmt.Sprintf(" AND estimated_age_min <= $%d", argIdx)
+		args = append(args, ageMax)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_unidentified_persons `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, discovery_date, discovery_location, COALESCE(discovery_department,''), COALESCE(gender,''), estimated_age_min, estimated_age_max, COALESCE(entering_agency,''), status FROM per_unidentified_persons %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.UnidentifiedPerson
 	for rows.Next() {
@@ -481,7 +499,9 @@ func (p *Postgres) GetUnidentifiedByID(ctx context.Context, id string) (*models.
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, discovery_date, discovery_location, COALESCE(discovery_department,''), COALESCE(gender,''), estimated_age_min, estimated_age_max, COALESCE(entering_agency,''), status FROM per_unidentified_persons WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.UnidentifiedPerson
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.DiscoveryDate, &x.DiscoveryLocation, &x.DiscoveryDepartment, &x.Gender, &x.EstimatedAgeMin, &x.EstimatedAgeMax, &x.EnteringAgency, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -505,19 +525,27 @@ func (p *Postgres) QueryTerrorismWatches(ctx context.Context, riskLevel, threatT
 	var args []any
 	argIdx := 1
 	if riskLevel != "" {
-		where += fmt.Sprintf(" AND risk_level = $%d", argIdx); args = append(args, riskLevel); argIdx++
+		where += fmt.Sprintf(" AND risk_level = $%d", argIdx)
+		args = append(args, riskLevel)
+		argIdx++
 	}
 	if threatType != "" {
-		where += fmt.Sprintf(" AND threat_type ILIKE $%d", argIdx); args = append(args, "%"+threatType+"%"); argIdx++
+		where += fmt.Sprintf(" AND threat_type ILIKE $%d", argIdx)
+		args = append(args, "%"+threatType+"%")
+		argIdx++
 	}
 	if nationality != "" {
-		where += fmt.Sprintf(" AND nationality = $%d", argIdx); args = append(args, nationality); argIdx++
+		where += fmt.Sprintf(" AND nationality = $%d", argIdx)
+		args = append(args, nationality)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_terrorism_watch `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, COALESCE(niu,''), last_name, COALESCE(first_name,''), COALESCE(nationality,''), risk_level, threat_type, entering_agency, approved_by_director, status FROM per_terrorism_watch %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.TerrorismWatch
 	for rows.Next() {
@@ -534,7 +562,9 @@ func (p *Postgres) GetTerrorismWatchByID(ctx context.Context, id string) (*model
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, COALESCE(niu,''), last_name, COALESCE(first_name,''), COALESCE(nationality,''), risk_level, threat_type, entering_agency, approved_by_director, status FROM per_terrorism_watch WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.TerrorismWatch
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.NIU, &x.LastName, &x.FirstName, &x.Nationality, &x.RiskLevel, &x.ThreatType, &x.EnteringAgency, &x.ApprovedByDirector, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -557,19 +587,27 @@ func (p *Postgres) QueryProtectionOrders(ctx context.Context, beneficiaryName, r
 	var args []any
 	argIdx := 1
 	if beneficiaryName != "" {
-		where += fmt.Sprintf(" AND (beneficiary_name ILIKE $%d OR protected_person ILIKE $%d)", argIdx, argIdx); args = append(args, "%"+beneficiaryName+"%"); argIdx++
+		where += fmt.Sprintf(" AND (beneficiary_name ILIKE $%d OR protected_person ILIKE $%d)", argIdx, argIdx)
+		args = append(args, "%"+beneficiaryName+"%")
+		argIdx++
 	}
 	if restrainedPerson != "" {
-		where += fmt.Sprintf(" AND restrained_person ILIKE $%d", argIdx); args = append(args, "%"+restrainedPerson+"%"); argIdx++
+		where += fmt.Sprintf(" AND restrained_person ILIKE $%d", argIdx)
+		args = append(args, "%"+restrainedPerson+"%")
+		argIdx++
 	}
 	if orderType != "" {
-		where += fmt.Sprintf(" AND order_type = $%d", argIdx); args = append(args, orderType); argIdx++
+		where += fmt.Sprintf(" AND order_type = $%d", argIdx)
+		args = append(args, orderType)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_protection_orders `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, order_type, issuing_court, COALESCE(beneficiary_name,''), COALESCE(restrained_person,''), COALESCE(issue_date,''), COALESCE(expiration_date,''), status FROM per_protection_orders %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.ProtectionOrder
 	for rows.Next() {
@@ -586,7 +624,9 @@ func (p *Postgres) GetActiveProtectionOrdersByBeneficiary(ctx context.Context, b
 	rows, err := p.database.QueryContext(ctx, `
 		SELECT id, record_number, order_type, issuing_court, COALESCE(beneficiary_name,''), COALESCE(restrained_person,''), COALESCE(issue_date,''), COALESCE(expiration_date,''), status
 		FROM per_protection_orders WHERE beneficiary_niu = $1 AND status = 'ACTIVE' AND (expiration_date IS NULL OR expiration_date >= CURRENT_DATE)`, beneficiaryNIU)
-	if err != nil { return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 	var items []models.ProtectionOrder
 	for rows.Next() {
@@ -596,7 +636,9 @@ func (p *Postgres) GetActiveProtectionOrdersByBeneficiary(ctx context.Context, b
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.ProtectionOrder{} }
+	if items == nil {
+		items = []models.ProtectionOrder{}
+	}
 	return items, rows.Err()
 }
 
@@ -619,19 +661,27 @@ func (p *Postgres) QuerySupervisedReleases(ctx context.Context, niu, supervision
 	var args []any
 	argIdx := 1
 	if niu != "" {
-		where += fmt.Sprintf(" AND niu = $%d", argIdx); args = append(args, niu); argIdx++
+		where += fmt.Sprintf(" AND niu = $%d", argIdx)
+		args = append(args, niu)
+		argIdx++
 	}
 	if supervisionType != "" {
-		where += fmt.Sprintf(" AND supervision_type = $%d", argIdx); args = append(args, supervisionType); argIdx++
+		where += fmt.Sprintf(" AND supervision_type = $%d", argIdx)
+		args = append(args, supervisionType)
+		argIdx++
 	}
 	if status != "" {
-		where += fmt.Sprintf(" AND status = $%d", argIdx); args = append(args, status); argIdx++
+		where += fmt.Sprintf(" AND status = $%d", argIdx)
+		args = append(args, status)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_supervised_releases `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, niu, last_name, COALESCE(first_name,''), supervision_type, start_date, COALESCE(end_date,''), supervising_officer, supervising_agency, status FROM per_supervised_releases %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.SupervisedRelease
 	for rows.Next() {
@@ -648,7 +698,9 @@ func (p *Postgres) GetSupervisedReleaseByID(ctx context.Context, id string) (*mo
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, niu, last_name, COALESCE(first_name,''), supervision_type, start_date, COALESCE(end_date,''), supervising_officer, supervising_agency, status FROM per_supervised_releases WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.SupervisedRelease
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.NIU, &x.LastName, &x.FirstName, &x.SupervisionType, &x.StartDate, &x.EndDate, &x.SupervisingOfficer, &x.SupervisingAgency, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -683,7 +735,9 @@ func (p *Postgres) QueryLabEquipment(ctx context.Context, labCode string) ([]mod
 		args = append(args, labCode)
 	}
 	rows, err := p.database.QueryContext(ctx, query, args...)
-	if err != nil { return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 	var items []models.LabEquipment
 	for rows.Next() {
@@ -693,7 +747,9 @@ func (p *Postgres) QueryLabEquipment(ctx context.Context, labCode string) ([]mod
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.LabEquipment{} }
+	if items == nil {
+		items = []models.LabEquipment{}
+	}
 	return items, rows.Err()
 }
 
@@ -701,7 +757,9 @@ func (p *Postgres) GetLabEquipmentByID(ctx context.Context, id string) (*models.
 	row := p.database.QueryRowContext(ctx, `SELECT id, lab_code, equipment_name, COALESCE(model,''), serial_number, role, status FROM bio_lab_equipment WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.LabEquipment
 	err := row.Scan(&x.ID, &x.LabCode, &x.EquipmentName, &x.Model, &x.SerialNumber, &x.Role, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -730,7 +788,9 @@ func (p *Postgres) QueryStaffTraining(ctx context.Context, staffNIU string) ([]m
 		args = append(args, staffNIU)
 	}
 	rows, err := p.database.QueryContext(ctx, query, args...)
-	if err != nil { return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 	var items []models.StaffTraining
 	for rows.Next() {
@@ -740,7 +800,9 @@ func (p *Postgres) QueryStaffTraining(ctx context.Context, staffNIU string) ([]m
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.StaffTraining{} }
+	if items == nil {
+		items = []models.StaffTraining{}
+	}
 	return items, rows.Err()
 }
 
@@ -748,7 +810,9 @@ func (p *Postgres) GetStaffTrainingByID(ctx context.Context, id string) (*models
 	row := p.database.QueryRowContext(ctx, `SELECT id, staff_niu, training_name, training_code, duration_hours, completed_date, COALESCE(valid_until::text,''), issued_by FROM bio_staff_training WHERE id = $1 AND is_deleted = FALSE`, id)
 	var x models.StaffTraining
 	err := row.Scan(&x.ID, &x.StaffNIU, &x.TrainingName, &x.TrainingCode, &x.DurationHours, &x.CompletedDate, &x.ValidUntil, &x.IssuedBy)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -782,17 +846,21 @@ func (p *Postgres) QueryCrossDeptHits(ctx context.Context, sdis, matchType strin
 	argIdx := 1
 	if sdis != "" {
 		where += fmt.Sprintf(" AND (query_sdis = $%d OR match_sdis = $%d)", argIdx, argIdx)
-		args = append(args, sdis); argIdx++
+		args = append(args, sdis)
+		argIdx++
 	}
 	if matchType != "" {
 		where += fmt.Sprintf(" AND match_type = $%d", argIdx)
-		args = append(args, matchType); argIdx++
+		args = append(args, matchType)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM ndis_cross_dept_hits `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, query_sample_id, match_sample_id, match_type, confidence, query_sdis, match_sdis, alert_level FROM ndis_cross_dept_hits %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.NdisCrossDeptHit
 	for rows.Next() {
@@ -832,15 +900,21 @@ func (p *Postgres) CreateNdisReport(ctx context.Context, r *models.NdisReport) e
 
 func (p *Postgres) QueryNdisReports(ctx context.Context) ([]models.NdisReport, error) {
 	rows, err := p.database.QueryContext(ctx, `SELECT id, report_type, status, COALESCE(file_path,''), created_at::text FROM ndis_reports ORDER BY created_at DESC LIMIT 50`)
-	if err != nil { return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 	var items []models.NdisReport
 	for rows.Next() {
 		var x models.NdisReport
-		if err := rows.Scan(&x.ID, &x.ReportType, &x.Status, &x.FilePath, &x.GeneratedAt); err != nil { return nil, err }
+		if err := rows.Scan(&x.ID, &x.ReportType, &x.Status, &x.FilePath, &x.GeneratedAt); err != nil {
+			return nil, err
+		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.NdisReport{} }
+	if items == nil {
+		items = []models.NdisReport{}
+	}
 	return items, nil
 }
 
@@ -876,19 +950,27 @@ func (p *Postgres) QueryViolenceRecords(ctx context.Context, niu, incidentType, 
 	var args []any
 	argIdx := 1
 	if niu != "" {
-		where += fmt.Sprintf(" AND niu = $%d", argIdx); args = append(args, niu); argIdx++
+		where += fmt.Sprintf(" AND niu = $%d", argIdx)
+		args = append(args, niu)
+		argIdx++
 	}
 	if incidentType != "" {
-		where += fmt.Sprintf(" AND incident_type = $%d", argIdx); args = append(args, incidentType); argIdx++
+		where += fmt.Sprintf(" AND incident_type = $%d", argIdx)
+		args = append(args, incidentType)
+		argIdx++
 	}
 	if status != "" {
-		where += fmt.Sprintf(" AND status = $%d", argIdx); args = append(args, status); argIdx++
+		where += fmt.Sprintf(" AND status = $%d", argIdx)
+		args = append(args, status)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_violence_records `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, COALESCE(niu,''), COALESCE(last_name,''), COALESCE(first_name,''), incident_type, incident_date, location, COALESCE(victim_niu,''), COALESCE(victim_name,''), arresting_agency, COALESCE(court_case_ref,''), risk_level, status FROM per_violence_records %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.ViolenceRecord
 	for rows.Next() {
@@ -898,7 +980,9 @@ func (p *Postgres) QueryViolenceRecords(ctx context.Context, niu, incidentType, 
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.ViolenceRecord{} }
+	if items == nil {
+		items = []models.ViolenceRecord{}
+	}
 	return items, total, rows.Err()
 }
 
@@ -906,7 +990,9 @@ func (p *Postgres) GetViolenceRecordByID(ctx context.Context, id string) (*model
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, COALESCE(niu,''), COALESCE(last_name,''), COALESCE(first_name,''), incident_type, incident_date, location, COALESCE(victim_niu,''), COALESCE(victim_name,''), arresting_agency, COALESCE(court_case_ref,''), risk_level, status FROM per_violence_records WHERE id = $1`, id)
 	var x models.ViolenceRecord
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.NIU, &x.LastName, &x.FirstName, &x.IncidentType, &x.IncidentDate, &x.Location, &x.VictimNIU, &x.VictimName, &x.ArrestingAgency, &x.CourtCaseRef, &x.RiskLevel, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -928,19 +1014,27 @@ func (p *Postgres) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType
 	var args []any
 	argIdx := 1
 	if victimNIU != "" {
-		where += fmt.Sprintf(" AND victim_niu = $%d", argIdx); args = append(args, victimNIU); argIdx++
+		where += fmt.Sprintf(" AND victim_niu = $%d", argIdx)
+		args = append(args, victimNIU)
+		argIdx++
 	}
 	if fraudType != "" {
-		where += fmt.Sprintf(" AND fraud_type = $%d", argIdx); args = append(args, fraudType); argIdx++
+		where += fmt.Sprintf(" AND fraud_type = $%d", argIdx)
+		args = append(args, fraudType)
+		argIdx++
 	}
 	if status != "" {
-		where += fmt.Sprintf(" AND status = $%d", argIdx); args = append(args, status); argIdx++
+		where += fmt.Sprintf(" AND status = $%d", argIdx)
+		args = append(args, status)
+		argIdx++
 	}
 	p.database.QueryRowContext(ctx, `SELECT COUNT(*) FROM per_identity_thefts `+where, args...).Scan(&total)
 	query := fmt.Sprintf(`SELECT id, record_number, victim_niu, COALESCE(victim_name,''), fraud_type, COALESCE(document_type_used,''), perpetrator_known, COALESCE(perpetrator_name,''), report_date, reporting_agency, status FROM per_identity_thefts %s ORDER BY created_at DESC LIMIT $%d OFFSET $%d`, where, argIdx, argIdx+1)
 	args2 := append(args, limit, offset)
 	rows, err := p.database.QueryContext(ctx, query, args2...)
-	if err != nil { return nil, 0, err }
+	if err != nil {
+		return nil, 0, err
+	}
 	defer rows.Close()
 	var items []models.IdentityTheft
 	for rows.Next() {
@@ -950,7 +1044,9 @@ func (p *Postgres) QueryIdentityThefts(ctx context.Context, victimNIU, fraudType
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.IdentityTheft{} }
+	if items == nil {
+		items = []models.IdentityTheft{}
+	}
 	return items, total, rows.Err()
 }
 
@@ -958,7 +1054,9 @@ func (p *Postgres) GetIdentityTheftByID(ctx context.Context, id string) (*models
 	row := p.database.QueryRowContext(ctx, `SELECT id, record_number, victim_niu, COALESCE(victim_name,''), fraud_type, COALESCE(document_type_used,''), perpetrator_known, COALESCE(perpetrator_name,''), report_date, reporting_agency, status FROM per_identity_thefts WHERE id = $1`, id)
 	var x models.IdentityTheft
 	err := row.Scan(&x.RecordID, &x.RecordNumber, &x.VictimNIU, &x.VictimName, &x.FraudType, &x.DocumentTypeUsed, &x.PerpetratorKnown, &x.PerpetratorName, &x.ReportDate, &x.ReportingAgency, &x.Status)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
@@ -976,13 +1074,17 @@ func (p *Postgres) GetIdentityLinkBySampleID(ctx context.Context, sampleID strin
 	row := p.database.QueryRowContext(ctx, `SELECT sample_id, niu, linked_by, linked_at::text, COALESCE(court_order,'') FROM bio_identity_links WHERE sample_id = $1`, sampleID)
 	var x models.BioIdentityLink
 	err := row.Scan(&x.SampleID, &x.NIU, &x.LinkedBy, &x.LinkedAt, &x.CourtOrder)
-	if err == sql.ErrNoRows { return nil, nil }
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
 	return &x, err
 }
 
 func (p *Postgres) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]models.BioIdentityLink, error) {
 	rows, err := p.database.QueryContext(ctx, `SELECT sample_id, niu, linked_by, linked_at::text, COALESCE(court_order,'') FROM bio_identity_links WHERE niu = $1 ORDER BY linked_at DESC`, niu)
-	if err != nil { return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer rows.Close()
 	var items []models.BioIdentityLink
 	for rows.Next() {
@@ -992,7 +1094,9 @@ func (p *Postgres) QueryIdentityLinksByNIU(ctx context.Context, niu string) ([]m
 		}
 		items = append(items, x)
 	}
-	if items == nil { items = []models.BioIdentityLink{} }
+	if items == nil {
+		items = []models.BioIdentityLink{}
+	}
 	return items, rows.Err()
 }
 

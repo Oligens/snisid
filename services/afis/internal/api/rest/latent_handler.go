@@ -11,8 +11,8 @@ import (
 )
 
 type LatentHandler struct {
-	latent  *service.LatentService
-	search  *service.SearchService
+	latent *service.LatentService
+	search *service.SearchService
 }
 
 func NewLatentHandler(l *service.LatentService, s *service.SearchService) *LatentHandler {
@@ -21,12 +21,12 @@ func NewLatentHandler(l *service.LatentService, s *service.SearchService) *Laten
 
 func (h *LatentHandler) SubmitLatent(c *gin.Context) {
 	var req struct {
-		CaseReference string                `json:"case_reference" binding:"required"`
-		CrimeSceneID  *uuid.UUID            `json:"crime_scene_id,omitempty"`
-		LocationDesc  *string               `json:"location_desc,omitempty"`
-		DeptCode      *string               `json:"dept_code,omitempty"`
-		FoundAt       string                `json:"found_at" binding:"required"`
-		ImageRef      string                `json:"image_ref" binding:"required"`
+		CaseReference  string                `json:"case_reference" binding:"required"`
+		CrimeSceneID   *uuid.UUID            `json:"crime_scene_id,omitempty"`
+		LocationDesc   *string               `json:"location_desc,omitempty"`
+		DeptCode       *string               `json:"dept_code,omitempty"`
+		FoundAt        string                `json:"found_at" binding:"required"`
+		ImageRef       string                `json:"image_ref" binding:"required"`
 		FingerPosition domain.FingerPosition `json:"finger_position"`
 	}
 

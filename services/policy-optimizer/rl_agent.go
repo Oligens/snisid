@@ -26,10 +26,10 @@ func (o *PolicyOptimizer) CalculateReward(state SystemState, previousFraud float
 
 func (o *PolicyOptimizer) SuggestAction(state SystemState) string {
 	logger.Info(context.Background(), "RL-OPTIMIZER: Analyzing system state for policy suggestion...")
-	
+
 	if state.FraudRate > 0.4 {
 		return "SUGGESTION: Tighten transaction verification threshold"
 	}
-	
+
 	return "SUGGESTION: Maintain current policy stability"
 }

@@ -12,10 +12,10 @@ import (
 )
 
 type StolenPlateService struct {
-	repo   repository.StolenPlateRepository
+	repo    repository.StolenPlateRepository
 	hotlist repository.HotlistCache
-	kafka  repository.EventPublisher
-	logger *zap.Logger
+	kafka   repository.EventPublisher
+	logger  *zap.Logger
 }
 
 func NewStolenPlateService(

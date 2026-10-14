@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
 	"github.com/snisid/platform/services/sipep/internal/domain"
 	"github.com/snisid/platform/services/sipep/internal/service"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTransfer(t *testing.T) {

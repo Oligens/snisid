@@ -2,15 +2,15 @@ package execution
 
 import (
 	"fmt"
-	"net/http"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 type IdentityContext struct {
 	ServiceIdentity string `json:"service_identity"`
 	UserIdentity    string `json:"user_identity"`
-	Role           string `json:"role"`
-	MTLSVerified   bool   `json:"mtls_verified"`
+	Role            string `json:"role"`
+	MTLSVerified    bool   `json:"mtls_verified"`
 }
 
 func IdentityBinding() gin.HandlerFunc {
@@ -19,8 +19,8 @@ func IdentityBinding() gin.HandlerFunc {
 		ctx := IdentityContext{
 			ServiceIdentity: c.GetHeader("X-Service-ID"),
 			UserIdentity:    c.GetHeader("X-User-ID"),
-			Role:           c.GetHeader("X-User-Role"),
-			MTLSVerified:   true, // Enforced by Istio Envoy sidecar
+			Role:            c.GetHeader("X-User-Role"),
+			MTLSVerified:    true, // Enforced by Istio Envoy sidecar
 		}
 
 		if ctx.ServiceIdentity == "" {
@@ -30,7 +30,7 @@ func IdentityBinding() gin.HandlerFunc {
 		}
 
 		c.Set("identity", ctx)
-		fmt.Printf("🔐 NEXUS-MESH: Request verified. Service=%s, User=%s, Role=%s\n", 
+		fmt.Printf("🔐 NEXUS-MESH: Request verified. Service=%s, User=%s, Role=%s\n",
 			ctx.ServiceIdentity, ctx.UserIdentity, ctx.Role)
 		c.Next()
 	}

@@ -88,11 +88,11 @@ type FovesStatePlateResult struct {
 }
 
 type AlertFilter struct {
-	DeptCode    string
-	Category    string
-	Level       string
-	Status      string
+	DeptCode      string
+	Category      string
+	Level         string
+	Status        string
 	ReportingUnit string
-	Page        int
-	Limit       int
+	Page          int
+	Limit         int
 }

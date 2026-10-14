@@ -15,14 +15,14 @@ import (
 )
 
 type mockBBRepo struct {
-	createProgramFunc        func(ctx context.Context, scope *domain.ProgramScope) error
-	listProgramsFunc         func(ctx context.Context) ([]domain.ProgramScope, error)
-	createReportFunc         func(ctx context.Context, r *domain.VulnerabilityReport) error
-	findReportByIDFunc       func(ctx context.Context, id uuid.UUID) (*domain.VulnerabilityReport, error)
-	saveTriageResultFunc     func(ctx context.Context, t *domain.TriageResult) error
-	issueRewardFunc          func(ctx context.Context, r *domain.Reward) error
+	createProgramFunc           func(ctx context.Context, scope *domain.ProgramScope) error
+	listProgramsFunc            func(ctx context.Context) ([]domain.ProgramScope, error)
+	createReportFunc            func(ctx context.Context, r *domain.VulnerabilityReport) error
+	findReportByIDFunc          func(ctx context.Context, id uuid.UUID) (*domain.VulnerabilityReport, error)
+	saveTriageResultFunc        func(ctx context.Context, t *domain.TriageResult) error
+	issueRewardFunc             func(ctx context.Context, r *domain.Reward) error
 	createPentestEngagementFunc func(ctx context.Context, e *domain.PentestEngagement) error
-	findPentestByIDFunc      func(ctx context.Context, id uuid.UUID) (*domain.PentestEngagement, error)
+	findPentestByIDFunc         func(ctx context.Context, id uuid.UUID) (*domain.PentestEngagement, error)
 }
 
 func (m *mockBBRepo) CreateProgram(ctx context.Context, scope *domain.ProgramScope) error {
@@ -49,7 +49,9 @@ func (m *mockBBRepo) CreatePentestEngagement(ctx context.Context, e *domain.Pent
 func (m *mockBBRepo) FindPentestByID(ctx context.Context, id uuid.UUID) (*domain.PentestEngagement, error) {
 	return m.findPentestByIDFunc(ctx, id)
 }
-func (m *mockBBRepo) SaveRetestSchedule(ctx context.Context, s *domain.RetestSchedule) error { return nil }
+func (m *mockBBRepo) SaveRetestSchedule(ctx context.Context, s *domain.RetestSchedule) error {
+	return nil
+}
 
 func newTestBBService(repo repository.Repository) *BugBountyService {
 	return NewBugBountyService(repo, nil)

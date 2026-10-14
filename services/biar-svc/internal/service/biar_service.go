@@ -133,17 +133,17 @@ func (s *BIARService) ReportBatch(req *domain.ReportBatchRequest) (*domain.Batch
 	}
 
 	batch := &domain.BatchSeizure{
-		BatchReference:    batchRef,
-		OperationName:     req.OperationName,
-		SeizureDate:       now,
-		LocationDesc:      req.LocationDesc,
-		DeptCode:          req.DeptCode,
-		TotalWeapons:      len(weaponIDs),
-		WeaponIDs:         weaponIDs,
-		SeizingUnit:       req.SeizingUnit,
-		LeadOfficer:       req.LeadOfficer,
+		BatchReference:     batchRef,
+		OperationName:      req.OperationName,
+		SeizureDate:        now,
+		LocationDesc:       req.LocationDesc,
+		DeptCode:           req.DeptCode,
+		TotalWeapons:       len(weaponIDs),
+		WeaponIDs:          weaponIDs,
+		SeizingUnit:        req.SeizingUnit,
+		LeadOfficer:        req.LeadOfficer,
 		PartneringAgencies: req.PartneringAgencies,
-		Notes:             req.Notes,
+		Notes:              req.Notes,
 	}
 	if req.SeizureDate != nil {
 		batch.SeizureDate = *req.SeizureDate

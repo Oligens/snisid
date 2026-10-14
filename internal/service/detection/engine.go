@@ -38,7 +38,7 @@ func (e *DetectionEngine) Detect(ctx context.Context, newIdentity map[string]int
 
 		// Weighted Average (simplified)
 		avgScore := currentScore / len(e.strategies)
-		
+
 		// Boost if SSN/TaxID matches exactly
 		if newIdentity["taxId"] == cand["taxId"] && newIdentity["taxId"] != "" {
 			avgScore = 100

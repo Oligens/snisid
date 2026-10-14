@@ -33,9 +33,9 @@ type AuthService interface {
 }
 
 type authService struct {
-	dbRepo     repository.AuthRepository
+	dbRepo      repository.AuthRepository
 	sessionRepo repository.SessionRepository
-	privateKey *rsa.PrivateKey
+	privateKey  *rsa.PrivateKey
 }
 
 func NewAuthService(dbRepo repository.AuthRepository, sessionRepo repository.SessionRepository, pk *rsa.PrivateKey) AuthService {
@@ -113,7 +113,7 @@ func (s *authService) Refresh(ctx context.Context, sessionID, oldRefreshToken, c
 	user = &entity.UserCredentials{UserID: session.UserID, Roles: "user"} // Mock
 
 	// In a real implementation, you would fetch user by ID to get fresh roles
-	
+
 	return s.issueTokens(ctx, user, clientIP, session.DeviceFingerprint)
 }
 
@@ -130,7 +130,7 @@ func (s *authService) Logout(ctx context.Context, sessionID string) error {
 
 func (s *authService) issueTokens(ctx context.Context, user *entity.UserCredentials, clientIP, device string) (*TokenPair, error) {
 	roles := strings.Split(user.Roles, ",")
-	
+
 	// Generate JWT (RS256)
 	accessToken, err := security.GenerateRS256Token(user.UserID, roles, 15*time.Minute, s.privateKey)
 	if err != nil {

@@ -29,7 +29,7 @@ func (h *IntakeHandler) ProcessIntake(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"inmate":   inmate,
+		"inmate":    inmate,
 		"detention": detention,
 	})
 }

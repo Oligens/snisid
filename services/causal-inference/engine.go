@@ -19,7 +19,7 @@ type CausalEngine struct {
 
 func (e *CausalEngine) EstimateEffect(feature string, delta float64) float64 {
 	logger.Info(context.Background(), fmt.Sprintf("CAUSAL: Estimating effect of %s change (delta=%f)", feature, delta))
-	
+
 	// Simplified DAG traversal for demonstration
 	for _, edge := range e.Edges {
 		if edge.From == feature {

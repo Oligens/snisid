@@ -17,7 +17,7 @@ import (
 	"github.com/snisid/platform/internal/platform/middleware"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	
+
 	"github.com/snisid/platform/internal/domain/audit/entity"
 )
 
@@ -32,7 +32,7 @@ func main() {
 	if err != nil {
 		logger.Fatal(context.Background(), "failed to connect database", err)
 	}
-	
+
 	if getEnv("ENV", "dev") == "dev" {
 		db.AutoMigrate(&entity.AuditEvent{})
 	}

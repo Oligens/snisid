@@ -10,9 +10,9 @@ import (
 )
 
 type InmateHandler struct {
-	intakeSvc    *service.IntakeService
-	releaseSvc   *service.ReleaseService
-	transferSvc  *service.TransferService
+	intakeSvc   *service.IntakeService
+	releaseSvc  *service.ReleaseService
+	transferSvc *service.TransferService
 }
 
 func NewInmateHandler(
@@ -96,7 +96,7 @@ func (h *InmateHandler) ProcessRelease(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"message":  "Libération traitée avec succès",
+		"message":   "Libération traitée avec succès",
 		"detention": detention,
 	})
 }

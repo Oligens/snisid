@@ -22,7 +22,7 @@ type Action struct {
 
 func Compile(ast PolicyAST) CompiledPolicy {
 	fmt.Printf("GOVERNANCE-COMPILER: Compiling policy %s into formal predicate...\n", ast.Name)
-	
+
 	return func(s State, a Action) bool {
 		// Executable Proof Logic
 		if s.FraudRate > 0.7 && a.Name == ast.ForbiddenAction {

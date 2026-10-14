@@ -15,8 +15,8 @@ import (
 )
 
 type mockForensicsService struct {
-	verifyIntegrityFn       func(ctx context.Context, startSeq, endSeq int64) (bool, error)
-	queryByCorrelationIDFn  func(ctx context.Context, correlationID string) ([]entity.AuditEvent, error)
+	verifyIntegrityFn      func(ctx context.Context, startSeq, endSeq int64) (bool, error)
+	queryByCorrelationIDFn func(ctx context.Context, correlationID string) ([]entity.AuditEvent, error)
 }
 
 func (m *mockForensicsService) VerifyIntegrity(ctx context.Context, startSeq, endSeq int64) (bool, error) {

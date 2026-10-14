@@ -14,7 +14,7 @@ type TerritoryRepository interface {
 }
 
 type InMemoryTerritoryRepo struct {
-	mu         sync.RWMutex
+	mu          sync.RWMutex
 	territories map[uuid.UUID]*domain.Territory
 }
 

@@ -3,10 +3,10 @@ package domain
 type ActivityLevel string
 
 const (
-	ACTIVE     ActivityLevel = "ACTIVE"
-	INACTIVE   ActivityLevel = "INACTIVE"
-	DISBANDED  ActivityLevel = "DISBANDED"
-	EMERGING   ActivityLevel = "EMERGING"
+	ACTIVE    ActivityLevel = "ACTIVE"
+	INACTIVE  ActivityLevel = "INACTIVE"
+	DISBANDED ActivityLevel = "DISBANDED"
+	EMERGING  ActivityLevel = "EMERGING"
 )
 
 type RelationType string
@@ -22,19 +22,19 @@ const (
 type AssociationType string
 
 const (
-	FAMILY      AssociationType = "FAMILY"
-	BUSINESS    AssociationType = "BUSINESS"
-	CRIMINAL    AssociationType = "CRIMINAL"
-	COMMUNICATION AssociationType = "COMMUNICATION"
+	FAMILY          AssociationType = "FAMILY"
+	BUSINESS        AssociationType = "BUSINESS"
+	CRIMINAL        AssociationType = "CRIMINAL"
+	COMMUNICATION   AssociationType = "COMMUNICATION"
 	KNOWN_ASSOCIATE AssociationType = "KNOWN_ASSOCIATE"
 )
 
 type GangRole string
 
 const (
-	LEADER    GangRole = "LEADER"
+	LEADER     GangRole = "LEADER"
 	LIEUTENANT GangRole = "LIEUTENANT"
-	MEMBER    GangRole = "MEMBER"
-	ASSOCIATE GangRole = "ASSOCIATE"
-	CANDIDATE GangRole = "CANDIDATE"
+	MEMBER     GangRole = "MEMBER"
+	ASSOCIATE  GangRole = "ASSOCIATE"
+	CANDIDATE  GangRole = "CANDIDATE"
 )

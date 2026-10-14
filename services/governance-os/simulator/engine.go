@@ -19,29 +19,29 @@ type PolicyScenario struct {
 }
 
 type SimulationResult struct {
-	FraudShift         float64            `json:"fraud_shift"`
-	FalsePositives     float64            `json:"false_positives"`
-	ConflictFound      bool               `json:"conflict_found"`
-	AdoptionRate       float64            `json:"adoption_rate"`
-	CostImpact         float64            `json:"cost_impact"`
-	Iterations         int                `json:"iterations"`
-	ConvergenceTime    float64            `json:"convergence_time_hours"`
-	PerChangeImpact    []ChangeImpact     `json:"per_change_impact"`
-	ConfidenceInterval [2]float64         `json:"confidence_interval"`
+	FraudShift         float64        `json:"fraud_shift"`
+	FalsePositives     float64        `json:"false_positives"`
+	ConflictFound      bool           `json:"conflict_found"`
+	AdoptionRate       float64        `json:"adoption_rate"`
+	CostImpact         float64        `json:"cost_impact"`
+	Iterations         int            `json:"iterations"`
+	ConvergenceTime    float64        `json:"convergence_time_hours"`
+	PerChangeImpact    []ChangeImpact `json:"per_change_impact"`
+	ConfidenceInterval [2]float64     `json:"confidence_interval"`
 }
 
 type ChangeImpact struct {
-	Change          string  `json:"change"`
-	FraudDelta      float64 `json:"fraud_delta"`
-	FPDelta         float64 `json:"fp_delta"`
-	AdoptionDelta   float64 `json:"adoption_delta"`
+	Change        string  `json:"change"`
+	FraudDelta    float64 `json:"fraud_delta"`
+	FPDelta       float64 `json:"fp_delta"`
+	AdoptionDelta float64 `json:"adoption_delta"`
 }
 
 type SimulationEngine struct {
-	Environment    string
-	iterations     int
-	convergenceAt  float64
-	rng            *rand.Rand
+	Environment   string
+	iterations    int
+	convergenceAt float64
+	rng           *rand.Rand
 }
 
 func NewSimulationEngine(environment string) *SimulationEngine {
@@ -124,7 +124,7 @@ func (e *SimulationEngine) simulateChange(change string, baseFraud float64) Chan
 
 	switch change {
 	case "lower_threshold":
-		fraudDelta = -(baseFraud * 0.3 + noise)
+		fraudDelta = -(baseFraud*0.3 + noise)
 		fpDelta = 0.05 + noise*0.5
 		adoptionDelta = -0.02
 	case "raise_threshold":
@@ -132,7 +132,7 @@ func (e *SimulationEngine) simulateChange(change string, baseFraud float64) Chan
 		fpDelta = -(0.03 + noise*0.3)
 		adoptionDelta = 0.05
 	case "add_biometric_check":
-		fraudDelta = -(baseFraud * 0.4 + noise)
+		fraudDelta = -(baseFraud*0.4 + noise)
 		fpDelta = 0.08 + noise
 		adoptionDelta = -0.1
 	case "remove_biometric_check":
@@ -144,7 +144,7 @@ func (e *SimulationEngine) simulateChange(change string, baseFraud float64) Chan
 		fpDelta = 0.02 + noise*0.3
 		adoptionDelta = 0.15
 	case "add_risk_scoring":
-		fraudDelta = -(baseFraud * 0.35 + noise)
+		fraudDelta = -(baseFraud*0.35 + noise)
 		fpDelta = 0.04 + noise*0.4
 		adoptionDelta = -0.03
 	default:

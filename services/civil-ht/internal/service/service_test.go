@@ -15,13 +15,13 @@ import (
 )
 
 type mockRepo struct {
-	createBirthFunc      func(ctx context.Context, act *domain.CivilAct, birth *domain.BirthDeclaration) error
-	createDeathFunc      func(ctx context.Context, act *domain.CivilAct, death *domain.DeathDeclaration) error
-	createMarriageFunc   func(ctx context.Context, act *domain.CivilAct, marriage *domain.MarriageDeclaration) error
-	findByActNumberFunc  func(ctx context.Context, actNumber string) (*domain.CivilAct, error)
-	findByCitizenIDFunc  func(ctx context.Context, citizenID uuid.UUID) ([]domain.CivilAct, error)
-	findBirthDetailsFunc func(ctx context.Context, actID uuid.UUID) (*domain.BirthDeclaration, error)
-	findDeathDetailsFunc func(ctx context.Context, actID uuid.UUID) (*domain.DeathDeclaration, error)
+	createBirthFunc         func(ctx context.Context, act *domain.CivilAct, birth *domain.BirthDeclaration) error
+	createDeathFunc         func(ctx context.Context, act *domain.CivilAct, death *domain.DeathDeclaration) error
+	createMarriageFunc      func(ctx context.Context, act *domain.CivilAct, marriage *domain.MarriageDeclaration) error
+	findByActNumberFunc     func(ctx context.Context, actNumber string) (*domain.CivilAct, error)
+	findByCitizenIDFunc     func(ctx context.Context, citizenID uuid.UUID) ([]domain.CivilAct, error)
+	findBirthDetailsFunc    func(ctx context.Context, actID uuid.UUID) (*domain.BirthDeclaration, error)
+	findDeathDetailsFunc    func(ctx context.Context, actID uuid.UUID) (*domain.DeathDeclaration, error)
 	findMarriageDetailsFunc func(ctx context.Context, actID uuid.UUID) (*domain.MarriageDeclaration, error)
 }
 
@@ -63,11 +63,11 @@ func TestDeclareBirth(t *testing.T) {
 	now := time.Now()
 
 	tests := []struct {
-		name       string
-		birthReq   domain.BirthDeclaration
-		act        domain.CivilAct
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		birthReq    domain.BirthDeclaration
+		act         domain.CivilAct
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -78,10 +78,10 @@ func TestDeclareBirth(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
-				OfficerName:      strPtr("Officer Jean"),
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
+				OfficerName:       strPtr("Officer Jean"),
 			},
 			repo: &mockRepo{
 				createBirthFunc: func(ctx context.Context, act *domain.CivilAct, birth *domain.BirthDeclaration) error {
@@ -96,16 +96,16 @@ func TestDeclareBirth(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
 			},
 			repo: &mockRepo{
 				createBirthFunc: func(ctx context.Context, act *domain.CivilAct, birth *domain.BirthDeclaration) error {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "declare birth",
 		},
 	}
@@ -136,11 +136,11 @@ func TestDeclareDeath(t *testing.T) {
 	citizenID := uuid.New()
 
 	tests := []struct {
-		name       string
-		deathReq   domain.DeathDeclaration
-		act        domain.CivilAct
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		deathReq    domain.DeathDeclaration
+		act         domain.CivilAct
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -151,9 +151,9 @@ func TestDeclareDeath(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
 			},
 			repo: &mockRepo{
 				createDeathFunc: func(ctx context.Context, act *domain.CivilAct, death *domain.DeathDeclaration) error {
@@ -168,16 +168,16 @@ func TestDeclareDeath(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
 			},
 			repo: &mockRepo{
 				createDeathFunc: func(ctx context.Context, act *domain.CivilAct, death *domain.DeathDeclaration) error {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "declare death",
 		},
 	}
@@ -204,12 +204,12 @@ func TestRegisterMarriage(t *testing.T) {
 	now := time.Now()
 
 	tests := []struct {
-		name         string
-		marriageReq  domain.MarriageDeclaration
-		act          domain.CivilAct
-		repo         *mockRepo
-		wantErr      bool
-		errContains  string
+		name        string
+		marriageReq domain.MarriageDeclaration
+		act         domain.CivilAct
+		repo        *mockRepo
+		wantErr     bool
+		errContains string
 	}{
 		{
 			name: "success",
@@ -220,9 +220,9 @@ func TestRegisterMarriage(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
 			},
 			repo: &mockRepo{
 				createMarriageFunc: func(ctx context.Context, act *domain.CivilAct, marriage *domain.MarriageDeclaration) error {
@@ -238,16 +238,16 @@ func TestRegisterMarriage(t *testing.T) {
 			},
 			act: domain.CivilAct{
 				RegisteringOffice: "Mairie PAP",
-				DeptCode:         "OU",
-				Commune:          "Port-au-Prince",
-				EventDate:        now,
+				DeptCode:          "OU",
+				Commune:           "Port-au-Prince",
+				EventDate:         now,
 			},
 			repo: &mockRepo{
 				createMarriageFunc: func(ctx context.Context, act *domain.CivilAct, marriage *domain.MarriageDeclaration) error {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "register marriage",
 		},
 	}

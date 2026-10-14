@@ -18,26 +18,26 @@ const (
 )
 
 type NodeState struct {
-	NodeID      string    `json:"node_id"`
-	TrustScore  float64   `json:"trust_score"`
-	Status      string    `json:"status"`
-	Role        NodeRole  `json:"role"`
-	LastSeen    time.Time `json:"last_seen"`
-	FailureCount int      `json:"failure_count"`
-	Latency     float64   `json:"latency_ms"`
+	NodeID       string    `json:"node_id"`
+	TrustScore   float64   `json:"trust_score"`
+	Status       string    `json:"status"`
+	Role         NodeRole  `json:"role"`
+	LastSeen     time.Time `json:"last_seen"`
+	FailureCount int       `json:"failure_count"`
+	Latency      float64   `json:"latency_ms"`
 }
 
 type IsolationAction struct {
-	NodeID     string `json:"node_id"`
-	Action     string `json:"action"`     // ISOLATE, CORDON, REMOVE
-	Reason     string `json:"reason"`
+	NodeID     string    `json:"node_id"`
+	Action     string    `json:"action"` // ISOLATE, CORDON, REMOVE
+	Reason     string    `json:"reason"`
 	ExecutedAt time.Time `json:"executed_at"`
 }
 
 type RebuildPlan struct {
-	NodeID      string   `json:"node_id"`
-	Steps       []string `json:"steps"`
-	Completed   bool     `json:"completed"`
+	NodeID    string   `json:"node_id"`
+	Steps     []string `json:"steps"`
+	Completed bool     `json:"completed"`
 }
 
 type MeshHealer struct {

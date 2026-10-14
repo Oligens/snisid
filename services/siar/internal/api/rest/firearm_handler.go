@@ -54,15 +54,15 @@ func (h *FirearmHandler) CheckSerial(c *gin.Context) {
 	f, err := h.svc.FindBySerial(c.Request.Context(), sn)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{
-			"found":    false,
-			"message":  "numéro de série non trouvé dans le registre",
-			"serial":   sn,
+			"found":   false,
+			"message": "numéro de série non trouvé dans le registre",
+			"serial":  sn,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"found":      true,
-		"firearm":    f,
+		"found":   true,
+		"firearm": f,
 	})
 }
 

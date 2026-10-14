@@ -7,48 +7,48 @@ import (
 )
 
 type CriminalRecord struct {
-	RecordID         uuid.UUID  `json:"record_id"`
-	NationalFIRID    string     `json:"national_fir_id"`
-	SNISIDPersonID   uuid.UUID  `json:"snisid_person_id"`
-	AFISSubjectID    *uuid.UUID `json:"afis_subject_id,omitempty"`
-	IsHaitianNational bool      `json:"is_haitian_national"`
-	IsActive         bool       `json:"is_active"`
-	IsExpunged       bool       `json:"is_expunged"`
-	CreatedAt        time.Time  `json:"created_at"`
-	UpdatedAt        time.Time  `json:"updated_at"`
+	RecordID          uuid.UUID  `json:"record_id"`
+	NationalFIRID     string     `json:"national_fir_id"`
+	SNISIDPersonID    uuid.UUID  `json:"snisid_person_id"`
+	AFISSubjectID     *uuid.UUID `json:"afis_subject_id,omitempty"`
+	IsHaitianNational bool       `json:"is_haitian_national"`
+	IsActive          bool       `json:"is_active"`
+	IsExpunged        bool       `json:"is_expunged"`
+	CreatedAt         time.Time  `json:"created_at"`
+	UpdatedAt         time.Time  `json:"updated_at"`
 }
 
 type Charge struct {
-	ChargeID             uuid.UUID    `json:"charge_id"`
-	RecordID             uuid.UUID    `json:"record_id"`
-	IsArrest             bool         `json:"is_arrest"`
-	ArrestDate           *time.Time   `json:"arrest_date,omitempty"`
-	ArrestingUnit        *string      `json:"arresting_unit,omitempty"`
-	ArrestingOfficer     *uuid.UUID   `json:"arresting_officer,omitempty"`
-	ArrestLocation       *string      `json:"arrest_location,omitempty"`
-	DeptCode             *string      `json:"dept_code,omitempty"`
-	ChargesText          *string      `json:"charges_text,omitempty"`
-	OffenseClass         OffenseClass `json:"offense_class"`
-	CaseReference        *string      `json:"case_reference,omitempty"`
-	ReleaseDate          *time.Time   `json:"release_date,omitempty"`
-	ReleaseReason        *string      `json:"release_reason,omitempty"`
-	CourtName            *string      `json:"court_name,omitempty"`
-	CourtDept            *string      `json:"court_dept,omitempty"`
-	OffenseDescription   *string      `json:"offense_description,omitempty"`
-	IPCCode              *string      `json:"ipc_code,omitempty"`
-	VerdictDate          *time.Time   `json:"verdict_date,omitempty"`
-	CaseStatus           CaseStatus   `json:"case_status"`
+	ChargeID             uuid.UUID     `json:"charge_id"`
+	RecordID             uuid.UUID     `json:"record_id"`
+	IsArrest             bool          `json:"is_arrest"`
+	ArrestDate           *time.Time    `json:"arrest_date,omitempty"`
+	ArrestingUnit        *string       `json:"arresting_unit,omitempty"`
+	ArrestingOfficer     *uuid.UUID    `json:"arresting_officer,omitempty"`
+	ArrestLocation       *string       `json:"arrest_location,omitempty"`
+	DeptCode             *string       `json:"dept_code,omitempty"`
+	ChargesText          *string       `json:"charges_text,omitempty"`
+	OffenseClass         OffenseClass  `json:"offense_class"`
+	CaseReference        *string       `json:"case_reference,omitempty"`
+	ReleaseDate          *time.Time    `json:"release_date,omitempty"`
+	ReleaseReason        *string       `json:"release_reason,omitempty"`
+	CourtName            *string       `json:"court_name,omitempty"`
+	CourtDept            *string       `json:"court_dept,omitempty"`
+	OffenseDescription   *string       `json:"offense_description,omitempty"`
+	IPCCode              *string       `json:"ipc_code,omitempty"`
+	VerdictDate          *time.Time    `json:"verdict_date,omitempty"`
+	CaseStatus           CaseStatus    `json:"case_status"`
 	SentenceType         *SentenceType `json:"sentence_type,omitempty"`
-	SentenceDurationDays *int         `json:"sentence_duration_days,omitempty"`
-	FineAmountGdes       *float64     `json:"fine_amount_gdes,omitempty"`
-	SentenceStart        *time.Time   `json:"sentence_start,omitempty"`
-	SentenceEnd          *time.Time   `json:"sentence_end,omitempty"`
-	IsForeignRecord      bool         `json:"is_foreign_record"`
-	ForeignCountry       *string      `json:"foreign_country,omitempty"`
-	InterpolCCCRef       *string      `json:"interpol_ccc_ref,omitempty"`
-	JudgeName            *string      `json:"judge_name,omitempty"`
-	Notes                *string      `json:"notes,omitempty"`
-	CreatedAt            time.Time    `json:"created_at"`
+	SentenceDurationDays *int          `json:"sentence_duration_days,omitempty"`
+	FineAmountGdes       *float64      `json:"fine_amount_gdes,omitempty"`
+	SentenceStart        *time.Time    `json:"sentence_start,omitempty"`
+	SentenceEnd          *time.Time    `json:"sentence_end,omitempty"`
+	IsForeignRecord      bool          `json:"is_foreign_record"`
+	ForeignCountry       *string       `json:"foreign_country,omitempty"`
+	InterpolCCCRef       *string       `json:"interpol_ccc_ref,omitempty"`
+	JudgeName            *string       `json:"judge_name,omitempty"`
+	Notes                *string       `json:"notes,omitempty"`
+	CreatedAt            time.Time     `json:"created_at"`
 }
 
 type Alias struct {

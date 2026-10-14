@@ -14,10 +14,10 @@ import (
 var ErrExtraditionNotFound = errors.New("extradition non trouvée")
 
 type ExtraditionService struct {
-	mu          sync.RWMutex
+	mu           sync.RWMutex
 	extraditions map[uuid.UUID]*domain.Extradition
-	byPerson    map[uuid.UUID]uuid.UUID
-	seq         int
+	byPerson     map[uuid.UUID]uuid.UUID
+	seq          int
 }
 
 func NewExtraditionService() *ExtraditionService {

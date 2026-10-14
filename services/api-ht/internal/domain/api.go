@@ -16,17 +16,17 @@ const (
 )
 
 type APIEndpoint struct {
-	ID           uuid.UUID  `json:"id"`
-	Path         string     `json:"path"`
-	Method       string     `json:"method"`
-	Description  *string    `json:"description,omitempty"`
+	ID           uuid.UUID   `json:"id"`
+	Path         string      `json:"path"`
+	Method       string      `json:"method"`
+	Description  *string     `json:"description,omitempty"`
 	Sensitivity  Sensitivity `json:"sensitivity"`
-	ModuleSource *string    `json:"module_source,omitempty"`
-	BasePath     string     `json:"base_path"`
-	IsActive     bool       `json:"is_active"`
-	Version      string     `json:"version"`
-	CreatedAt    time.Time  `json:"created_at"`
-	UpdatedAt    time.Time  `json:"updated_at"`
+	ModuleSource *string     `json:"module_source,omitempty"`
+	BasePath     string      `json:"base_path"`
+	IsActive     bool        `json:"is_active"`
+	Version      string      `json:"version"`
+	CreatedAt    time.Time   `json:"created_at"`
+	UpdatedAt    time.Time   `json:"updated_at"`
 }
 
 type DeveloperAccount struct {

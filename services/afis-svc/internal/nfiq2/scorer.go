@@ -9,7 +9,7 @@ import (
 )
 
 type NFIQ2Scorer struct {
-	mu       sync.Mutex
+	mu        sync.Mutex
 	modelPath string
 }
 

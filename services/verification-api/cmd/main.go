@@ -38,22 +38,22 @@ func main() {
 
 	// 4. Start consumer for incoming verification requests
 	consumer := events.NewConsumer(brokers, "verification-group", "snisid.prod.identity.v1.requests")
-	
+
 	err := consumer.Start(ctx, func(ctx context.Context, payload []byte) error {
 		// Mock request processing
 		var req map[string]interface{}
 		if err := json.Unmarshal(payload, &req); err != nil {
 			return err
 		}
-		
+
 		results, err := orch.VerifyIdentity(ctx, req)
 		if err != nil {
 			return err
 		}
 
 		verificationID := uuid.New().String()
-		logger.Info(ctx, "Verification complete", 
-			zap.String("id", verificationID), 
+		logger.Info(ctx, "Verification complete",
+			zap.String("id", verificationID),
 			zap.Any("results", results),
 		)
 

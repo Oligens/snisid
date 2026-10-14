@@ -9,9 +9,9 @@ import (
 )
 
 type QualityService struct {
-	mu             sync.RWMutex
-	nfiq2MinScore  int16
-	pendingChecks  int
+	mu            sync.RWMutex
+	nfiq2MinScore int16
+	pendingChecks int
 }
 
 func NewQualityService(minScore int16) *QualityService {

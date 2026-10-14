@@ -54,8 +54,8 @@ func (s *MemberService) UpdateStatus(id string, status domain.MemberStatus) erro
 		return err
 	}
 	s.publisher.PublishEvent("member.status_updated", map[string]interface{}{
-		"member_id": id,
-		"status":    status,
+		"member_id":  id,
+		"status":     status,
 		"updated_at": time.Now(),
 	})
 	return nil

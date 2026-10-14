@@ -30,17 +30,17 @@ type sdnXmlRoot struct {
 }
 
 type sdnEntry struct {
-	UID      string    `xml:"uid"`
-	LastName string    `xml:"lastName"`
-	FirstName string   `xml:"firstName"`
-	SDNType  string    `xml:"sdnType"`
-	Remarks  string    `xml:"remarks"`
-	IDList   []sdnID   `xml:"idList>id"`
-	AkaList  []sdnAka  `xml:"akaList>aka"`
-	AddrList []sdnAddr `xml:"addressList>address"`
-	DateList []sdnDate `xml:"dateList>date"`
-	NatList  []sdnNat  `xml:"nationalityList>nationality"`
-	PassList []sdnPass `xml:"passportList>passport"`
+	UID       string    `xml:"uid"`
+	LastName  string    `xml:"lastName"`
+	FirstName string    `xml:"firstName"`
+	SDNType   string    `xml:"sdnType"`
+	Remarks   string    `xml:"remarks"`
+	IDList    []sdnID   `xml:"idList>id"`
+	AkaList   []sdnAka  `xml:"akaList>aka"`
+	AddrList  []sdnAddr `xml:"addressList>address"`
+	DateList  []sdnDate `xml:"dateList>date"`
+	NatList   []sdnNat  `xml:"nationalityList>nationality"`
+	PassList  []sdnPass `xml:"passportList>passport"`
 }
 
 type sdnID struct {
@@ -217,12 +217,12 @@ func (s *SanctionsService) fetchOFACXml() ([]domain.SanctionEntry, error) {
 	var entries []domain.SanctionEntry
 	for _, e := range root.Entries {
 		entry := domain.SanctionEntry{
-			Source:          domain.OFAC_SDN,
-			SourceRefID:     fmt.Sprintf("OFAC-%s", e.UID),
-			EntityType:      mapSDNType(e.SDNType),
-			EntityName:      buildName(e.FirstName, e.LastName),
-			IsActive:        true,
-			ListingDate:     time.Now().UTC(),
+			Source:      domain.OFAC_SDN,
+			SourceRefID: fmt.Sprintf("OFAC-%s", e.UID),
+			EntityType:  mapSDNType(e.SDNType),
+			EntityName:  buildName(e.FirstName, e.LastName),
+			IsActive:    true,
+			ListingDate: time.Now().UTC(),
 		}
 
 		if entry.EntityName == "" {

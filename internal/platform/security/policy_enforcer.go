@@ -23,7 +23,7 @@ func NewPolicyEnforcer(scorer *AdaptiveTrustScorer) *PolicyEnforcer {
 }
 
 func (e *PolicyEnforcer) Authorize(ctx context.Context, principal string, action string, resource string) (PolicyDecision, error) {
-	logger.Info(ctx, "Evaluating Zero Trust policy", 
+	logger.Info(ctx, "Evaluating Zero Trust policy",
 		zap.String("principal", principal),
 		zap.String("action", action),
 		zap.String("resource", resource),

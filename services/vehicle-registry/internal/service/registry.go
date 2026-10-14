@@ -7,16 +7,16 @@ import (
 )
 
 type Vehicle struct {
-	Plate          string    `json:"plate"`
-	VIN            string    `json:"vin"`
-	Make           string    `json:"make"`
-	Model          string    `json:"model"`
-	Year           int       `json:"year"`
-	Color          string    `json:"color"`
-	OwnerID        string    `json:"owner_id"`
+	Plate            string    `json:"plate"`
+	VIN              string    `json:"vin"`
+	Make             string    `json:"make"`
+	Model            string    `json:"model"`
+	Year             int       `json:"year"`
+	Color            string    `json:"color"`
+	OwnerID          string    `json:"owner_id"`
 	RegistrationDate time.Time `json:"registration_date"`
-	Status         string    `json:"status"`
-	InsuranceData  string    `json:"insurance_data,omitempty"`
+	Status           string    `json:"status"`
+	InsuranceData    string    `json:"insurance_data,omitempty"`
 }
 
 type Registry struct {

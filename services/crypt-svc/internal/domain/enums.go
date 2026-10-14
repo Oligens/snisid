@@ -17,12 +17,12 @@ const (
 type SuspicionType string
 
 const (
-	RANSOM_RECEIPT          SuspicionType = "RANSOM_RECEIPT"
-	SANCTIONS_EVASION       SuspicionType = "SANCTIONS_EVASION"
-	DARKWEB_PAYMENT         SuspicionType = "DARKWEB_PAYMENT"
-	MIXER_SERVICE           SuspicionType = "MIXER_SERVICE"
+	RANSOM_RECEIPT           SuspicionType = "RANSOM_RECEIPT"
+	SANCTIONS_EVASION        SuspicionType = "SANCTIONS_EVASION"
+	DARKWEB_PAYMENT          SuspicionType = "DARKWEB_PAYMENT"
+	MIXER_SERVICE            SuspicionType = "MIXER_SERVICE"
 	PEER_TO_PEER_UNREGULATED SuspicionType = "PEER_TO_PEER_UNREGULATED"
-	EXCHANGE_HIGH_RISK      SuspicionType = "EXCHANGE_HIGH_RISK"
-	GANG_PAYMENT            SuspicionType = "GANG_PAYMENT"
-	UNKNOWN_SUSPICION       SuspicionType = "UNKNOWN"
+	EXCHANGE_HIGH_RISK       SuspicionType = "EXCHANGE_HIGH_RISK"
+	GANG_PAYMENT             SuspicionType = "GANG_PAYMENT"
+	UNKNOWN_SUSPICION        SuspicionType = "UNKNOWN"
 )

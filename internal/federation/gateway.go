@@ -27,7 +27,7 @@ func HashID(nationalID, salt string) string {
 func QueryRegionalTrust(citizenID, salt string, members []FederationMember) []RiskResponse {
 	citizenHash := HashID(citizenID, salt)
 	fmt.Printf("NEXUS-FEDERATION: Querying regional trust for hash %s...\n", citizenHash)
-	
+
 	results := []RiskResponse{}
 	// Mock regional query
 	for _, m := range members {

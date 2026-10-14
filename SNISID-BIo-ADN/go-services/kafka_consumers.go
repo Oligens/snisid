@@ -11,26 +11,26 @@ import (
 )
 
 type KafkaConsumerConfig struct {
-	Brokers  []string
-	GroupID  string
-	Topic    string
-	Handler  func(ctx context.Context, event BioEvent) error
+	Brokers []string
+	GroupID string
+	Topic   string
+	Handler func(ctx context.Context, event BioEvent) error
 }
 
 type BioEvent struct {
-	Topic       string                 `json:"topic"`
-	EventID     string                 `json:"event_id"`
-	EventType   string                 `json:"event_type"`
-	Source      string                 `json:"source"`
-	Timestamp   time.Time              `json:"timestamp"`
-	Payload     map[string]interface{} `json:"payload"`
-	Classification string              `json:"classification"`
+	Topic          string                 `json:"topic"`
+	EventID        string                 `json:"event_id"`
+	EventType      string                 `json:"event_type"`
+	Source         string                 `json:"source"`
+	Timestamp      time.Time              `json:"timestamp"`
+	Payload        map[string]interface{} `json:"payload"`
+	Classification string                 `json:"classification"`
 }
 
 type BioADNEventProcessor struct {
-	dnaRepo       *DNARepository
-	personRepo    *PersonRepository
-	propertyRepo  *PropertyRepository
+	dnaRepo      *DNARepository
+	personRepo   *PersonRepository
+	propertyRepo *PropertyRepository
 }
 
 func NewBioADNEventProcessor(dna *DNARepository, person *PersonRepository, property *PropertyRepository) *BioADNEventProcessor {
@@ -151,23 +151,23 @@ func (p *BioADNEventProcessor) HandleMLFeatureUpdated(ctx context.Context, event
 }
 
 var topicHandlers = map[string]func(ctx context.Context, event BioEvent) error{
-	"snisid.bio.dna.profile.created":    nil,
-	"snisid.bio.dna.match.found":        nil,
-	"snisid.bio.dna.match.reviewed":     nil,
-	"snisid.bio.person.record.created":  nil,
-	"snisid.bio.person.record.updated":  nil,
-	"snisid.bio.person.located":         nil,
-	"snisid.bio.person.apprehended":     nil,
-	"snisid.bio.property.stolen":        nil,
-	"snisid.bio.property.recovered":     nil,
-	"snisid.fpr.wanted.events":          nil,
-	"snisid.lapi.plate.query":           nil,
-	"snisid.foves.vehicle.events":       nil,
-	"snisid.identity.verified":          nil,
-	"snisid.dcpj.intel.events":          nil,
-	"snisid.ml.fraud.scored":            nil,
-	"snisid.ml.routing":                 nil,
-	"snisid.ml.feature.updated":         nil,
+	"snisid.bio.dna.profile.created":   nil,
+	"snisid.bio.dna.match.found":       nil,
+	"snisid.bio.dna.match.reviewed":    nil,
+	"snisid.bio.person.record.created": nil,
+	"snisid.bio.person.record.updated": nil,
+	"snisid.bio.person.located":        nil,
+	"snisid.bio.person.apprehended":    nil,
+	"snisid.bio.property.stolen":       nil,
+	"snisid.bio.property.recovered":    nil,
+	"snisid.fpr.wanted.events":         nil,
+	"snisid.lapi.plate.query":          nil,
+	"snisid.foves.vehicle.events":      nil,
+	"snisid.identity.verified":         nil,
+	"snisid.dcpj.intel.events":         nil,
+	"snisid.ml.fraud.scored":           nil,
+	"snisid.ml.routing":                nil,
+	"snisid.ml.feature.updated":        nil,
 }
 
 func (p *BioADNEventProcessor) RegisterHandlers() {

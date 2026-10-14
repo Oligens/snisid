@@ -39,30 +39,30 @@ const (
 type ExtraditionStatus string
 
 const (
-	ExtraditionRequested  ExtraditionStatus = "REQUESTED"
-	ExtraditionApproved   ExtraditionStatus = "APPROVED"
-	ExtraditionInTransit  ExtraditionStatus = "IN_TRANSIT"
-	ExtraditionExecuted   ExtraditionStatus = "EXECUTED"
-	ExtraditionDenied     ExtraditionStatus = "DENIED"
-	ExtraditionCancelled  ExtraditionStatus = "CANCELLED"
+	ExtraditionRequested ExtraditionStatus = "REQUESTED"
+	ExtraditionApproved  ExtraditionStatus = "APPROVED"
+	ExtraditionInTransit ExtraditionStatus = "IN_TRANSIT"
+	ExtraditionExecuted  ExtraditionStatus = "EXECUTED"
+	ExtraditionDenied    ExtraditionStatus = "DENIED"
+	ExtraditionCancelled ExtraditionStatus = "CANCELLED"
 )
 
 type FlightType string
 
 const (
-	FlightCharterICE   FlightType = "CHARTER_ICE"
-	FlightCommercial   FlightType = "COMMERCIAL"
-	FlightMilitary     FlightType = "MILITARY"
-	FlightGovernment   FlightType = "GOVERNMENT"
-	FlightOther        FlightType = "OTHER"
+	FlightCharterICE FlightType = "CHARTER_ICE"
+	FlightCommercial FlightType = "COMMERCIAL"
+	FlightMilitary   FlightType = "MILITARY"
+	FlightGovernment FlightType = "GOVERNMENT"
+	FlightOther      FlightType = "OTHER"
 )
 
 type MonitoringEventType string
 
 const (
-	EventCheckIn          MonitoringEventType = "CHECK_IN"
-	EventViolation        MonitoringEventType = "VIOLATION"
-	EventAddressChange    MonitoringEventType = "ADDRESS_CHANGE"
-	EventTravelAuth       MonitoringEventType = "TRAVEL_AUTHORIZATION"
-	EventAlert            MonitoringEventType = "ALERT"
+	EventCheckIn       MonitoringEventType = "CHECK_IN"
+	EventViolation     MonitoringEventType = "VIOLATION"
+	EventAddressChange MonitoringEventType = "ADDRESS_CHANGE"
+	EventTravelAuth    MonitoringEventType = "TRAVEL_AUTHORIZATION"
+	EventAlert         MonitoringEventType = "ALERT"
 )

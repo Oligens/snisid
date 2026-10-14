@@ -65,14 +65,14 @@ type UptimeWindow struct {
 }
 
 type SLAReport struct {
-	ReportID       uuid.UUID       `json:"report_id"`
-	SLAID          uuid.UUID       `json:"sla_id"`
-	SLOCompliance  map[string]float64 `json:"slo_compliance"`
-	OverallScore   float64         `json:"overall_score"`
-	BreachCount    int             `json:"breach_count"`
-	From           time.Time       `json:"from"`
-	To             time.Time       `json:"to"`
-	GeneratedAt    time.Time       `json:"generated_at"`
+	ReportID      uuid.UUID          `json:"report_id"`
+	SLAID         uuid.UUID          `json:"sla_id"`
+	SLOCompliance map[string]float64 `json:"slo_compliance"`
+	OverallScore  float64            `json:"overall_score"`
+	BreachCount   int                `json:"breach_count"`
+	From          time.Time          `json:"from"`
+	To            time.Time          `json:"to"`
+	GeneratedAt   time.Time          `json:"generated_at"`
 }
 
 type EscalationPolicy struct {

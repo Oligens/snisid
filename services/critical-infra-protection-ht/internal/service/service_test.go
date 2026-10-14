@@ -12,27 +12,33 @@ import (
 )
 
 type mockRepo struct {
-	createAssetFn        func(ctx context.Context, a *domain.CriticalAsset) error
-	getAssetsBySectorFn  func(ctx context.Context, sector string) ([]domain.CriticalAsset, error)
-	createIncidentFn     func(ctx context.Context, inc *domain.InfrastructureIncident) error
-	getActiveIncidentsFn func(ctx context.Context) ([]domain.InfrastructureIncident, error)
-	getIncidentsByAssetFn func(ctx context.Context, assetID uuid.UUID) ([]domain.InfrastructureIncident, error)
-	createAssessmentFn   func(ctx context.Context, a *domain.SectorRiskAssessment) error
+	createAssetFn          func(ctx context.Context, a *domain.CriticalAsset) error
+	getAssetsBySectorFn    func(ctx context.Context, sector string) ([]domain.CriticalAsset, error)
+	createIncidentFn       func(ctx context.Context, inc *domain.InfrastructureIncident) error
+	getActiveIncidentsFn   func(ctx context.Context) ([]domain.InfrastructureIncident, error)
+	getIncidentsByAssetFn  func(ctx context.Context, assetID uuid.UUID) ([]domain.InfrastructureIncident, error)
+	createAssessmentFn     func(ctx context.Context, a *domain.SectorRiskAssessment) error
 	getNationalDashboardFn func(ctx context.Context) ([]domain.SectorRiskAssessment, error)
 }
 
-func (m *mockRepo) CreateAsset(ctx context.Context, a *domain.CriticalAsset) error { return m.createAssetFn(ctx, a) }
+func (m *mockRepo) CreateAsset(ctx context.Context, a *domain.CriticalAsset) error {
+	return m.createAssetFn(ctx, a)
+}
 func (m *mockRepo) GetAssetsBySector(ctx context.Context, sector string) ([]domain.CriticalAsset, error) {
 	return m.getAssetsBySectorFn(ctx, sector)
 }
-func (m *mockRepo) CreateIncident(ctx context.Context, inc *domain.InfrastructureIncident) error { return m.createIncidentFn(ctx, inc) }
+func (m *mockRepo) CreateIncident(ctx context.Context, inc *domain.InfrastructureIncident) error {
+	return m.createIncidentFn(ctx, inc)
+}
 func (m *mockRepo) GetActiveIncidents(ctx context.Context) ([]domain.InfrastructureIncident, error) {
 	return m.getActiveIncidentsFn(ctx)
 }
 func (m *mockRepo) GetIncidentsByAsset(ctx context.Context, assetID uuid.UUID) ([]domain.InfrastructureIncident, error) {
 	return m.getIncidentsByAssetFn(ctx, assetID)
 }
-func (m *mockRepo) CreateAssessment(ctx context.Context, a *domain.SectorRiskAssessment) error { return m.createAssessmentFn(ctx, a) }
+func (m *mockRepo) CreateAssessment(ctx context.Context, a *domain.SectorRiskAssessment) error {
+	return m.createAssessmentFn(ctx, a)
+}
 func (m *mockRepo) GetNationalDashboard(ctx context.Context) ([]domain.SectorRiskAssessment, error) {
 	return m.getNationalDashboardFn(ctx)
 }
@@ -43,15 +49,15 @@ func TestCreateAsset(t *testing.T) {
 	}
 	svc := NewInfraProtService(repo, nil)
 	req := domain.CreateAssetRequest{
-		AssetName:   "Dam-1",
-		Sector:      "ENERGY",
-		OwnerEntity: "GovCo",
-		LocationLat: 45.0,
-		LocationLng: -93.0,
-		Region:      "Midwest",
-		DeptCode:   "EN",
-		Criticality: "HIGH",
-		ContactName: "John",
+		AssetName:    "Dam-1",
+		Sector:       "ENERGY",
+		OwnerEntity:  "GovCo",
+		LocationLat:  45.0,
+		LocationLng:  -93.0,
+		Region:       "Midwest",
+		DeptCode:     "EN",
+		Criticality:  "HIGH",
+		ContactName:  "John",
 		ContactPhone: "555-0100",
 	}
 	a, err := svc.CreateAsset(context.Background(), req)

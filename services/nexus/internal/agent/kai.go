@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/snisid/platform/nexus/core"
 	nexusv1 "github.com/snisid/platform/api/proto/nexus/v1"
+	"github.com/snisid/platform/nexus/core"
 	"go.uber.org/zap"
 )
 

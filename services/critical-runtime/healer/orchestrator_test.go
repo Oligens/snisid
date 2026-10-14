@@ -11,10 +11,10 @@ import (
 )
 
 type mockSnapshotStore struct {
-	mu          sync.Mutex
-	snapshots   map[string][]string
-	restoreErr  error
-	listErr     error
+	mu         sync.Mutex
+	snapshots  map[string][]string
+	restoreErr error
+	listErr    error
 }
 
 func (m *mockSnapshotStore) RestoreLatest(snapshotID string) error {

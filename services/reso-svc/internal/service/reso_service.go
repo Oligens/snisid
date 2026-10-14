@@ -94,9 +94,9 @@ func (s *ResoService) GetPersonNetwork(personID uuid.UUID) (map[string]interface
 	}
 
 	result := map[string]interface{}{
-		"person_id":     personID,
-		"associations":  associations,
-		"direct_links":  len(associations),
+		"person_id":    personID,
+		"associations": associations,
+		"direct_links": len(associations),
 	}
 
 	return result, nil
@@ -226,10 +226,10 @@ func (s *ResoService) FindShortestPath(fromID, toID uuid.UUID) (*domain.Shortest
 	}
 
 	return &domain.ShortestPathResult{
-		FromID:   fromID,
-		ToID:     toID,
-		Path:     []uuid.UUID{},
-		Exists:   false,
+		FromID: fromID,
+		ToID:   toID,
+		Path:   []uuid.UUID{},
+		Exists: false,
 	}, nil
 }
 
@@ -386,7 +386,7 @@ func computePageRank(adj map[uuid.UUID]map[uuid.UUID]float64) map[uuid.UUID]floa
 			if outDegree == 0 {
 				continue
 			}
-		share := scores[id] / outDegree
+			share := scores[id] / outDegree
 			for neighborID := range neighbors {
 				newScores[neighborID] += damping * share
 			}

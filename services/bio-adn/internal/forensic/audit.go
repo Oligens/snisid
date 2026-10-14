@@ -14,18 +14,18 @@ import (
 )
 
 type SignedAuditEntry struct {
-	EventType  string            `json:"event_type"`
-	TableName  string            `json:"table_name"`
-	RecordID   string            `json:"record_id,omitempty"`
-	SampleID   string            `json:"sample_id,omitempty"`
-	OfficerNIU string            `json:"officer_niu,omitempty"`
-	AgencyCode string            `json:"agency_code,omitempty"`
-	Purpose    string            `json:"purpose,omitempty"`
-	CaseNumber string            `json:"case_number,omitempty"`
-	Action     string            `json:"action,omitempty"`
-	Details    map[string]any    `json:"details,omitempty"`
-	Timestamp  string            `json:"timestamp"`
-	Signature  string            `json:"signature,omitempty"`
+	EventType  string         `json:"event_type"`
+	TableName  string         `json:"table_name"`
+	RecordID   string         `json:"record_id,omitempty"`
+	SampleID   string         `json:"sample_id,omitempty"`
+	OfficerNIU string         `json:"officer_niu,omitempty"`
+	AgencyCode string         `json:"agency_code,omitempty"`
+	Purpose    string         `json:"purpose,omitempty"`
+	CaseNumber string         `json:"case_number,omitempty"`
+	Action     string         `json:"action,omitempty"`
+	Details    map[string]any `json:"details,omitempty"`
+	Timestamp  string         `json:"timestamp"`
+	Signature  string         `json:"signature,omitempty"`
 }
 
 func NewAuditEntry(eventType, tableName string) *SignedAuditEntry {

@@ -28,7 +28,9 @@ func NewPostgresRepo(db *sql.DB) *PostgresRepo {
 	return &PostgresRepo{db: db}
 }
 
-func scanTarget(row interface{ Scan(dest ...interface{}) error }) (domain.InterceptionTarget, error) {
+func scanTarget(row interface {
+	Scan(dest ...interface{}) error
+}) (domain.InterceptionTarget, error) {
 	var t domain.InterceptionTarget
 	err := row.Scan(
 		&t.ID, &t.TargetType, &t.Status, &t.AuthorizationRef,
@@ -101,7 +103,9 @@ func (r *PostgresRepo) RecordCommunication(c domain.InterceptedCommunication) (d
 	return c, nil
 }
 
-func scanComm(row interface{ Scan(dest ...interface{}) error }) (domain.InterceptedCommunication, error) {
+func scanComm(row interface {
+	Scan(dest ...interface{}) error
+}) (domain.InterceptedCommunication, error) {
 	var c domain.InterceptedCommunication
 	err := row.Scan(
 		&c.ID, &c.SourceTargetID, &c.CommType, &c.Metadata,
@@ -134,7 +138,9 @@ func (r *PostgresRepo) GetCommunicationsByTarget(targetID string) ([]domain.Inte
 	return comms, rows.Err()
 }
 
-func scanCDR(row interface{ Scan(dest ...interface{}) error }) (domain.CDRAnalysis, error) {
+func scanCDR(row interface {
+	Scan(dest ...interface{}) error
+}) (domain.CDRAnalysis, error) {
 	var c domain.CDRAnalysis
 	err := row.Scan(
 		&c.ID, &c.Caller, &c.Callee, &c.Duration, &c.TowerLocation,

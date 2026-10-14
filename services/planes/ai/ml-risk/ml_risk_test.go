@@ -18,17 +18,17 @@ func TestNewMLService(t *testing.T) {
 func TestPredict_NormalTransaction(t *testing.T) {
 	s := NewMLService("v1.0")
 	input := ModelInput{
-		Amount:          50,
-		Velocity:        2,
-		HourOfDay:       14,
-		DayOfWeek:       3,
-		IsWeekend:       false,
-		IsNewDevice:     false,
-		IsNewLocation:   false,
-		FailedAttempts:  0,
-		AccountAgeDays:  365,
+		Amount:           50,
+		Velocity:         2,
+		HourOfDay:        14,
+		DayOfWeek:        3,
+		IsWeekend:        false,
+		IsNewDevice:      false,
+		IsNewLocation:    false,
+		FailedAttempts:   0,
+		AccountAgeDays:   365,
 		TransactionCount: 100,
-		AvgTransaction:  45,
+		AvgTransaction:   45,
 	}
 	score := s.Predict(input)
 	assert.GreaterOrEqual(t, score, 0.0)
@@ -38,17 +38,17 @@ func TestPredict_NormalTransaction(t *testing.T) {
 func TestPredict_HighRiskTransaction(t *testing.T) {
 	s := NewMLService("v1.0")
 	input := ModelInput{
-		Amount:          100000,
-		Velocity:        200,
-		HourOfDay:       3,
-		DayOfWeek:       6,
-		IsWeekend:       true,
-		IsNewDevice:     true,
-		IsNewLocation:   true,
-		FailedAttempts:  15,
-		AccountAgeDays:  0,
+		Amount:           100000,
+		Velocity:         200,
+		HourOfDay:        3,
+		DayOfWeek:        6,
+		IsWeekend:        true,
+		IsNewDevice:      true,
+		IsNewLocation:    true,
+		FailedAttempts:   15,
+		AccountAgeDays:   0,
 		TransactionCount: 1,
-		AvgTransaction:  0,
+		AvgTransaction:   0,
 	}
 	score := s.Predict(input)
 	assert.Greater(t, score, 0.5)
@@ -57,15 +57,15 @@ func TestPredict_HighRiskTransaction(t *testing.T) {
 func TestPredict_MidRiskTransaction(t *testing.T) {
 	s := NewMLService("v1.0")
 	input := ModelInput{
-		Amount:          8000,
-		Velocity:        30,
-		HourOfDay:       22,
-		IsNewDevice:     false,
-		IsNewLocation:   true,
-		FailedAttempts:  4,
-		AccountAgeDays:  10,
+		Amount:           8000,
+		Velocity:         30,
+		HourOfDay:        22,
+		IsNewDevice:      false,
+		IsNewLocation:    true,
+		FailedAttempts:   4,
+		AccountAgeDays:   10,
 		TransactionCount: 15,
-		AvgTransaction:  200,
+		AvgTransaction:   200,
 	}
 	score := s.Predict(input)
 	assert.Greater(t, score, 0.1)
@@ -75,9 +75,9 @@ func TestPredict_MidRiskTransaction(t *testing.T) {
 func TestPredict_ExtremeAmount(t *testing.T) {
 	s := NewMLService("v1.0")
 	input := ModelInput{
-		Amount:          1e9,
-		Velocity:        0,
-		AvgTransaction:  100,
+		Amount:           1e9,
+		Velocity:         0,
+		AvgTransaction:   100,
 		TransactionCount: 50,
 	}
 	score := s.Predict(input)
@@ -87,9 +87,9 @@ func TestPredict_ExtremeAmount(t *testing.T) {
 func TestPredict_ZeroAvgTransaction(t *testing.T) {
 	s := NewMLService("v1.0")
 	input := ModelInput{
-		Amount:          100,
-		Velocity:        0,
-		AvgTransaction:  0,
+		Amount:           100,
+		Velocity:         0,
+		AvgTransaction:   0,
 		TransactionCount: 0,
 	}
 	score := s.Predict(input)

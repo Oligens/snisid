@@ -54,13 +54,13 @@ type ZeroTrustPolicy struct {
 }
 
 type ThreatIndicator struct {
-	ID          uuid.UUID `json:"id"`
-	Indicator   string    `json:"indicator"`
-	Type        string    `json:"type"`
-	ThreatLevel string    `json:"threat_level"`
-	Source      string    `json:"source"`
-	Description *string   `json:"description,omitempty"`
-	Tags        []string  `json:"tags"`
+	ID          uuid.UUID  `json:"id"`
+	Indicator   string     `json:"indicator"`
+	Type        string     `json:"type"`
+	ThreatLevel string     `json:"threat_level"`
+	Source      string     `json:"source"`
+	Description *string    `json:"description,omitempty"`
+	Tags        []string   `json:"tags"`
 	ExpiresAt   *time.Time `json:"expires_at,omitempty"`
 	CreatedAt   time.Time  `json:"created_at"`
 }

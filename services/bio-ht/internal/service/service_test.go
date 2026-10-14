@@ -16,11 +16,11 @@ import (
 )
 
 type mockRepo struct {
-	createTemplateFunc           func(ctx context.Context, t *domain.BioTemplate) error
-	getTemplateFunc              func(ctx context.Context, templateID uuid.UUID) (*domain.BioTemplate, error)
+	createTemplateFunc              func(ctx context.Context, t *domain.BioTemplate) error
+	getTemplateFunc                 func(ctx context.Context, templateID uuid.UUID) (*domain.BioTemplate, error)
 	getActiveTemplatesByCitizenFunc func(ctx context.Context, citizenID uuid.UUID) ([]domain.BioTemplate, error)
-	deactivateTemplateFunc       func(ctx context.Context, templateID uuid.UUID) error
-	logVerificationFunc          func(ctx context.Context, l *domain.VerificationLog) error
+	deactivateTemplateFunc          func(ctx context.Context, templateID uuid.UUID) error
+	logVerificationFunc             func(ctx context.Context, l *domain.VerificationLog) error
 }
 
 func (m *mockRepo) CreateTemplate(ctx context.Context, t *domain.BioTemplate) error {
@@ -54,21 +54,21 @@ func TestEnroll(t *testing.T) {
 	citizenID := uuid.New()
 
 	tests := []struct {
-		name       string
-		req        domain.EnrollRequest
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		req         domain.EnrollRequest
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
 			name: "success",
 			req: domain.EnrollRequest{
-				CitizenID:      citizenID.String(),
-				Modality:       "FINGERPRINT",
-				ImageData:      []byte{0x01, 0x02},
-				CaptureDevice:  "ScannerX",
+				CitizenID:       citizenID.String(),
+				Modality:        "FINGERPRINT",
+				ImageData:       []byte{0x01, 0x02},
+				CaptureDevice:   "ScannerX",
 				CaptureLocation: "Bureau PAP",
-				CapturedBy:     uuid.New().String(),
+				CapturedBy:      uuid.New().String(),
 			},
 			repo: &mockRepo{
 				createTemplateFunc: func(ctx context.Context, t *domain.BioTemplate) error { return nil },
@@ -81,7 +81,7 @@ func TestEnroll(t *testing.T) {
 				Modality:   "FINGERPRINT",
 				CapturedBy: uuid.New().String(),
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "invalid citizen_id",
 		},
 		{
@@ -91,22 +91,22 @@ func TestEnroll(t *testing.T) {
 				Modality:   "FINGERPRINT",
 				CapturedBy: "not-a-uuid",
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "invalid captured_by",
 		},
 		{
 			name: "repo error",
 			req: domain.EnrollRequest{
-				CitizenID:      citizenID.String(),
-				Modality:       "FINGERPRINT",
-				CapturedBy:     uuid.New().String(),
+				CitizenID:  citizenID.String(),
+				Modality:   "FINGERPRINT",
+				CapturedBy: uuid.New().String(),
 			},
 			repo: &mockRepo{
 				createTemplateFunc: func(ctx context.Context, t *domain.BioTemplate) error {
 					return errors.New("db error")
 				},
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "save template",
 		},
 	}
@@ -137,10 +137,10 @@ func TestVerify(t *testing.T) {
 	citizenID := uuid.New()
 
 	tests := []struct {
-		name       string
-		req        domain.VerifyRequest
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		req         domain.VerifyRequest
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
@@ -160,7 +160,7 @@ func TestVerify(t *testing.T) {
 				CitizenID: "bad-uuid",
 				Modality:  "FACE",
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "invalid citizen_id",
 		},
 	}
@@ -186,9 +186,9 @@ func TestVerify(t *testing.T) {
 
 func TestIdentify(t *testing.T) {
 	tests := []struct {
-		name       string
-		req        domain.IdentifyRequest
-		wantErr    bool
+		name        string
+		req         domain.IdentifyRequest
+		wantErr     bool
 		errContains string
 	}{
 		{

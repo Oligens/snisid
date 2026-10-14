@@ -19,11 +19,11 @@ import (
 type PolicyStatus string
 
 const (
-	PolicyPending     PolicyStatus = "PENDING"
-	PolicyDistributed PolicyStatus = "DISTRIBUTED"
+	PolicyPending      PolicyStatus = "PENDING"
+	PolicyDistributed  PolicyStatus = "DISTRIBUTED"
 	PolicyAcknowledged PolicyStatus = "ACKNOWLEDGED"
-	PolicyFailed      PolicyStatus = "FAILED"
-	PolicyRevoked     PolicyStatus = "REVOKED"
+	PolicyFailed       PolicyStatus = "FAILED"
+	PolicyRevoked      PolicyStatus = "REVOKED"
 )
 
 type PolicyPackage struct {
@@ -48,7 +48,7 @@ type DistributionStatus struct {
 }
 
 type FederationHub struct {
-	Peers           []string                     `json:"peers"`
+	Peers           []string `json:"peers"`
 	privateKey      ed25519.PrivateKey
 	publicKey       ed25519.PublicKey
 	hubID           string

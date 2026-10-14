@@ -12,7 +12,7 @@ import (
 
 type ExtorsService struct {
 	repo domain.Repository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewExtorsService(repo domain.Repository, log *zap.Logger) *ExtorsService {
@@ -71,14 +71,14 @@ func (s *ExtorsService) AddNegotiation(caseID uuid.UUID, req *domain.AddNegotiat
 	}
 
 	n := &domain.Negotiation{
-		CaseID:           caseID,
-		NegotiationDate:  time.Now(),
-		ContactMethod:    req.ContactMethod,
-		ContactNumber:    req.ContactNumber,
-		DemandUpdated:    req.DemandUpdated,
-		DemandCurrency:   req.DemandCurrency,
-		PositionUpdate:   req.PositionUpdate,
-		RecordedBy:       req.RecordedBy,
+		CaseID:          caseID,
+		NegotiationDate: time.Now(),
+		ContactMethod:   req.ContactMethod,
+		ContactNumber:   req.ContactNumber,
+		DemandUpdated:   req.DemandUpdated,
+		DemandCurrency:  req.DemandCurrency,
+		PositionUpdate:  req.PositionUpdate,
+		RecordedBy:      req.RecordedBy,
 	}
 	if req.NegotiationDate != nil {
 		n.NegotiationDate = *req.NegotiationDate

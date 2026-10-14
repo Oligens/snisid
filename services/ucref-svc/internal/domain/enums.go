@@ -13,10 +13,10 @@ const (
 type ReportType string
 
 const (
-	ReportTypeSTR              ReportType = "STR"
-	ReportTypeCTR              ReportType = "CTR"
+	ReportTypeSTR               ReportType = "STR"
+	ReportTypeCTR               ReportType = "CTR"
 	ReportTypeInternationalWire ReportType = "INTERNATIONAL_WIRE"
-	ReportTypeRealEstate       ReportType = "REAL_ESTATE"
-	ReportTypeMoncashPattern   ReportType = "MONCASH_PATTERN"
-	ReportTypeCryptoPattern    ReportType = "CRYPTO_PATTERN"
+	ReportTypeRealEstate        ReportType = "REAL_ESTATE"
+	ReportTypeMoncashPattern    ReportType = "MONCASH_PATTERN"
+	ReportTypeCryptoPattern     ReportType = "CRYPTO_PATTERN"
 )

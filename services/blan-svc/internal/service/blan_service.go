@@ -13,7 +13,7 @@ import (
 
 type BLANService struct {
 	repo domain.Repository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewBLANService(repo domain.Repository, log *zap.Logger) *BLANService {
@@ -74,16 +74,16 @@ func (s *BLANService) AddSuspiciousAsset(caseID uuid.UUID, req *domain.AddAssetR
 	}
 
 	asset := &domain.SuspiciousAsset{
-		CaseID:           caseID,
-		AssetType:        req.AssetType,
-		Description:      req.Description,
-		Address:          req.Address,
-		DeptCode:         req.DeptCode,
+		CaseID:            caseID,
+		AssetType:         req.AssetType,
+		Description:       req.Description,
+		Address:           req.Address,
+		DeptCode:          req.DeptCode,
 		EstimatedValueUSD: req.EstimatedValueUSD,
-		AcquisitionDate:  req.AcquisitionDate,
-		OwnerSnisidID:    req.OwnerSnisidID,
-		OwnerName:        req.OwnerName,
-		RegisteredIn:     req.RegisteredIn,
+		AcquisitionDate:   req.AcquisitionDate,
+		OwnerSnisidID:     req.OwnerSnisidID,
+		OwnerName:         req.OwnerName,
+		RegisteredIn:      req.RegisteredIn,
 	}
 
 	result, err := s.repo.AddAsset(asset)
@@ -147,15 +147,15 @@ func generateNationalID(seq int) string {
 
 func validateTypology(t domain.Typology) bool {
 	valid := map[domain.Typology]bool{
-		domain.SMURFING:              true,
-		domain.TRADE_BASED_ML:        true,
-		domain.REAL_ESTATE:           true,
-		domain.SHELL_COMPANY:         true,
+		domain.SMURFING:                true,
+		domain.TRADE_BASED_ML:          true,
+		domain.REAL_ESTATE:             true,
+		domain.SHELL_COMPANY:           true,
 		domain.CASH_INTENSIVE_BUSINESS: true,
-		domain.CRYPTO_MIXING:         true,
-		domain.DIASPORA_TRANSFER:     true,
-		domain.RANSOM_LAUNDERING:     true,
-		domain.CORRUPTION_PROCEEDS:   true,
+		domain.CRYPTO_MIXING:           true,
+		domain.DIASPORA_TRANSFER:       true,
+		domain.RANSOM_LAUNDERING:       true,
+		domain.CORRUPTION_PROCEEDS:     true,
 	}
 	return valid[t]
 }

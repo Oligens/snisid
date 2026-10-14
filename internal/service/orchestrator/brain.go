@@ -22,7 +22,7 @@ func (b *Brain) ProcessEvent(ctx context.Context, eventType string, payload []by
 	case "identity.created":
 		// Auto-launch onboarding for new identities
 		return b.engine.OnboardIdentity(ctx, "CITIZEN-TEMP-ID", payload)
-	
+
 	case "soc.resolution.approved":
 		// Process manual resolution from SOC
 		logger.Info(ctx, "Processing SOC manual resolution")

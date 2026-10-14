@@ -33,11 +33,11 @@ type OvercrowdingAlert struct {
 }
 
 var facilityCapacities = map[string]int{
-	"Pénitencier National P-au-P": 3500,
-	"Prison Civile Cap-Haïtien":   800,
-	"Prison Civile Gonaïves":      400,
-	"Prison Civile Les Cayes":     300,
-	"CERMICOL (Mineurs)":          100,
+	"Pénitencier National P-au-P":  3500,
+	"Prison Civile Cap-Haïtien":    800,
+	"Prison Civile Gonaïves":       400,
+	"Prison Civile Les Cayes":      300,
+	"CERMICOL (Mineurs)":           100,
 	"Établissement femmes (RESEK)": 150,
 }
 
@@ -115,7 +115,7 @@ func (s *OvercrowdingService) GetPreventiveDetentionStats(ctx context.Context) (
 	}
 
 	return map[string]interface{}{
-		"total_preventive": totalPreventive,
+		"total_preventive":  totalPreventive,
 		"avg_days_detained": avgDays,
 	}, nil
 }

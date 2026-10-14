@@ -77,11 +77,11 @@ func (a *Aggregator) aggregate(metricName string) {
 	}
 
 	win.Count++
-	
+
 	// Spike Detection Logic
 	if win.Count > 1000 { // Simple threshold for demonstration
-		logger.Warn(context.Background(), "ANALYTICAL SPIKE DETECTED", 
-			zap.String("metric", metricName), 
+		logger.Warn(context.Background(), "ANALYTICAL SPIKE DETECTED",
+			zap.String("metric", metricName),
 			zap.Int64("count", win.Count),
 		)
 	}
@@ -90,7 +90,7 @@ func (a *Aggregator) aggregate(metricName string) {
 func (a *Aggregator) GetWindows() map[string]MetricWindow {
 	a.mu.RLock()
 	defer a.mu.RUnlock()
-	
+
 	results := make(map[string]MetricWindow)
 	for k, v := range a.windows {
 		results[k] = *v

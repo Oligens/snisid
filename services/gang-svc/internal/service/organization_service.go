@@ -10,10 +10,10 @@ import (
 )
 
 type OrganizationService struct {
-	orgRepo   domain.OrganizationRepository
-	incRepo   domain.IncidentRepository
-	alliRepo  domain.AllianceRepository
-	eventPub  domain.EventPublisher
+	orgRepo  domain.OrganizationRepository
+	incRepo  domain.IncidentRepository
+	alliRepo domain.AllianceRepository
+	eventPub domain.EventPublisher
 }
 
 func NewOrganizationService(
@@ -31,23 +31,23 @@ func NewOrganizationService(
 }
 
 type CreateOrgRequest struct {
-	Name                      string   `json:"name" binding:"required"`
-	Aliases                   []string `json:"aliases"`
-	StructureType             string   `json:"structure_type"`
-	PrimaryActivity           string   `json:"primary_activity" binding:"required"`
-	ActivityLevel             string   `json:"activity_level"`
-	EstimatedMembers          int      `json:"estimated_members"`
-	ArmedMembersPct           int      `json:"armed_members_pct"`
-	HeavyWeapons              bool     `json:"heavy_weapons"`
-	PrimaryDeptCode           string   `json:"primary_dept_code" binding:"required"`
-	TerritoryCommunes         []string `json:"territory_communes"`
-	EstimatedRevenueUSDMonthly float64 `json:"estimated_revenue_usd_monthly"`
-	PrimaryIncomeSources      []string `json:"primary_income_sources"`
-	OFACDesignation           bool     `json:"ofac_designation"`
-	OFACSDNRef                string   `json:"ofac_sdn_ref"`
-	EstablishedDate           string   `json:"established_date"`
-	IntelConfidence           int      `json:"intel_confidence"`
-	CreatedBy                 string   `json:"created_by" binding:"required"`
+	Name                       string   `json:"name" binding:"required"`
+	Aliases                    []string `json:"aliases"`
+	StructureType              string   `json:"structure_type"`
+	PrimaryActivity            string   `json:"primary_activity" binding:"required"`
+	ActivityLevel              string   `json:"activity_level"`
+	EstimatedMembers           int      `json:"estimated_members"`
+	ArmedMembersPct            int      `json:"armed_members_pct"`
+	HeavyWeapons               bool     `json:"heavy_weapons"`
+	PrimaryDeptCode            string   `json:"primary_dept_code" binding:"required"`
+	TerritoryCommunes          []string `json:"territory_communes"`
+	EstimatedRevenueUSDMonthly float64  `json:"estimated_revenue_usd_monthly"`
+	PrimaryIncomeSources       []string `json:"primary_income_sources"`
+	OFACDesignation            bool     `json:"ofac_designation"`
+	OFACSDNRef                 string   `json:"ofac_sdn_ref"`
+	EstablishedDate            string   `json:"established_date"`
+	IntelConfidence            int      `json:"intel_confidence"`
+	CreatedBy                  string   `json:"created_by" binding:"required"`
 }
 
 func (s *OrganizationService) CreateOrganization(ctx context.Context, req CreateOrgRequest) (*domain.Organization, error) {

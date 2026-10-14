@@ -30,7 +30,9 @@ func NewPostgresRepo(db *sql.DB) *PostgresRepo {
 	return &PostgresRepo{db: db}
 }
 
-func scanSource(row interface{ Scan(dest ...interface{}) error }) (domain.Source, error) {
+func scanSource(row interface {
+	Scan(dest ...interface{}) error
+}) (domain.Source, error) {
 	var s domain.Source
 	err := row.Scan(
 		&s.CodeName, &s.CredibilityRating, &s.ReliabilityRating, &s.Status,

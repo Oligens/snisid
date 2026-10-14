@@ -78,7 +78,7 @@ func ProcessTransaction(amount float64) error {
 		    hardware_refresh_fund = hardware_refresh_fund + ?, 
 		    total_transactions = total_transactions + 1 
 		WHERE id = 1`
-	
+
 	_, err = tx.Exec(updateQuery, treasuryCut, refreshCut)
 	if err != nil {
 		tx.Rollback()

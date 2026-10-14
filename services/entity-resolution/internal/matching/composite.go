@@ -14,11 +14,11 @@ import (
 type MatchMethod string
 
 const (
-	MethodExact    MatchMethod = "exact"
-	MethodFuzzy    MatchMethod = "fuzzy"
-	MethodPhonetic MatchMethod = "phonetic"
+	MethodExact     MatchMethod = "exact"
+	MethodFuzzy     MatchMethod = "fuzzy"
+	MethodPhonetic  MatchMethod = "phonetic"
 	MethodBiometric MatchMethod = "biometric"
-	MethodLSH      MatchMethod = "lsh"
+	MethodLSH       MatchMethod = "lsh"
 )
 
 type CompositeEngine struct {

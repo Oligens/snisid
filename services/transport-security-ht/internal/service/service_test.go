@@ -15,12 +15,12 @@ import (
 
 type mockTransportRepo struct {
 	repository.TransportRepository
-	createScreeningFn    func(ctx context.Context, s *domain.PassengerScreening) error
+	createScreeningFn     func(ctx context.Context, s *domain.PassengerScreening) error
 	getRecentScreeningsFn func(ctx context.Context, limit int) ([]domain.PassengerScreening, error)
-	addNoFlyFn           func(ctx context.Context, p *domain.NoFlyPassenger) error
-	checkNoFlyFn         func(ctx context.Context, identityRef string) (*domain.NoFlyPassenger, error)
-	getZonesByAirportFn  func(ctx context.Context, airportCode string) ([]domain.AirportSecurityZone, error)
-	reportZoneBreachFn   func(ctx context.Context, zoneID uuid.UUID) error
+	addNoFlyFn            func(ctx context.Context, p *domain.NoFlyPassenger) error
+	checkNoFlyFn          func(ctx context.Context, identityRef string) (*domain.NoFlyPassenger, error)
+	getZonesByAirportFn   func(ctx context.Context, airportCode string) ([]domain.AirportSecurityZone, error)
+	reportZoneBreachFn    func(ctx context.Context, zoneID uuid.UUID) error
 }
 
 func (m *mockTransportRepo) CreateScreening(ctx context.Context, s *domain.PassengerScreening) error {

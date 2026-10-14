@@ -24,23 +24,23 @@ func (s *MemberService) CreateMember(ctx context.Context, req domain.CreateMembe
 	}
 
 	member := &domain.CriminalMember{
-		MemberID:       uuid.New(),
-		NationalChefID: s.repo.NextNationalChefID(),
-		SNISIDPersonID: req.SNISIDPersonID,
-		FIRRecordID:    req.FIRRecordID,
-		AFISSubjectID:  req.AFISSubjectID,
-		RDePDeporteeID: req.RDePDeporteeID,
-		PrimaryGangID:  req.PrimaryGangID,
-		RoleInGang:     req.RoleInGang,
-		RoleDescription: req.RoleDescription,
-		Aliases:        req.Aliases,
-		TerritoryDept:  req.TerritoryDept,
-		KnownArmed:     req.KnownArmed,
-		Status:         status,
+		MemberID:            uuid.New(),
+		NationalChefID:      s.repo.NextNationalChefID(),
+		SNISIDPersonID:      req.SNISIDPersonID,
+		FIRRecordID:         req.FIRRecordID,
+		AFISSubjectID:       req.AFISSubjectID,
+		RDePDeporteeID:      req.RDePDeporteeID,
+		PrimaryGangID:       req.PrimaryGangID,
+		RoleInGang:          req.RoleInGang,
+		RoleDescription:     req.RoleDescription,
+		Aliases:             req.Aliases,
+		TerritoryDept:       req.TerritoryDept,
+		KnownArmed:          req.KnownArmed,
+		Status:              status,
 		IntelClassification: "SECRET",
-		CreatedBy:      req.CreatedBy,
-		CreatedAt:      now,
-		UpdatedAt:      now,
+		CreatedBy:           req.CreatedBy,
+		CreatedAt:           now,
+		UpdatedAt:           now,
 	}
 
 	if err := s.repo.Create(ctx, member); err != nil {
@@ -107,14 +107,14 @@ func (s *MemberService) AddIntelNote(ctx context.Context, memberID uuid.UUID, re
 	}
 
 	note := &domain.IntelNote{
-		NoteID:      uuid.New(),
-		MemberID:    memberID,
-		NoteDate:    time.Now(),
-		IntelType:   req.IntelType,
-		Content:     req.Content,
+		NoteID:        uuid.New(),
+		MemberID:      memberID,
+		NoteDate:      time.Now(),
+		IntelType:     req.IntelType,
+		Content:       req.Content,
 		SourceClassif: req.SourceClassif,
-		CreatedBy:   createdBy,
-		CreatedAt:   time.Now(),
+		CreatedBy:     createdBy,
+		CreatedAt:     time.Now(),
 	}
 
 	if err := s.repo.CreateNote(ctx, note); err != nil {
@@ -134,19 +134,19 @@ func (s *MemberService) AddSighting(ctx context.Context, memberID uuid.UUID, req
 	}
 
 	sighting := &domain.Sighting{
-		SightingID:  uuid.New(),
-		MemberID:    memberID,
-		SightedAt:   req.SightedAt,
+		SightingID:   uuid.New(),
+		MemberID:     memberID,
+		SightedAt:    req.SightedAt,
 		LocationDesc: req.LocationDesc,
-		DeptCode:    req.DeptCode,
-		Commune:     req.Commune,
-		Lat:         req.Lat,
-		Lng:         req.Lng,
-		SourceType:  req.SourceType,
-		Confidence:  req.Confidence,
-		PhotoRef:    req.PhotoRef,
-		ReportedBy:  reportedBy,
-		CreatedAt:   time.Now(),
+		DeptCode:     req.DeptCode,
+		Commune:      req.Commune,
+		Lat:          req.Lat,
+		Lng:          req.Lng,
+		SourceType:   req.SourceType,
+		Confidence:   req.Confidence,
+		PhotoRef:     req.PhotoRef,
+		ReportedBy:   reportedBy,
+		CreatedAt:    time.Now(),
 	}
 
 	if err := s.repo.CreateSighting(ctx, sighting); err != nil {

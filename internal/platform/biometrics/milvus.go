@@ -58,10 +58,10 @@ func (b *MilvusBridge) InsertBiometric(ctx context.Context, collection, id strin
 
 func (b *MilvusBridge) Search(ctx context.Context, collection string, vector []float32) (string, float32, error) {
 	searchParam, _ := entity.NewIndexIvfFlatSearchParam(10)
-	
-	results, err := b.client.Search(ctx, collection, []string{}, "", []string{"identity_id"}, 
+
+	results, err := b.client.Search(ctx, collection, []string{}, "", []string{"identity_id"},
 		[]entity.Vector{entity.FloatVector(vector)}, "biometric_vector", entity.L2, 1, searchParam)
-	
+
 	if err != nil {
 		return "", 0, err
 	}

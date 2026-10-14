@@ -14,7 +14,7 @@ type SessionRepository interface {
 	StoreSession(ctx context.Context, session *entity.Session) error
 	GetSession(ctx context.Context, sessionID string) (*entity.Session, error)
 	RevokeSessionFamily(ctx context.Context, userID string) error
-	
+
 	IncrementFailedAttempts(ctx context.Context, ip, username string) (int, error)
 	ResetFailedAttempts(ctx context.Context, ip, username string) error
 }
@@ -32,7 +32,7 @@ func (r *redisSessionRepo) StoreSession(ctx context.Context, session *entity.Ses
 	if err != nil {
 		return err
 	}
-	
+
 	key := fmt.Sprintf("auth:session:%s", session.SessionID)
 	ttl := time.Until(session.ExpiresAt)
 	if ttl < 0 {
@@ -45,7 +45,7 @@ func (r *redisSessionRepo) StoreSession(ctx context.Context, session *entity.Ses
 	pipe.SAdd(ctx, fmt.Sprintf("auth:user_sessions:%s", session.UserID), session.SessionID)
 	// Optionally set expiry on the user_sessions set as well to prevent unbounded growth
 	pipe.Expire(ctx, fmt.Sprintf("auth:user_sessions:%s", session.UserID), 30*24*time.Hour) // 30 days max
-	
+
 	_, err = pipe.Exec(ctx)
 	return err
 }

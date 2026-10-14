@@ -11,8 +11,8 @@ import (
 )
 
 type InmateService struct {
-	mu        sync.RWMutex
-	inmates   map[uuid.UUID]*domain.Inmate
+	mu         sync.RWMutex
+	inmates    map[uuid.UUID]*domain.Inmate
 	detentions map[uuid.UUID][]*domain.Detention
 }
 

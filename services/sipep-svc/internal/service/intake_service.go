@@ -10,10 +10,10 @@ import (
 )
 
 type IntakeService struct {
-	inmateRepo   domain.InmateRepository
+	inmateRepo    domain.InmateRepository
 	detentionRepo domain.DetentionRepository
-	eventPub     domain.EventPublisher
-	snisid       domain.SNISIDClient
+	eventPub      domain.EventPublisher
+	snisid        domain.SNISIDClient
 }
 
 func NewIntakeService(
@@ -23,10 +23,10 @@ func NewIntakeService(
 	snisid domain.SNISIDClient,
 ) *IntakeService {
 	return &IntakeService{
-		inmateRepo:   inmateRepo,
+		inmateRepo:    inmateRepo,
 		detentionRepo: detentionRepo,
-		eventPub:     eventPub,
-		snisid:       snisid,
+		eventPub:      eventPub,
+		snisid:        snisid,
 	}
 }
 
@@ -100,10 +100,10 @@ func (s *IntakeService) ProcessIntake(ctx context.Context, req IntakeRequest) (*
 	}
 
 	_ = s.eventPub.Publish("sipep.inmate.intake", map[string]interface{}{
-		"inmate_id":  inmate.InmateID,
-		"person_id":  personID,
-		"facility":   req.Facility,
-		"intake_at":  time.Now(),
+		"inmate_id": inmate.InmateID,
+		"person_id": personID,
+		"facility":  req.Facility,
+		"intake_at": time.Now(),
 	})
 
 	return inmate, detention, nil

@@ -1,17 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  /* SNISID Official Palette (v2.0) */
-  --snisid-bg: #0D1B2A;
-  --snisid-primary: #1565C0;
-  --snisid-secondary: #00BCD4;
+  --snisid-bg: #070B19;
+  --snisid-primary: #0F3D91;
+  --snisid-secondary: #1558C0;
+  --snisid-cyan: #22D3EE;
+  --snisid-gold: #D4AF37;
+  --snisid-white: #FFFFFF;
+  --snisid-gray: #E5E7EB;
+  --snisid-glass: rgba(255, 255, 255, 0.045);
   --snisid-ok: #2E7D32;
   --snisid-warning: #E65100;
   --snisid-critical: #C62828;
-  --snisid-text: #ECEFF1;
-  --snisid-surface: #1E3A5F;
+  --snisid-text: #E5E7EB;
+  --snisid-surface: #111A2D;
 }
 
 /* High Contrast Accessibility Override */
@@ -48,8 +50,15 @@
 
 @layer base {
   body {
-    @apply bg-[#0a0c10] text-gray-100;
+    background-color: var(--snisid-bg);
+    color: var(--snisid-text);
+    font-family: "Aptos", "Segoe UI Variable", "Segoe UI", sans-serif;
   }
+}
+
+:focus-visible {
+  outline: 2px solid var(--snisid-cyan);
+  outline-offset: 2px;
 }
 
 .custom-scrollbar::-webkit-scrollbar {

@@ -15,11 +15,11 @@ import (
 )
 
 type mockAuthRepo struct {
-	createUserFn          func(ctx context.Context, user *entity.UserCredentials) error
-	getUserByUsernameFn   func(ctx context.Context, username string) (*entity.UserCredentials, error)
-	updateUserFn          func(ctx context.Context, user *entity.UserCredentials) error
-	registerWebAuthnFn    func(ctx context.Context, cred *entity.WebAuthnCredential) error
-	getWebAuthnCredsFn    func(ctx context.Context, userID string) ([]entity.WebAuthnCredential, error)
+	createUserFn        func(ctx context.Context, user *entity.UserCredentials) error
+	getUserByUsernameFn func(ctx context.Context, username string) (*entity.UserCredentials, error)
+	updateUserFn        func(ctx context.Context, user *entity.UserCredentials) error
+	registerWebAuthnFn  func(ctx context.Context, cred *entity.WebAuthnCredential) error
+	getWebAuthnCredsFn  func(ctx context.Context, userID string) ([]entity.WebAuthnCredential, error)
 }
 
 func (m *mockAuthRepo) CreateUser(ctx context.Context, user *entity.UserCredentials) error {
@@ -268,11 +268,11 @@ func TestLogin_LockedUntil(t *testing.T) {
 	dbRepo := &mockAuthRepo{
 		getUserByUsernameFn: func(ctx context.Context, username string) (*entity.UserCredentials, error) {
 			return &entity.UserCredentials{
-				UserID:      "u3",
-				Username:    "temp-locked",
+				UserID:       "u3",
+				Username:     "temp-locked",
 				PasswordHash: "invalid-hash",
-				Roles:       "user",
-				LockedUntil: &future,
+				Roles:        "user",
+				LockedUntil:  &future,
 			}, nil
 		},
 	}

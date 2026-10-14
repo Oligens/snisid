@@ -99,8 +99,8 @@ func (s *ONGService) RegisterStaff(req *domain.RegisterStaffRequest) (*domain.St
 	}
 
 	staff := &domain.Staff{
-		OrgID:      orgID,
-		FullName:   req.FullName,
+		OrgID:       orgID,
+		FullName:    req.FullName,
 		Nationality: req.Nationality,
 	}
 

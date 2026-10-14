@@ -10,7 +10,7 @@ type WorldState struct {
 
 func Step(state WorldState, action string) WorldState {
 	fmt.Printf("SIMULATOR: Applying action '%s' to synthetic world...\n", action)
-	
+
 	switch action {
 	case "increase_control":
 		state.FraudRate *= 0.9

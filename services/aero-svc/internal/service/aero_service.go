@@ -12,7 +12,7 @@ import (
 
 type AeroService struct {
 	repo domain.Repository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewAeroService(repo domain.Repository, log *zap.Logger) *AeroService {
@@ -39,18 +39,18 @@ func (s *AeroService) CheckRegistration(reg string) (*domain.RegistrationCheckRe
 
 func (s *AeroService) ReportStrip(req *domain.ReportStripRequest) (*domain.ClandestineStrip, error) {
 	strip := &domain.ClandestineStrip{
-		StripName:        req.StripName,
-		DeptCode:         req.DeptCode,
-		Commune:          req.Commune,
-		Lat:              req.Lat,
-		Lng:              req.Lng,
-		LengthM:          req.LengthM,
-		SurfaceType:      req.SurfaceType,
-		Status:           domain.ACTIVE,
-		CapableAircraft:  req.CapableAircraft,
-		SourceIntel:      req.SourceIntel,
+		StripName:         req.StripName,
+		DeptCode:          req.DeptCode,
+		Commune:           req.Commune,
+		Lat:               req.Lat,
+		Lng:               req.Lng,
+		LengthM:           req.LengthM,
+		SurfaceType:       req.SurfaceType,
+		Status:            domain.ACTIVE,
+		CapableAircraft:   req.CapableAircraft,
+		SourceIntel:       req.SourceIntel,
 		SatelliteImageRef: req.SatelliteImageRef,
-		CreatedBy:        uuid.New(),
+		CreatedBy:         uuid.New(),
 	}
 
 	if req.Status != "" {
@@ -92,11 +92,11 @@ func (s *AeroService) GetStripMap() (*domain.GeoJSONFeatureCollection, error) {
 
 	for _, strip := range strips {
 		props := map[string]interface{}{
-			"strip_id":          strip.StripID.String(),
-			"strip_name":        strip.StripName,
-			"dept_code":         strip.DeptCode,
-			"status":            string(strip.Status),
-			"created_at":        strip.CreatedAt.Format(time.RFC3339),
+			"strip_id":   strip.StripID.String(),
+			"strip_name": strip.StripName,
+			"dept_code":  strip.DeptCode,
+			"status":     string(strip.Status),
+			"created_at": strip.CreatedAt.Format(time.RFC3339),
 		}
 		if strip.Commune != nil {
 			props["commune"] = *strip.Commune

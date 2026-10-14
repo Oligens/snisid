@@ -32,10 +32,10 @@ func (h *Handler) Authorize(c *gin.Context) {
 	userID := c.Query("user_id")
 	if userID == "" {
 		c.JSON(http.StatusOK, gin.H{
-			"login_uri":  h.cfg.Issuer + "/login?client_id=" + clientID + "&redirect_uri=" + redirectURI + "&state=" + state,
-			"state":      state,
-			"client_id":  clientID,
-			"scope":      scope,
+			"login_uri": h.cfg.Issuer + "/login?client_id=" + clientID + "&redirect_uri=" + redirectURI + "&state=" + state,
+			"state":     state,
+			"client_id": clientID,
+			"scope":     scope,
 		})
 		return
 	}
@@ -54,10 +54,8 @@ func (h *Handler) Authorize(c *gin.Context) {
 
 	authCode := generateCode()
 	c.JSON(http.StatusOK, gin.H{
-		"code":           authCode,
-		"state":          state,
-		"session_id":     sessionID,
+		"code":       authCode,
+		"state":      state,
+		"session_id": sessionID,
 	})
 }
-
-

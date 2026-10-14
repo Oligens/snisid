@@ -9,25 +9,25 @@ import (
 type CardType string
 
 const (
-	CardTypeNationalID     CardType = "NATIONAL_ID"
+	CardTypeNationalID      CardType = "NATIONAL_ID"
 	CardTypeResidencePermit CardType = "RESIDENCE_PERMIT"
-	CardTypeDriversLicense CardType = "DRIVERS_LICENSE"
-	CardTypePassport       CardType = "PASSPORT"
-	CardTypeEmployeeBadge  CardType = "EMPLOYEE_BADGE"
+	CardTypeDriversLicense  CardType = "DRIVERS_LICENSE"
+	CardTypePassport        CardType = "PASSPORT"
+	CardTypeEmployeeBadge   CardType = "EMPLOYEE_BADGE"
 )
 
 type CardStatus string
 
 const (
-	CardStatusOrdered    CardStatus = "ORDERED"
+	CardStatusOrdered      CardStatus = "ORDERED"
 	CardStatusPersonalized CardStatus = "PERSONALIZED"
-	CardStatusIssued     CardStatus = "ISSUED"
-	CardStatusActive     CardStatus = "ACTIVE"
-	CardStatusBlocked    CardStatus = "BLOCKED"
-	CardStatusExpired    CardStatus = "EXPIRED"
-	CardStatusDestroyed  CardStatus = "DESTROYED"
-	CardStatusLost       CardStatus = "LOST"
-	CardStatusStolen     CardStatus = "STOLEN"
+	CardStatusIssued       CardStatus = "ISSUED"
+	CardStatusActive       CardStatus = "ACTIVE"
+	CardStatusBlocked      CardStatus = "BLOCKED"
+	CardStatusExpired      CardStatus = "EXPIRED"
+	CardStatusDestroyed    CardStatus = "DESTROYED"
+	CardStatusLost         CardStatus = "LOST"
+	CardStatusStolen       CardStatus = "STOLEN"
 )
 
 type CardProfile struct {
@@ -55,25 +55,25 @@ type CardStock struct {
 }
 
 type PersonalizationRequest struct {
-	OrderID      uuid.UUID `json:"order_id"`
-	ProfileID    uuid.UUID `json:"profile_id"`
-	CardSerial   string    `json:"card_serial"`
-	CitizenID    uuid.UUID `json:"citizen_id"`
-	FullName     string    `json:"full_name"`
-	DateOfBirth  string    `json:"date_of_birth"`
-	Nationality  string    `json:"nationality"`
-	PhotoData    string    `json:"photo_data,omitempty"`
-	SignatureData string   `json:"signature_data,omitempty"`
-	Status       CardStatus `json:"status"`
-	OrderedAt    time.Time `json:"ordered_at"`
+	OrderID        uuid.UUID  `json:"order_id"`
+	ProfileID      uuid.UUID  `json:"profile_id"`
+	CardSerial     string     `json:"card_serial"`
+	CitizenID      uuid.UUID  `json:"citizen_id"`
+	FullName       string     `json:"full_name"`
+	DateOfBirth    string     `json:"date_of_birth"`
+	Nationality    string     `json:"nationality"`
+	PhotoData      string     `json:"photo_data,omitempty"`
+	SignatureData  string     `json:"signature_data,omitempty"`
+	Status         CardStatus `json:"status"`
+	OrderedAt      time.Time  `json:"ordered_at"`
 	PersonalizedAt *time.Time `json:"personalized_at,omitempty"`
-	IssuedAt     *time.Time `json:"issued_at,omitempty"`
-	ActivatedAt  *time.Time `json:"activated_at,omitempty"`
-	BlockedAt    *time.Time `json:"blocked_at,omitempty"`
-	BlockReason  string    `json:"block_reason,omitempty"`
-	ExpiresAt    *time.Time `json:"expires_at,omitempty"`
-	CreatedAt    time.Time `json:"created_at"`
-	UpdatedAt    time.Time `json:"updated_at"`
+	IssuedAt       *time.Time `json:"issued_at,omitempty"`
+	ActivatedAt    *time.Time `json:"activated_at,omitempty"`
+	BlockedAt      *time.Time `json:"blocked_at,omitempty"`
+	BlockReason    string     `json:"block_reason,omitempty"`
+	ExpiresAt      *time.Time `json:"expires_at,omitempty"`
+	CreatedAt      time.Time  `json:"created_at"`
+	UpdatedAt      time.Time  `json:"updated_at"`
 }
 
 type CardInventory struct {
@@ -89,15 +89,15 @@ type CardInventory struct {
 }
 
 type Shipment struct {
-	ShipmentID    uuid.UUID  `json:"shipment_id"`
-	ProfileID     uuid.UUID  `json:"profile_id"`
-	SerialFrom    string     `json:"serial_from"`
-	SerialTo      string     `json:"serial_to"`
-	Quantity      int        `json:"quantity"`
-	TrackingRef   string     `json:"tracking_ref,omitempty"`
-	Vendor        string     `json:"vendor"`
-	ReceivedBy    string     `json:"received_by,omitempty"`
-	ReceivedAt    *time.Time `json:"received_at,omitempty"`
-	Notes         string     `json:"notes,omitempty"`
-	CreatedAt     time.Time  `json:"created_at"`
+	ShipmentID  uuid.UUID  `json:"shipment_id"`
+	ProfileID   uuid.UUID  `json:"profile_id"`
+	SerialFrom  string     `json:"serial_from"`
+	SerialTo    string     `json:"serial_to"`
+	Quantity    int        `json:"quantity"`
+	TrackingRef string     `json:"tracking_ref,omitempty"`
+	Vendor      string     `json:"vendor"`
+	ReceivedBy  string     `json:"received_by,omitempty"`
+	ReceivedAt  *time.Time `json:"received_at,omitempty"`
+	Notes       string     `json:"notes,omitempty"`
+	CreatedAt   time.Time  `json:"created_at"`
 }

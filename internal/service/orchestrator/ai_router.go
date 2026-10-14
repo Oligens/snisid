@@ -58,7 +58,7 @@ func (r *AIRouter) DispatchAnalysis(ctx context.Context, mediaData []byte) (*AIV
 		return nil, fmt.Errorf("AI forensic dispatch failed: %w", err)
 	}
 
-	logger.Info(ctx, "AI forensic analysis aggregated", 
+	logger.Info(ctx, "AI forensic analysis aggregated",
 		zap.Float32("biometric", verdict.BiometricScore),
 		zap.Float32("deepfake", verdict.DeepfakeProb),
 		zap.Int("fraud", verdict.FraudScore),

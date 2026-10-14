@@ -12,7 +12,7 @@ import (
 
 type TraiffickingService struct {
 	repo domain.TraiffickingRepository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewTraiffickingService(repo domain.TraiffickingRepository, log *zap.Logger) *TraiffickingService {
@@ -90,21 +90,21 @@ func (s *TraiffickingService) AddVictim(caseID uuid.UUID, req *domain.AddVictimR
 	}
 
 	v := &domain.TraiffickingVictim{
-		CaseID:              caseID,
-		SnisidPersonID:      req.SnisidPersonID,
-		VictimStatus:        req.VictimStatus,
-		FullName:            req.FullName,
-		Nationality:         nationality,
-		Dob:                 req.Dob,
-		Gender:              req.Gender,
-		IsMinor:             req.IsMinor,
-		ExploitationType:    req.ExploitationType,
-		RescueDate:          req.RescueDate,
-		RescueLocation:      req.RescueLocation,
-		CurrentLocation:     req.CurrentLocation,
-		AssistanceProvided:  req.AssistanceProvided,
-		DipeCaseID:          req.DipeCaseID,
-		AfisSubjectID:       req.AfisSubjectID,
+		CaseID:             caseID,
+		SnisidPersonID:     req.SnisidPersonID,
+		VictimStatus:       req.VictimStatus,
+		FullName:           req.FullName,
+		Nationality:        nationality,
+		Dob:                req.Dob,
+		Gender:             req.Gender,
+		IsMinor:            req.IsMinor,
+		ExploitationType:   req.ExploitationType,
+		RescueDate:         req.RescueDate,
+		RescueLocation:     req.RescueLocation,
+		CurrentLocation:    req.CurrentLocation,
+		AssistanceProvided: req.AssistanceProvided,
+		DipeCaseID:         req.DipeCaseID,
+		AfisSubjectID:      req.AfisSubjectID,
 	}
 
 	if v.AssistanceProvided == nil {

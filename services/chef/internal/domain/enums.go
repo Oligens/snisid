@@ -3,14 +3,14 @@ package domain
 type ChefRoleType string
 
 const (
-	RoleSupremeLeader  ChefRoleType = "SUPREME_LEADER"
-	RoleZoneCommander  ChefRoleType = "ZONE_COMMANDER"
-	RoleLieutenant     ChefRoleType = "LIEUTENANT"
-	RoleSoldier        ChefRoleType = "SOLDIER"
-	RoleAssociate      ChefRoleType = "ASSOCIATE"
-	RoleFinancier      ChefRoleType = "FINANCIER"
-	RoleEnabler        ChefRoleType = "ENABLER"
-	RoleInformant      ChefRoleType = "INFORMANT"
+	RoleSupremeLeader ChefRoleType = "SUPREME_LEADER"
+	RoleZoneCommander ChefRoleType = "ZONE_COMMANDER"
+	RoleLieutenant    ChefRoleType = "LIEUTENANT"
+	RoleSoldier       ChefRoleType = "SOLDIER"
+	RoleAssociate     ChefRoleType = "ASSOCIATE"
+	RoleFinancier     ChefRoleType = "FINANCIER"
+	RoleEnabler       ChefRoleType = "ENABLER"
+	RoleInformant     ChefRoleType = "INFORMANT"
 )
 
 type ChefStatus string

@@ -29,14 +29,14 @@ type BlklBlacklist struct {
 }
 
 type BlklAlertsLog struct {
-	ID            uuid.UUID `json:"id" db:"id"`
-	BlacklistID   uuid.UUID `json:"blacklist_id" db:"blacklist_id"`
-	PersonID      uuid.UUID `json:"person_id" db:"person_id"`
-	AlertType     string    `json:"alert_type" db:"alert_type"`
-	Message       string    `json:"message" db:"message"`
-	Acknowledged  bool      `json:"acknowledged" db:"acknowledged"`
-	AcknowledgedBy *string  `json:"acknowledged_by,omitempty" db:"acknowledged_by"`
-	CreatedAt     time.Time `json:"created_at" db:"created_at"`
+	ID             uuid.UUID `json:"id" db:"id"`
+	BlacklistID    uuid.UUID `json:"blacklist_id" db:"blacklist_id"`
+	PersonID       uuid.UUID `json:"person_id" db:"person_id"`
+	AlertType      string    `json:"alert_type" db:"alert_type"`
+	Message        string    `json:"message" db:"message"`
+	Acknowledged   bool      `json:"acknowledged" db:"acknowledged"`
+	AcknowledgedBy *string   `json:"acknowledged_by,omitempty" db:"acknowledged_by"`
+	CreatedAt      time.Time `json:"created_at" db:"created_at"`
 }
 
 type BlacklistCheckResult struct {

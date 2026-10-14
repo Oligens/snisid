@@ -29,7 +29,7 @@ func init() {
 	}
 
 	encoder := zapcore.NewJSONEncoder(encoderConfig)
-	
+
 	// 2. Output strictly to stdout for K8s Fluent-bit/Promtail ingestion
 	stdout := zapcore.Lock(os.Stdout)
 

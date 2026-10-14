@@ -36,7 +36,7 @@ type DetentionRepository interface {
 }
 
 type FacilityOccupancy struct {
-	Facility      string `json:"facility"`
-	CurrentCount  int    `json:"current_count"`
-	DeptCode      string `json:"dept_code"`
+	Facility     string `json:"facility"`
+	CurrentCount int    `json:"current_count"`
+	DeptCode     string `json:"dept_code"`
 }

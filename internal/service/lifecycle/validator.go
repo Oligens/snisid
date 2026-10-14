@@ -36,7 +36,7 @@ func (v *Validator) ValidateTransition(from, to State) error {
 	if from == to {
 		return nil
 	}
-	
+
 	allowed, ok := v.allowedMoves[from]
 	if !ok {
 		return fmt.Errorf("unknown source state: %s", from)

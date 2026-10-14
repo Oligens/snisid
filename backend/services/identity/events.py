@@ -46,6 +46,7 @@ class IdentityCreated(IdentityEvent):
         agency_id: str,
         actor_id: str | None = None,
         correlation_id: str | None = None,
+        nif: str | None = None,
     ) -> IdentityCreated:
         return cls(
             aggregate_id=aggregate_id,
@@ -53,6 +54,7 @@ class IdentityCreated(IdentityEvent):
             correlation_id=correlation_id,
             data={
                 "national_id": national_id,
+                "nif": nif,
                 "first_name": first_name,
                 "last_name": last_name,
                 "date_of_birth": date_of_birth,

@@ -10,9 +10,9 @@ import (
 )
 
 type IntakeService struct {
-	deporteeRepo  domain.DeporteeRepository
-	foreignRepo   domain.ForeignRecordRepository
-	eventPub      domain.EventPublisher
+	deporteeRepo domain.DeporteeRepository
+	foreignRepo  domain.ForeignRecordRepository
+	eventPub     domain.EventPublisher
 }
 
 func NewIntakeService(

@@ -9,28 +9,28 @@ import (
 )
 
 type Config struct {
-	App    AppConfig
-	HTTP   HTTPConfig
-	DB     DBConfig
-	Cockroach CockroachConfig
-	Redis  RedisConfig
-	Neo4j  Neo4jConfig
-	Kafka  KafkaConfig
-	Milvus MilvusConfig
+	App        AppConfig
+	HTTP       HTTPConfig
+	DB         DBConfig
+	Cockroach  CockroachConfig
+	Redis      RedisConfig
+	Neo4j      Neo4jConfig
+	Kafka      KafkaConfig
+	Milvus     MilvusConfig
 	ClickHouse ClickHouseConfig
-	JWT    JWTConfig
-	HSM    HSMConfig
-	SPIRE  SPIREConfig
-	Vault  VaultConfig
-	OTel   OTelConfig
-	AI     AIConfig
-	Features FeatureConfig
+	JWT        JWTConfig
+	HSM        HSMConfig
+	SPIRE      SPIREConfig
+	Vault      VaultConfig
+	OTel       OTelConfig
+	AI         AIConfig
+	Features   FeatureConfig
 }
 
 type AppConfig struct {
-	Env     string
-	Name    string
-	Version string
+	Env      string
+	Name     string
+	Version  string
 	LogLevel string
 }
 
@@ -99,15 +99,15 @@ type JWTConfig struct {
 }
 
 type HSMConfig struct {
-	PIN       string
-	SlotID    int
-	PKCS11Lib string
+	PIN         string
+	SlotID      int
+	PKCS11Lib   string
 	TrustDomain string
 }
 
 type SPIREConfig struct {
-	AgentSocket  string
-	TrustDomain  string
+	AgentSocket string
+	TrustDomain string
 }
 
 type VaultConfig struct {
@@ -117,15 +117,15 @@ type VaultConfig struct {
 }
 
 type OTelConfig struct {
-	ServiceName string
-	OTLPEndpoint string
+	ServiceName    string
+	OTLPEndpoint   string
 	PrometheusAddr string
 }
 
 type AIConfig struct {
-	ModelEndpoint   string
+	ModelEndpoint    string
 	InferenceTimeout time.Duration
-	FraudModelPath  string
+	FraudModelPath   string
 }
 
 type FeatureConfig struct {

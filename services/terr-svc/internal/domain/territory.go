@@ -36,14 +36,14 @@ type TerritoryZone struct {
 }
 
 type ZoneHistory struct {
-	HistoryID      uuid.UUID    `json:"history_id" db:"history_id"`
-	ZoneID         uuid.UUID    `json:"zone_id" db:"zone_id"`
-	ChangeType     string       `json:"change_type" db:"change_type"`
+	HistoryID       uuid.UUID     `json:"history_id" db:"history_id"`
+	ZoneID          uuid.UUID     `json:"zone_id" db:"zone_id"`
+	ChangeType      string        `json:"change_type" db:"change_type"`
 	PreviousControl *ControlLevel `json:"previous_control,omitempty" db:"previous_control"`
-	NewControl     *ControlLevel `json:"new_control,omitempty" db:"new_control"`
-	ChangeDate     time.Time    `json:"change_date" db:"change_date"`
-	TriggerEvent   *string      `json:"trigger_event,omitempty" db:"trigger_event"`
-	CreatedAt      time.Time    `json:"created_at" db:"created_at"`
+	NewControl      *ControlLevel `json:"new_control,omitempty" db:"new_control"`
+	ChangeDate      time.Time     `json:"change_date" db:"change_date"`
+	TriggerEvent    *string       `json:"trigger_event,omitempty" db:"trigger_event"`
+	CreatedAt       time.Time     `json:"created_at" db:"created_at"`
 }
 
 type Checkpoint struct {
@@ -61,20 +61,20 @@ type Checkpoint struct {
 }
 
 type SafetyCheckResult struct {
-	IsSafe         bool        `json:"is_safe"`
-	Lat            float64     `json:"lat"`
-	Lng            float64     `json:"lng"`
-	ContainingZone *ZoneInfo   `json:"containing_zone,omitempty"`
-	NearbyZones    []ZoneInfo  `json:"nearby_zones,omitempty"`
-	IsInCheckpoint bool        `json:"is_in_checkpoint"`
+	IsSafe            bool         `json:"is_safe"`
+	Lat               float64      `json:"lat"`
+	Lng               float64      `json:"lng"`
+	ContainingZone    *ZoneInfo    `json:"containing_zone,omitempty"`
+	NearbyZones       []ZoneInfo   `json:"nearby_zones,omitempty"`
+	IsInCheckpoint    bool         `json:"is_in_checkpoint"`
 	NearbyCheckpoints []Checkpoint `json:"nearby_checkpoints,omitempty"`
 }
 
 type RouteSafetyResult struct {
-	IsSafe       bool           `json:"is_safe"`
-	TotalPoints  int            `json:"total_points"`
-	SafePoints   int            `json:"safe_points"`
-	UnsafePoints int            `json:"unsafe_points"`
+	IsSafe       bool                `json:"is_safe"`
+	TotalPoints  int                 `json:"total_points"`
+	SafePoints   int                 `json:"safe_points"`
+	UnsafePoints int                 `json:"unsafe_points"`
 	Waypoints    []SafetyCheckResult `json:"waypoints"`
 }
 
@@ -93,21 +93,21 @@ type Point struct {
 }
 
 type SeizureRequest struct {
-	GangID            uuid.UUID `json:"gang_id" binding:"required"`
-	ZoneName          *string   `json:"zone_name,omitempty"`
-	DeptCode          string    `json:"dept_code" binding:"required"`
-	Commune           *string   `json:"commune,omitempty"`
-	SectionCommunale  *string   `json:"section_communale,omitempty"`
-	Geom              string    `json:"geom" binding:"required"`
-	ControlLevel      ControlLevel `json:"control_level" binding:"required"`
-	IntelligenceSource Source  `json:"intelligence_source" binding:"required"`
-	ConfidenceLevel   *int      `json:"confidence_level,omitempty"`
-	AnalystNotes      *string   `json:"analyst_notes,omitempty"`
-	CreatedBy         uuid.UUID `json:"created_by" binding:"required"`
+	GangID             uuid.UUID    `json:"gang_id" binding:"required"`
+	ZoneName           *string      `json:"zone_name,omitempty"`
+	DeptCode           string       `json:"dept_code" binding:"required"`
+	Commune            *string      `json:"commune,omitempty"`
+	SectionCommunale   *string      `json:"section_communale,omitempty"`
+	Geom               string       `json:"geom" binding:"required"`
+	ControlLevel       ControlLevel `json:"control_level" binding:"required"`
+	IntelligenceSource Source       `json:"intelligence_source" binding:"required"`
+	ConfidenceLevel    *int         `json:"confidence_level,omitempty"`
+	AnalystNotes       *string      `json:"analyst_notes,omitempty"`
+	CreatedBy          uuid.UUID    `json:"created_by" binding:"required"`
 }
 
 type SyncResult struct {
-	ZonesSynced    int `json:"zones_synced"`
+	ZonesSynced       int `json:"zones_synced"`
 	CheckpointsSynced int `json:"checkpoints_synced"`
 }
 

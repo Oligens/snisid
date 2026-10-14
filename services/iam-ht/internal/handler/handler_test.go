@@ -33,7 +33,9 @@ func setupIAMTest() (*gin.Engine, *mockIAMSvc) {
 		c.JSON(http.StatusOK, gin.H{"access_token": "mock-token", "token_type": "Bearer"})
 	})
 	api.POST("/step-up", func(c *gin.Context) {
-		var req struct{ CitizenID string `json:"citizen_id"` }
+		var req struct {
+			CitizenID string `json:"citizen_id"`
+		}
 		if err := c.ShouldBindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return

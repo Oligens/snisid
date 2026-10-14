@@ -25,22 +25,22 @@ func (s *ChildService) RegisterChild(req *domain.RegisterChildRequest) (*domain.
 	}
 
 	child := &domain.Child{
-		RiskCategory:       domain.RiskCategory(req.RiskCategory),
-		Status:             domain.Missing,
-		FullName:           req.FullName,
-		DOB:                dob,
-		Gender:             &req.Gender,
-		Nationality:        &req.Nationality,
+		RiskCategory:        domain.RiskCategory(req.RiskCategory),
+		Status:              domain.Missing,
+		FullName:            req.FullName,
+		DOB:                 dob,
+		Gender:              &req.Gender,
+		Nationality:         &req.Nationality,
 		DistinguishingMarks: &req.DistinguishingMarks,
-		HeightCm:           req.HeightCm,
-		SkinTone:           &req.SkinTone,
-		GuardianName:       &req.GuardianName,
-		GuardianPhone:      &req.GuardianPhone,
-		DeptCode:           &req.DeptCode,
-		Commune:            &req.Commune,
-		PhotoRefs:          []string{},
-		AssistanceType:     []string{},
-		CreatedBy:          uuid.New(),
+		HeightCm:            req.HeightCm,
+		SkinTone:            &req.SkinTone,
+		GuardianName:        &req.GuardianName,
+		GuardianPhone:       &req.GuardianPhone,
+		DeptCode:            &req.DeptCode,
+		Commune:             &req.Commune,
+		PhotoRefs:           []string{},
+		AssistanceType:      []string{},
+		CreatedBy:           uuid.New(),
 	}
 
 	if req.DisappearanceDate != "" {

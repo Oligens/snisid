@@ -10,7 +10,7 @@ import (
 // Theorem: forall r, r <= threshold -> is_safe r = true.
 func IsSafe(risk int, threshold int) bool {
 	logger.Info(context.Background(), "FORMAL-VERIFICATION: Executing verified safety logic.")
-	
+
 	// Verified implementation
 	if risk <= threshold {
 		return true

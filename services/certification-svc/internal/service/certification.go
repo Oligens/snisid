@@ -112,15 +112,15 @@ func (s *CertificationService) VerifyCompliance(ctx context.Context, identityID 
 	overall := ialMet && aalMet
 
 	result := map[string]any{
-		"identity_id":   identityID.String(),
-		"is_compliant":  overall,
-		"ial_required":  string(requiredIAL),
-		"ial_current":   string(profile.IAL),
-		"ial_met":       ialMet,
-		"aal_required":  string(requiredAAL),
-		"aal_current":   string(profile.AAL),
-		"aal_met":       aalMet,
-		"checked_at":    time.Now().UTC(),
+		"identity_id":  identityID.String(),
+		"is_compliant": overall,
+		"ial_required": string(requiredIAL),
+		"ial_current":  string(profile.IAL),
+		"ial_met":      ialMet,
+		"aal_required": string(requiredAAL),
+		"aal_current":  string(profile.AAL),
+		"aal_met":      aalMet,
+		"checked_at":   time.Now().UTC(),
 	}
 
 	s.publishEvent(ctx, "certification.compliance.checked", result)

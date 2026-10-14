@@ -29,7 +29,7 @@ type ProposalEngine struct{}
 
 func (e *ProposalEngine) Propose(target string, riskScore float64, reasons []string) Intervention {
 	fmt.Printf("🎯 NEXUS-INTERV: Proposing intervention for target %s (Score: %.2f)\n", target, riskScore)
-	
+
 	i := Intervention{
 		ID:        fmt.Sprintf("INT-%d", time.Now().UnixNano()),
 		Target:    target,

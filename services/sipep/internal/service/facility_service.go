@@ -10,7 +10,7 @@ import (
 )
 
 type FacilityService struct {
-	mu        sync.RWMutex
+	mu         sync.RWMutex
 	facilities map[string]*domain.Facility
 }
 

@@ -9,16 +9,16 @@ import (
 type AllegationType string
 
 const (
-	DataLeakToGang      AllegationType = "DATA_LEAK_TO_GANG"
-	RecordTampering     AllegationType = "RECORD_TAMPERING"
-	UnauthorizedAccess  AllegationType = "UNAUTHORIZED_ACCESS"
-	Bribery             AllegationType = "BRIBERY"
-	ExtortionOfCivilians AllegationType = "EXTORTION_OF_CIVILIANS"
+	DataLeakToGang          AllegationType = "DATA_LEAK_TO_GANG"
+	RecordTampering         AllegationType = "RECORD_TAMPERING"
+	UnauthorizedAccess      AllegationType = "UNAUTHORIZED_ACCESS"
+	Bribery                 AllegationType = "BRIBERY"
+	ExtortionOfCivilians    AllegationType = "EXTORTION_OF_CIVILIANS"
 	FacilitatedPrisonEscape AllegationType = "FACILITATED_PRISON_ESCAPE"
-	StolenCredentials   AllegationType = "STOLEN_CREDENTIALS"
-	FinancialCorruption AllegationType = "FINANCIAL_CORRUPTION"
-	GangAffiliation     AllegationType = "GANG_AFFILIATION"
-	OtherAllegation     AllegationType = "OTHER"
+	StolenCredentials       AllegationType = "STOLEN_CREDENTIALS"
+	FinancialCorruption     AllegationType = "FINANCIAL_CORRUPTION"
+	GangAffiliation         AllegationType = "GANG_AFFILIATION"
+	OtherAllegation         AllegationType = "OTHER"
 )
 
 type Severity string
@@ -33,12 +33,12 @@ const (
 type CaseStatus string
 
 const (
-	Reported         CaseStatus = "REPORTED"
+	Reported           CaseStatus = "REPORTED"
 	UnderInvestigation CaseStatus = "UNDER_INVESTIGATION"
-	Substantiated    CaseStatus = "SUBSTANTIATED"
-	Unsubstantiated  CaseStatus = "UNSUBSTANTIATED"
-	ReferredToParquet CaseStatus = "REFERRED_TO_PARQUET"
-	Closed           CaseStatus = "CLOSED"
+	Substantiated      CaseStatus = "SUBSTANTIATED"
+	Unsubstantiated    CaseStatus = "UNSUBSTANTIATED"
+	ReferredToParquet  CaseStatus = "REFERRED_TO_PARQUET"
+	Closed             CaseStatus = "CLOSED"
 )
 
 type IntegrityCase struct {
@@ -66,15 +66,15 @@ type IntegrityCase struct {
 }
 
 type WhistleblowerReport struct {
-	ID                uuid.UUID     `json:"report_id" db:"report_id"`
-	ReportToken       string        `json:"report_token" db:"report_token"`
-	AllegationType    AllegationType `json:"allegation_type" db:"allegation_type"`
-	SeverityEstimate  *Severity     `json:"severity_estimate,omitempty" db:"severity_estimate"`
-	Description       string        `json:"description" db:"description"`
-	SubmissionDate    time.Time     `json:"submission_date" db:"submission_date"`
-	Processed         *bool         `json:"processed,omitempty" db:"processed"`
-	IntegrityCaseID   *uuid.UUID    `json:"integrity_case_id,omitempty" db:"integrity_case_id"`
-	CreatedAt         time.Time     `json:"created_at" db:"created_at"`
+	ID               uuid.UUID      `json:"report_id" db:"report_id"`
+	ReportToken      string         `json:"report_token" db:"report_token"`
+	AllegationType   AllegationType `json:"allegation_type" db:"allegation_type"`
+	SeverityEstimate *Severity      `json:"severity_estimate,omitempty" db:"severity_estimate"`
+	Description      string         `json:"description" db:"description"`
+	SubmissionDate   time.Time      `json:"submission_date" db:"submission_date"`
+	Processed        *bool          `json:"processed,omitempty" db:"processed"`
+	IntegrityCaseID  *uuid.UUID     `json:"integrity_case_id,omitempty" db:"integrity_case_id"`
+	CreatedAt        time.Time      `json:"created_at" db:"created_at"`
 }
 
 type BehavioralAlert struct {
@@ -91,23 +91,23 @@ type BehavioralAlert struct {
 }
 
 type AssetDeclaration struct {
-	ID                uuid.UUID `json:"declaration_id" db:"declaration_id"`
-	OfficerSNISIDID   uuid.UUID `json:"officer_snisid_id" db:"officer_snisid_id"`
-	DeclarationYear   *int      `json:"declaration_year,omitempty" db:"declaration_year"`
-	RealEstateUSD     *float64  `json:"real_estate_usd,omitempty" db:"real_estate_usd"`
-	VehiclesUSD       *float64  `json:"vehicles_usd,omitempty" db:"vehicles_usd"`
-	BankAccountsUSD   *float64  `json:"bank_accounts_usd,omitempty" db:"bank_accounts_usd"`
-	OtherAssetsUSD    *float64  `json:"other_assets_usd,omitempty" db:"other_assets_usd"`
-	IsFlagged         *bool     `json:"is_flagged,omitempty" db:"is_flagged"`
-	CreatedAt         time.Time `json:"created_at" db:"created_at"`
+	ID              uuid.UUID `json:"declaration_id" db:"declaration_id"`
+	OfficerSNISIDID uuid.UUID `json:"officer_snisid_id" db:"officer_snisid_id"`
+	DeclarationYear *int      `json:"declaration_year,omitempty" db:"declaration_year"`
+	RealEstateUSD   *float64  `json:"real_estate_usd,omitempty" db:"real_estate_usd"`
+	VehiclesUSD     *float64  `json:"vehicles_usd,omitempty" db:"vehicles_usd"`
+	BankAccountsUSD *float64  `json:"bank_accounts_usd,omitempty" db:"bank_accounts_usd"`
+	OtherAssetsUSD  *float64  `json:"other_assets_usd,omitempty" db:"other_assets_usd"`
+	IsFlagged       *bool     `json:"is_flagged,omitempty" db:"is_flagged"`
+	CreatedAt       time.Time `json:"created_at" db:"created_at"`
 }
 
 type OpenCaseRequest struct {
-	OfficerSNISIDID string  `json:"officer_snisid_id" binding:"required"`
-	AllegationType  string  `json:"allegation_type" binding:"required"`
-	Severity        string  `json:"severity" binding:"required"`
+	OfficerSNISIDID   string `json:"officer_snisid_id" binding:"required"`
+	AllegationType    string `json:"allegation_type" binding:"required"`
+	Severity          string `json:"severity" binding:"required"`
 	AllegationSummary string `json:"allegation_summary" binding:"required"`
-	GangID          string  `json:"gang_id"`
+	GangID            string `json:"gang_id"`
 }
 
 type SubmitWhistleblowerRequest struct {

@@ -30,8 +30,8 @@ func ZeroTrustMiddleware(next http.Handler) http.Handler {
 		// 3. Inject Security Context
 		agencyID := "AGENCY-MOCK-123"
 		ctx := context.WithValue(r.Context(), "agency_id", agencyID)
-		
-		logger.Info(ctx, "Request authenticated via Zero Trust gateway", 
+
+		logger.Info(ctx, "Request authenticated via Zero Trust gateway",
 			zap.String("agency", agencyID),
 			zap.String("subject", clientCertSubject),
 		)

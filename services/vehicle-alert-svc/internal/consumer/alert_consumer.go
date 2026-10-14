@@ -19,12 +19,12 @@ type AlertConsumer struct {
 
 func New(brokers []string, groupID string, alerter *alerter.Alerter, logger *zap.Logger) *AlertConsumer {
 	reader := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:   brokers,
-		GroupID:   groupID,
-		Topic:     "sivc.alerts",
-		MinBytes:  10,
-		MaxBytes:  10e6,
-		MaxWait:   1 * time.Second,
+		Brokers:  brokers,
+		GroupID:  groupID,
+		Topic:    "sivc.alerts",
+		MinBytes: 10,
+		MaxBytes: 10e6,
+		MaxWait:  1 * time.Second,
 	})
 	return &AlertConsumer{reader: reader, alerter: alerter, logger: logger}
 }

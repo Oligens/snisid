@@ -53,7 +53,7 @@ func TestValidateDecision_NoSignals(t *testing.T) {
 func TestValidateDecision_NilSignals(t *testing.T) {
 	ok, reason := ValidateDecision(Decision{
 		SubjectID:  "CIT-005",
-		Signals:     nil,
+		Signals:    nil,
 		Confidence: 0.8,
 	})
 	assert.False(t, ok)

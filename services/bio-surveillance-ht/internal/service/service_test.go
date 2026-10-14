@@ -207,7 +207,7 @@ func TestGetCampaignCoverage(t *testing.T) {
 			},
 		},
 		{
-			name: "invalid id",
+			name:    "invalid id",
 			wantErr: true,
 		},
 	}

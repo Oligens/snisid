@@ -3,16 +3,16 @@ package domain
 type AllegationType string
 
 const (
-	AllegationDataLeak          AllegationType = "DATA_LEAK_TO_GANG"
-	AllegationRecordTampering   AllegationType = "RECORD_TAMPERING"
+	AllegationDataLeak           AllegationType = "DATA_LEAK_TO_GANG"
+	AllegationRecordTampering    AllegationType = "RECORD_TAMPERING"
 	AllegationUnauthorizedAccess AllegationType = "UNAUTHORIZED_ACCESS"
-	AllegationBribery           AllegationType = "BRIBERY"
-	AllegationExtortion         AllegationType = "EXTORTION_OF_CIVILIANS"
-	AllegationPrisonEscape      AllegationType = "FACILITATED_PRISON_ESCAPE"
-	AllegationStolenCredentials AllegationType = "STOLEN_CREDENTIALS"
-	AllegationFinancial         AllegationType = "FINANCIAL_CORRUPTION"
-	AllegationGangAffiliation   AllegationType = "GANG_AFFILIATION"
-	AllegationOther             AllegationType = "OTHER"
+	AllegationBribery            AllegationType = "BRIBERY"
+	AllegationExtortion          AllegationType = "EXTORTION_OF_CIVILIANS"
+	AllegationPrisonEscape       AllegationType = "FACILITATED_PRISON_ESCAPE"
+	AllegationStolenCredentials  AllegationType = "STOLEN_CREDENTIALS"
+	AllegationFinancial          AllegationType = "FINANCIAL_CORRUPTION"
+	AllegationGangAffiliation    AllegationType = "GANG_AFFILIATION"
+	AllegationOther              AllegationType = "OTHER"
 )
 
 type Severity string

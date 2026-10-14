@@ -9,15 +9,15 @@ import (
 )
 
 type TrustSignal struct {
-	Type     string
-	Value    float32
-	Weight   float32
+	Type   string
+	Value  float32
+	Weight float32
 }
 
 type TrustScore struct {
-	Score     int
-	Level     string
-	Signals   []string
+	Score   int
+	Level   string
+	Signals []string
 }
 
 type AdaptiveTrustScorer struct{}
@@ -46,8 +46,8 @@ func (s *AdaptiveTrustScorer) CalculateScore(ctx context.Context, principal stri
 		level = "MEDIUM"
 	}
 
-	logger.Info(ctx, "Trust score calculated", 
-		zap.String("principal", principal), 
+	logger.Info(ctx, "Trust score calculated",
+		zap.String("principal", principal),
 		zap.Int("score", scoreInt),
 		zap.String("level", level),
 	)

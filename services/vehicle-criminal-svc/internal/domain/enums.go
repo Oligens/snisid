@@ -38,24 +38,24 @@ const (
 type PlateCategory string
 
 const (
-	PlateCategoryPrivate          PlateCategory = "PP"
-	PlateCategoryHeavy            PlateCategory = "PL"
-	PlateCategoryMoto             PlateCategory = "M"
-	PlateCategoryPublicTransport  PlateCategory = "TC"
-	PlateCategoryState            PlateCategory = "SE"
-	PlateCategoryDiplomatic       PlateCategory = "CD"
-	PlateCategoryOrg              PlateCategory = "OA"
-	PlateCategoryAgri             PlateCategory = "AG"
-	PlateCategoryMedical          PlateCategory = "MD"
-	PlateCategoryTaxi             PlateCategory = "TX"
+	PlateCategoryPrivate         PlateCategory = "PP"
+	PlateCategoryHeavy           PlateCategory = "PL"
+	PlateCategoryMoto            PlateCategory = "M"
+	PlateCategoryPublicTransport PlateCategory = "TC"
+	PlateCategoryState           PlateCategory = "SE"
+	PlateCategoryDiplomatic      PlateCategory = "CD"
+	PlateCategoryOrg             PlateCategory = "OA"
+	PlateCategoryAgri            PlateCategory = "AG"
+	PlateCategoryMedical         PlateCategory = "MD"
+	PlateCategoryTaxi            PlateCategory = "TX"
 )
 
 type StolenPlateStatus string
 
 const (
-	StolenPlateStatusStolen     StolenPlateStatus = "STOLEN"
-	StolenPlateStatusRecovered  StolenPlateStatus = "RECOVERED"
-	StolenPlateStatusDestroyed  StolenPlateStatus = "DESTROYED"
+	StolenPlateStatusStolen      StolenPlateStatus = "STOLEN"
+	StolenPlateStatusRecovered   StolenPlateStatus = "RECOVERED"
+	StolenPlateStatusDestroyed   StolenPlateStatus = "DESTROYED"
 	StolenPlateStatusUsedInCrime StolenPlateStatus = "USED_IN_CRIME"
 )
 
@@ -68,7 +68,7 @@ const (
 	VehicleTypeCamion      VehicleType = "CAMION"
 	VehicleTypeMoto        VehicleType = "MOTO"
 	VehicleTypeTapTap      VehicleType = "TAP_TAP"
-	VehicleTypeCamionnette  VehicleType = "CAMIONNETTE"
+	VehicleTypeCamionnette VehicleType = "CAMIONNETTE"
 	VehicleTypeBus         VehicleType = "BUS"
 	VehicleTypeQuad        VehicleType = "QUAD"
 	VehicleTypeBateau      VehicleType = "BATEAU"
@@ -103,19 +103,19 @@ const (
 type KidnappingStatus string
 
 const (
-	KidnappingStatusInProgress    KidnappingStatus = "IN_PROGRESS"
-	KidnappingStatusVictimRescued KidnappingStatus = "VICTIM_RESCUED"
+	KidnappingStatusInProgress     KidnappingStatus = "IN_PROGRESS"
+	KidnappingStatusVictimRescued  KidnappingStatus = "VICTIM_RESCUED"
 	KidnappingStatusVictimReleased KidnappingStatus = "VICTIM_RELEASED"
 	KidnappingStatusVictimDeceased KidnappingStatus = "VICTIM_DECEASED"
-	KidnappingStatusUnresolved    KidnappingStatus = "UNRESOLVED"
+	KidnappingStatusUnresolved     KidnappingStatus = "UNRESOLVED"
 )
 
 type SightingSource string
 
 const (
-	SightingSourceLAPI      SightingSource = "LAPI"
-	SightingSourceManual    SightingSource = "MANUAL"
-	SightingSourceTip       SightingSource = "TIP"
+	SightingSourceLAPI       SightingSource = "LAPI"
+	SightingSourceManual     SightingSource = "MANUAL"
+	SightingSourceTip        SightingSource = "TIP"
 	SightingSourceCheckpoint SightingSource = "CHECKPOINT"
 )
 

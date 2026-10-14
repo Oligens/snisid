@@ -27,17 +27,17 @@ type ActionEdge struct {
 }
 
 type GraphQuery struct {
-	SourceUID string `json:"source_uid"`
-	TargetUID string `json:"target_uid"`
-	MaxDepth  int    `json:"max_depth"`
+	SourceUID string  `json:"source_uid"`
+	TargetUID string  `json:"target_uid"`
+	MaxDepth  int     `json:"max_depth"`
 	MinScore  float64 `json:"min_score"`
 }
 
 type PathResult struct {
-	Path       []string    `json:"path"`
-	TotalRisk  float64     `json:"total_risk"`
-	Length     int         `json:"length"`
-	Anomalous  bool        `json:"anomalous"`
+	Path      []string `json:"path"`
+	TotalRisk float64  `json:"total_risk"`
+	Length    int      `json:"length"`
+	Anomalous bool     `json:"anomalous"`
 }
 
 type ClusterResult struct {
@@ -55,10 +55,10 @@ type ThreatAnalyzer struct {
 }
 
 type ThreatThresholds struct {
-	InsiderRiskThreshold      float64 `json:"insider_risk_threshold"`
-	SuspiciousPathScore       float64 `json:"suspicious_path_score"`
-	ClusterThreatThreshold    float64 `json:"cluster_threat_threshold"`
-	AnomalyActionCount        int     `json:"anomaly_action_count"`
+	InsiderRiskThreshold   float64 `json:"insider_risk_threshold"`
+	SuspiciousPathScore    float64 `json:"suspicious_path_score"`
+	ClusterThreatThreshold float64 `json:"cluster_threat_threshold"`
+	AnomalyActionCount     int     `json:"anomaly_action_count"`
 }
 
 func NewThreatAnalyzer() *ThreatAnalyzer {
@@ -182,10 +182,10 @@ func (a *ThreatAnalyzer) FindShortestPath(query GraphQuery) *PathResult {
 	}
 
 	type nodeDist struct {
-		node  string
-		dist  int
-		risk  float64
-		path  []string
+		node string
+		dist int
+		risk float64
+		path []string
 	}
 
 	visited := make(map[string]bool)

@@ -20,6 +20,16 @@ const AuthTimeoutContext = createContext<() => void>(() => {});
 
 export const useAuthTimeout = () => useContext(AuthTimeoutContext);
 
+export const useApplicationAuth = () => {
+  const auth = useOidcAuth();
+  const isDemo = import.meta.env.DEV && !!auth.error;
+
+  return {
+    ...auth,
+    isDemo,
+  };
+};
+
 const SessionTimeoutWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const auth = useOidcAuth();
   const [lastActivity, setLastActivity] = useState<number>(Date.now());

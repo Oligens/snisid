@@ -17,8 +17,8 @@ type GangRepository interface {
 }
 
 type InMemoryGangRepo struct {
-	mu    sync.RWMutex
-	orgs  map[uuid.UUID]*domain.Organization
+	mu   sync.RWMutex
+	orgs map[uuid.UUID]*domain.Organization
 }
 
 func NewInMemoryGangRepo() *InMemoryGangRepo {

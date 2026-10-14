@@ -34,7 +34,9 @@ func (r *postgresRepo) GetAssurance(ctx context.Context, citizenID uuid.UUID) (*
 	a := &domain.IdentityAssurance{}
 	err := r.db.QueryRowContext(ctx, `SELECT assurance_id, citizen_id, keycloak_user_id, assurance_level, biometric_verified_at, mfa_enrolled, last_login_at, created_at FROM iam_identity_assurance WHERE citizen_id = $1`, citizenID).Scan(
 		&a.AssuranceID, &a.CitizenID, &a.KeycloakUserID, &a.AssuranceLevel, &a.BiometricVerifiedAt, &a.MFAEnrolled, &a.LastLoginAt, &a.CreatedAt)
-	if err != nil { return nil, fmt.Errorf("assurance not found") }
+	if err != nil {
+		return nil, fmt.Errorf("assurance not found")
+	}
 	return a, nil
 }
 
@@ -48,7 +50,9 @@ func (r *postgresRepo) GetClient(ctx context.Context, oauthClientID string) (*do
 	c := &domain.AgencyClient{}
 	err := r.db.QueryRowContext(ctx, `SELECT client_id, agency_name, oauth_client_id, allowed_scopes, redirect_uris, required_assurance_level, is_active, created_at FROM iam_agency_clients WHERE oauth_client_id = $1`, oauthClientID).Scan(
 		&c.ClientID, &c.AgencyName, &c.OAuthClientID, &c.AllowedScopes, &c.RedirectURIs, &c.RequiredAssuranceLevel, &c.IsActive, &c.CreatedAt)
-	if err != nil { return nil, fmt.Errorf("client not found") }
+	if err != nil {
+		return nil, fmt.Errorf("client not found")
+	}
 	return c, nil
 }
 

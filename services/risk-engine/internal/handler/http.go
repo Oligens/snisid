@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"nexus-snisid/pkg/eventbus"
 	"github.com/snisid/platform/pkg/kafka"
+	"nexus-snisid/pkg/eventbus"
 )
 
 type RiskRequest struct {
@@ -23,38 +23,38 @@ type RiskRequest struct {
 }
 
 type RiskResponse struct {
-	TransactionID string  `json:"transaction_id"`
-	RiskScore     float64 `json:"risk_score"`
-	Decision      string  `json:"decision"` // APPROVE, REVIEW, BLOCK
+	TransactionID string       `json:"transaction_id"`
+	RiskScore     float64      `json:"risk_score"`
+	Decision      string       `json:"decision"` // APPROVE, REVIEW, BLOCK
 	Factors       []RiskFactor `json:"factors"`
-	ComputedAt    int64   `json:"computed_at"`
+	ComputedAt    int64        `json:"computed_at"`
 }
 
 type RiskFactor struct {
-	Name    string  `json:"name"`
-	Score   float64 `json:"score"`
-	Weight  float64 `json:"weight"`
-	Reason  string  `json:"reason"`
+	Name   string  `json:"name"`
+	Score  float64 `json:"score"`
+	Weight float64 `json:"weight"`
+	Reason string  `json:"reason"`
 }
 
 type RiskEngine struct {
-	mu            sync.RWMutex
-	userHistory   map[string][]RiskRequest
-	ipBlacklist   map[string]bool
+	mu              sync.RWMutex
+	userHistory     map[string][]RiskRequest
+	ipBlacklist     map[string]bool
 	deviceBlacklist map[string]bool
-	thresholds    RiskThresholds
+	thresholds      RiskThresholds
 }
 
 type RiskThresholds struct {
-	BlockThreshold    float64 `json:"block_threshold"`
-	ReviewThreshold   float64 `json:"review_threshold"`
-	VelocityLimit     int     `json:"velocity_limit"`
-	VelocityWindow    int64   `json:"velocity_window_seconds"`
+	BlockThreshold  float64 `json:"block_threshold"`
+	ReviewThreshold float64 `json:"review_threshold"`
+	VelocityLimit   int     `json:"velocity_limit"`
+	VelocityWindow  int64   `json:"velocity_window_seconds"`
 }
 
 var (
-	engine *RiskEngine
-	once   sync.Once
+	engine   *RiskEngine
+	once     sync.Once
 	producer = kafka.NewProducer("kafka:9092", "events.risk")
 )
 

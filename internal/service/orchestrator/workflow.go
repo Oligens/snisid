@@ -38,7 +38,7 @@ func (e *WorkflowEngine) OnboardIdentity(ctx context.Context, id string, media [
 
 	// Step 3: Trigger Lifecycle State Change
 	trigger := map[string]interface{}{
-		"identityId": id,
+		"identityId":  id,
 		"targetState": status,
 		"reason":      "Automated onboarding forensic analysis complete",
 		"evidence":    verdict,

@@ -19,8 +19,8 @@ type Identity struct {
 	UpdatedAt     time.Time `json:"updated_at"`
 }
 
-func (i Identity) GetID() string       { return i.ID }
-func (i Identity) GetNNU() string      { return i.NNU }
+func (i Identity) GetID() string        { return i.ID }
+func (i Identity) GetNNU() string       { return i.NNU }
 func (i Identity) GetFullName() string  { return i.FullName }
 func (i Identity) GetFirstName() string { return i.FirstName }
 func (i Identity) GetLastName() string  { return i.LastName }

@@ -28,7 +28,7 @@ type LatentSubmission struct {
 	CrimeSceneID  *uuid.UUID     `json:"crime_scene_id,omitempty"`
 	LocationDesc  *string        `json:"location_desc,omitempty"`
 	DeptCode      *string        `json:"dept_code,omitempty"`
-	FoundAt       time.Time       `json:"found_at" validate:"required"`
+	FoundAt       time.Time      `json:"found_at" validate:"required"`
 	ImageBase64   string         `json:"image_base64" validate:"required"`
 	Position      FingerPosition `json:"position"`
 	ExaminedBy    uuid.UUID      `json:"examined_by" validate:"required"`

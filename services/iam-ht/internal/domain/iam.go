@@ -15,25 +15,25 @@ const (
 )
 
 type IdentityAssurance struct {
-	AssuranceID         uuid.UUID       `json:"assurance_id"`
-	CitizenID           uuid.UUID       `json:"citizen_id"`
-	KeycloakUserID      string          `json:"keycloak_user_id"`
-	AssuranceLevel      AssuranceLevel  `json:"assurance_level"`
-	BiometricVerifiedAt *time.Time      `json:"biometric_verified_at,omitempty"`
-	MFAEnrolled         bool            `json:"mfa_enrolled"`
-	LastLoginAt         *time.Time      `json:"last_login_at,omitempty"`
-	CreatedAt           time.Time       `json:"created_at"`
+	AssuranceID         uuid.UUID      `json:"assurance_id"`
+	CitizenID           uuid.UUID      `json:"citizen_id"`
+	KeycloakUserID      string         `json:"keycloak_user_id"`
+	AssuranceLevel      AssuranceLevel `json:"assurance_level"`
+	BiometricVerifiedAt *time.Time     `json:"biometric_verified_at,omitempty"`
+	MFAEnrolled         bool           `json:"mfa_enrolled"`
+	LastLoginAt         *time.Time     `json:"last_login_at,omitempty"`
+	CreatedAt           time.Time      `json:"created_at"`
 }
 
 type AgencyClient struct {
-	ClientID              uuid.UUID       `json:"client_id"`
-	AgencyName            string          `json:"agency_name"`
-	OAuthClientID         string          `json:"oauth_client_id"`
-	AllowedScopes         []string        `json:"allowed_scopes"`
-	RedirectURIs          []string        `json:"redirect_uris"`
+	ClientID               uuid.UUID      `json:"client_id"`
+	AgencyName             string         `json:"agency_name"`
+	OAuthClientID          string         `json:"oauth_client_id"`
+	AllowedScopes          []string       `json:"allowed_scopes"`
+	RedirectURIs           []string       `json:"redirect_uris"`
 	RequiredAssuranceLevel AssuranceLevel `json:"required_assurance_level"`
-	IsActive              bool            `json:"is_active"`
-	CreatedAt             time.Time       `json:"created_at"`
+	IsActive               bool           `json:"is_active"`
+	CreatedAt              time.Time      `json:"created_at"`
 }
 
 type AccessLog struct {

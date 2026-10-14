@@ -27,18 +27,18 @@ var ErrMissingRequiredFingers = errors.New("empreintes obligatoires manquantes (
 func (f *Fingerprint) IsHighQuality() bool { return f.NFIQ2Score >= 80 }
 
 type SearchResult struct {
-	CandidateID   uuid.UUID `json:"candidate_id"`
-	SubjectID     uuid.UUID `json:"subject_id"`
-	Score         float64   `json:"score"`
-	Rank          int       `json:"rank"`
-	NationalAFISID string   `json:"national_afis_id"`
+	CandidateID    uuid.UUID `json:"candidate_id"`
+	SubjectID      uuid.UUID `json:"subject_id"`
+	Score          float64   `json:"score"`
+	Rank           int       `json:"rank"`
+	NationalAFISID string    `json:"national_afis_id"`
 }
 
 type EnrollmentRequest struct {
-	SubjectType   SubjectType          `json:"subject_type" validate:"required"`
-	SNISIDPersonID *uuid.UUID          `json:"snisid_person_id,omitempty"`
-	FIRRecordID    *uuid.UUID          `json:"fir_record_id,omitempty"`
-	EnrollingUnit  string              `json:"enrolling_unit" validate:"required"`
+	SubjectType    SubjectType          `json:"subject_type" validate:"required"`
+	SNISIDPersonID *uuid.UUID           `json:"snisid_person_id,omitempty"`
+	FIRRecordID    *uuid.UUID           `json:"fir_record_id,omitempty"`
+	EnrollingUnit  string               `json:"enrolling_unit" validate:"required"`
 	Fingerprints   []FingerprintCapture `json:"fingerprints" validate:"required,min=2"`
 }
 

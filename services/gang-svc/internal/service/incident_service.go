@@ -28,19 +28,19 @@ func NewIncidentService(
 }
 
 type CreateIncidentRequest struct {
-	GangID        string   `json:"gang_id" binding:"required"`
-	IncidentType  string   `json:"incident_type" binding:"required"`
-	IncidentDate  string   `json:"incident_date" binding:"required"`
-	LocationDesc  string   `json:"location_desc"`
-	DeptCode      string   `json:"dept_code"`
-	Commune       string   `json:"commune"`
-	Lat           float64  `json:"lat"`
-	Lng           float64  `json:"lng"`
-	Casualties    int      `json:"casualties"`
-	VictimIDs     []string `json:"victim_ids"`
-	Description   string   `json:"description"`
-	IntelSource   string   `json:"intel_source"`
-	CreatedBy     string   `json:"created_by" binding:"required"`
+	GangID       string   `json:"gang_id" binding:"required"`
+	IncidentType string   `json:"incident_type" binding:"required"`
+	IncidentDate string   `json:"incident_date" binding:"required"`
+	LocationDesc string   `json:"location_desc"`
+	DeptCode     string   `json:"dept_code"`
+	Commune      string   `json:"commune"`
+	Lat          float64  `json:"lat"`
+	Lng          float64  `json:"lng"`
+	Casualties   int      `json:"casualties"`
+	VictimIDs    []string `json:"victim_ids"`
+	Description  string   `json:"description"`
+	IntelSource  string   `json:"intel_source"`
+	CreatedBy    string   `json:"created_by" binding:"required"`
 }
 
 func (s *IncidentService) CreateIncident(ctx context.Context, req CreateIncidentRequest) (*domain.Incident, error) {

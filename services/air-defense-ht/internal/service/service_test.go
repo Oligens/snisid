@@ -10,13 +10,13 @@ import (
 )
 
 type mockRepo struct {
-	createContactFn func(domain.RadarContact) error
-	getActiveFn     func() ([]domain.RadarContact, error)
-	getByIDFn       func(uuid.UUID) (*domain.RadarContact, error)
-	createIncidentFn func(domain.AirDefenseIncident) error
+	createContactFn   func(domain.RadarContact) error
+	getActiveFn       func() ([]domain.RadarContact, error)
+	getByIDFn         func(uuid.UUID) (*domain.RadarContact, error)
+	createIncidentFn  func(domain.AirDefenseIncident) error
 	resolveIncidentFn func(uuid.UUID) error
-	createNoFlyFn   func(domain.NoFlyListEntry) error
-	getNoFlyFn      func(string) (*domain.NoFlyListEntry, error)
+	createNoFlyFn     func(domain.NoFlyListEntry) error
+	getNoFlyFn        func(string) (*domain.NoFlyListEntry, error)
 }
 
 func (m *mockRepo) CreateRadarContact(c domain.RadarContact) error {

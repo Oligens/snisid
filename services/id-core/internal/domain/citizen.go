@@ -19,12 +19,12 @@ const (
 type EnrollmentType string
 
 const (
-	EnrollmentBirth                  EnrollmentType = "BIRTH"
-	EnrollmentAdultFirst             EnrollmentType = "ADULT_FIRST_ENROLLMENT"
-	EnrollmentNaturalization         EnrollmentType = "NATURALIZATION"
-	EnrollmentRegularization         EnrollmentType = "REGULARIZATION"
-	EnrollmentRefugeeStatus          EnrollmentType = "REFUGEE_STATUS"
-	EnrollmentReconstructionLost     EnrollmentType = "RECONSTRUCTION_LOST_RECORDS"
+	EnrollmentBirth              EnrollmentType = "BIRTH"
+	EnrollmentAdultFirst         EnrollmentType = "ADULT_FIRST_ENROLLMENT"
+	EnrollmentNaturalization     EnrollmentType = "NATURALIZATION"
+	EnrollmentRegularization     EnrollmentType = "REGULARIZATION"
+	EnrollmentRefugeeStatus      EnrollmentType = "REFUGEE_STATUS"
+	EnrollmentReconstructionLost EnrollmentType = "RECONSTRUCTION_LOST_RECORDS"
 )
 
 type Citizen struct {
@@ -59,26 +59,26 @@ type Citizen struct {
 }
 
 type EnrollmentRequest struct {
-	Age              int              `json:"age"`
-	EnrollmentType   EnrollmentType   `json:"enrollment_type"`
-	FullNameLegal    string           `json:"full_name_legal"`
-	FirstName        string           `json:"first_name"`
-	MiddleNames      *string          `json:"middle_names,omitempty"`
-	LastName         string           `json:"last_name"`
-	MaidenName       *string          `json:"maiden_name,omitempty"`
-	DOB              time.Time        `json:"dob"`
-	PobCommune       *string          `json:"pob_commune,omitempty"`
-	PobDeptCode      *string          `json:"pob_dept_code,omitempty"`
-	Gender           *string          `json:"gender,omitempty"`
-	Nationality      string           `json:"nationality"`
-	DeptCode         string           `json:"dept_code"`
-	CurrentAddress   *string          `json:"current_address,omitempty"`
-	CurrentCommune   *string          `json:"current_commune,omitempty"`
-	PhotoRef         *string          `json:"photo_ref,omitempty"`
-	MotherNIN        *string          `json:"mother_nin,omitempty"`
-	FatherNIN        *string          `json:"father_nin,omitempty"`
-	BiometricSample  []byte           `json:"biometric_sample,omitempty"`
-	CreatedBy        string           `json:"created_by"`
+	Age             int            `json:"age"`
+	EnrollmentType  EnrollmentType `json:"enrollment_type"`
+	FullNameLegal   string         `json:"full_name_legal"`
+	FirstName       string         `json:"first_name"`
+	MiddleNames     *string        `json:"middle_names,omitempty"`
+	LastName        string         `json:"last_name"`
+	MaidenName      *string        `json:"maiden_name,omitempty"`
+	DOB             time.Time      `json:"dob"`
+	PobCommune      *string        `json:"pob_commune,omitempty"`
+	PobDeptCode     *string        `json:"pob_dept_code,omitempty"`
+	Gender          *string        `json:"gender,omitempty"`
+	Nationality     string         `json:"nationality"`
+	DeptCode        string         `json:"dept_code"`
+	CurrentAddress  *string        `json:"current_address,omitempty"`
+	CurrentCommune  *string        `json:"current_commune,omitempty"`
+	PhotoRef        *string        `json:"photo_ref,omitempty"`
+	MotherNIN       *string        `json:"mother_nin,omitempty"`
+	FatherNIN       *string        `json:"father_nin,omitempty"`
+	BiometricSample []byte         `json:"biometric_sample,omitempty"`
+	CreatedBy       string         `json:"created_by"`
 }
 
 type EnrollmentResult struct {

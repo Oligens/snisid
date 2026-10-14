@@ -11,10 +11,10 @@ import (
 )
 
 type ForensicEntry struct {
-	EventID   string
-	Payload   []byte
-	PrevHash  string
-	Hash      string
+	EventID  string
+	Payload  []byte
+	PrevHash string
+	Hash     string
 }
 
 type ForensicStore struct {
@@ -41,8 +41,8 @@ func (s *ForensicStore) Commit(ctx context.Context, eventID string, payload []by
 	// 2. Mock: Write to Immutable Storage (e.g., ClickHouse with Object Lock)
 	s.lastHash = hash
 
-	logger.Info(ctx, "Forensic commitment successful", 
-		zap.String("event_id", eventID), 
+	logger.Info(ctx, "Forensic commitment successful",
+		zap.String("event_id", eventID),
 		zap.String("chain_hash", hash),
 	)
 

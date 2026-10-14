@@ -138,5 +138,3 @@ func TestArgon2_VerifyFailsForDifferentHashFormat(t *testing.T) {
 	assert.Error(t, err)
 	assert.False(t, match)
 }
-
-

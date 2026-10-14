@@ -89,8 +89,8 @@ func (h *UCREFHandler) RecordMonCashPattern(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{
-		"pattern_id":  pattern.PatternID,
-		"str_id":      pattern.STRID,
+		"pattern_id":   pattern.PatternID,
+		"str_id":       pattern.STRID,
 		"phone_number": pattern.PhoneNumber,
 	})
 }

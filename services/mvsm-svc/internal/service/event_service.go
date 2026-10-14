@@ -25,10 +25,10 @@ func (s *EventService) CreateEvent(req *domain.CreateEventRequest) (*domain.Even
 	}
 
 	event := &domain.Event{
-		EventType:      domain.EventType(req.EventType),
-		RiskLevel:      domain.RiskLow,
-		ScheduledDate:  sd,
-		CreatedBy:      uuid.New(),
+		EventType:     domain.EventType(req.EventType),
+		RiskLevel:     domain.RiskLow,
+		ScheduledDate: sd,
+		CreatedBy:     uuid.New(),
 	}
 
 	if req.EventName != "" {
@@ -69,10 +69,10 @@ func (s *EventService) ListActive() ([]domain.Event, error) {
 
 func (s *EventService) AddUpdate(eventID uuid.UUID, req *domain.AddUpdateRequest) error {
 	update := &domain.RealTimeUpdate{
-		EventID:        eventID,
-		UpdateTime:     time.Now(),
-		Situation:      req.Situation,
-		ReportedBy:     uuid.New(),
+		EventID:    eventID,
+		UpdateTime: time.Now(),
+		Situation:  req.Situation,
+		ReportedBy: uuid.New(),
 	}
 
 	if req.CurrentCrowdEst != nil {

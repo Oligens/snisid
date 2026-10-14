@@ -10,6 +10,7 @@ import (
 )
 
 type Handler struct{ svc *service.InteropService }
+
 func NewHandler(svc *service.InteropService) *Handler { return &Handler{svc: svc} }
 func (h *Handler) RegisterRoutes(r *gin.RouterGroup) {
 	r.POST("/exchange", h.Exchange)
@@ -34,15 +35,30 @@ func (h *Handler) CreateAgreement(c *gin.Context) {
 		AllowedFields: r.AllowedFields,
 		LegalBasis:    strPtr(r.LegalBasis),
 	}
-	if id, err := uuid.Parse(r.ProviderAgencyID); err == nil { req.ProviderAgencyID = id }
-	if id, err := uuid.Parse(r.ConsumerAgencyID); err == nil { req.ConsumerAgencyID = id }
+	if id, err := uuid.Parse(r.ProviderAgencyID); err == nil {
+		req.ProviderAgencyID = id
+	}
+	if id, err := uuid.Parse(r.ConsumerAgencyID); err == nil {
+		req.ConsumerAgencyID = id
+	}
 	result, err := h.svc.CreateAgreement(c.Request.Context(), req)
-	if err != nil { c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}); return }
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
 	c.JSON(http.StatusCreated, result)
 }
 func (h *Handler) GetLogs(c *gin.Context) {
 	logs, err := h.svc.GetLogs(c.Request.Context(), c.Param("agreement_id"))
-	if err != nil { c.JSON(http.StatusNotFound, gin.H{"error": "logs not found"}); return }
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "logs not found"})
+		return
+	}
 	c.JSON(http.StatusOK, logs)
 }
-func strPtr(s string) *string { if s == "" { return nil }; return &s }
+func strPtr(s string) *string {
+	if s == "" {
+		return nil
+	}
+	return &s
+}

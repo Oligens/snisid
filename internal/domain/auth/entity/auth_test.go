@@ -58,9 +58,9 @@ func TestSession_Active(t *testing.T) {
 
 func TestSession_DeviceFingerprint(t *testing.T) {
 	s := Session{
-		SessionID:        "sess-003",
+		SessionID:         "sess-003",
 		DeviceFingerprint: "fp-mac-001",
-		ClientIP:         "192.168.1.1",
+		ClientIP:          "192.168.1.1",
 	}
 	if s.DeviceFingerprint != "fp-mac-001" {
 		t.Errorf("DeviceFingerprint = %s, want fp-mac-001", s.DeviceFingerprint)

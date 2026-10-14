@@ -7,7 +7,7 @@ import (
 type ConflictResult int
 
 const (
-	BEFORE     ConflictResult = iota
+	BEFORE ConflictResult = iota
 	AFTER
 	CONCURRENT
 	EQUAL

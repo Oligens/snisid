@@ -67,8 +67,8 @@ type BiasAuditResult struct {
 }
 
 type NationalDashboard struct {
-	TotalPipelines    int            `json:"total_pipelines"`
-	ActiveModels      int            `json:"active_models"`
+	TotalPipelines     int            `json:"total_pipelines"`
+	ActiveModels       int            `json:"active_models"`
 	ModelTypeBreakdown map[string]int `json:"model_type_breakdown"`
-	RecentAudits      int            `json:"recent_audits"`
+	RecentAudits       int            `json:"recent_audits"`
 }

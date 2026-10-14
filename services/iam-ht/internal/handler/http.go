@@ -22,12 +22,12 @@ func (h *Handler) RegisterRoutes(r *gin.RouterGroup) {
 
 func (h *Handler) Discovery(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
-		"issuer":                "https://sso.gouv.ht",
-		"authorization_endpoint": "/api/v1/iam/authorize",
-		"token_endpoint":        "/api/v1/iam/token",
-		"jwks_uri":              "/api/v1/iam/.well-known/jwks",
+		"issuer":                   "https://sso.gouv.ht",
+		"authorization_endpoint":   "/api/v1/iam/authorize",
+		"token_endpoint":           "/api/v1/iam/token",
+		"jwks_uri":                 "/api/v1/iam/.well-known/jwks",
 		"response_types_supported": []string{"code", "token"},
-		"scopes_supported":      []string{"openid", "profile", "identity"},
+		"scopes_supported":         []string{"openid", "profile", "identity"},
 	})
 }
 
@@ -46,7 +46,9 @@ func (h *Handler) Token(c *gin.Context) {
 }
 
 func (h *Handler) StepUp(c *gin.Context) {
-	var req struct{ CitizenID string `json:"citizen_id"` }
+	var req struct {
+		CitizenID string `json:"citizen_id"`
+	}
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

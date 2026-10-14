@@ -38,24 +38,24 @@ func (h *Handler) Enroll(c *gin.Context) {
 	}
 
 	var req struct {
-		EnrollmentType string `json:"enrollment_type"`
-		FullNameLegal  string `json:"full_name_legal"`
-		FirstName      string `json:"first_name"`
-		MiddleNames    string `json:"middle_names,omitempty"`
-		LastName       string `json:"last_name"`
-		MaidenName     string `json:"maiden_name,omitempty"`
-		DOB            string `json:"dob"`
-		PobCommune     string `json:"pob_commune,omitempty"`
-		PobDeptCode    string `json:"pob_dept_code,omitempty"`
-		Gender         string `json:"gender,omitempty"`
-		Nationality    string `json:"nationality"`
-		DeptCode       string `json:"dept_code"`
-		CurrentAddress string `json:"current_address,omitempty"`
-		CurrentCommune string `json:"current_commune,omitempty"`
-		PhotoRef       string `json:"photo_ref,omitempty"`
-		MotherNIN      string `json:"mother_nin,omitempty"`
-		FatherNIN      string `json:"father_nin,omitempty"`
-		CreatedBy      string `json:"created_by"`
+		EnrollmentType  string `json:"enrollment_type"`
+		FullNameLegal   string `json:"full_name_legal"`
+		FirstName       string `json:"first_name"`
+		MiddleNames     string `json:"middle_names,omitempty"`
+		LastName        string `json:"last_name"`
+		MaidenName      string `json:"maiden_name,omitempty"`
+		DOB             string `json:"dob"`
+		PobCommune      string `json:"pob_commune,omitempty"`
+		PobDeptCode     string `json:"pob_dept_code,omitempty"`
+		Gender          string `json:"gender,omitempty"`
+		Nationality     string `json:"nationality"`
+		DeptCode        string `json:"dept_code"`
+		CurrentAddress  string `json:"current_address,omitempty"`
+		CurrentCommune  string `json:"current_commune,omitempty"`
+		PhotoRef        string `json:"photo_ref,omitempty"`
+		MotherNIN       string `json:"mother_nin,omitempty"`
+		FatherNIN       string `json:"father_nin,omitempty"`
+		CreatedBy       string `json:"created_by"`
 		BiometricSample []byte `json:"biometric_sample,omitempty"`
 	}
 
@@ -73,19 +73,19 @@ func (h *Handler) Enroll(c *gin.Context) {
 	age := int(time.Since(dob).Hours() / 24 / 365)
 
 	enrollReq := domain.EnrollmentRequest{
-		Age:            age,
-		EnrollmentType: domain.EnrollmentType(req.EnrollmentType),
-		FullNameLegal:  req.FullNameLegal,
-		FirstName:      req.FirstName,
-		LastName:       req.LastName,
-		DOB:            dob,
-		Gender:         strPtr(req.Gender),
-		Nationality:    req.Nationality,
-		DeptCode:       req.DeptCode,
-		CurrentAddress: strPtr(req.CurrentAddress),
-		PhotoRef:       strPtr(req.PhotoRef),
+		Age:             age,
+		EnrollmentType:  domain.EnrollmentType(req.EnrollmentType),
+		FullNameLegal:   req.FullNameLegal,
+		FirstName:       req.FirstName,
+		LastName:        req.LastName,
+		DOB:             dob,
+		Gender:          strPtr(req.Gender),
+		Nationality:     req.Nationality,
+		DeptCode:        req.DeptCode,
+		CurrentAddress:  strPtr(req.CurrentAddress),
+		PhotoRef:        strPtr(req.PhotoRef),
 		BiometricSample: req.BiometricSample,
-		CreatedBy:      req.CreatedBy,
+		CreatedBy:       req.CreatedBy,
 	}
 
 	if req.MiddleNames != "" {

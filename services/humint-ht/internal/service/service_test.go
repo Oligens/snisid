@@ -358,11 +358,11 @@ func TestGetSourceNetwork(t *testing.T) {
 	svc := newTestService(mockRepo)
 
 	tests := []struct {
-		name       string
-		setup      func()
-		wantErr    bool
-		wantNodes  int
-		wantEdges  int
+		name      string
+		setup     func()
+		wantErr   bool
+		wantNodes int
+		wantEdges int
 	}{
 		{
 			name: "returns network data",
@@ -374,7 +374,7 @@ func TestGetSourceNetwork(t *testing.T) {
 					},
 					[]domain.IntelligenceReport{
 						{
-							SourceCode:  "RAVEN-1",
+							SourceCode:   "RAVEN-1",
 							ThreatActors: []string{"APT-29", "FancyBear"},
 						},
 					},

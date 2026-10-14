@@ -16,29 +16,29 @@ type AlertCreatedEvent struct {
 }
 
 type AlertUpdatedEvent struct {
-	AlertID    uuid.UUID   `json:"alert_id"`
-	OldStatus  AlertStatus `json:"old_status"`
-	NewStatus  AlertStatus `json:"new_status"`
-	UpdatedBy  uuid.UUID   `json:"updated_by"`
-	Timestamp  time.Time   `json:"timestamp"`
+	AlertID   uuid.UUID   `json:"alert_id"`
+	OldStatus AlertStatus `json:"old_status"`
+	NewStatus AlertStatus `json:"new_status"`
+	UpdatedBy uuid.UUID   `json:"updated_by"`
+	Timestamp time.Time   `json:"timestamp"`
 }
 
 type SightingCreatedEvent struct {
-	SightingID     uuid.UUID `json:"sighting_id"`
-	PlateNumber    string    `json:"plate_number"`
+	SightingID     uuid.UUID  `json:"sighting_id"`
+	PlateNumber    string     `json:"plate_number"`
 	MatchedAlertID *uuid.UUID `json:"matched_alert_id,omitempty"`
-	AlertTriggered bool      `json:"alert_triggered"`
-	Timestamp      time.Time `json:"timestamp"`
+	AlertTriggered bool       `json:"alert_triggered"`
+	Timestamp      time.Time  `json:"timestamp"`
 }
 
 type PlateCheckEvent struct {
-	PlateNumber      string    `json:"plate_number"`
-	HasCriminalAlert bool      `json:"has_criminal_alert"`
-	HasStolenPlate   bool      `json:"has_stolen_plate"`
+	PlateNumber      string     `json:"plate_number"`
+	HasCriminalAlert bool       `json:"has_criminal_alert"`
+	HasStolenPlate   bool       `json:"has_stolen_plate"`
 	AlertLevel       AlertLevel `json:"alert_level,omitempty"`
-	Source           string    `json:"source"`
-	LatencyMs        float64   `json:"latency_ms"`
-	Timestamp        time.Time `json:"timestamp"`
+	Source           string     `json:"source"`
+	LatencyMs        float64    `json:"latency_ms"`
+	Timestamp        time.Time  `json:"timestamp"`
 }
 
 type AuditEvent struct {

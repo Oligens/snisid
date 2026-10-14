@@ -32,14 +32,14 @@ type SyncQueueItem struct {
 }
 
 type OfflineTerminal struct {
-	ID          uuid.UUID `json:"id"`
-	Name        string    `json:"name"`
-	Location    string    `json:"location"`
+	ID          uuid.UUID  `json:"id"`
+	Name        string     `json:"name"`
+	Location    string     `json:"location"`
 	LastSyncAt  *time.Time `json:"last_sync_at,omitempty"`
-	FirmwareVer string    `json:"firmware_ver"`
-	IsOnline    bool      `json:"is_online"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
+	FirmwareVer string     `json:"firmware_ver"`
+	IsOnline    bool       `json:"is_online"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
 }
 
 type PushQueueRequest struct {

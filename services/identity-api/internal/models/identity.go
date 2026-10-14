@@ -7,22 +7,22 @@ import (
 )
 
 type Identity struct {
-	ID             string         `gorm:"primaryKey" json:"id"`
-	NNU            string         `gorm:"uniqueIndex;size:12" json:"nnu"`
-	FirstName      string         `gorm:"size:100;not null" json:"first_name"`
-	LastName       string         `gorm:"size:100;not null" json:"last_name"`
-	DateOfBirth    string         `gorm:"size:10" json:"date_of_birth"`
-	Gender         string         `gorm:"size:1" json:"gender"`
-	Nationality    string         `gorm:"size:3;default:'HTI'" json:"nationality"`
-	Status         string         `gorm:"size:20;default:'pending'" json:"status"`
-	BiometricHash  string         `gorm:"size:64" json:"biometric_hash"`
-	Email          string         `gorm:"size:255" json:"email"`
-	Phone          string         `gorm:"size:20" json:"phone"`
-	Address        string         `gorm:"type:text" json:"address"`
-	Version        int            `gorm:"default:1" json:"version"`
-	CreatedAt      time.Time      `json:"created_at"`
-	UpdatedAt      time.Time      `json:"updated_at"`
-	DeletedAt      gorm.DeletedAt `gorm:"index" json:"deleted_at,omitempty"`
+	ID            string         `gorm:"primaryKey" json:"id"`
+	NNU           string         `gorm:"uniqueIndex;size:12" json:"nnu"`
+	FirstName     string         `gorm:"size:100;not null" json:"first_name"`
+	LastName      string         `gorm:"size:100;not null" json:"last_name"`
+	DateOfBirth   string         `gorm:"size:10" json:"date_of_birth"`
+	Gender        string         `gorm:"size:1" json:"gender"`
+	Nationality   string         `gorm:"size:3;default:'HTI'" json:"nationality"`
+	Status        string         `gorm:"size:20;default:'pending'" json:"status"`
+	BiometricHash string         `gorm:"size:64" json:"biometric_hash"`
+	Email         string         `gorm:"size:255" json:"email"`
+	Phone         string         `gorm:"size:20" json:"phone"`
+	Address       string         `gorm:"type:text" json:"address"`
+	Version       int            `gorm:"default:1" json:"version"`
+	CreatedAt     time.Time      `json:"created_at"`
+	UpdatedAt     time.Time      `json:"updated_at"`
+	DeletedAt     gorm.DeletedAt `gorm:"index" json:"deleted_at,omitempty"`
 }
 
 type IdentityHistory struct {

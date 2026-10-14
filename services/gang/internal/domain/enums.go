@@ -3,11 +3,11 @@ package domain
 type GangStructureType string
 
 const (
-	GangStructureHierarchy  GangStructureType = "HIERARCHY"
-	GangStructureNetwork    GangStructureType = "NETWORK"
-	GangStructureCell       GangStructureType = "CELL"
-	GangStructureCoalition  GangStructureType = "COALITION"
-	GangStructureFranchise  GangStructureType = "FRANCHISE"
+	GangStructureHierarchy GangStructureType = "HIERARCHY"
+	GangStructureNetwork   GangStructureType = "NETWORK"
+	GangStructureCell      GangStructureType = "CELL"
+	GangStructureCoalition GangStructureType = "COALITION"
+	GangStructureFranchise GangStructureType = "FRANCHISE"
 )
 
 type GangActivityLevel string

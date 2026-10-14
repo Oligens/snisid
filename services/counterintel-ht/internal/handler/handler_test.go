@@ -135,10 +135,10 @@ func TestGetActiveThreats_Success(t *testing.T) {
 func TestReportContact_Success(t *testing.T) {
 	r := setupRouter()
 	body, _ := json.Marshal(domain.ReportContactRequest{
-		SubjectID:        "sub-001",
-		ContactName:      "Jane Doe",
+		SubjectID:         "sub-001",
+		ContactName:       "Jane Doe",
 		ForeignGovernment: "Atlantis",
-		RelationshipType: "DIPLOMATIC",
+		RelationshipType:  "DIPLOMATIC",
 	})
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("POST", "/api/v1/counterintel/contacts", bytes.NewReader(body))

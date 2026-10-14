@@ -94,9 +94,9 @@ func TestCreateTarget(t *testing.T) {
 			setup: func() {
 				mockRepo.On("CreateTarget", mock.AnythingOfType("domain.InterceptionTarget")).
 					Return(domain.InterceptionTarget{
-						ID:               uuid.New().String(),
-						TargetType:       "PHONE_NUMBER",
-						Status:           "ACTIVE",
+						ID:         uuid.New().String(),
+						TargetType: "PHONE_NUMBER",
+						Status:     "ACTIVE",
 					}, nil)
 			},
 			wantErr: false,
@@ -296,15 +296,15 @@ func TestEmergencyAuthorization(t *testing.T) {
 		{
 			name: "valid emergency",
 			req: domain.EmergencyRequest{
-				TargetIdentifier:  "+1-555-0123",
-				TargetType:        "PHONE_NUMBER",
-				Reason:            "Imminent threat",
+				TargetIdentifier:   "+1-555-0123",
+				TargetType:         "PHONE_NUMBER",
+				Reason:             "Imminent threat",
 				AuthorizingOfficer: "DIR-001",
 			},
 			setup: func() {
 				mockRepo.On("CreateEmergencyTarget", mock.AnythingOfType("domain.InterceptionTarget")).
 					Return(domain.InterceptionTarget{
-						ID: uuid.New().String(),
+						ID:         uuid.New().String(),
 						TargetType: "PHONE_NUMBER",
 						Status:     "ACTIVE",
 					}, nil)

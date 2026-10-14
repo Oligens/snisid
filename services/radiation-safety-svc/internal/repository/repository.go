@@ -19,7 +19,7 @@ type RadiationRepository interface {
 }
 
 type DashboardStats struct {
-	TotalSources     int `json:"total_sources"`
+	TotalSources      int `json:"total_sources"`
 	LostStolenSources int `json:"lost_stolen_sources"`
 	UnrespondedAlerts int `json:"unresponded_alerts"`
 	SuspiciousChems   int `json:"suspicious_chemicals"`

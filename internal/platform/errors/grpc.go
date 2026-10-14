@@ -35,12 +35,12 @@ func ToGRPCStatus(err error) error {
 
 	if customErr, ok := err.(*Error); ok {
 		code := MapToGRPCCode(customErr.Code)
-		
+
 		if customErr.Code == Internal {
 			// Mask message
 			return status.Error(code, "An unexpected internal server error occurred")
 		}
-		
+
 		return status.Error(code, customErr.Message)
 	}
 

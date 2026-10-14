@@ -13,7 +13,7 @@ import (
 
 type MissingPersonService struct {
 	repo domain.MissingRepository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewMissingPersonService(repo domain.MissingRepository, log *zap.Logger) *MissingPersonService {
@@ -32,39 +32,39 @@ func (s *MissingPersonService) ReportDisappearance(req *domain.ReportDisappearan
 	}
 
 	caseObj := &domain.MissingPerson{
-		NationalDipeID:     nationalID,
-		CaseType:           req.CaseType,
-		Status:             domain.CaseStatusOpen,
-		SnisidPersonID:     req.SnisidPersonID,
-		FullName:           req.FullName,
-		Aliases:            req.Aliases,
-		DOB:                req.DOB,
-		Gender:             req.Gender,
-		Nationality:        req.Nationality,
-		Occupation:         req.Occupation,
-		PhotoRefs:          req.PhotoRefs,
-		HeightCM:           req.HeightCM,
-		WeightKG:           req.WeightKG,
-		SkinTone:           req.SkinTone,
-		EyeColor:           req.EyeColor,
-		HairColor:          req.HairColor,
+		NationalDipeID:      nationalID,
+		CaseType:            req.CaseType,
+		Status:              domain.CaseStatusOpen,
+		SnisidPersonID:      req.SnisidPersonID,
+		FullName:            req.FullName,
+		Aliases:             req.Aliases,
+		DOB:                 req.DOB,
+		Gender:              req.Gender,
+		Nationality:         req.Nationality,
+		Occupation:          req.Occupation,
+		PhotoRefs:           req.PhotoRefs,
+		HeightCM:            req.HeightCM,
+		WeightKG:            req.WeightKG,
+		SkinTone:            req.SkinTone,
+		EyeColor:            req.EyeColor,
+		HairColor:           req.HairColor,
 		DistinguishingMarks: req.DistinguishingMarks,
-		ClothingLastSeen:   req.ClothingLastSeen,
-		LastSeenDate:       lastSeen,
-		LastSeenLocation:   req.LastSeenLocation,
-		LastSeenDeptCode:   req.LastSeenDeptCode,
-		LastSeenCommune:    req.LastSeenCommune,
-		LastSeenLat:        req.LastSeenLat,
-		LastSeenLng:        req.LastSeenLng,
-		Circumstances:      req.Circumstances,
-		SivcAlertID:        req.SivcAlertID,
-		GangID:             req.GangID,
-		ExtorsCaseID:       req.ExtorsCaseID,
-		ReportedByName:     req.ReportedByName,
-		ReportedByPhone:    req.ReportedByPhone,
-		ReportedBySnisid:   req.ReportedBySnisid,
-		ReportDate:         now,
-		ReportingUnit:      req.ReportingUnit,
+		ClothingLastSeen:    req.ClothingLastSeen,
+		LastSeenDate:        lastSeen,
+		LastSeenLocation:    req.LastSeenLocation,
+		LastSeenDeptCode:    req.LastSeenDeptCode,
+		LastSeenCommune:     req.LastSeenCommune,
+		LastSeenLat:         req.LastSeenLat,
+		LastSeenLng:         req.LastSeenLng,
+		Circumstances:       req.Circumstances,
+		SivcAlertID:         req.SivcAlertID,
+		GangID:              req.GangID,
+		ExtorsCaseID:        req.ExtorsCaseID,
+		ReportedByName:      req.ReportedByName,
+		ReportedByPhone:     req.ReportedByPhone,
+		ReportedBySnisid:    req.ReportedBySnisid,
+		ReportDate:          now,
+		ReportingUnit:       req.ReportingUnit,
 	}
 
 	if err := s.repo.CreateCase(caseObj); err != nil {

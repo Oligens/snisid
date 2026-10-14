@@ -32,21 +32,21 @@ func (h *Handler) RegisterRoutes(r *gin.RouterGroup) {
 func (h *Handler) DeclareBirth(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	var req struct {
-		ChildFullName        string `json:"child_full_name"`
-		ChildGender          string `json:"child_gender,omitempty"`
-		MotherCitizenID      string `json:"mother_citizen_id,omitempty"`
-		FatherCitizenID      string `json:"father_citizen_id,omitempty"`
-		BirthWeightG         int    `json:"birth_weight_g,omitempty"`
-		BirthFacility        string `json:"birth_facility,omitempty"`
+		ChildFullName         string `json:"child_full_name"`
+		ChildGender           string `json:"child_gender,omitempty"`
+		MotherCitizenID       string `json:"mother_citizen_id,omitempty"`
+		FatherCitizenID       string `json:"father_citizen_id,omitempty"`
+		BirthWeightG          int    `json:"birth_weight_g,omitempty"`
+		BirthFacility         string `json:"birth_facility,omitempty"`
 		AttendingProfessional string `json:"attending_professional,omitempty"`
-		EventDate            string `json:"event_date"`
-		RegisteringOffice    string `json:"registering_office"`
-		DeptCode             string `json:"dept_code"`
-		Commune              string `json:"commune"`
-		OfficerName          string `json:"officer_name,omitempty"`
-		OfficerID            string `json:"officer_id,omitempty"`
-		IsLateDeclaration    bool   `json:"is_late_declaration"`
-		IsReconstructed      bool   `json:"is_reconstructed"`
+		EventDate             string `json:"event_date"`
+		RegisteringOffice     string `json:"registering_office"`
+		DeptCode              string `json:"dept_code"`
+		Commune               string `json:"commune"`
+		OfficerName           string `json:"officer_name,omitempty"`
+		OfficerID             string `json:"officer_id,omitempty"`
+		IsLateDeclaration     bool   `json:"is_late_declaration"`
+		IsReconstructed       bool   `json:"is_reconstructed"`
 	}
 	if err := json.Unmarshal(body, &req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid JSON"})
@@ -60,10 +60,10 @@ func (h *Handler) DeclareBirth(c *gin.Context) {
 	}
 
 	birth := domain.BirthDeclaration{
-		ChildFullName:        req.ChildFullName,
-		ChildGender:          strPtr(req.ChildGender),
-		BirthWeightG:         intPtr(req.BirthWeightG),
-		BirthFacility:        strPtr(req.BirthFacility),
+		ChildFullName:         req.ChildFullName,
+		ChildGender:           strPtr(req.ChildGender),
+		BirthWeightG:          intPtr(req.BirthWeightG),
+		BirthFacility:         strPtr(req.BirthFacility),
 		AttendingProfessional: strPtr(req.AttendingProfessional),
 	}
 	if req.MotherCitizenID != "" {
@@ -104,17 +104,17 @@ func (h *Handler) DeclareDeath(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	var req struct {
 		DeceasedCitizenID string `json:"deceased_citizen_id"`
-		CauseOfDeath     string `json:"cause_of_death,omitempty"`
-		DeathLocation    string `json:"death_location,omitempty"`
-		MedicalCertifier string `json:"medical_certifier,omitempty"`
-		IsViolentDeath   bool   `json:"is_violent_death"`
-		FIRCaseReference string `json:"fir_case_reference,omitempty"`
-		EventDate        string `json:"event_date"`
+		CauseOfDeath      string `json:"cause_of_death,omitempty"`
+		DeathLocation     string `json:"death_location,omitempty"`
+		MedicalCertifier  string `json:"medical_certifier,omitempty"`
+		IsViolentDeath    bool   `json:"is_violent_death"`
+		FIRCaseReference  string `json:"fir_case_reference,omitempty"`
+		EventDate         string `json:"event_date"`
 		RegisteringOffice string `json:"registering_office"`
-		DeptCode         string `json:"dept_code"`
-		Commune          string `json:"commune"`
-		OfficerName      string `json:"officer_name,omitempty"`
-		OfficerID        string `json:"officer_id,omitempty"`
+		DeptCode          string `json:"dept_code"`
+		Commune           string `json:"commune"`
+		OfficerName       string `json:"officer_name,omitempty"`
+		OfficerID         string `json:"officer_id,omitempty"`
 	}
 	if err := json.Unmarshal(body, &req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid JSON"})
@@ -128,10 +128,10 @@ func (h *Handler) DeclareDeath(c *gin.Context) {
 	}
 
 	death := domain.DeathDeclaration{
-		CauseOfDeath:    strPtr(req.CauseOfDeath),
-		DeathLocation:   strPtr(req.DeathLocation),
+		CauseOfDeath:     strPtr(req.CauseOfDeath),
+		DeathLocation:    strPtr(req.DeathLocation),
 		MedicalCertifier: strPtr(req.MedicalCertifier),
-		IsViolentDeath:  req.IsViolentDeath,
+		IsViolentDeath:   req.IsViolentDeath,
 		FIRCaseReference: strPtr(req.FIRCaseReference),
 	}
 	if id, err := uuid.Parse(req.DeceasedCitizenID); err == nil {
@@ -162,16 +162,16 @@ func (h *Handler) DeclareDeath(c *gin.Context) {
 func (h *Handler) RegisterMarriage(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	var req struct {
-		SpouseACitizenID   string `json:"spouse_a_citizen_id"`
-		SpouseBCitizenID   string `json:"spouse_b_citizen_id"`
-		MarriageRegime     string `json:"marriage_regime,omitempty"`
-		PrenuptialAgreement bool  `json:"prenuptial_agreement"`
-		EventDate          string `json:"event_date"`
-		RegisteringOffice  string `json:"registering_office"`
-		DeptCode           string `json:"dept_code"`
-		Commune            string `json:"commune"`
-		OfficerName        string `json:"officer_name,omitempty"`
-		OfficerID          string `json:"officer_id,omitempty"`
+		SpouseACitizenID    string `json:"spouse_a_citizen_id"`
+		SpouseBCitizenID    string `json:"spouse_b_citizen_id"`
+		MarriageRegime      string `json:"marriage_regime,omitempty"`
+		PrenuptialAgreement bool   `json:"prenuptial_agreement"`
+		EventDate           string `json:"event_date"`
+		RegisteringOffice   string `json:"registering_office"`
+		DeptCode            string `json:"dept_code"`
+		Commune             string `json:"commune"`
+		OfficerName         string `json:"officer_name,omitempty"`
+		OfficerID           string `json:"officer_id,omitempty"`
 	}
 	if err := json.Unmarshal(body, &req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid JSON"})
@@ -185,7 +185,7 @@ func (h *Handler) RegisterMarriage(c *gin.Context) {
 	}
 
 	marriage := domain.MarriageDeclaration{
-		MarriageRegime:     strPtr(req.MarriageRegime),
+		MarriageRegime:      strPtr(req.MarriageRegime),
 		PrenuptialAgreement: req.PrenuptialAgreement,
 	}
 	if id, err := uuid.Parse(req.SpouseACitizenID); err == nil {

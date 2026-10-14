@@ -13,11 +13,11 @@ func TestLatent_SceneOfCrime_Match(t *testing.T) {
 	}
 
 	lp := domain.LatentPrint{
-		LatentID:      uuid.New(),
-		CaseReference: "PAP-2026-CR-00123",
-		ImageRef:      "latents/PAP-2026-CR-00123/latent-001.png",
+		LatentID:       uuid.New(),
+		CaseReference:  "PAP-2026-CR-00123",
+		ImageRef:       "latents/PAP-2026-CR-00123/latent-001.png",
 		FingerPosition: domain.FingerUnknown,
-		IsIdentified:  false,
+		IsIdentified:   false,
 	}
 
 	if lp.LatentID == uuid.Nil {

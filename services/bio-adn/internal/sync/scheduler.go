@@ -35,7 +35,7 @@ type SyncScheduler struct {
 
 func NewSyncScheduler(level string, store UploadStore, producer EventProducer) *SyncScheduler {
 	return &SyncScheduler{
-		level: level,
+		level:        level,
 		ldisUploader: &LDISUploader{store: store, producer: producer},
 		sdisUploader: &SDISUploader{store: store, producer: producer},
 	}

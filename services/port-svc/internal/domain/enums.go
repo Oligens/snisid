@@ -12,9 +12,9 @@ const (
 type ContainerStatus string
 
 const (
-	PENDING_INSPECTION      ContainerStatus = "PENDING_INSPECTION"
-	CLEARED                 ContainerStatus = "CLEARED"
-	HELD_FOR_INSPECTION     ContainerStatus = "HELD_FOR_INSPECTION"
-	SEIZED                  ContainerStatus = "SEIZED"
+	PENDING_INSPECTION        ContainerStatus = "PENDING_INSPECTION"
+	CLEARED                   ContainerStatus = "CLEARED"
+	HELD_FOR_INSPECTION       ContainerStatus = "HELD_FOR_INSPECTION"
+	SEIZED                    ContainerStatus = "SEIZED"
 	RELEASED_AFTER_INSPECTION ContainerStatus = "RELEASED_AFTER_INSPECTION"
 )

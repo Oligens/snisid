@@ -12,11 +12,11 @@ import (
 
 // NexusMaster is the supreme orchestrator of the SNISID ecosystem.
 type NexusMaster struct {
-	Vera    *StrategicEngine
-	Kai     *ExecutionEngine
-	Config  *RuntimeConfig
-	Tasks   chan Task
-	mu      sync.RWMutex
+	Vera   *StrategicEngine
+	Kai    *ExecutionEngine
+	Config *RuntimeConfig
+	Tasks  chan Task
+	mu     sync.RWMutex
 }
 
 type Task struct {

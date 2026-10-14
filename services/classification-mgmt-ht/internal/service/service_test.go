@@ -11,26 +11,36 @@ import (
 )
 
 type mockRepo struct {
-	createRuleFn       func(ctx context.Context, r *domain.ClassificationRule) error
+	createRuleFn         func(ctx context.Context, r *domain.ClassificationRule) error
 	getRulesByDataTypeFn func(ctx context.Context, dt string) ([]domain.ClassificationRule, error)
-	createTagFn        func(ctx context.Context, t *domain.DataTag) error
-	getTagByURIFn      func(ctx context.Context, uri string) (*domain.DataTag, error)
-	createAuditLogFn   func(ctx context.Context, a *domain.ClassificationAudit) error
+	createTagFn          func(ctx context.Context, t *domain.DataTag) error
+	getTagByURIFn        func(ctx context.Context, uri string) (*domain.DataTag, error)
+	createAuditLogFn     func(ctx context.Context, a *domain.ClassificationAudit) error
 	getRecentAuditLogsFn func(ctx context.Context) ([]domain.ClassificationAudit, error)
-	getDashboardStatsFn func(ctx context.Context) (*domain.DashboardStats, error)
+	getDashboardStatsFn  func(ctx context.Context) (*domain.DashboardStats, error)
 }
 
-func (m *mockRepo) CreateRule(ctx context.Context, r *domain.ClassificationRule) error { return m.createRuleFn(ctx, r) }
+func (m *mockRepo) CreateRule(ctx context.Context, r *domain.ClassificationRule) error {
+	return m.createRuleFn(ctx, r)
+}
 func (m *mockRepo) GetRulesByDataType(ctx context.Context, dt string) ([]domain.ClassificationRule, error) {
 	return m.getRulesByDataTypeFn(ctx, dt)
 }
-func (m *mockRepo) CreateTag(ctx context.Context, t *domain.DataTag) error { return m.createTagFn(ctx, t) }
-func (m *mockRepo) GetTagByURI(ctx context.Context, uri string) (*domain.DataTag, error) { return m.getTagByURIFn(ctx, uri) }
-func (m *mockRepo) CreateAuditLog(ctx context.Context, a *domain.ClassificationAudit) error { return m.createAuditLogFn(ctx, a) }
+func (m *mockRepo) CreateTag(ctx context.Context, t *domain.DataTag) error {
+	return m.createTagFn(ctx, t)
+}
+func (m *mockRepo) GetTagByURI(ctx context.Context, uri string) (*domain.DataTag, error) {
+	return m.getTagByURIFn(ctx, uri)
+}
+func (m *mockRepo) CreateAuditLog(ctx context.Context, a *domain.ClassificationAudit) error {
+	return m.createAuditLogFn(ctx, a)
+}
 func (m *mockRepo) GetRecentAuditLogs(ctx context.Context) ([]domain.ClassificationAudit, error) {
 	return m.getRecentAuditLogsFn(ctx)
 }
-func (m *mockRepo) GetDashboardStats(ctx context.Context) (*domain.DashboardStats, error) { return m.getDashboardStatsFn(ctx) }
+func (m *mockRepo) GetDashboardStats(ctx context.Context) (*domain.DashboardStats, error) {
+	return m.getDashboardStatsFn(ctx)
+}
 
 func TestCreateRule(t *testing.T) {
 	repo := &mockRepo{
@@ -71,11 +81,11 @@ func TestLogAudit(t *testing.T) {
 	}
 	svc := NewClassificationService(repo, nil)
 	req := domain.LogAuditRequest{
-		ResourceURI:           "snisid://doc/123",
-		Action:                "CLASSIFY",
-		AuthorizedBy:          uuid.New().String(),
+		ResourceURI:             "snisid://doc/123",
+		Action:                  "CLASSIFY",
+		AuthorizedBy:            uuid.New().String(),
 		ClassificationAuthority: "EO 13526",
-		IPAddress:             "10.0.0.1",
+		IPAddress:               "10.0.0.1",
 	}
 	entry, err := svc.LogAudit(context.Background(), req)
 	require.NoError(t, err)

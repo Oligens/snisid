@@ -46,7 +46,7 @@ type TravelModel struct{}
 
 func (m *TravelModel) Name() string { return "travel_velocity" }
 func (m *TravelModel) Evaluate(ctx context.Context, data map[string]interface{}) (RiskResult, error) {
-	// Mock logic: if 'location' changed from 'CityA' to 'CityB' in metadata 
+	// Mock logic: if 'location' changed from 'CityA' to 'CityB' in metadata
 	// in a very short time (stored in Redis in prod)
 	if loc, ok := data["location"].(string); ok && loc == "SUSPICIOUS_REMOTE_LOCATION" {
 		return RiskResult{Score: 70, Reason: "Access from high-risk or impossible geographic location"}, nil

@@ -32,9 +32,9 @@ func init() {
 }
 
 type Generator struct {
-	db     *sql.DB
-	mu     sync.Mutex
-	seq    map[string]int
+	db  *sql.DB
+	mu  sync.Mutex
+	seq map[string]int
 }
 
 func NewGenerator(db *sql.DB) *Generator {

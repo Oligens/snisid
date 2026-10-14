@@ -89,15 +89,15 @@ func (s *EnrollmentService) Enroll(ctx context.Context, req domain.EnrollmentReq
 		}
 
 		fp := &domain.Fingerprint{
-			PrintID:        printID,
-			SubjectID:      subjectID,
-			FingerPosition: cap.Position,
-			CaptureMethod:  cap.Method,
-			NFIQ2Score:     cap.NFIQ2Score,
+			PrintID:         printID,
+			SubjectID:       subjectID,
+			FingerPosition:  cap.Position,
+			CaptureMethod:   cap.Method,
+			NFIQ2Score:      cap.NFIQ2Score,
 			QualityAccepted: cap.NFIQ2Score >= 60,
-			ImageRef:       objectName,
-			CapturedAt:     time.Now(),
-			CreatedBy:      officerID,
+			ImageRef:        objectName,
+			CapturedAt:      time.Now(),
+			CreatedBy:       officerID,
 		}
 		if err := s.fingerprintRepo.Create(ctx, fp); err != nil {
 			return nil, fmt.Errorf("save fingerprint: %w", err)

@@ -8,16 +8,16 @@ import (
 )
 
 type CriminalRecord struct {
-	RecordID         uuid.UUID  `json:"record_id"`
-	NationalFIRID    string     `json:"national_fir_id"`
-	SNISIDPersonID   uuid.UUID  `json:"snisid_person_id"`
-	AfisSubjectID    *uuid.UUID `json:"afis_subject_id,omitempty"`
-	IsHaitianNational bool      `json:"is_haitian_national"`
-	Aliases          []string   `json:"aliases"`
-	IsActive         bool       `json:"is_active"`
-	IsExpunged       bool       `json:"is_expunged"`
-	CreatedAt        time.Time  `json:"created_at"`
-	UpdatedAt        time.Time  `json:"updated_at"`
+	RecordID          uuid.UUID  `json:"record_id"`
+	NationalFIRID     string     `json:"national_fir_id"`
+	SNISIDPersonID    uuid.UUID  `json:"snisid_person_id"`
+	AfisSubjectID     *uuid.UUID `json:"afis_subject_id,omitempty"`
+	IsHaitianNational bool       `json:"is_haitian_national"`
+	Aliases           []string   `json:"aliases"`
+	IsActive          bool       `json:"is_active"`
+	IsExpunged        bool       `json:"is_expunged"`
+	CreatedAt         time.Time  `json:"created_at"`
+	UpdatedAt         time.Time  `json:"updated_at"`
 }
 
 func (r *CriminalRecord) HasActiveConvictions() bool {

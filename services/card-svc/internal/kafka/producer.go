@@ -10,11 +10,11 @@ import (
 )
 
 type Event struct {
-	EventType string    `json:"event_type"`
-	CardSerial string   `json:"card_serial,omitempty"`
-	Status    string    `json:"status,omitempty"`
-	Timestamp time.Time `json:"timestamp"`
-	Data      any       `json:"data"`
+	EventType  string    `json:"event_type"`
+	CardSerial string    `json:"card_serial,omitempty"`
+	Status     string    `json:"status,omitempty"`
+	Timestamp  time.Time `json:"timestamp"`
+	Data       any       `json:"data"`
 }
 
 type Producer struct {

@@ -34,8 +34,13 @@ func (s *CertificateService) IssueCertificate(
 
 	expiry := time.Now().AddDate(0, 3, 0)
 	cert := &domain.Certificate{
-		CertID:            uuid.New(),
-		RecordID:          func() *uuid.UUID { if record != nil { return &record.RecordID }; return nil }(),
+		CertID: uuid.New(),
+		RecordID: func() *uuid.UUID {
+			if record != nil {
+				return &record.RecordID
+			}
+			return nil
+		}(),
 		SNISIDPersonID:    req.PersonID,
 		CertificateNumber: s.generateCertNumber(),
 		IssuedFor:         req.Purpose,

@@ -33,11 +33,11 @@ const (
 type AuditCategory string
 
 const (
-	AuditCategoryIdentity  AuditCategory = "IDENTITY"
-	AuditCategorySecurity  AuditCategory = "SECURITY"
-	AuditCategoryCompliance AuditCategory = "COMPLIANCE"
+	AuditCategoryIdentity    AuditCategory = "IDENTITY"
+	AuditCategorySecurity    AuditCategory = "SECURITY"
+	AuditCategoryCompliance  AuditCategory = "COMPLIANCE"
 	AuditCategoryOperational AuditCategory = "OPERATIONAL"
-	AuditCategoryGovernance AuditCategory = "GOVERNANCE"
+	AuditCategoryGovernance  AuditCategory = "GOVERNANCE"
 )
 
 type AuditEvent struct {
@@ -75,18 +75,18 @@ type AuditQuery struct {
 }
 
 type RetentionPolicy struct {
-	PolicyID   uuid.UUID    `json:"policy_id"`
-	Category   AuditCategory `json:"category"`
-	RetentionDays int       `json:"retention_days"`
-	CreatedAt  time.Time    `json:"created_at"`
+	PolicyID      uuid.UUID     `json:"policy_id"`
+	Category      AuditCategory `json:"category"`
+	RetentionDays int           `json:"retention_days"`
+	CreatedAt     time.Time     `json:"created_at"`
 }
 
 type AuditReport struct {
-	ReportID     uuid.UUID    `json:"report_id"`
-	Category     AuditCategory `json:"category"`
-	EventCount   int          `json:"event_count"`
-	From         time.Time    `json:"from"`
-	To           time.Time    `json:"to"`
-	IntegrityVerif bool      `json:"integrity_verified"`
-	GeneratedAt  time.Time    `json:"generated_at"`
+	ReportID       uuid.UUID     `json:"report_id"`
+	Category       AuditCategory `json:"category"`
+	EventCount     int           `json:"event_count"`
+	From           time.Time     `json:"from"`
+	To             time.Time     `json:"to"`
+	IntegrityVerif bool          `json:"integrity_verified"`
+	GeneratedAt    time.Time     `json:"generated_at"`
 }

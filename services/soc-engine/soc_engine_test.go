@@ -118,27 +118,27 @@ func TestResolve_TableDriven(t *testing.T) {
 		contains []string
 	}{
 		{
-			name: "critical risk quarantine",
+			name:     "critical risk quarantine",
 			incident: Incident{ID: "t1", Type: "INTRUSION", Risk: 1.0, TargetSvc: "core"},
 			contains: []string{"ISOLATE_SERVICE"},
 		},
 		{
-			name: "deep fake response",
+			name:     "deep fake response",
 			incident: Incident{ID: "t2", Type: "DEEP_FAKE_ATTEMPT", Risk: 0.5, TargetSvc: "biometrics"},
 			contains: []string{"BLOCK_IDENTITY_AUTHENTICATION"},
 		},
 		{
-			name: "default monitoring",
+			name:     "default monitoring",
 			incident: Incident{ID: "t3", Type: "INFO", Risk: 0.1, TargetSvc: "audit"},
 			contains: []string{"INCREASED_MONITORING"},
 		},
 		{
-			name: "high risk with deep fake type",
+			name:     "high risk with deep fake type",
 			incident: Incident{ID: "t4", Type: "DEEP_FAKE_ATTEMPT", Risk: 0.91, TargetSvc: "face-api"},
 			contains: []string{"ISOLATE_SERVICE"},
 		},
 		{
-			name: "zero risk",
+			name:     "zero risk",
 			incident: Incident{ID: "t5", Type: "HEARTBEAT", Risk: 0.0, TargetSvc: "monitor"},
 			contains: []string{"INCREASED_MONITORING"},
 		},

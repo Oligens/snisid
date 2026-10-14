@@ -18,9 +18,9 @@ func TestNewArbitrator(t *testing.T) {
 func TestResolve_HighestTrust(t *testing.T) {
 	a := NewArbitrator()
 	values := map[string]interface{}{
-		"user_self_service":  "123 Main St",
-		"national_registry":  "456 Oak Ave",
-		"passport_office":    "456 Oak Ave",
+		"user_self_service": "123 Main St",
+		"national_registry": "456 Oak Ave",
+		"passport_office":   "456 Oak Ave",
 	}
 
 	value, source := a.Resolve(context.Background(), "address", values)

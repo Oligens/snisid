@@ -25,20 +25,20 @@ func (s *ClassificationService) CreateRule(ctx context.Context, req domain.Creat
 	now := time.Now().UTC()
 	createdBy, _ := uuid.Parse(req.CreatedBy)
 	rule := &domain.ClassificationRule{
-		ID:                 uuid.New(),
-		DataType:           req.DataType,
-		SensitivityLevel:   domain.SensitivityLevel(req.SensitivityLevel),
-		HandlingCaveats:    req.HandlingCaveats,
-		DisseminationLimit: strPtr(req.DisseminationLimit),
-		EncryptionRequired: req.EncryptionRequired,
-		AccessControlMFA:   req.AccessControlMFA,
-		AuditLogging:       req.AuditLogging,
-		RetentionDays:      req.RetentionDays,
+		ID:                  uuid.New(),
+		DataType:            req.DataType,
+		SensitivityLevel:    domain.SensitivityLevel(req.SensitivityLevel),
+		HandlingCaveats:     req.HandlingCaveats,
+		DisseminationLimit:  strPtr(req.DisseminationLimit),
+		EncryptionRequired:  req.EncryptionRequired,
+		AccessControlMFA:    req.AccessControlMFA,
+		AuditLogging:        req.AuditLogging,
+		RetentionDays:       req.RetentionDays,
 		DestructionRequired: req.DestructionRequired,
-		CreatedBy:          createdBy,
-		Active:             true,
-		CreatedAt:          now,
-		UpdatedAt:          now,
+		CreatedBy:           createdBy,
+		Active:              true,
+		CreatedAt:           now,
+		UpdatedAt:           now,
 	}
 	if err := s.repo.CreateRule(ctx, rule); err != nil {
 		return nil, fmt.Errorf("create rule: %w", err)
@@ -78,16 +78,16 @@ func (s *ClassificationService) GetClassificationByURI(ctx context.Context, uri 
 func (s *ClassificationService) LogAudit(ctx context.Context, req domain.LogAuditRequest) (*domain.ClassificationAudit, error) {
 	authorizedBy, _ := uuid.Parse(req.AuthorizedBy)
 	entry := &domain.ClassificationAudit{
-		ID:                    uuid.New(),
-		ResourceURI:           req.ResourceURI,
-		Action:                domain.AuditAction(req.Action),
-		FromLevel:             strPtr(req.FromLevel),
-		ToLevel:               strPtr(req.ToLevel),
-		Rationale:             strPtr(req.Rationale),
-		AuthorizedBy:          authorizedBy,
+		ID:                      uuid.New(),
+		ResourceURI:             req.ResourceURI,
+		Action:                  domain.AuditAction(req.Action),
+		FromLevel:               strPtr(req.FromLevel),
+		ToLevel:                 strPtr(req.ToLevel),
+		Rationale:               strPtr(req.Rationale),
+		AuthorizedBy:            authorizedBy,
 		ClassificationAuthority: req.ClassificationAuthority,
-		Timestamp:             time.Now().UTC(),
-		IPAddress:             req.IPAddress,
+		Timestamp:               time.Now().UTC(),
+		IPAddress:               req.IPAddress,
 	}
 	if err := s.repo.CreateAuditLog(ctx, entry); err != nil {
 		return nil, fmt.Errorf("log audit: %w", err)

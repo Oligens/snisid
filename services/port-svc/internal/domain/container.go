@@ -26,30 +26,30 @@ type VesselArrival struct {
 }
 
 type Container struct {
-	ID                   uuid.UUID       `json:"container_id" db:"container_id"`
-	ArrivalID            uuid.UUID       `json:"arrival_id" db:"arrival_id"`
-	ContainerNumber      string          `json:"container_number" db:"container_number"`
-	ContainerType        *string         `json:"container_type,omitempty" db:"container_type"`
-	DeclaredContent      string          `json:"declared_content" db:"declared_content"`
-	DeclaredWeightKg     *float64        `json:"declared_weight_kg,omitempty" db:"declared_weight_kg"`
-	DeclaredValueUSD     *float64        `json:"declared_value_usd,omitempty" db:"declared_value_usd"`
-	ShipperName          *string         `json:"shipper_name,omitempty" db:"shipper_name"`
-	ShipperCountry       *string         `json:"shipper_country,omitempty" db:"shipper_country"`
-	ConsigneeName        *string         `json:"consignee_name,omitempty" db:"consignee_name"`
-	ConsigneeSNISIDID    *uuid.UUID      `json:"consignee_snisid_id,omitempty" db:"consignee_snisid_id"`
-	Status               ContainerStatus `json:"status" db:"status"`
-	RiskScore            int16           `json:"risk_score" db:"risk_score"`
-	RiskLevel            RiskLevel       `json:"risk_level" db:"risk_level"`
-	RiskFlags            []string        `json:"risk_flags" db:"risk_flags"`
-	SelectedForScan      bool            `json:"selected_for_scan" db:"selected_for_scan"`
-	ScanDate             *time.Time      `json:"scan_date,omitempty" db:"scan_date"`
-	ScanResult           *string         `json:"scan_result,omitempty" db:"scan_result"`
-	Seized               bool            `json:"seized" db:"seized"`
-	SeizureDescription   *string         `json:"seizure_description,omitempty" db:"seizure_description"`
-	CaseReference        *string         `json:"case_reference,omitempty" db:"case_reference"`
-	CBPTargetingMatch    bool            `json:"cbp_targeting_match" db:"cbp_targeting_match"`
-	CreatedAt            time.Time       `json:"created_at" db:"created_at"`
-	UpdatedAt            time.Time       `json:"updated_at" db:"updated_at"`
+	ID                 uuid.UUID       `json:"container_id" db:"container_id"`
+	ArrivalID          uuid.UUID       `json:"arrival_id" db:"arrival_id"`
+	ContainerNumber    string          `json:"container_number" db:"container_number"`
+	ContainerType      *string         `json:"container_type,omitempty" db:"container_type"`
+	DeclaredContent    string          `json:"declared_content" db:"declared_content"`
+	DeclaredWeightKg   *float64        `json:"declared_weight_kg,omitempty" db:"declared_weight_kg"`
+	DeclaredValueUSD   *float64        `json:"declared_value_usd,omitempty" db:"declared_value_usd"`
+	ShipperName        *string         `json:"shipper_name,omitempty" db:"shipper_name"`
+	ShipperCountry     *string         `json:"shipper_country,omitempty" db:"shipper_country"`
+	ConsigneeName      *string         `json:"consignee_name,omitempty" db:"consignee_name"`
+	ConsigneeSNISIDID  *uuid.UUID      `json:"consignee_snisid_id,omitempty" db:"consignee_snisid_id"`
+	Status             ContainerStatus `json:"status" db:"status"`
+	RiskScore          int16           `json:"risk_score" db:"risk_score"`
+	RiskLevel          RiskLevel       `json:"risk_level" db:"risk_level"`
+	RiskFlags          []string        `json:"risk_flags" db:"risk_flags"`
+	SelectedForScan    bool            `json:"selected_for_scan" db:"selected_for_scan"`
+	ScanDate           *time.Time      `json:"scan_date,omitempty" db:"scan_date"`
+	ScanResult         *string         `json:"scan_result,omitempty" db:"scan_result"`
+	Seized             bool            `json:"seized" db:"seized"`
+	SeizureDescription *string         `json:"seizure_description,omitempty" db:"seizure_description"`
+	CaseReference      *string         `json:"case_reference,omitempty" db:"case_reference"`
+	CBPTargetingMatch  bool            `json:"cbp_targeting_match" db:"cbp_targeting_match"`
+	CreatedAt          time.Time       `json:"created_at" db:"created_at"`
+	UpdatedAt          time.Time       `json:"updated_at" db:"updated_at"`
 }
 
 type RiskFactor struct {
@@ -63,10 +63,10 @@ type RiskFactor struct {
 }
 
 type RiskAssessment struct {
-	ContainerID     uuid.UUID    `json:"container_id" db:"container_id"`
-	TotalScore      int16        `json:"total_score" db:"total_score"`
-	FinalRiskLevel  RiskLevel    `json:"final_risk_level" db:"final_risk_level"`
-	Factors         []RiskFactor `json:"factors"`
+	ContainerID    uuid.UUID    `json:"container_id" db:"container_id"`
+	TotalScore     int16        `json:"total_score" db:"total_score"`
+	FinalRiskLevel RiskLevel    `json:"final_risk_level" db:"final_risk_level"`
+	Factors        []RiskFactor `json:"factors"`
 }
 
 func (ra *RiskAssessment) AddFlag(flag string, weight int16, source string) {
@@ -102,17 +102,17 @@ func (c *Container) IsWeightValueAnomalous() bool {
 }
 
 type RecordArrivalRequest struct {
-	PortCode        string     `json:"port_code" binding:"required"`
-	VesselIMO       *string    `json:"vessel_imo,omitempty"`
-	VesselName      string     `json:"vessel_name" binding:"required"`
-	FlagCountry     *string    `json:"flag_country,omitempty"`
-	ShippingCompany *string    `json:"shipping_company,omitempty"`
-	ArrivalDate     time.Time  `json:"arrival_date" binding:"required"`
-	OriginPort      *string    `json:"origin_port,omitempty"`
-	OriginCountry   *string    `json:"origin_country,omitempty"`
-	ContainerCount  int        `json:"container_count"`
-	ManifestRef     *string    `json:"manifest_ref,omitempty"`
-	CBPTargetingRef *string    `json:"cbp_targeting_ref,omitempty"`
+	PortCode        string    `json:"port_code" binding:"required"`
+	VesselIMO       *string   `json:"vessel_imo,omitempty"`
+	VesselName      string    `json:"vessel_name" binding:"required"`
+	FlagCountry     *string   `json:"flag_country,omitempty"`
+	ShippingCompany *string   `json:"shipping_company,omitempty"`
+	ArrivalDate     time.Time `json:"arrival_date" binding:"required"`
+	OriginPort      *string   `json:"origin_port,omitempty"`
+	OriginCountry   *string   `json:"origin_country,omitempty"`
+	ContainerCount  int       `json:"container_count"`
+	ManifestRef     *string   `json:"manifest_ref,omitempty"`
+	CBPTargetingRef *string   `json:"cbp_targeting_ref,omitempty"`
 }
 
 type ScanRequest struct {
@@ -125,9 +125,9 @@ type SeizeRequest struct {
 }
 
 type SeizureStats struct {
-	TotalSeized    int `json:"total_seized" db:"total_seized"`
-	TotalScanned   int `json:"total_scanned" db:"total_scanned"`
-	HighRiskCount  int `json:"high_risk_count" db:"high_risk_count"`
+	TotalSeized       int `json:"total_seized" db:"total_seized"`
+	TotalScanned      int `json:"total_scanned" db:"total_scanned"`
+	HighRiskCount     int `json:"high_risk_count" db:"high_risk_count"`
 	CriticalRiskCount int `json:"critical_risk_count" db:"critical_risk_count"`
 }
 

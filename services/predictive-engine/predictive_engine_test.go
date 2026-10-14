@@ -20,7 +20,7 @@ func TestForecastRisk_NoDrift(t *testing.T) {
 
 func TestForecastRisk_WithBehaviorDrift(t *testing.T) {
 	features := map[string]interface{}{
-		"behavior_drift": 0.7,
+		"behavior_drift":    0.7,
 		"transaction_count": 5,
 	}
 	forecast := ForecastRisk("SUBJ-002", features)
@@ -80,11 +80,11 @@ func TestForecastRisk_DriftIntValue(t *testing.T) {
 
 func TestForecastRisk_TableDriven(t *testing.T) {
 	tests := []struct {
-		name          string
-		subjectID     string
-		features      map[string]interface{}
-		wantProb      float64
-		wantTrend     string
+		name      string
+		subjectID string
+		features  map[string]interface{}
+		wantProb  float64
+		wantTrend string
 	}{
 		{"normal activity", "U001", map[string]interface{}{"tx_count": 50}, 0.15, "STABLE"},
 		{"behavior drift", "U002", map[string]interface{}{"behavior_drift": 0.8}, 0.55, "INCREASING"},

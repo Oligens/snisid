@@ -188,7 +188,7 @@ func TestAuditEventJSONSerialization(t *testing.T) {
 	event := AuditEvent{
 		ID: "evt-json-001", Type: "FRAUD_SCORE_UPDATED", EntityID: "cit-042",
 		Action: "SCORE_UPDATE", Principal: "engine", Outcome: "COMPLETED",
-		Metadata: `{"old_score": 45, "new_score": 72}`,
+		Metadata:  `{"old_score": 45, "new_score": 72}`,
 		Timestamp: time.Date(2025, 1, 15, 10, 30, 0, 0, time.UTC),
 	}
 

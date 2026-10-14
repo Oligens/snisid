@@ -31,15 +31,15 @@ type ModelUpdate struct {
 }
 
 type AggregatedModel struct {
-	GlobalWeights   []float64               `json:"globalWeights"`
-	Round           int                     `json:"round"`
-	NodeCount       int                     `json:"nodeCount"`
-	TotalSamples    int                     `json:"totalSamples"`
-	AvgLoss         float64                 `json:"avgLoss"`
-	WeightedAccuracy float64                `json:"weightedAccuracy"`
-	NodeWeights     map[string]float64      `json:"nodeWeights"`
-	CreatedAt       time.Time               `json:"createdAt"`
-	ConvergenceDelta float64                `json:"convergenceDelta"`
+	GlobalWeights    []float64          `json:"globalWeights"`
+	Round            int                `json:"round"`
+	NodeCount        int                `json:"nodeCount"`
+	TotalSamples     int                `json:"totalSamples"`
+	AvgLoss          float64            `json:"avgLoss"`
+	WeightedAccuracy float64            `json:"weightedAccuracy"`
+	NodeWeights      map[string]float64 `json:"nodeWeights"`
+	CreatedAt        time.Time          `json:"createdAt"`
+	ConvergenceDelta float64            `json:"convergenceDelta"`
 }
 
 type NodeReputation struct {
@@ -51,18 +51,18 @@ type NodeReputation struct {
 }
 
 type Aggregator struct {
-	ID              string
-	privateKey      *ecdsa.PrivateKey
-	publicKey       *ecdsa.PublicKey
-	mu              sync.RWMutex
-	nodeReputations map[string]*NodeReputation
-	previousWeights []float64
-	round           int
-	minNodes        int
-	minSamples      int
-	aggregationFn   string
+	ID                  string
+	privateKey          *ecdsa.PrivateKey
+	publicKey           *ecdsa.PublicKey
+	mu                  sync.RWMutex
+	nodeReputations     map[string]*NodeReputation
+	previousWeights     []float64
+	round               int
+	minNodes            int
+	minSamples          int
+	aggregationFn       string
 	differentialPrivacy bool
-	noiseScale      float64
+	noiseScale          float64
 }
 
 func NewAggregator(id string) (*Aggregator, error) {
@@ -72,16 +72,16 @@ func NewAggregator(id string) (*Aggregator, error) {
 	}
 
 	return &Aggregator{
-		ID:              id,
-		privateKey:      privateKey,
-		publicKey:       &privateKey.PublicKey,
-		nodeReputations: make(map[string]*NodeReputation),
-		round:           0,
-		minNodes:        2,
-		minSamples:      100,
-		aggregationFn:   "fedavg",
+		ID:                  id,
+		privateKey:          privateKey,
+		publicKey:           &privateKey.PublicKey,
+		nodeReputations:     make(map[string]*NodeReputation),
+		round:               0,
+		minNodes:            2,
+		minSamples:          100,
+		aggregationFn:       "fedavg",
 		differentialPrivacy: true,
-		noiseScale:      0.01,
+		noiseScale:          0.01,
 	}, nil
 }
 

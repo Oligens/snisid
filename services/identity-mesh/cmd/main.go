@@ -11,10 +11,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/neo4j/neo4j-go-driver/v5/neo4j"
-	identitymesh "github.com/snisid/platform/services/identity-mesh"
 	"github.com/snisid/platform/internal/platform/events"
 	"github.com/snisid/platform/internal/platform/logger"
 	"github.com/snisid/platform/internal/platform/middleware"
+	identitymesh "github.com/snisid/platform/services/identity-mesh"
 )
 
 func main() {
@@ -62,10 +62,10 @@ func main() {
 
 		api.POST("/resolve", func(c *gin.Context) {
 			var req struct {
-				Fused   identitymesh.FusedIdentity `json:"fused" binding:"required"`
-				Agency  string                     `json:"agency" binding:"required"`
-				Field   string                     `json:"field" binding:"required"`
-				Resolved interface{}               `json:"resolved" binding:"required"`
+				Fused    identitymesh.FusedIdentity `json:"fused" binding:"required"`
+				Agency   string                     `json:"agency" binding:"required"`
+				Field    string                     `json:"field" binding:"required"`
+				Resolved interface{}                `json:"resolved" binding:"required"`
 			}
 			if err := c.BindJSON(&req); err != nil {
 				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

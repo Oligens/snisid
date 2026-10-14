@@ -8,15 +8,15 @@ import (
 )
 
 type HealthEvent struct {
-	EventID          uuid.UUID `json:"event_id"`
-	InmateID         uuid.UUID `json:"inmate_id"`
-	EventType        string    `json:"event_type"` // INJURY, ILLNESS, DEATH, PSYCHIATRIC
-	EventDate        time.Time `json:"event_date"`
-	Description      string    `json:"description"`
-	TreatingFacility string    `json:"treating_facility"`
-	Outcome          string    `json:"outcome"`
+	EventID          uuid.UUID  `json:"event_id"`
+	InmateID         uuid.UUID  `json:"inmate_id"`
+	EventType        string     `json:"event_type"` // INJURY, ILLNESS, DEATH, PSYCHIATRIC
+	EventDate        time.Time  `json:"event_date"`
+	Description      string     `json:"description"`
+	TreatingFacility string     `json:"treating_facility"`
+	Outcome          string     `json:"outcome"`
 	ReportedBy       *uuid.UUID `json:"reported_by,omitempty"`
-	CreatedAt        time.Time `json:"created_at"`
+	CreatedAt        time.Time  `json:"created_at"`
 }
 
 type HealthEventRepository interface {

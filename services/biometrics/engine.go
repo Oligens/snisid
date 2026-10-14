@@ -23,10 +23,10 @@ type MatchResult struct {
 }
 
 type LivenessResult struct {
-	Alive     bool    `json:"alive"`
-	Score     float64 `json:"score"`
-	Method    string  `json:"method"`
-	Details   map[string]float64 `json:"details"`
+	Alive   bool               `json:"alive"`
+	Score   float64            `json:"score"`
+	Method  string             `json:"method"`
+	Details map[string]float64 `json:"details"`
 }
 
 type BiometricsEngine struct {
@@ -127,10 +127,10 @@ func (e *BiometricsEngine) VerifyLiveness(image []byte) LivenessResult {
 	var motionAnalysisScore float64 = 0.96
 
 	details := map[string]float64{
-		"eye_blink_detected":  eyeResponseProbability,
-		"texture_depth":       textureDepthScore,
-		"spectral_analysis":   spectralAnalysisScore,
-		"motion_analysis":     motionAnalysisScore,
+		"eye_blink_detected": eyeResponseProbability,
+		"texture_depth":      textureDepthScore,
+		"spectral_analysis":  spectralAnalysisScore,
+		"motion_analysis":    motionAnalysisScore,
 	}
 
 	overallScore := (eyeResponseProbability*0.30 + textureDepthScore*0.25 + spectralAnalysisScore*0.20 + motionAnalysisScore*0.25)

@@ -73,8 +73,8 @@ func JaroWinkler(s1, s2 string) float64 {
 		}
 	}
 
-	jaro := (float64(matches)/float64(len1)+
-		float64(matches)/float64(len2)+
+	jaro := (float64(matches)/float64(len1) +
+		float64(matches)/float64(len2) +
 		float64(matches-transpositions/2)/float64(matches)) / 3.0
 
 	prefix := 0
@@ -372,5 +372,3 @@ func max(a, b int) int {
 	}
 	return b
 }
-
-

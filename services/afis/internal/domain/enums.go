@@ -42,7 +42,7 @@ const (
 type TransactionType string
 
 const (
-	TransactionTenprint   TransactionType = "TEN2TEN"
-	TransactionLatent     TransactionType = "LATENT2TEN"
-	TransactionPalm       TransactionType = "PALM"
+	TransactionTenprint TransactionType = "TEN2TEN"
+	TransactionLatent   TransactionType = "LATENT2TEN"
+	TransactionPalm     TransactionType = "PALM"
 )

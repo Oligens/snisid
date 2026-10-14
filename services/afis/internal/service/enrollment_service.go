@@ -29,11 +29,11 @@ type Vectorizer interface {
 }
 
 type EnrollmentService struct {
-	mu            sync.RWMutex
-	subjects      map[uuid.UUID]*domain.Subject
-	fingerprints  map[uuid.UUID][]domain.Fingerprint
-	quality       *QualityService
-	subjSeq       int
+	mu           sync.RWMutex
+	subjects     map[uuid.UUID]*domain.Subject
+	fingerprints map[uuid.UUID][]domain.Fingerprint
+	quality      *QualityService
+	subjSeq      int
 }
 
 func NewEnrollmentService(q *QualityService) *EnrollmentService {
@@ -76,17 +76,17 @@ func (s *EnrollmentService) Enroll(ctx context.Context, req domain.EnrollmentReq
 	nationalID := fmt.Sprintf("AFIS-%d-%07d", time.Now().Year(), s.subjSeq)
 
 	subject := &domain.Subject{
-		SubjectID:       uuid.New(),
-		SNISIDPersonID:  req.SNISIDPersonID,
-		FIRRecordID:     req.FIRRecordID,
-		SubjectType:     req.SubjectType,
-		NationalAFISID:  &nationalID,
-		AliasIDs:        []uuid.UUID{},
-		EnrolmentDate:   time.Now(),
-		EnrollingUnit:   req.EnrollingUnit,
+		SubjectID:        uuid.New(),
+		SNISIDPersonID:   req.SNISIDPersonID,
+		FIRRecordID:      req.FIRRecordID,
+		SubjectType:      req.SubjectType,
+		NationalAFISID:   &nationalID,
+		AliasIDs:         []uuid.UUID{},
+		EnrolmentDate:    time.Now(),
+		EnrollingUnit:    req.EnrollingUnit,
 		EnrollingOfficer: officerID,
-		CreatedAt:       time.Now(),
-		UpdatedAt:       time.Now(),
+		CreatedAt:        time.Now(),
+		UpdatedAt:        time.Now(),
 	}
 
 	var fps []domain.Fingerprint

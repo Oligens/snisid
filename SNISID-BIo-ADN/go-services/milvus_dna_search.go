@@ -42,28 +42,28 @@ func (s *DNAMilvusSearcher) EnsureCollection(ctx context.Context) error {
 				TypeParams: map[string]string{"max_length": "128"},
 			},
 			{
-				Name:     "niu",
-				DataType: entity.FieldTypeVarChar,
+				Name:       "niu",
+				DataType:   entity.FieldTypeVarChar,
 				TypeParams: map[string]string{"max_length": "10"},
 			},
 			{
-				Name:     "profile_type",
-				DataType: entity.FieldTypeVarChar,
+				Name:       "profile_type",
+				DataType:   entity.FieldTypeVarChar,
 				TypeParams: map[string]string{"max_length": "50"},
 			},
 			{
-				Name:     "case_reference",
-				DataType: entity.FieldTypeVarChar,
+				Name:       "case_reference",
+				DataType:   entity.FieldTypeVarChar,
 				TypeParams: map[string]string{"max_length": "100"},
 			},
 			{
-				Name:     "status",
-				DataType: entity.FieldTypeVarChar,
+				Name:       "status",
+				DataType:   entity.FieldTypeVarChar,
 				TypeParams: map[string]string{"max_length": "30"},
 			},
 			{
-				Name:     "submitting_agency",
-				DataType: entity.FieldTypeVarChar,
+				Name:       "submitting_agency",
+				DataType:   entity.FieldTypeVarChar,
 				TypeParams: map[string]string{"max_length": "100"},
 			},
 			{
@@ -101,22 +101,22 @@ func (s *DNAMilvusSearcher) EnsureCollection(ctx context.Context) error {
 }
 
 type DNAProfileVector struct {
-	ProfileID         string
-	NIU               string
-	ProfileType       string
-	CaseReference     string
-	Status            string
-	SubmittingAgency  string
-	DNAEmbedding      []float32
-	LocusScores       []float32
+	ProfileID        string
+	NIU              string
+	ProfileType      string
+	CaseReference    string
+	Status           string
+	SubmittingAgency string
+	DNAEmbedding     []float32
+	LocusScores      []float32
 }
 
 type DNAMatchResult struct {
-	ProfileID        string
-	NIU              string
-	CaseReference    string
-	Score            float32
-	MatchType        string
+	ProfileID     string
+	NIU           string
+	CaseReference string
+	Score         float32
+	MatchType     string
 }
 
 func (s *DNAMilvusSearcher) UpsertProfile(ctx context.Context, profile *DNAProfileVector) error {

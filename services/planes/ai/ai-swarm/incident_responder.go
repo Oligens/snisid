@@ -41,10 +41,10 @@ type IncidentPayload struct {
 }
 
 type PlaybookAction struct {
-	Action        string `json:"action"`
-	Target        string `json:"target"`
-	Duration      string `json:"duration,omitempty"`
-	RequireHuman  bool   `json:"require_human"`
+	Action       string `json:"action"`
+	Target       string `json:"target"`
+	Duration     string `json:"duration,omitempty"`
+	RequireHuman bool   `json:"require_human"`
 }
 
 func RunAgent() {
@@ -87,9 +87,9 @@ func RunAgent() {
 		results := executePlaybook(playbook, payload)
 
 		response := map[string]interface{}{
-			"task_id":    task.ID,
-			"status":     "completed",
-			"actions":    results,
+			"task_id":      task.ID,
+			"status":       "completed",
+			"actions":      results,
 			"responded_at": time.Now().Unix(),
 		}
 

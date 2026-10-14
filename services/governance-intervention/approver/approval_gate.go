@@ -18,9 +18,9 @@ func (g *ApprovalGate) Authorize(i *proposer.Intervention, userRole string, just
 	}
 
 	i.Status = proposer.StatusApproved
-	fmt.Printf("✅ NEXUS-INTERV: Intervention %s approved by role %s. Justification: %s\n", 
+	fmt.Printf("✅ NEXUS-INTERV: Intervention %s approved by role %s. Justification: %s\n",
 		i.ID, userRole, justification)
-	
+
 	return nil
 }
 

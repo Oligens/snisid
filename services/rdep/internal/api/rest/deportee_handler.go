@@ -50,7 +50,7 @@ func (h *DeporteeHandler) GetDeportee(c *gin.Context) {
 	events, _ := h.deporteeSvc.GetMonitoringEvents(c.Request.Context(), id)
 
 	c.JSON(http.StatusOK, gin.H{
-		"deportee":         deportee,
+		"deportee":          deportee,
 		"monitoring_events": events,
 	})
 }
@@ -79,12 +79,12 @@ func (h *DeporteeHandler) AddMonitoringEvent(c *gin.Context) {
 	}
 
 	var req struct {
-		EventType  string     `json:"event_type" binding:"required"`
-		EventDate  time.Time  `json:"event_date" binding:"required"`
+		EventType   string    `json:"event_type" binding:"required"`
+		EventDate   time.Time `json:"event_date" binding:"required"`
 		LocationLat *float64  `json:"location_lat,omitempty"`
 		LocationLng *float64  `json:"location_lng,omitempty"`
-		Notes      *string    `json:"notes,omitempty"`
-		ReportedBy string     `json:"reported_by" binding:"required"`
+		Notes       *string   `json:"notes,omitempty"`
+		ReportedBy  string    `json:"reported_by" binding:"required"`
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {

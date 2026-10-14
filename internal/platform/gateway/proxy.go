@@ -28,8 +28,8 @@ func (s *SmartRouter) AddRoute(path string, targetURL string) {
 func (s *SmartRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	for path, proxy := range s.routes {
 		if strings.HasPrefix(r.URL.Path, path) {
-			logger.Info(r.Context(), "Routing external request", 
-				zap.String("path", r.URL.Path), 
+			logger.Info(r.Context(), "Routing external request",
+				zap.String("path", r.URL.Path),
 				zap.String("route", path),
 			)
 			proxy.ServeHTTP(w, r)

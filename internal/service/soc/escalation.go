@@ -20,8 +20,8 @@ func NewEscalationManager(slack, pd string) *EscalationManager {
 }
 
 func (m *EscalationManager) Escalate(ctx context.Context, incidentID string, sev Severity, description string) error {
-	logger.Info(ctx, "Escalating security incident", 
-		zap.String("incident_id", incidentID), 
+	logger.Info(ctx, "Escalating security incident",
+		zap.String("incident_id", incidentID),
 		zap.String("severity", string(sev)),
 	)
 
@@ -48,8 +48,8 @@ func (m *EscalationManager) notifyPagerDuty(ctx context.Context, id, desc string
 
 func (m *EscalationManager) notifySlack(ctx context.Context, id string, sev Severity, desc string) error {
 	// Placeholder for Slack Webhook call
-	logger.Info(ctx, "SLACK NOTIFICATION SENT", 
-		zap.String("incident_id", id), 
+	logger.Info(ctx, "SLACK NOTIFICATION SENT",
+		zap.String("incident_id", id),
 		zap.String("severity", string(sev)),
 		zap.String("desc", desc),
 	)

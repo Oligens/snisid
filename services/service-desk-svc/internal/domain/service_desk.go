@@ -18,34 +18,34 @@ const (
 type RecoveryMethod string
 
 const (
-	RecoveryMethodEmail    RecoveryMethod = "EMAIL"
-	RecoveryMethodSMS      RecoveryMethod = "SMS"
-	RecoveryMethodDocument RecoveryMethod = "DOCUMENT"
+	RecoveryMethodEmail     RecoveryMethod = "EMAIL"
+	RecoveryMethodSMS       RecoveryMethod = "SMS"
+	RecoveryMethodDocument  RecoveryMethod = "DOCUMENT"
 	RecoveryMethodBiometric RecoveryMethod = "BIOMETRIC"
-	RecoveryMethodInPerson RecoveryMethod = "IN_PERSON"
+	RecoveryMethodInPerson  RecoveryMethod = "IN_PERSON"
 )
 
 type SupportCase struct {
-	CaseID        uuid.UUID  `json:"case_id"`
-	CitizenID     uuid.UUID  `json:"citizen_id"`
-	Subject       string     `json:"subject"`
-	Description   string     `json:"description"`
-	Status        CaseStatus `json:"status"`
-	AssignedTo    *string    `json:"assigned_to,omitempty"`
-	CreatedAt     time.Time  `json:"created_at"`
-	UpdatedAt     time.Time  `json:"updated_at"`
-	ResolvedAt    *time.Time `json:"resolved_at,omitempty"`
+	CaseID      uuid.UUID  `json:"case_id"`
+	CitizenID   uuid.UUID  `json:"citizen_id"`
+	Subject     string     `json:"subject"`
+	Description string     `json:"description"`
+	Status      CaseStatus `json:"status"`
+	AssignedTo  *string    `json:"assigned_to,omitempty"`
+	CreatedAt   time.Time  `json:"created_at"`
+	UpdatedAt   time.Time  `json:"updated_at"`
+	ResolvedAt  *time.Time `json:"resolved_at,omitempty"`
 }
 
 type IdentityRecoveryRequest struct {
-	RequestID       uuid.UUID      `json:"request_id"`
-	CaseID          uuid.UUID      `json:"case_id"`
-	CitizenID       uuid.UUID      `json:"citizen_id"`
-	PreferredMethod RecoveryMethod `json:"preferred_method"`
+	RequestID       uuid.UUID        `json:"request_id"`
+	CaseID          uuid.UUID        `json:"case_id"`
+	CitizenID       uuid.UUID        `json:"citizen_id"`
+	PreferredMethod RecoveryMethod   `json:"preferred_method"`
 	VerifiedMethods []RecoveryMethod `json:"verified_methods"`
-	IsVerified      bool           `json:"is_verified"`
-	CreatedAt       time.Time      `json:"created_at"`
-	ResolvedAt      *time.Time     `json:"resolved_at,omitempty"`
+	IsVerified      bool             `json:"is_verified"`
+	CreatedAt       time.Time        `json:"created_at"`
+	ResolvedAt      *time.Time       `json:"resolved_at,omitempty"`
 }
 
 type VerificationChallenge struct {
@@ -67,10 +67,10 @@ type CaseNote struct {
 }
 
 type Resolution struct {
-	ResolutionID uuid.UUID  `json:"resolution_id"`
-	CaseID       uuid.UUID  `json:"case_id"`
-	Action       string     `json:"action"`
-	Details      string     `json:"details"`
-	ResolvedBy   string     `json:"resolved_by"`
-	CreatedAt    time.Time  `json:"created_at"`
+	ResolutionID uuid.UUID `json:"resolution_id"`
+	CaseID       uuid.UUID `json:"case_id"`
+	Action       string    `json:"action"`
+	Details      string    `json:"details"`
+	ResolvedBy   string    `json:"resolved_by"`
+	CreatedAt    time.Time `json:"created_at"`
 }

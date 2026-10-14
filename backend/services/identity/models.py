@@ -78,6 +78,10 @@ class Citizen(Base):
         String(20), unique=True, nullable=False, index=True,
         doc="Unique national identification number",
     )
+    nif: Mapped[str | None] = mapped_column(
+        String(32), nullable=True, index=True,
+        doc="Optional tax identification number",
+    )
 
     # Personal information (PII — encrypted at rest)
     first_name: Mapped[str] = mapped_column(String(100), nullable=False)
@@ -233,6 +237,7 @@ class CitizenReadModel(Base):
     national_id: Mapped[str] = mapped_column(
         String(20), unique=True, nullable=False, index=True
     )
+    nif: Mapped[str | None] = mapped_column(String(32), nullable=True, index=True)
     full_name: Mapped[str] = mapped_column(String(300), nullable=False)
     first_name: Mapped[str] = mapped_column(String(100), nullable=False)
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)

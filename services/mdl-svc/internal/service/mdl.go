@@ -92,11 +92,11 @@ func (s *MDLService) VerifyMDLPresentation(ctx context.Context, issuanceID uuid.
 	}
 
 	presentation := &domain.MDLPresentation{
-		PresentationID: uuid.New(),
-		IssuanceID:     issuanceID,
-		ReaderID:       readerID,
-		PresentedAt:    time.Now().UTC(),
-		IsVerified:     true,
+		PresentationID:     uuid.New(),
+		IssuanceID:         issuanceID,
+		ReaderID:           readerID,
+		PresentedAt:        time.Now().UTC(),
+		IsVerified:         true,
 		VerificationResult: "authentic",
 	}
 	if err := s.repo.InsertPresentation(ctx, presentation); err != nil {

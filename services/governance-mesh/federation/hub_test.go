@@ -59,9 +59,9 @@ func TestDistributePolicy_SigningAndVerification(t *testing.T) {
 	require.NotNil(t, h)
 
 	p := PolicyPackage{
-		ID:      "POL-002",
-		Version: "v2.0",
-		Rules:   []string{"critical-rule"},
+		ID:       "POL-002",
+		Version:  "v2.0",
+		Rules:    []string{"critical-rule"},
 		Priority: 5,
 	}
 

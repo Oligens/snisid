@@ -29,3 +29,11 @@ bashs_execution_reports
 node_modules/
 __pycache__/
 .env
+.env.*
+!.env.*.example
+
+# Frontend build artifacts
+/frontend/dist/
+/frontend/*.tsbuildinfo
+/frontend/vite.config.js
+/frontend/vite.config.d.ts

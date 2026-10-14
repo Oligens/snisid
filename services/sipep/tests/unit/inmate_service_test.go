@@ -5,20 +5,20 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
 	"github.com/snisid/platform/services/sipep/internal/domain"
 	"github.com/snisid/platform/services/sipep/internal/service"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestInmateIntake(t *testing.T) {
 	svc := service.NewInmateService()
 
 	req := domain.IntakeRequest{
-		SNISIDPersonID:    uuid.New(),
-		Facility:          "PNPP",
-		DetentionBasis:    domain.DetentionBasisPreventive,
-		IntakeOfficer:     uuid.New(),
-		IsFemale:          false,
+		SNISIDPersonID: uuid.New(),
+		Facility:       "PNPP",
+		DetentionBasis: domain.DetentionBasisPreventive,
+		IntakeOfficer:  uuid.New(),
+		IsFemale:       false,
 	}
 
 	inmate, detention, err := svc.Intake(req)
@@ -142,22 +142,22 @@ func TestIntakeWithFullDetails(t *testing.T) {
 	sentenceDays := 365
 
 	req := domain.IntakeRequest{
-		SNISIDPersonID:      uuid.New(),
-		Facility:            "PCCH",
-		CellBlock:           "B-12",
-		DetentionBasis:      domain.DetentionBasisSentenced,
-		LegalStatus:         domain.LegalStatusSentenced,
-		CaseReference:       "PCCH-2024-0042",
-		CourtName:           "Tribunal Cap-Haïtien",
-		ArrestingAuthority:  "PNH",
-		WarrantNumber:       "W-2024-8910",
-		IntakeOfficer:       uuid.New(),
-		IsMinor:             false,
-		IsFemale:            true,
-		HasSpecialNeeds:     true,
-		SpecialNeedsNotes:   "Grossesse à risque",
+		SNISIDPersonID:       uuid.New(),
+		Facility:             "PCCH",
+		CellBlock:            "B-12",
+		DetentionBasis:       domain.DetentionBasisSentenced,
+		LegalStatus:          domain.LegalStatusSentenced,
+		CaseReference:        "PCCH-2024-0042",
+		CourtName:            "Tribunal Cap-Haïtien",
+		ArrestingAuthority:   "PNH",
+		WarrantNumber:        "W-2024-8910",
+		IntakeOfficer:        uuid.New(),
+		IsMinor:              false,
+		IsFemale:             true,
+		HasSpecialNeeds:      true,
+		SpecialNeedsNotes:    "Grossesse à risque",
 		SentenceDurationDays: &sentenceDays,
-		ExpectedReleaseDate: &now,
+		ExpectedReleaseDate:  &now,
 	}
 
 	inmate, detention, err := svc.Intake(req)

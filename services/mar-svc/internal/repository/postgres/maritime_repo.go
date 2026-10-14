@@ -14,7 +14,7 @@ import (
 
 type maritimeRepo struct {
 	pool *pgxpool.Pool
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewMaritimeRepo(pool *pgxpool.Pool, log *zap.Logger) *maritimeRepo {

@@ -6,16 +6,16 @@ import (
 	"log"
 	"time"
 
-	nexusv1 "github.com/snisid/platform/api/proto/nexus/v1"
 	"github.com/segmentio/kafka-go"
+	nexusv1 "github.com/snisid/platform/api/proto/nexus/v1"
 	"google.golang.org/protobuf/proto"
 )
 
 // Runtime is the execution environment for a Kai agent.
 type Runtime struct {
-	ID          string
+	ID           string
 	Capabilities []string
-	KafkaReader *kafka.Reader
+	KafkaReader  *kafka.Reader
 }
 
 func NewRuntime(agentID string, brokers []string) *Runtime {
@@ -51,7 +51,7 @@ func (r *Runtime) Start(ctx context.Context) {
 
 func (r *Runtime) Execute(ctx context.Context, task *nexusv1.TaskDefinition) {
 	log.Printf("⚡ KAI-AGENT: Executing task %s (Type: %s)", task.Id, task.Type)
-	
+
 	// Simulate execution delay
 	time.Sleep(500 * time.Millisecond)
 

@@ -10,12 +10,12 @@ import (
 type ProtectionLevel string
 
 const (
-	ProtectionPresident      ProtectionLevel = "PRESIDENT"
-	ProtectionPrimeMinister  ProtectionLevel = "PRIME_MINISTER"
+	ProtectionPresident       ProtectionLevel = "PRESIDENT"
+	ProtectionPrimeMinister   ProtectionLevel = "PRIME_MINISTER"
 	ProtectionCabinetMinister ProtectionLevel = "CABINET_MINISTER"
-	ProtectionJudge          ProtectionLevel = "JUDGE"
-	ProtectionDiplomat       ProtectionLevel = "DIPLOMAT"
-	ProtectionWitness        ProtectionLevel = "WITNESS"
+	ProtectionJudge           ProtectionLevel = "JUDGE"
+	ProtectionDiplomat        ProtectionLevel = "DIPLOMAT"
+	ProtectionWitness         ProtectionLevel = "WITNESS"
 )
 
 type RiskAssessment string
@@ -48,50 +48,50 @@ const (
 type ThreatType string
 
 const (
-	ThreatDirect     ThreatType = "DIRECT_THREAT"
+	ThreatDirect      ThreatType = "DIRECT_THREAT"
 	ThreatSocialMedia ThreatType = "SOCIAL_MEDIA"
-	ThreatKnownGroup ThreatType = "KNOWN_GROUP"
-	ThreatStalker    ThreatType = "STALKER"
+	ThreatKnownGroup  ThreatType = "KNOWN_GROUP"
+	ThreatStalker     ThreatType = "STALKER"
 )
 
 type ThreatStatus string
 
 const (
-	ThreatPending     ThreatStatus = "PENDING"
-	ThreatActive      ThreatStatus = "ACTIVE"
-	ThreatMitigated   ThreatStatus = "MITIGATED"
-	ThreatFalseAlarm  ThreatStatus = "FALSE_ALARM"
+	ThreatPending    ThreatStatus = "PENDING"
+	ThreatActive     ThreatStatus = "ACTIVE"
+	ThreatMitigated  ThreatStatus = "MITIGATED"
+	ThreatFalseAlarm ThreatStatus = "FALSE_ALARM"
 )
 
 type Protectee struct {
-	ID                uuid.UUID         `json:"id"`
-	FullName          string            `json:"full_name"`
-	OfficialTitle     string            `json:"official_title"`
-	ProtectionLevel   ProtectionLevel   `json:"protection_level"`
-	RiskAssessment    RiskAssessment    `json:"risk_assessment"`
-	ActiveThreats     int               `json:"active_threats"`
-	PrimaryAgentID    uuid.UUID         `json:"primary_agent_id"`
-	SecondaryAgents   pq.StringArray    `json:"secondary_agents"`
-	SecureVehiclePlate string           `json:"secure_vehicle_plate"`
-	ResidenceLocation *string           `json:"residence_location,omitempty"`
-	WorkplaceLocation *string           `json:"workplace_location,omitempty"`
-	DailyScheduleRefs pq.StringArray    `json:"daily_schedule_refs"`
-	CreatedAt         time.Time         `json:"created_at"`
+	ID                 uuid.UUID       `json:"id"`
+	FullName           string          `json:"full_name"`
+	OfficialTitle      string          `json:"official_title"`
+	ProtectionLevel    ProtectionLevel `json:"protection_level"`
+	RiskAssessment     RiskAssessment  `json:"risk_assessment"`
+	ActiveThreats      int             `json:"active_threats"`
+	PrimaryAgentID     uuid.UUID       `json:"primary_agent_id"`
+	SecondaryAgents    pq.StringArray  `json:"secondary_agents"`
+	SecureVehiclePlate string          `json:"secure_vehicle_plate"`
+	ResidenceLocation  *string         `json:"residence_location,omitempty"`
+	WorkplaceLocation  *string         `json:"workplace_location,omitempty"`
+	DailyScheduleRefs  pq.StringArray  `json:"daily_schedule_refs"`
+	CreatedAt          time.Time       `json:"created_at"`
 }
 
 type MovementPlan struct {
-	ID               uuid.UUID      `json:"id"`
-	ProtecteeID      uuid.UUID      `json:"protectee_id"`
-	EventName        string         `json:"event_name"`
-	Date             time.Time      `json:"date"`
-	DepartureLocation string        `json:"departure_location"`
-	ArrivalLocation  string         `json:"arrival_location"`
-	TransportMode    TransportMode  `json:"transport_mode"`
-	RoutePlan        *string        `json:"route_plan,omitempty"`
-	AdvanceDone      bool           `json:"advance_done"`
-	ClearedBy        *uuid.UUID     `json:"cleared_by,omitempty"`
-	Status           MovementStatus `json:"status"`
-	CreatedAt        time.Time      `json:"created_at"`
+	ID                uuid.UUID      `json:"id"`
+	ProtecteeID       uuid.UUID      `json:"protectee_id"`
+	EventName         string         `json:"event_name"`
+	Date              time.Time      `json:"date"`
+	DepartureLocation string         `json:"departure_location"`
+	ArrivalLocation   string         `json:"arrival_location"`
+	TransportMode     TransportMode  `json:"transport_mode"`
+	RoutePlan         *string        `json:"route_plan,omitempty"`
+	AdvanceDone       bool           `json:"advance_done"`
+	ClearedBy         *uuid.UUID     `json:"cleared_by,omitempty"`
+	Status            MovementStatus `json:"status"`
+	CreatedAt         time.Time      `json:"created_at"`
 }
 
 type ThreatAssessment struct {
@@ -142,12 +142,12 @@ type CreateThreatAssessmentRequest struct {
 }
 
 type DashboardProtection struct {
-	TotalProtectees      int     `json:"total_protectees"`
-	ActiveProtectees     int     `json:"active_protectees"`
-	UpcomingMovements    int     `json:"upcoming_movements"`
-	ActiveThreats        int     `json:"active_threats"`
-	CriticalRiskCount    int     `json:"critical_risk_count"`
-	HighRiskCount        int     `json:"high_risk_count"`
-	MediumRiskCount      int     `json:"medium_risk_count"`
-	AvgActiveThreats     float64 `json:"avg_active_threats"`
+	TotalProtectees   int     `json:"total_protectees"`
+	ActiveProtectees  int     `json:"active_protectees"`
+	UpcomingMovements int     `json:"upcoming_movements"`
+	ActiveThreats     int     `json:"active_threats"`
+	CriticalRiskCount int     `json:"critical_risk_count"`
+	HighRiskCount     int     `json:"high_risk_count"`
+	MediumRiskCount   int     `json:"medium_risk_count"`
+	AvgActiveThreats  float64 `json:"avg_active_threats"`
 }

@@ -56,7 +56,7 @@ func TestScoringEngine_CalculateScore_NoTriggers(t *testing.T) {
 		"action":     "view",
 	}
 
-		score, _, riskLevel := engine.CalculateScore(context.Background(), event)
+	score, _, riskLevel := engine.CalculateScore(context.Background(), event)
 	if score != 5 {
 		t.Errorf("score = %d, want 5 (only AI default, 0.05*100=5)", score)
 	}

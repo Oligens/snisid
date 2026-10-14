@@ -57,16 +57,16 @@ func (s *AlertServiceServer) GetAlert(ctx context.Context, req *GetAlertRequest)
 	}
 
 	resp := &GetAlertResponse{
-		AlertId:          alert.AlertID.String(),
-		PlateNumber:      alert.PlateNumber,
-		CrimeCategory:    string(alert.CrimeCategory),
-		AlertLevel:       string(alert.AlertLevel),
-		Status:           string(alert.Status),
+		AlertId:           alert.AlertID.String(),
+		PlateNumber:       alert.PlateNumber,
+		CrimeCategory:     string(alert.CrimeCategory),
+		AlertLevel:        string(alert.AlertLevel),
+		Status:            string(alert.Status),
 		ArmedAndDangerous: alert.ArmedAndDangerous,
-		ReportingUnit:    alert.ReportingUnit,
-		Make:             alert.Make,
-		Model:            alert.Model,
-		ColorPrimary:     alert.ColorPrimary,
+		ReportingUnit:     alert.ReportingUnit,
+		Make:              alert.Make,
+		Model:             alert.Model,
+		ColorPrimary:      alert.ColorPrimary,
 	}
 
 	return resp, nil

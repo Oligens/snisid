@@ -18,11 +18,11 @@ func NewPushAlerter(client *redis.Client) *PushAlerter {
 }
 
 type PushNotification struct {
-	AlertID    string `json:"alert_id"`
-	Plate      string `json:"plate_number"`
-	Level      string `json:"alert_level"`
-	Category   string `json:"crime_category"`
-	Timestamp  string `json:"timestamp"`
+	AlertID   string `json:"alert_id"`
+	Plate     string `json:"plate_number"`
+	Level     string `json:"alert_level"`
+	Category  string `json:"crime_category"`
+	Timestamp string `json:"timestamp"`
 }
 
 func (a *PushAlerter) SendPush(ctx context.Context, unit string, alert interface{}) error {

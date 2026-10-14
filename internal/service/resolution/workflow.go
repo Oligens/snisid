@@ -22,8 +22,8 @@ func NewWorkflow(arb *Arbitrator, prod events.ProducerInterface) *Workflow {
 }
 
 func (w *Workflow) Merge(ctx context.Context, primaryID string, secondaryIDs []string) error {
-	logger.Info(ctx, "Starting identity merge workflow", 
-		zap.String("primary_id", primaryID), 
+	logger.Info(ctx, "Starting identity merge workflow",
+		zap.String("primary_id", primaryID),
 		zap.Strings("secondary_ids", secondaryIDs),
 	)
 
@@ -34,11 +34,11 @@ func (w *Workflow) Merge(ctx context.Context, primaryID string, secondaryIDs []s
 	}
 
 	event := map[string]interface{}{
-		"operationType":       "MERGE",
-		"primaryIdentityId":   primaryID,
+		"operationType":        "MERGE",
+		"primaryIdentityId":    primaryID,
 		"secondaryIdentityIds": secondaryIDs,
 		"arbitrationEvidence":  evidence,
-		"reason":              "Identity consolidation requested via SOC forensic investigation",
+		"reason":               "Identity consolidation requested via SOC forensic investigation",
 	}
 
 	return w.producer.Publish(ctx, primaryID, event)
@@ -51,11 +51,11 @@ func (w *Workflow) Split(ctx context.Context, originalID string) (string, string
 	newID2 := fmt.Sprintf("%s-B", originalID)
 
 	event := map[string]interface{}{
-		"operationType":       "SPLIT",
-		"primaryIdentityId":   originalID,
+		"operationType":        "SPLIT",
+		"primaryIdentityId":    originalID,
 		"secondaryIdentityIds": []string{newID1, newID2},
 		"arbitrationEvidence":  map[string]string{"split_logic": "Evidence of multiple individuals using the same primary record"},
-		"reason":              "Correction of identity overlap detected via biometric anomaly",
+		"reason":               "Correction of identity overlap detected via biometric anomaly",
 	}
 
 	if err := w.producer.Publish(ctx, originalID, event); err != nil {

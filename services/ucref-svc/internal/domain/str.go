@@ -37,31 +37,31 @@ type STRReport struct {
 }
 
 type FinancialProfile struct {
-	ProfileID             uuid.UUID       `json:"profile_id" db:"profile_id"`
-	SNISIDPersonID        uuid.UUID       `json:"snisid_person_id" db:"snisid_person_id"`
-	TotalSTRCount         int             `json:"total_str_count" db:"total_str_count"`
-	TotalCTRCount         int             `json:"total_ctr_count" db:"total_ctr_count"`
-	EstimatedIllegalAssetsUSD float64     `json:"estimated_illegal_assets_usd" db:"estimated_illegal_assets_usd"`
-	KnownAccounts         json.RawMessage `json:"known_accounts" db:"known_accounts"`
-	KnownProperties       json.RawMessage `json:"known_properties" db:"known_properties"`
-	KnownBusinesses       []string        `json:"known_businesses" db:"known_businesses"`
-	MLRiskScore           int16           `json:"ml_risk_score" db:"ml_risk_score"`
-	IsPEP                 bool            `json:"is_pep" db:"is_pep"`
-	LastUpdated           time.Time       `json:"last_updated" db:"last_updated"`
+	ProfileID                 uuid.UUID       `json:"profile_id" db:"profile_id"`
+	SNISIDPersonID            uuid.UUID       `json:"snisid_person_id" db:"snisid_person_id"`
+	TotalSTRCount             int             `json:"total_str_count" db:"total_str_count"`
+	TotalCTRCount             int             `json:"total_ctr_count" db:"total_ctr_count"`
+	EstimatedIllegalAssetsUSD float64         `json:"estimated_illegal_assets_usd" db:"estimated_illegal_assets_usd"`
+	KnownAccounts             json.RawMessage `json:"known_accounts" db:"known_accounts"`
+	KnownProperties           json.RawMessage `json:"known_properties" db:"known_properties"`
+	KnownBusinesses           []string        `json:"known_businesses" db:"known_businesses"`
+	MLRiskScore               int16           `json:"ml_risk_score" db:"ml_risk_score"`
+	IsPEP                     bool            `json:"is_pep" db:"is_pep"`
+	LastUpdated               time.Time       `json:"last_updated" db:"last_updated"`
 }
 
 type MonCashPattern struct {
-	PatternID         uuid.UUID  `json:"pattern_id" db:"pattern_id"`
-	STRID             uuid.UUID  `json:"str_id" db:"str_id"`
-	PhoneNumber       string     `json:"phone_number" db:"phone_number"`
-	SNISIDPersonID    *uuid.UUID `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
-	PatternType       string     `json:"pattern_type,omitempty" db:"pattern_type"`
-	TransactionCount  int        `json:"transaction_count" db:"transaction_count"`
-	TotalAmountHTG    float64    `json:"total_amount_htg" db:"total_amount_htg"`
-	PeriodStart       *time.Time `json:"period_start,omitempty" db:"period_start"`
-	PeriodEnd         *time.Time `json:"period_end,omitempty" db:"period_end"`
-	Notes             string     `json:"notes,omitempty" db:"notes"`
-	CreatedAt         time.Time  `json:"created_at" db:"created_at"`
+	PatternID        uuid.UUID  `json:"pattern_id" db:"pattern_id"`
+	STRID            uuid.UUID  `json:"str_id" db:"str_id"`
+	PhoneNumber      string     `json:"phone_number" db:"phone_number"`
+	SNISIDPersonID   *uuid.UUID `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
+	PatternType      string     `json:"pattern_type,omitempty" db:"pattern_type"`
+	TransactionCount int        `json:"transaction_count" db:"transaction_count"`
+	TotalAmountHTG   float64    `json:"total_amount_htg" db:"total_amount_htg"`
+	PeriodStart      *time.Time `json:"period_start,omitempty" db:"period_start"`
+	PeriodEnd        *time.Time `json:"period_end,omitempty" db:"period_end"`
+	Notes            string     `json:"notes,omitempty" db:"notes"`
+	CreatedAt        time.Time  `json:"created_at" db:"created_at"`
 }
 
 type SubmitSTRRequest struct {

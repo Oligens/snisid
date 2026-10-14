@@ -6,10 +6,10 @@ import (
 	"os"
 	"time"
 
+	"crypto/tls"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
-	"crypto/tls"
 )
 
 type CheckStatus string

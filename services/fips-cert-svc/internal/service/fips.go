@@ -60,13 +60,13 @@ func (s *FIPSService) SubmitValidation(ctx context.Context, moduleID uuid.UUID, 
 
 func (s *FIPSService) ReportCVE(ctx context.Context, moduleID uuid.UUID, cveID, severity string, notes *string) (*domain.CVEScanResult, error) {
 	scan := &domain.CVEScanResult{
-		ScanID:    uuid.New(),
-		ModuleID:  moduleID,
-		CVEID:     cveID,
-		Severity:  severity,
+		ScanID:     uuid.New(),
+		ModuleID:   moduleID,
+		CVEID:      cveID,
+		Severity:   severity,
 		Discovered: time.Now().UTC(),
-		Patched:   boolPtr(false),
-		Notes:     notes,
+		Patched:    boolPtr(false),
+		Notes:      notes,
 	}
 
 	if err := s.repo.CreateCVEResult(ctx, scan); err != nil {

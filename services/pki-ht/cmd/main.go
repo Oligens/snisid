@@ -21,17 +21,26 @@ import (
 )
 
 func main() {
-	dbHost := getEnv("PKI_DB_HOST", "localhost"); dbPort := getEnv("PKI_DB_PORT", "26257")
-	dbName := getEnv("PKI_DB_NAME", "snisid_pki"); dbUser := getEnv("PKI_DB_USER", "root")
-	kBrokers := getEnv("PKI_KAFKA_BROKERS", "localhost:9092"); kTopic := getEnv("PKI_KAFKA_TOPIC", "snisid.pki.events")
+	dbHost := getEnv("PKI_DB_HOST", "localhost")
+	dbPort := getEnv("PKI_DB_PORT", "26257")
+	dbName := getEnv("PKI_DB_NAME", "snisid_pki")
+	dbUser := getEnv("PKI_DB_USER", "root")
+	kBrokers := getEnv("PKI_KAFKA_BROKERS", "localhost:9092")
+	kTopic := getEnv("PKI_KAFKA_TOPIC", "snisid.pki.events")
 	port := getEnv("PKI_SERVICE_PORT", "8086")
 
 	dbURL := fmt.Sprintf("postgresql://%s@%s:%s/%s?sslmode=%s", dbUser, dbHost, dbPort, dbName, "disable")
 	db, err := sql.Open("postgres", dbURL)
-	if err != nil { log.Fatalf("db: %v", err) }
-	if err := db.Ping(); err != nil { log.Fatalf("ping: %v", err) }
+	if err != nil {
+		log.Fatalf("db: %v", err)
+	}
+	if err := db.Ping(); err != nil {
+		log.Fatalf("ping: %v", err)
+	}
 
-	if err := runMigrations(db); err != nil { log.Fatalf("migrations: %v", err) }
+	if err := runMigrations(db); err != nil {
+		log.Fatalf("migrations: %v", err)
+	}
 
 	producer := kafka.NewProducer([]string{kBrokers}, kTopic)
 	defer producer.Close()
@@ -50,7 +59,9 @@ func main() {
 	srv := &http.Server{Addr: ":" + port, Handler: r}
 	go func() {
 		log.Printf("pki-ht started on port %s", port)
-		if e := srv.ListenAndServe(); e != nil && e != http.ErrServerClosed { log.Fatalf("pki-ht: %v", e) }
+		if e := srv.ListenAndServe(); e != nil && e != http.ErrServerClosed {
+			log.Fatalf("pki-ht: %v", e)
+		}
 	}()
 
 	sigChan := make(chan os.Signal, 1)
@@ -71,10 +82,16 @@ func runMigrations(db *sql.DB) error {
 		`CREATE INDEX IF NOT EXISTS idx_pki_certs_subject ON pki_issued_certificates(subject_ref)`,
 		`CREATE INDEX IF NOT EXISTS idx_pki_certs_status ON pki_issued_certificates(status)`,
 	} {
-		if _, err := db.Exec(m); err != nil { return fmt.Errorf("migration: %w", err) }
+		if _, err := db.Exec(m); err != nil {
+			return fmt.Errorf("migration: %w", err)
+		}
 	}
 	return nil
 }
 
-func getEnv(k, def string) string { if v := os.Getenv(k); v != "" { return v }; return def }
-
+func getEnv(k, def string) string {
+	if v := os.Getenv(k); v != "" {
+		return v
+	}
+	return def
+}

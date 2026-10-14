@@ -74,9 +74,9 @@ func (s *MonitoringService) RecordEvent(ctx context.Context, req MonitoringEvent
 
 	if req.EventType == "VIOLATION" {
 		_ = s.eventPub.Publish("rdep.monitoring.violation", map[string]interface{}{
-			"deportee_id": deporteeID,
-			"person_id":   deportee.SNISIDPersonID,
-			"event_id":    event.EventID,
+			"deportee_id":  deporteeID,
+			"person_id":    deportee.SNISIDPersonID,
+			"event_id":     event.EventID,
 			"violation_at": time.Now(),
 		})
 	}

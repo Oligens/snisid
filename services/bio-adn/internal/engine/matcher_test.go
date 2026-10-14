@@ -7,7 +7,7 @@ import (
 func TestHashProfile(t *testing.T) {
 	m := NewMatcher()
 	loci := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
 	}
 	h := m.HashProfile(loci)
@@ -22,14 +22,14 @@ func TestHashProfile(t *testing.T) {
 func TestCompareFullMatch(t *testing.T) {
 	m := NewMatcher()
 	query := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
-		"D5S818": {Value1: "11", Value2: "14"},
+		"D5S818":  {Value1: "11", Value2: "14"},
 	}
 	candidate := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
-		"D5S818": {Value1: "11", Value2: "14"},
+		"D5S818":  {Value1: "11", Value2: "14"},
 	}
 	r := m.Compare(query, candidate)
 	if r == nil {
@@ -46,15 +46,15 @@ func TestCompareFullMatch(t *testing.T) {
 func TestComparePartialMatch(t *testing.T) {
 	m := NewMatcher()
 	query := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
-		"D5S818": {Value1: "11", Value2: "14"},
+		"D5S818":  {Value1: "11", Value2: "14"},
 		"D8S1179": {Value1: "13", Value2: "16"},
 	}
 	candidate := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
-		"D5S818": {Value1: "11", Value2: "13"},
+		"D5S818":  {Value1: "11", Value2: "13"},
 		"D8S1179": {Value1: "13", Value2: "17"},
 	}
 	r := m.Compare(query, candidate)
@@ -66,11 +66,11 @@ func TestComparePartialMatch(t *testing.T) {
 func TestCompareNoMatch(t *testing.T) {
 	m := NewMatcher()
 	query := STRLoci{
-		"CSF1PO": {Value1: "10", Value2: "12"},
+		"CSF1PO":  {Value1: "10", Value2: "12"},
 		"D3S1358": {Value1: "15", Value2: "18"},
 	}
 	candidate := STRLoci{
-		"CSF1PO": {Value1: "11", Value2: "13"},
+		"CSF1PO":  {Value1: "11", Value2: "13"},
 		"D3S1358": {Value1: "16", Value2: "19"},
 	}
 	r := m.Compare(query, candidate)

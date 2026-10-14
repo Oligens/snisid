@@ -49,7 +49,7 @@ func TestValidateTransition_Invalid(t *testing.T) {
 		{StateCreated, StateSuspended},
 		{StateCreated, StateFlagged},
 		{StateCreated, StateActive},
-		{StateArchived, StateActive},  // Terminal state
+		{StateArchived, StateActive}, // Terminal state
 	}
 
 	for _, tt := range tests {

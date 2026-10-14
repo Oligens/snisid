@@ -17,15 +17,15 @@ type AdmissionReview struct {
 }
 
 type AdmissionRequest struct {
-	UID        string              `json:"uid"`
-	Kind       GroupVersionKind    `json:"kind"`
-	Resource   GroupVersionResource `json:"resource"`
-	Name       string              `json:"name,omitempty"`
-	Namespace  string              `json:"namespace,omitempty"`
-	Operation  string              `json:"operation"`
-	Object     json.RawMessage     `json:"object,omitempty"`
-	OldObject  json.RawMessage     `json:"oldObject,omitempty"`
-	UserInfo   UserInfo            `json:"userInfo"`
+	UID       string               `json:"uid"`
+	Kind      GroupVersionKind     `json:"kind"`
+	Resource  GroupVersionResource `json:"resource"`
+	Name      string               `json:"name,omitempty"`
+	Namespace string               `json:"namespace,omitempty"`
+	Operation string               `json:"operation"`
+	Object    json.RawMessage      `json:"object,omitempty"`
+	OldObject json.RawMessage      `json:"oldObject,omitempty"`
+	UserInfo  UserInfo             `json:"userInfo"`
 }
 
 type GroupVersionKind struct {
@@ -48,9 +48,9 @@ type UserInfo struct {
 }
 
 type AdmissionResponse struct {
-	UID     string  `json:"uid"`
-	Allowed bool    `json:"allowed"`
-	Result  *Result `json:"status,omitempty"`
+	UID      string   `json:"uid"`
+	Allowed  bool     `json:"allowed"`
+	Result   *Result  `json:"status,omitempty"`
 	Warnings []string `json:"warnings,omitempty"`
 }
 
@@ -61,25 +61,25 @@ type Result struct {
 }
 
 type PodSpec struct {
-	Containers     []Container    `json:"containers"`
-	InitContainers []Container    `json:"initContainers,omitempty"`
-	ServiceAccount string         `json:"serviceAccountName,omitempty"`
-	ImagePullSecrets []PullSecret `json:"imagePullSecrets,omitempty"`
-	NodeSelector  map[string]string `json:"nodeSelector,omitempty"`
-	SecurityContext *PodSecurityContext `json:"securityContext,omitempty"`
+	Containers       []Container         `json:"containers"`
+	InitContainers   []Container         `json:"initContainers,omitempty"`
+	ServiceAccount   string              `json:"serviceAccountName,omitempty"`
+	ImagePullSecrets []PullSecret        `json:"imagePullSecrets,omitempty"`
+	NodeSelector     map[string]string   `json:"nodeSelector,omitempty"`
+	SecurityContext  *PodSecurityContext `json:"securityContext,omitempty"`
 }
 
 type Container struct {
-	Name            string             `json:"name"`
-	Image           string             `json:"image"`
-	Resources       ResourceRequirements `json:"resources,omitempty"`
+	Name            string                    `json:"name"`
+	Image           string                    `json:"image"`
+	Resources       ResourceRequirements      `json:"resources,omitempty"`
 	SecurityContext *ContainerSecurityContext `json:"securityContext,omitempty"`
-	Env             []EnvVar           `json:"env,omitempty"`
-	VolumeMounts    []VolumeMount      `json:"volumeMounts,omitempty"`
+	Env             []EnvVar                  `json:"env,omitempty"`
+	VolumeMounts    []VolumeMount             `json:"volumeMounts,omitempty"`
 }
 
 type PodSecurityContext struct {
-	RunAsNonRoot *bool `json:"runAsNonRoot,omitempty"`
+	RunAsNonRoot   *bool           `json:"runAsNonRoot,omitempty"`
 	SeccompProfile *SeccompProfile `json:"seccompProfile,omitempty"`
 }
 
@@ -88,10 +88,10 @@ type SeccompProfile struct {
 }
 
 type ContainerSecurityContext struct {
-	Privileged               *bool  `json:"privileged,omitempty"`
-	AllowPrivilegeEscalation *bool  `json:"allowPrivilegeEscalation,omitempty"`
-	ReadOnlyRootFilesystem   *bool  `json:"readOnlyRootFilesystem,omitempty"`
-	RunAsNonRoot             *bool  `json:"runAsNonRoot,omitempty"`
+	Privileged               *bool         `json:"privileged,omitempty"`
+	AllowPrivilegeEscalation *bool         `json:"allowPrivilegeEscalation,omitempty"`
+	ReadOnlyRootFilesystem   *bool         `json:"readOnlyRootFilesystem,omitempty"`
+	RunAsNonRoot             *bool         `json:"runAsNonRoot,omitempty"`
 	Capabilities             *Capabilities `json:"capabilities,omitempty"`
 }
 
@@ -126,15 +126,15 @@ type ObjectMeta struct {
 }
 
 type Pod struct {
-	APIVersion string             `json:"apiVersion"`
-	Kind       string             `json:"kind"`
-	Metadata   ObjectMeta         `json:"metadata"`
-	Spec       PodSpec            `json:"spec"`
+	APIVersion string     `json:"apiVersion"`
+	Kind       string     `json:"kind"`
+	Metadata   ObjectMeta `json:"metadata"`
+	Spec       PodSpec    `json:"spec"`
 }
 
 type PolicyViolation struct {
-	Field   string `json:"field"`
-	Message string `json:"message"`
+	Field    string `json:"field"`
+	Message  string `json:"message"`
 	Severity string `json:"severity"` // ERROR, WARNING
 }
 

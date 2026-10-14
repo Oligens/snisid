@@ -24,16 +24,16 @@ func NewGovernanceService(repo repository.Repository, producer *kafka.Producer) 
 
 func (s *GovernanceService) RegisterLicense(ctx context.Context, name, spdxID string, licenseType domain.LicenseType, version, publisher string, isOsiApproved bool, text string) (*domain.SoftwareLicense, error) {
 	l := &domain.SoftwareLicense{
-		LicenseID:    uuid.New(),
-		Name:         name,
-		SPDXID:       spdxID,
-		LicenseType:  licenseType,
-		Version:      version,
-		Publisher:    publisher,
+		LicenseID:     uuid.New(),
+		Name:          name,
+		SPDXID:        spdxID,
+		LicenseType:   licenseType,
+		Version:       version,
+		Publisher:     publisher,
 		IsOsiApproved: isOsiApproved,
-		Text:         text,
-		RegisteredAt: time.Now().UTC(),
-		UpdatedAt:    time.Now().UTC(),
+		Text:          text,
+		RegisteredAt:  time.Now().UTC(),
+		UpdatedAt:     time.Now().UTC(),
 	}
 	if err := s.repo.CreateLicense(ctx, l); err != nil {
 		return nil, fmt.Errorf("register license: %w", err)

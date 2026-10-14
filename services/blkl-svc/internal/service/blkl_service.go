@@ -11,7 +11,7 @@ import (
 
 type BLKLService struct {
 	repo domain.Repository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewBLKLService(repo domain.Repository, log *zap.Logger) *BLKLService {

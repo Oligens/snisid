@@ -10,59 +10,59 @@ import (
 )
 
 type DNAProfile struct {
-	ProfileID        uuid.UUID  `json:"profile_id" db:"profile_id"`
-	NIU              *string    `json:"niu,omitempty" db:"niu"`
-	ProfileType      string     `json:"profile_type" db:"profile_type"`
-	CaseReference    *string    `json:"case_reference,omitempty" db:"case_reference"`
-	LabCaseNumber    *string    `json:"lab_case_number,omitempty" db:"lab_case_number"`
-	ProfileHash      string     `json:"profile_hash" db:"profile_hash"`
-	Status           string     `json:"status" db:"status"`
-	SubmittingAgency string     `json:"submitting_agency" db:"submitting_agency"`
-	SubmittingOfficer *string   `json:"submitting_officer,omitempty" db:"submitting_officer"`
-	AnalysisDate     *time.Time `json:"analysis_date,omitempty" db:"analysis_date"`
-	IsActive         bool       `json:"is_active" db:"is_active"`
-	CreatedAt        time.Time  `json:"created_at" db:"created_at"`
-	UpdatedAt        time.Time  `json:"updated_at" db:"updated_at"`
-}
-
-type PersonRecord struct {
-	RecordID          uuid.UUID `json:"record_id" db:"record_id"`
-	NIU               string    `json:"niu" db:"niu"`
-	RecordType        string    `json:"record_type" db:"record_type"`
-	Status            string    `json:"status" db:"status"`
-	PriorityLevel     int16     `json:"priority_level" db:"priority_level"`
-	SubjectName       *string   `json:"subject_name,omitempty" db:"subject_name"`
-	SubjectAlias      []string  `json:"subject_alias" db:"subject_alias"`
-	SubjectDescription *string  `json:"subject_description,omitempty" db:"subject_description"`
-	PhotoRefs         []string  `json:"photo_refs" db:"photo_refs"`
-	LastKnownLocation *string   `json:"last_known_location,omitempty" db:"last_known_location"`
-	LastKnownDept     *string   `json:"last_known_dept,omitempty" db:"last_known_dept"`
-	ReportingAgency   string    `json:"reporting_agency" db:"reporting_agency"`
-	IsActive          bool      `json:"is_active" db:"is_active"`
-	CreatedAt         time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt         time.Time `json:"updated_at" db:"updated_at"`
-}
-
-type PropertyRecord struct {
-	RecordID          uuid.UUID  `json:"record_id" db:"record_id"`
-	RecordType        string     `json:"record_type" db:"record_type"`
-	Status            string     `json:"status" db:"status"`
-	ItemDescription   string     `json:"item_description" db:"item_description"`
-	SerialNumber      *string    `json:"serial_number,omitempty" db:"serial_number"`
-	Make              *string    `json:"make,omitempty" db:"make"`
-	Model             *string    `json:"model,omitempty" db:"model"`
-	Color             *string    `json:"color,omitempty" db:"color"`
-	VIN               *string    `json:"vin,omitempty" db:"vin"`
-	PlateNumber       *string    `json:"plate_number,omitempty" db:"plate_number"`
-	TheftDate         time.Time  `json:"theft_date" db:"theft_date"`
-	TheftLocation     *string    `json:"theft_location,omitempty" db:"theft_location"`
-	TheftDept         *string    `json:"theft_dept,omitempty" db:"theft_dept"`
+	ProfileID         uuid.UUID  `json:"profile_id" db:"profile_id"`
+	NIU               *string    `json:"niu,omitempty" db:"niu"`
+	ProfileType       string     `json:"profile_type" db:"profile_type"`
 	CaseReference     *string    `json:"case_reference,omitempty" db:"case_reference"`
-	ReportingAgency   string     `json:"reporting_agency" db:"reporting_agency"`
-	LinkedPersonNIU   *string    `json:"linked_person_niu,omitempty" db:"linked_person_niu"`
+	LabCaseNumber     *string    `json:"lab_case_number,omitempty" db:"lab_case_number"`
+	ProfileHash       string     `json:"profile_hash" db:"profile_hash"`
+	Status            string     `json:"status" db:"status"`
+	SubmittingAgency  string     `json:"submitting_agency" db:"submitting_agency"`
+	SubmittingOfficer *string    `json:"submitting_officer,omitempty" db:"submitting_officer"`
+	AnalysisDate      *time.Time `json:"analysis_date,omitempty" db:"analysis_date"`
 	IsActive          bool       `json:"is_active" db:"is_active"`
 	CreatedAt         time.Time  `json:"created_at" db:"created_at"`
 	UpdatedAt         time.Time  `json:"updated_at" db:"updated_at"`
+}
+
+type PersonRecord struct {
+	RecordID           uuid.UUID `json:"record_id" db:"record_id"`
+	NIU                string    `json:"niu" db:"niu"`
+	RecordType         string    `json:"record_type" db:"record_type"`
+	Status             string    `json:"status" db:"status"`
+	PriorityLevel      int16     `json:"priority_level" db:"priority_level"`
+	SubjectName        *string   `json:"subject_name,omitempty" db:"subject_name"`
+	SubjectAlias       []string  `json:"subject_alias" db:"subject_alias"`
+	SubjectDescription *string   `json:"subject_description,omitempty" db:"subject_description"`
+	PhotoRefs          []string  `json:"photo_refs" db:"photo_refs"`
+	LastKnownLocation  *string   `json:"last_known_location,omitempty" db:"last_known_location"`
+	LastKnownDept      *string   `json:"last_known_dept,omitempty" db:"last_known_dept"`
+	ReportingAgency    string    `json:"reporting_agency" db:"reporting_agency"`
+	IsActive           bool      `json:"is_active" db:"is_active"`
+	CreatedAt          time.Time `json:"created_at" db:"created_at"`
+	UpdatedAt          time.Time `json:"updated_at" db:"updated_at"`
+}
+
+type PropertyRecord struct {
+	RecordID        uuid.UUID `json:"record_id" db:"record_id"`
+	RecordType      string    `json:"record_type" db:"record_type"`
+	Status          string    `json:"status" db:"status"`
+	ItemDescription string    `json:"item_description" db:"item_description"`
+	SerialNumber    *string   `json:"serial_number,omitempty" db:"serial_number"`
+	Make            *string   `json:"make,omitempty" db:"make"`
+	Model           *string   `json:"model,omitempty" db:"model"`
+	Color           *string   `json:"color,omitempty" db:"color"`
+	VIN             *string   `json:"vin,omitempty" db:"vin"`
+	PlateNumber     *string   `json:"plate_number,omitempty" db:"plate_number"`
+	TheftDate       time.Time `json:"theft_date" db:"theft_date"`
+	TheftLocation   *string   `json:"theft_location,omitempty" db:"theft_location"`
+	TheftDept       *string   `json:"theft_dept,omitempty" db:"theft_dept"`
+	CaseReference   *string   `json:"case_reference,omitempty" db:"case_reference"`
+	ReportingAgency string    `json:"reporting_agency" db:"reporting_agency"`
+	LinkedPersonNIU *string   `json:"linked_person_niu,omitempty" db:"linked_person_niu"`
+	IsActive        bool      `json:"is_active" db:"is_active"`
+	CreatedAt       time.Time `json:"created_at" db:"created_at"`
+	UpdatedAt       time.Time `json:"updated_at" db:"updated_at"`
 }
 
 type DNAMatch struct {

@@ -13,8 +13,8 @@ import (
 var ErrFlightNotFound = errors.New("vol non trouvé")
 
 type FlightService struct {
-	mu      sync.RWMutex
-	flights map[uuid.UUID]*domain.Flight
+	mu       sync.RWMutex
+	flights  map[uuid.UUID]*domain.Flight
 	byNumber map[string]uuid.UUID
 }
 

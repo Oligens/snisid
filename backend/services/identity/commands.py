@@ -28,6 +28,7 @@ class CreateIdentityCommand(BaseModel):
 
     command_id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     national_id: str = Field(..., min_length=5, max_length=20)
+    nif: str | None = Field(default=None, min_length=3, max_length=32)
     first_name: str = Field(..., min_length=1, max_length=100)
     last_name: str = Field(..., min_length=1, max_length=100)
     date_of_birth: str = Field(..., pattern=r"^\d{4}-\d{2}-\d{2}$")
@@ -130,6 +131,7 @@ class IdentityCommandHandler:
         logger.info(
             "handling_create_identity",
             national_id=cmd.national_id,
+            nif=cmd.nif,
             command_id=cmd.command_id,
         )
 

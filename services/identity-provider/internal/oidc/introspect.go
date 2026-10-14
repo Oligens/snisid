@@ -30,11 +30,11 @@ func (h *Handler) Introspect(c *gin.Context) {
 	exp, _ := claims.GetExpirationTime()
 
 	c.JSON(http.StatusOK, gin.H{
-		"active":   true,
-		"sub":      sub,
-		"iss":      iss,
-		"aud":      aud,
-		"exp":      exp.Unix(),
+		"active":     true,
+		"sub":        sub,
+		"iss":        iss,
+		"aud":        aud,
+		"exp":        exp.Unix(),
 		"token_type": "Bearer",
 		"client_id":  sub,
 	})

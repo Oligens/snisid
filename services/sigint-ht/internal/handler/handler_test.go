@@ -231,10 +231,10 @@ func TestRecordInterceptionHandler(t *testing.T) {
 			wantStatus: http.StatusCreated,
 		},
 		{
-			name:     "missing fields",
-			targetID: targetID,
-			body:     `{"comm_type":""}`,
-			mockFn:   func() {},
+			name:       "missing fields",
+			targetID:   targetID,
+			body:       `{"comm_type":""}`,
+			mockFn:     func() {},
 			wantStatus: http.StatusBadRequest,
 		},
 	}

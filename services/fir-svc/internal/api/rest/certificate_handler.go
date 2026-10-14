@@ -1,11 +1,11 @@
 package rest
 
 import (
-	"net/http"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/snisid/platform/services/fir-svc/internal/domain"
 	"github.com/snisid/platform/services/fir-svc/internal/service"
+	"net/http"
 )
 
 type CertificateHandler struct {

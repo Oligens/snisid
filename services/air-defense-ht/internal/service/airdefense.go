@@ -20,7 +20,7 @@ type AirDefenseServiceInterface interface {
 }
 
 type AirDefenseService struct {
-	repo    repository.AirDefenseRepo
+	repo     repository.AirDefenseRepo
 	producer *kafka.Producer
 }
 

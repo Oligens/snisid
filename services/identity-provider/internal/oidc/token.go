@@ -65,11 +65,11 @@ func (h *Handler) handleAuthorizationCode(c *gin.Context, req TokenRequest) {
 
 	refreshToken := uuid.New().String()
 	idToken, _ := h.signToken(jwt.MapClaims{
-		"iss": h.cfg.Issuer,
-		"sub": req.ClientID,
-		"aud": req.ClientID,
-		"exp": now.Add(1 * time.Hour).Unix(),
-		"iat": now.Unix(),
+		"iss":   h.cfg.Issuer,
+		"sub":   req.ClientID,
+		"aud":   req.ClientID,
+		"exp":   now.Add(1 * time.Hour).Unix(),
+		"iat":   now.Unix(),
 		"nonce": randStr(16),
 	})
 
@@ -153,5 +153,3 @@ func randStr(n int) string {
 	rand.Read(b)
 	return base64.RawURLEncoding.EncodeToString(b)[:n]
 }
-
-

@@ -4,11 +4,11 @@ import "time"
 
 // Target types
 const (
-	TargetTypePhoneNumber  = "PHONE_NUMBER"
-	TargetTypeEmail        = "EMAIL"
-	TargetTypeSocialMedia  = "SOCIAL_MEDIA"
-	TargetTypeRadioFreq    = "RADIO_FREQUENCY"
-	TargetTypeIPAddress    = "IP_ADDRESS"
+	TargetTypePhoneNumber = "PHONE_NUMBER"
+	TargetTypeEmail       = "EMAIL"
+	TargetTypeSocialMedia = "SOCIAL_MEDIA"
+	TargetTypeRadioFreq   = "RADIO_FREQUENCY"
+	TargetTypeIPAddress   = "IP_ADDRESS"
 )
 
 // Target statuses
@@ -29,29 +29,29 @@ const (
 )
 
 type InterceptionTarget struct {
-	ID              string    `json:"id"`
-	TargetType      string    `json:"target_type"`
-	Status          string    `json:"status"`
-	AuthorizationRef string   `json:"authorization_ref"`
-	JudgeName       string    `json:"judge_name"`
-	IssuingCourt    string    `json:"issuing_court"`
-	StartDate       time.Time `json:"start_date"`
-	EndDate         time.Time `json:"end_date"`
-	TargetIdentifier string   `json:"target_identifier"`
-	CreatedAt       time.Time `json:"created_at"`
-	UpdatedAt       time.Time `json:"updated_at"`
+	ID               string    `json:"id"`
+	TargetType       string    `json:"target_type"`
+	Status           string    `json:"status"`
+	AuthorizationRef string    `json:"authorization_ref"`
+	JudgeName        string    `json:"judge_name"`
+	IssuingCourt     string    `json:"issuing_court"`
+	StartDate        time.Time `json:"start_date"`
+	EndDate          time.Time `json:"end_date"`
+	TargetIdentifier string    `json:"target_identifier"`
+	CreatedAt        time.Time `json:"created_at"`
+	UpdatedAt        time.Time `json:"updated_at"`
 }
 
 type InterceptedCommunication struct {
-	ID            string    `json:"id"`
-	SourceTargetID string   `json:"source_target_id"`
-	CommType      string    `json:"comm_type"`
-	Metadata      string    `json:"metadata"`
-	ContentRef    string    `json:"content_ref"`
-	InterceptedAt time.Time `json:"intercepted_at"`
-	CollectorNode string    `json:"collector_node"`
-	CaseNumber    string    `json:"case_number"`
-	CreatedAt     time.Time `json:"created_at"`
+	ID             string    `json:"id"`
+	SourceTargetID string    `json:"source_target_id"`
+	CommType       string    `json:"comm_type"`
+	Metadata       string    `json:"metadata"`
+	ContentRef     string    `json:"content_ref"`
+	InterceptedAt  time.Time `json:"intercepted_at"`
+	CollectorNode  string    `json:"collector_node"`
+	CaseNumber     string    `json:"case_number"`
+	CreatedAt      time.Time `json:"created_at"`
 }
 
 type CDRAnalysis struct {
@@ -87,9 +87,9 @@ type InterceptRequest struct {
 }
 
 type EmergencyRequest struct {
-	TargetIdentifier string `json:"target_identifier" binding:"required"`
-	TargetType       string `json:"target_type" binding:"required"`
-	Reason           string `json:"reason" binding:"required"`
+	TargetIdentifier   string `json:"target_identifier" binding:"required"`
+	TargetType         string `json:"target_type" binding:"required"`
+	Reason             string `json:"reason" binding:"required"`
 	AuthorizingOfficer string `json:"authorizing_officer" binding:"required"`
 }
 
@@ -118,7 +118,7 @@ type CDRAnalysisResponse struct {
 }
 
 type EmergencyResponse struct {
-	Target    InterceptionTarget      `json:"target"`
-	Approved  bool                    `json:"approved"`
-	AuthRef   string                  `json:"authorization_ref"`
+	Target   InterceptionTarget `json:"target"`
+	Approved bool               `json:"approved"`
+	AuthRef  string             `json:"authorization_ref"`
 }

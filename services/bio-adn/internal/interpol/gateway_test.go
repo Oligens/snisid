@@ -8,11 +8,11 @@ import (
 )
 
 type mockInterpolClient struct {
-	connectErr     error
-	toI247XMLData  []byte
-	toI247XMLErr   error
-	submitErr      error
-	closeErr       error
+	connectErr    error
+	toI247XMLData []byte
+	toI247XMLErr  error
+	submitErr     error
+	closeErr      error
 
 	connectCalled int
 	submitCalled  int

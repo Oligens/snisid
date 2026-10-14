@@ -16,7 +16,7 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 	// Create a clone of the request to avoid modifying the original
 	clone := req.Clone(req.Context())
-	
+
 	// Inject the header
 	clone.Header.Set(CorrelationHeader, corrID)
 

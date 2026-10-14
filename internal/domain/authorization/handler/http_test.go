@@ -14,8 +14,8 @@ import (
 )
 
 type mockEngine struct {
-	enforceFn  func(ctx context.Context, req *entity.AuthorizationRequest) (*entity.AuthorizationDecision, error)
-	refreshFn  func(ctx context.Context) error
+	enforceFn func(ctx context.Context, req *entity.AuthorizationRequest) (*entity.AuthorizationDecision, error)
+	refreshFn func(ctx context.Context) error
 }
 
 func (m *mockEngine) Enforce(ctx context.Context, req *entity.AuthorizationRequest) (*entity.AuthorizationDecision, error) {

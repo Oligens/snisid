@@ -3,29 +3,29 @@ package domain
 type WeaponType string
 
 const (
-	WeaponHandgun       WeaponType = "HANDGUN"
-	WeaponRifle         WeaponType = "RIFLE"
-	WeaponShotgun       WeaponType = "SHOTGUN"
-	WeaponSubmachine    WeaponType = "SUBMACHINE_GUN"
-	WeaponAssaultRifle  WeaponType = "ASSAULT_RIFLE"
-	WeaponMachineGun    WeaponType = "MACHINE_GUN"
-	WeaponSniper        WeaponType = "SNIPER"
-	WeaponRPG           WeaponType = "RPG"
-	WeaponGrenade       WeaponType = "GRENADE"
-	WeaponHomemade      WeaponType = "HOMEMADE"
-	WeaponOther         WeaponType = "OTHER"
+	WeaponHandgun      WeaponType = "HANDGUN"
+	WeaponRifle        WeaponType = "RIFLE"
+	WeaponShotgun      WeaponType = "SHOTGUN"
+	WeaponSubmachine   WeaponType = "SUBMACHINE_GUN"
+	WeaponAssaultRifle WeaponType = "ASSAULT_RIFLE"
+	WeaponMachineGun   WeaponType = "MACHINE_GUN"
+	WeaponSniper       WeaponType = "SNIPER"
+	WeaponRPG          WeaponType = "RPG"
+	WeaponGrenade      WeaponType = "GRENADE"
+	WeaponHomemade     WeaponType = "HOMEMADE"
+	WeaponOther        WeaponType = "OTHER"
 )
 
 type FirearmStatus string
 
 const (
-	StatusRegistered    FirearmStatus = "REGISTERED"
+	StatusRegistered     FirearmStatus = "REGISTERED"
 	StatusReportedStolen FirearmStatus = "REPORTED_STOLEN"
-	StatusSeized        FirearmStatus = "SEIZED"
-	StatusDestroyed     FirearmStatus = "DESTROYED"
-	StatusReportedLost  FirearmStatus = "REPORTED_LOST"
-	StatusTransferred   FirearmStatus = "TRANSFERRED"
-	StatusDeactivated   FirearmStatus = "DEACTIVATED"
+	StatusSeized         FirearmStatus = "SEIZED"
+	StatusDestroyed      FirearmStatus = "DESTROYED"
+	StatusReportedLost   FirearmStatus = "REPORTED_LOST"
+	StatusTransferred    FirearmStatus = "TRANSFERRED"
+	StatusDeactivated    FirearmStatus = "DEACTIVATED"
 )
 
 type RegistrationType string
@@ -54,12 +54,12 @@ const (
 type TransferType string
 
 const (
-	TransferSale        TransferType = "SALE"
-	TransferGift        TransferType = "GIFT"
-	TransferInheritance TransferType = "INHERITANCE"
+	TransferSale         TransferType = "SALE"
+	TransferGift         TransferType = "GIFT"
+	TransferInheritance  TransferType = "INHERITANCE"
 	TransferConfiscation TransferType = "CONFISCATION"
-	TransferReturn      TransferType = "RETURN"
-	TransferTheftReport TransferType = "THEFT_REPORTED"
+	TransferReturn       TransferType = "RETURN"
+	TransferTheftReport  TransferType = "THEFT_REPORTED"
 )
 
 type DealerStatus string
@@ -74,9 +74,9 @@ const (
 type DisposalMethod string
 
 const (
-	DisposalDestroyed        DisposalMethod = "DESTROYED"
-	DisposalKeptEvidence     DisposalMethod = "KEPT_AS_EVIDENCE"
-	DisposalReturnedOwner    DisposalMethod = "RETURNED_TO_OWNER"
-	DisposalSold             DisposalMethod = "SOLD"
-	DisposalTransferred      DisposalMethod = "TRANSFERRED"
+	DisposalDestroyed     DisposalMethod = "DESTROYED"
+	DisposalKeptEvidence  DisposalMethod = "KEPT_AS_EVIDENCE"
+	DisposalReturnedOwner DisposalMethod = "RETURNED_TO_OWNER"
+	DisposalSold          DisposalMethod = "SOLD"
+	DisposalTransferred   DisposalMethod = "TRANSFERRED"
 )

@@ -15,8 +15,8 @@ import (
 	_ "github.com/lib/pq"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-		"github.com/prometheus/client_golang/prometheus/promhttp"
-"github.com/snisid/cyber-ht/internal/handler"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/snisid/cyber-ht/internal/handler"
 	"github.com/snisid/cyber-ht/internal/kafka"
 	"github.com/snisid/cyber-ht/internal/repository"
 	"github.com/snisid/cyber-ht/internal/service"
@@ -141,4 +141,3 @@ func getEnv(k, def string) string {
 	}
 	return v
 }
-

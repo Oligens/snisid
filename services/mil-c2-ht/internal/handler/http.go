@@ -127,15 +127,15 @@ func (h *MilC2Handler) GetActiveOperations(c *gin.Context) {
 }
 
 type submitReportReq struct {
-	ReportingUnitID     string  `json:"reporting_unit_id" binding:"required"`
-	ReportType          string  `json:"report_type" binding:"required"`
-	PositionLat         float64 `json:"position_lat"`
-	PositionLng         float64 `json:"position_lng"`
-	EnemyActivity       string  `json:"enemy_activity"`
-	CivilianInteractions string `json:"civilian_interactions"`
-	Casualties          int     `json:"casualties"`
-	Detainees           int     `json:"detainees"`
-	EquipmentStatus     string  `json:"equipment_status"`
+	ReportingUnitID      string  `json:"reporting_unit_id" binding:"required"`
+	ReportType           string  `json:"report_type" binding:"required"`
+	PositionLat          float64 `json:"position_lat"`
+	PositionLng          float64 `json:"position_lng"`
+	EnemyActivity        string  `json:"enemy_activity"`
+	CivilianInteractions string  `json:"civilian_interactions"`
+	Casualties           int     `json:"casualties"`
+	Detainees            int     `json:"detainees"`
+	EquipmentStatus      string  `json:"equipment_status"`
 }
 
 func (h *MilC2Handler) SubmitReport(c *gin.Context) {

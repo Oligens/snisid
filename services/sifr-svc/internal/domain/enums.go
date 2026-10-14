@@ -10,12 +10,12 @@ const (
 type DocType string
 
 const (
-	PASSPORT         DocType = "PASSPORT"
-	NATIONAL_ID      DocType = "NATIONAL_ID"
-	LAISSEZ_PASSER   DocType = "LAISSEZ_PASSER"
+	PASSPORT          DocType = "PASSPORT"
+	NATIONAL_ID       DocType = "NATIONAL_ID"
+	LAISSEZ_PASSER    DocType = "LAISSEZ_PASSER"
 	BIRTH_CERTIFICATE DocType = "BIRTH_CERTIFICATE"
-	TRAVEL_DOCUMENT  DocType = "TRAVEL_DOCUMENT"
-	NONE             DocType = "NONE"
+	TRAVEL_DOCUMENT   DocType = "TRAVEL_DOCUMENT"
+	NONE              DocType = "NONE"
 )
 
 type AlertType string

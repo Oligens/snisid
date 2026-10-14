@@ -11,7 +11,7 @@ import (
 
 type CryptService struct {
 	repo domain.Repository
-	log *zap.Logger
+	log  *zap.Logger
 }
 
 func NewCryptService(repo domain.Repository, log *zap.Logger) *CryptService {
@@ -90,26 +90,26 @@ func (s *CryptService) AnalyzeWalletRisk(address string) (*domain.WalletRiskRepo
 
 func (s *CryptService) FlagWallet(req *domain.CreateWalletRequest) (*domain.FlaggedWallet, error) {
 	wallet := &domain.FlaggedWallet{
-		WalletAddress:     req.WalletAddress,
-		AssetType:         req.AssetType,
-		BlockchainNetwork: req.BlockchainNetwork,
-		SuspicionType:     req.SuspicionType,
-		SNISIDPersonID:    req.SNISIDPersonID,
-		GangID:            req.GangID,
+		WalletAddress:       req.WalletAddress,
+		AssetType:           req.AssetType,
+		BlockchainNetwork:   req.BlockchainNetwork,
+		SuspicionType:       req.SuspicionType,
+		SNISIDPersonID:      req.SNISIDPersonID,
+		GangID:              req.GangID,
 		EstimatedBalanceUSD: req.EstimatedBalanceUSD,
-		TotalReceivedUSD:  req.TotalReceivedUSD,
-		TotalSentUSD:      req.TotalSentUSD,
-		FirstTxDate:       req.FirstTxDate,
-		LastTxDate:        req.LastTxDate,
-		IsSanctioned:      req.IsSanctioned,
-		OfacSDNRef:        req.OfacSDNRef,
-		ChainalysisRef:    req.ChainalysisRef,
-		EllipticRef:       req.EllipticRef,
-		SourceIntel:       req.SourceIntel,
-		LinkedCases:       []uuid.UUID{},
-		IsFrozen:          req.IsFrozen,
-		FreezeJurisdiction: req.FreezeJurisdiction,
-		CreatedBy:         req.CreatedBy,
+		TotalReceivedUSD:    req.TotalReceivedUSD,
+		TotalSentUSD:        req.TotalSentUSD,
+		FirstTxDate:         req.FirstTxDate,
+		LastTxDate:          req.LastTxDate,
+		IsSanctioned:        req.IsSanctioned,
+		OfacSDNRef:          req.OfacSDNRef,
+		ChainalysisRef:      req.ChainalysisRef,
+		EllipticRef:         req.EllipticRef,
+		SourceIntel:         req.SourceIntel,
+		LinkedCases:         []uuid.UUID{},
+		IsFrozen:            req.IsFrozen,
+		FreezeJurisdiction:  req.FreezeJurisdiction,
+		CreatedBy:           req.CreatedBy,
 	}
 
 	return s.repo.CreateWallet(wallet)

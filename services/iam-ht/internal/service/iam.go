@@ -44,7 +44,9 @@ func (s *IAMService) StepUpAssurance(ctx context.Context, citizenID string) (*do
 }
 
 func (s *IAMService) publishEvent(ctx context.Context, eventType string, data any) {
-	if s.producer == nil { return }
+	if s.producer == nil {
+		return
+	}
 	s.producer.Publish(ctx, kafka.Event{EventType: eventType, Timestamp: time.Now().UTC(), Data: data})
 	if err := recover(); err != nil {
 		log.Printf("publish failed: %v", err)

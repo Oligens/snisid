@@ -17,15 +17,15 @@ import (
 )
 
 type mockRepo struct {
-	createFunc               func(ctx context.Context, citizen *domain.Citizen) error
-	findByNINFunc            func(ctx context.Context, nin string) (*domain.Citizen, error)
-	findByIDFunc             func(ctx context.Context, id uuid.UUID) (*domain.Citizen, error)
-	updateFunc               func(ctx context.Context, citizen *domain.Citizen) error
-	updateStatusFunc         func(ctx context.Context, nin string, status domain.IDStatus, reason string, authorizedBy uuid.UUID) error
+	createFunc                 func(ctx context.Context, citizen *domain.Citizen) error
+	findByNINFunc              func(ctx context.Context, nin string) (*domain.Citizen, error)
+	findByIDFunc               func(ctx context.Context, id uuid.UUID) (*domain.Citizen, error)
+	updateFunc                 func(ctx context.Context, citizen *domain.Citizen) error
+	updateStatusFunc           func(ctx context.Context, nin string, status domain.IDStatus, reason string, authorizedBy uuid.UUID) error
 	findDemographicMatchesFunc func(ctx context.Context, fullName string, dob time.Time) ([]domain.DemographicMatch, error)
-	createDedupCandidateFunc func(ctx context.Context, candidate domain.DedupCandidate) error
-	getHistoryFunc           func(ctx context.Context, citizenID uuid.UUID) ([]domain.ChangeHistory, error)
-	getPopulationStatsFunc   func(ctx context.Context) (*domain.PopulationStats, error)
+	createDedupCandidateFunc   func(ctx context.Context, candidate domain.DedupCandidate) error
+	getHistoryFunc             func(ctx context.Context, citizenID uuid.UUID) ([]domain.ChangeHistory, error)
+	getPopulationStatsFunc     func(ctx context.Context) (*domain.PopulationStats, error)
 }
 
 func (m *mockRepo) Create(ctx context.Context, citizen *domain.Citizen) error {
@@ -88,24 +88,24 @@ func TestEnrollCitizen(t *testing.T) {
 	youngDOB := now.AddDate(-1, 0, 0)
 
 	tests := []struct {
-		name       string
-		req        domain.EnrollmentRequest
-		repo       *mockRepo
-		wantErr    bool
+		name        string
+		req         domain.EnrollmentRequest
+		repo        *mockRepo
+		wantErr     bool
 		errContains string
 	}{
 		{
 			name: "success adult enrollment",
 			req: domain.EnrollmentRequest{
-				Age:            20,
-				EnrollmentType: domain.EnrollmentAdultFirst,
-				FullNameLegal:  "Jean Dupont",
-				FirstName:      "Jean",
-				LastName:       "Dupont",
-				DOB:            oldDOB,
-				Nationality:    "HTI",
-				DeptCode:       "OU",
-				CreatedBy:      uuid.New().String(),
+				Age:             20,
+				EnrollmentType:  domain.EnrollmentAdultFirst,
+				FullNameLegal:   "Jean Dupont",
+				FirstName:       "Jean",
+				LastName:        "Dupont",
+				DOB:             oldDOB,
+				Nationality:     "HTI",
+				DeptCode:        "OU",
+				CreatedBy:       uuid.New().String(),
 				BiometricSample: []byte{0x01, 0x02},
 			},
 			repo: &mockRepo{
@@ -158,7 +158,7 @@ func TestEnrollCitizen(t *testing.T) {
 				},
 				createDedupCandidateFunc: func(ctx context.Context, c domain.DedupCandidate) error { return nil },
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "NIN generation",
 		},
 		{
@@ -181,7 +181,7 @@ func TestEnrollCitizen(t *testing.T) {
 				},
 				createDedupCandidateFunc: func(ctx context.Context, c domain.DedupCandidate) error { return nil },
 			},
-			wantErr:    true,
+			wantErr:     true,
 			errContains: "create citizen",
 		},
 		{
@@ -232,11 +232,11 @@ func TestEnrollCitizen(t *testing.T) {
 func TestVerifyIdentity(t *testing.T) {
 	citizen := &domain.Citizen{CitizenID: uuid.New(), NIN: "HTI-OU-20-000001", FullNameLegal: "Jean Dupont"}
 	tests := []struct {
-		name       string
-		nin        string
-		repo       *mockRepo
-		want       *domain.Citizen
-		wantErr    bool
+		name    string
+		nin     string
+		repo    *mockRepo
+		want    *domain.Citizen
+		wantErr bool
 	}{
 		{
 			name: "found",

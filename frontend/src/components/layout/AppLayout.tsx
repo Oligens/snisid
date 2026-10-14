@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from 'react-oidc-context';
+import { useApplicationAuth } from '../../auth/AuthProvider';
 import { useTranslation } from 'react-i18next';
 import { LayoutDashboard, Users, Fingerprint, ShieldAlert, LogOut, Menu, Wifi, WifiOff, RefreshCw, BookOpen } from 'lucide-react';
 import { useSecurityStore } from '../../store/securityStore';
@@ -54,7 +54,7 @@ const NetworkBadge: React.FC = () => {
 
 export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { t, i18n } = useTranslation();
-  const auth = useAuth();
+  const auth = useApplicationAuth();
   const { hasRole } = useSecurityStore();
   const [isSidebarOpen, setSidebarOpen] = React.useState(true);
 
@@ -111,7 +111,7 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
           )}
 
           <button
-            onClick={() => auth.signoutRedirect()}
+            onClick={() => void auth.signoutRedirect()}
             className={`flex items-center gap-3 w-full p-2 text-red-400 hover:bg-slate-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 ${!isSidebarOpen && 'justify-center'}`}
             aria-label={t('auth.logout')}
           >
@@ -129,6 +129,12 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
           <div className="flex items-center gap-3">
             {/* Dynamic network status indicator — always visible (UX rule) */}
             <NetworkBadge />
+
+            {auth.isDemo && (
+              <span className="rounded border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-xs font-semibold text-amber-300" role="status">
+                DÉMO — authentification simulée
+              </span>
+            )}
 
             <div className="text-sm font-medium bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 text-slate-200">
               {auth.user?.profile.preferred_username || 'Operateur'}

@@ -10,7 +10,7 @@ var (
 		Name: "snisid_model_accuracy_total",
 		Help: "Current prediction accuracy of the national identity model.",
 	})
-	
+
 	modelDrift = promauto.NewGauge(prometheus.GaugeOpts{
 		Name: "snisid_model_drift_score",
 		Help: "Detected drift score (deviation from baseline distribution).",

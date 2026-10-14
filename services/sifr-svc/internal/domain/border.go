@@ -25,26 +25,26 @@ type BorderPost struct {
 }
 
 type Crossing struct {
-	CrossingID          uuid.UUID        `json:"crossing_id" db:"crossing_id"`
-	PostID              uuid.UUID        `json:"post_id" db:"post_id"`
+	CrossingID          uuid.UUID         `json:"crossing_id" db:"crossing_id"`
+	PostID              uuid.UUID         `json:"post_id" db:"post_id"`
 	Direction           CrossingDirection `json:"direction" db:"direction"`
-	CrossingDatetime    time.Time        `json:"crossing_datetime" db:"crossing_datetime"`
-	SNISIDPersonID      *uuid.UUID       `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
-	DocumentType        DocType          `json:"document_type" db:"document_type"`
-	DocumentNumber      string           `json:"document_number" db:"document_number"`
-	DocumentCountry     string           `json:"document_country" db:"document_country"`
-	DocumentExpiry      *time.Time       `json:"document_expiry,omitempty" db:"document_expiry"`
-	TravelerName        string           `json:"traveler_name" db:"traveler_name"`
-	TravelerDob         *time.Time       `json:"traveler_dob,omitempty" db:"traveler_dob"`
-	TravelerNationality string           `json:"traveler_nationality" db:"traveler_nationality"`
-	VehiclePlate        string           `json:"vehicle_plate" db:"vehicle_plate"`
-	LaneNumber          int              `json:"lane_number" db:"lane_number"`
-	ProcessingOfficer   uuid.UUID        `json:"processing_officer" db:"processing_officer"`
-	AlertTriggered      bool             `json:"alert_triggered" db:"alert_triggered"`
-	AlertType           *AlertType       `json:"alert_type,omitempty" db:"alert_type"`
-	AlertActionTaken    string           `json:"alert_action_taken" db:"alert_action_taken"`
-	ProcessingTimeSec   int              `json:"processing_time_sec" db:"processing_time_sec"`
-	CreatedAt           time.Time        `json:"created_at" db:"created_at"`
+	CrossingDatetime    time.Time         `json:"crossing_datetime" db:"crossing_datetime"`
+	SNISIDPersonID      *uuid.UUID        `json:"snisid_person_id,omitempty" db:"snisid_person_id"`
+	DocumentType        DocType           `json:"document_type" db:"document_type"`
+	DocumentNumber      string            `json:"document_number" db:"document_number"`
+	DocumentCountry     string            `json:"document_country" db:"document_country"`
+	DocumentExpiry      *time.Time        `json:"document_expiry,omitempty" db:"document_expiry"`
+	TravelerName        string            `json:"traveler_name" db:"traveler_name"`
+	TravelerDob         *time.Time        `json:"traveler_dob,omitempty" db:"traveler_dob"`
+	TravelerNationality string            `json:"traveler_nationality" db:"traveler_nationality"`
+	VehiclePlate        string            `json:"vehicle_plate" db:"vehicle_plate"`
+	LaneNumber          int               `json:"lane_number" db:"lane_number"`
+	ProcessingOfficer   uuid.UUID         `json:"processing_officer" db:"processing_officer"`
+	AlertTriggered      bool              `json:"alert_triggered" db:"alert_triggered"`
+	AlertType           *AlertType        `json:"alert_type,omitempty" db:"alert_type"`
+	AlertActionTaken    string            `json:"alert_action_taken" db:"alert_action_taken"`
+	ProcessingTimeSec   int               `json:"processing_time_sec" db:"processing_time_sec"`
+	CreatedAt           time.Time         `json:"created_at" db:"created_at"`
 }
 
 type AlertLog struct {
@@ -66,43 +66,43 @@ type AlertLog struct {
 }
 
 type ClandestineCrossing struct {
-	ReportID        uuid.UUID  `json:"report_id" db:"report_id"`
-	LocationDesc    string     `json:"location_desc" db:"location_desc"`
-	DeptCode        string     `json:"dept_code" db:"dept_code"`
-	Lat             float64    `json:"lat" db:"lat"`
-	Lng             float64    `json:"lng" db:"lng"`
-	ReportedDate    time.Time  `json:"reported_date" db:"reported_date"`
-	CrossingType    string     `json:"crossing_type" db:"crossing_type"`
-	EstimatedPersons int       `json:"estimated_persons" db:"estimated_persons"`
-	GangRelated     bool       `json:"gang_related" db:"gang_related"`
-	GangID          *uuid.UUID `json:"gang_id,omitempty" db:"gang_id"`
-	TraffickingType string     `json:"trafficking_type" db:"trafficking_type"`
-	ReportedBy      uuid.UUID  `json:"reported_by" db:"reported_by"`
-	CreatedAt       time.Time  `json:"created_at" db:"created_at"`
+	ReportID         uuid.UUID  `json:"report_id" db:"report_id"`
+	LocationDesc     string     `json:"location_desc" db:"location_desc"`
+	DeptCode         string     `json:"dept_code" db:"dept_code"`
+	Lat              float64    `json:"lat" db:"lat"`
+	Lng              float64    `json:"lng" db:"lng"`
+	ReportedDate     time.Time  `json:"reported_date" db:"reported_date"`
+	CrossingType     string     `json:"crossing_type" db:"crossing_type"`
+	EstimatedPersons int        `json:"estimated_persons" db:"estimated_persons"`
+	GangRelated      bool       `json:"gang_related" db:"gang_related"`
+	GangID           *uuid.UUID `json:"gang_id,omitempty" db:"gang_id"`
+	TraffickingType  string     `json:"trafficking_type" db:"trafficking_type"`
+	ReportedBy       uuid.UUID  `json:"reported_by" db:"reported_by"`
+	CreatedAt        time.Time  `json:"created_at" db:"created_at"`
 }
 
 type CrossingRequest struct {
-	PostID            uuid.UUID  `json:"post_id" binding:"required"`
-	Direction         string     `json:"direction" binding:"required"`
-	CrossingDatetime  *time.Time `json:"crossing_datetime"`
-	SNISIDPersonID    *uuid.UUID `json:"snisid_person_id"`
-	DocumentType      string     `json:"document_type" binding:"required"`
-	DocumentNumber    string     `json:"document_number"`
-	DocumentCountry   string     `json:"document_country"`
-	DocumentExpiry    *time.Time `json:"document_expiry"`
-	TravelerName      string     `json:"traveler_name" binding:"required"`
-	TravelerDob       *time.Time `json:"traveler_dob"`
-	TravelerNationality string  `json:"traveler_nationality"`
-	VehiclePlate      string     `json:"vehicle_plate"`
-	LaneNumber        int        `json:"lane_number"`
-	ProcessingOfficer uuid.UUID  `json:"processing_officer" binding:"required"`
+	PostID              uuid.UUID  `json:"post_id" binding:"required"`
+	Direction           string     `json:"direction" binding:"required"`
+	CrossingDatetime    *time.Time `json:"crossing_datetime"`
+	SNISIDPersonID      *uuid.UUID `json:"snisid_person_id"`
+	DocumentType        string     `json:"document_type" binding:"required"`
+	DocumentNumber      string     `json:"document_number"`
+	DocumentCountry     string     `json:"document_country"`
+	DocumentExpiry      *time.Time `json:"document_expiry"`
+	TravelerName        string     `json:"traveler_name" binding:"required"`
+	TravelerDob         *time.Time `json:"traveler_dob"`
+	TravelerNationality string     `json:"traveler_nationality"`
+	VehiclePlate        string     `json:"vehicle_plate"`
+	LaneNumber          int        `json:"lane_number"`
+	ProcessingOfficer   uuid.UUID  `json:"processing_officer" binding:"required"`
 }
 
 type CrossingResult struct {
-	Clearance  bool       `json:"clearance"`
-	AlertType  *AlertType `json:"alert_type,omitempty"`
-	AlertSource string    `json:"alert_source,omitempty"`
-	IsDangerous bool      `json:"is_dangerous"`
+	Clearance   bool       `json:"clearance"`
+	AlertType   *AlertType `json:"alert_type,omitempty"`
+	AlertSource string     `json:"alert_source,omitempty"`
+	IsDangerous bool       `json:"is_dangerous"`
 }
 
 type BorderRepository interface {

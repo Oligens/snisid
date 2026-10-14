@@ -13,11 +13,11 @@ import (
 )
 
 type mockOfflineRepo struct {
-	pushQueueFn            func(ctx context.Context, item *domain.SyncQueueItem) error
-	syncTerminalFn         func(ctx context.Context, terminalID uuid.UUID) ([]domain.SyncQueueItem, error)
-	getConflictItemsFn     func(ctx context.Context) ([]domain.SyncQueueItem, error)
-	upsertTerminalFn       func(ctx context.Context, t *domain.OfflineTerminal) error
-	getTerminalsStatusFn   func(ctx context.Context) ([]domain.OfflineTerminal, error)
+	pushQueueFn             func(ctx context.Context, item *domain.SyncQueueItem) error
+	syncTerminalFn          func(ctx context.Context, terminalID uuid.UUID) ([]domain.SyncQueueItem, error)
+	getConflictItemsFn      func(ctx context.Context) ([]domain.SyncQueueItem, error)
+	upsertTerminalFn        func(ctx context.Context, t *domain.OfflineTerminal) error
+	getTerminalsStatusFn    func(ctx context.Context) ([]domain.OfflineTerminal, error)
 	updateQueueItemStatusFn func(ctx context.Context, id uuid.UUID, status domain.SyncStatus, errMsg *string) error
 }
 
@@ -111,11 +111,11 @@ func TestSyncTerminal(t *testing.T) {
 		CreatedAt:  time.Now(),
 	}
 	tests := []struct {
-		name      string
+		name       string
 		terminalID string
-		repoRes   []domain.SyncQueueItem
-		repoErr   error
-		wantErr   bool
+		repoRes    []domain.SyncQueueItem
+		repoErr    error
+		wantErr    bool
 	}{
 		{
 			name:       "success with items",

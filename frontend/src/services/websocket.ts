@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { create } from 'zustand';
 import { useAuth } from 'react-oidc-context';
+import { useApplicationAuth } from '../auth/AuthProvider';
 
 
 type WebSocketState = {
@@ -87,11 +88,11 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
 
 // Hook to automatically manage WebSocket connection lifecycle
 export const useWebSocketConnection = () => {
-  const auth = useAuth();
+  const auth = useApplicationAuth();
   const { connect, disconnect, isConnected, metrics } = useWebSocketStore();
 
   useEffect(() => {
-    if (auth.isAuthenticated && auth.user?.access_token) {
+    if (!auth.isDemo && auth.isAuthenticated && auth.user?.access_token) {
       connect(auth.user.access_token);
     } else {
       disconnect();

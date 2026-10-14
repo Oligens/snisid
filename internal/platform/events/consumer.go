@@ -119,7 +119,7 @@ func (c *Consumer) worker(ctx context.Context, msgChan <-chan kafka.Message, han
 		}
 
 		workerCtx := tracing.WithCorrelationID(ctx, corrID)
-		
+
 		// Process with Retries
 		if err := c.processWithRetry(workerCtx, m, handler); err != nil {
 			logger.Error(workerCtx, "Message failed after retries, routing to DLQ", err)

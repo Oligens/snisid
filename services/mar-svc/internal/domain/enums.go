@@ -19,14 +19,14 @@ const (
 type VesselStatus string
 
 const (
-	StatusREGISTERED  VesselStatus = "REGISTERED"
-	StatusSTOLEN      VesselStatus = "STOLEN"
-	StatusSUSPECTED   VesselStatus = "SUSPECTED"
-	StatusDETAINED    VesselStatus = "DETAINED"
-	StatusSUNK        VesselStatus = "SUNK"
-	StatusDESTROYED   VesselStatus = "DESTROYED"
-	StatusMISSING     VesselStatus = "MISSING"
-	StatusINTERPOL    VesselStatus = "INTERPOL_ALERT"
+	StatusREGISTERED VesselStatus = "REGISTERED"
+	StatusSTOLEN     VesselStatus = "STOLEN"
+	StatusSUSPECTED  VesselStatus = "SUSPECTED"
+	StatusDETAINED   VesselStatus = "DETAINED"
+	StatusSUNK       VesselStatus = "SUNK"
+	StatusDESTROYED  VesselStatus = "DESTROYED"
+	StatusMISSING    VesselStatus = "MISSING"
+	StatusINTERPOL   VesselStatus = "INTERPOL_ALERT"
 )
 
 type IncidentType string

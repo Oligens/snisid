@@ -29,8 +29,8 @@ func main() {
 
 	r.POST("/v1/validate", func(c *gin.Context) {
 		var req struct {
-			Risk      int    `json:"risk"`
-			Threshold int    `json:"threshold"`
+			Risk      int `json:"risk"`
+			Threshold int `json:"threshold"`
 		}
 		if err := c.BindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

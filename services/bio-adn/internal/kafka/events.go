@@ -193,12 +193,12 @@ type StolenFirearmEvent struct {
 
 type ArmCrimeSceneHitEvent struct {
 	EventEnvelope
-	HitID            string `json:"hit_id"`
-	FirearmRecordID  string `json:"firearm_record_id"`
-	SerialNumber     string `json:"serial_number,omitempty"`
-	CrimeSceneRef    string `json:"crime_scene_ref"`
-	CaseNumber       string `json:"case_number"`
-	AlertLevel       string `json:"alert_level"`
+	HitID           string `json:"hit_id"`
+	FirearmRecordID string `json:"firearm_record_id"`
+	SerialNumber    string `json:"serial_number,omitempty"`
+	CrimeSceneRef   string `json:"crime_scene_ref"`
+	CaseNumber      string `json:"case_number"`
+	AlertLevel      string `json:"alert_level"`
 }
 
 type ExpungeEvent struct {
@@ -248,51 +248,51 @@ type ONIDocumentRevokedEvent struct {
 
 type ForeignFugitiveCreated struct {
 	EventEnvelope
-	RecordID            string `json:"record_id"`
-	RecordNumber        string `json:"record_number"`
+	RecordID             string `json:"record_id"`
+	RecordNumber         string `json:"record_number"`
 	InterpolNoticeNumber string `json:"interpol_notice_number"`
-	NoticeType          string `json:"notice_type"`
-	IssuingCountry      string `json:"issuing_country"`
-	EnteringAgency      string `json:"entering_agency"`
+	NoticeType           string `json:"notice_type"`
+	IssuingCountry       string `json:"issuing_country"`
+	EnteringAgency       string `json:"entering_agency"`
 }
 
 type UnidentifiedPersonCreated struct {
 	EventEnvelope
-	RecordID       string `json:"record_id"`
-	RecordNumber   string `json:"record_number"`
-	DiscoveryDate  string `json:"discovery_date"`
+	RecordID          string `json:"record_id"`
+	RecordNumber      string `json:"record_number"`
+	DiscoveryDate     string `json:"discovery_date"`
 	DiscoveryLocation string `json:"discovery_location"`
-	EnteringAgency string `json:"entering_agency"`
-	DNASampleRef   string `json:"dna_sample_ref,omitempty"`
+	EnteringAgency    string `json:"entering_agency"`
+	DNASampleRef      string `json:"dna_sample_ref,omitempty"`
 }
 
 type TerrorismWatchCreated struct {
 	EventEnvelope
-	RecordID      string `json:"record_id"`
-	RecordNumber  string `json:"record_number"`
-	ThreatType    string `json:"threat_type"`
-	RiskLevel     string `json:"risk_level"`
+	RecordID       string `json:"record_id"`
+	RecordNumber   string `json:"record_number"`
+	ThreatType     string `json:"threat_type"`
+	RiskLevel      string `json:"risk_level"`
 	EnteringAgency string `json:"entering_agency"`
 }
 
 type ProtectionOrderCreated struct {
 	EventEnvelope
-	RecordID      string `json:"record_id"`
-	RecordNumber  string `json:"record_number"`
-	OrderType     string `json:"order_type"`
-	BeneficiaryName string `json:"beneficiary_name"`
+	RecordID         string `json:"record_id"`
+	RecordNumber     string `json:"record_number"`
+	OrderType        string `json:"order_type"`
+	BeneficiaryName  string `json:"beneficiary_name"`
 	RestrainedPerson string `json:"restrained_person"`
-	IssuingCourt  string `json:"issuing_court"`
+	IssuingCourt     string `json:"issuing_court"`
 }
 
 type SupervisedReleaseCreated struct {
 	EventEnvelope
-	RecordID          string `json:"record_id"`
-	RecordNumber      string `json:"record_number"`
-	NIU               string `json:"niu"`
-	SupervisionType   string `json:"supervision_type"`
+	RecordID           string `json:"record_id"`
+	RecordNumber       string `json:"record_number"`
+	NIU                string `json:"niu"`
+	SupervisionType    string `json:"supervision_type"`
 	SupervisingOfficer string `json:"supervising_officer"`
-	SupervisingAgency string `json:"supervising_agency"`
+	SupervisingAgency  string `json:"supervising_agency"`
 }
 
 type DuplicateSpecimenDetected struct {
@@ -304,9 +304,9 @@ type DuplicateSpecimenDetected struct {
 
 type EquipmentRegistered struct {
 	EventEnvelope
-	EquipmentID    string `json:"equipment_id"`
-	LabCode        string `json:"lab_code"`
-	EquipmentName  string `json:"equipment_name"`
+	EquipmentID   string `json:"equipment_id"`
+	LabCode       string `json:"lab_code"`
+	EquipmentName string `json:"equipment_name"`
 }
 
 type TrainingRecorded struct {
@@ -343,9 +343,9 @@ type InterpolSubmissionRequested struct {
 
 type NDISReportGenerated struct {
 	EventEnvelope
-	ReportID     string `json:"report_id"`
-	ReportType   string `json:"report_type"`
-	GeneratedBy  string `json:"generated_by"`
+	ReportID    string `json:"report_id"`
+	ReportType  string `json:"report_type"`
+	GeneratedBy string `json:"generated_by"`
 }
 
 type ViolenceRecordCreated struct {

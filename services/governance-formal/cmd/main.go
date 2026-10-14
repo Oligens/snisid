@@ -40,7 +40,7 @@ func main() {
 
 	r.POST("/v1/lattice/country", func(c *gin.Context) {
 		var req struct {
-			Country string                 `json:"country"`
+			Country string                  `json:"country"`
 			Policy  compiler.CompiledPolicy `json:"-"`
 		}
 		if err := c.BindJSON(&req); err != nil {

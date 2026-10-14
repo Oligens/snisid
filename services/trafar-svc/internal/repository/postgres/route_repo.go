@@ -271,7 +271,7 @@ func (r *RouteRepository) GetRoutesGeoJSON() (*domain.GeoJSONFeatureCollection, 
 				"origin_country": route.OriginCountry,
 				"entry_haiti":    route.EntryPointHaiti,
 				"activity_level": route.ActivityLevel,
-				"confidence":    route.IntelConfidence,
+				"confidence":     route.IntelConfidence,
 			},
 		}
 		fc.Features = append(fc.Features, feature)

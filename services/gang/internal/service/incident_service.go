@@ -28,20 +28,20 @@ func (s *IncidentService) CreateIncident(ctx context.Context, req domain.CreateI
 		casualties = *req.Casualties
 	}
 	inc := &domain.Incident{
-		IncidentID:        uuid.New(),
-		GangID:            req.GangID,
-		IncidentType:      req.IncidentType,
-		IncidentDate:      req.IncidentDate,
-		LocationDesc:      req.LocationDesc,
-		DeptCode:          req.DeptCode,
-		Commune:           req.Commune,
-		Lat:               req.Lat,
-		Lng:               req.Lng,
-		Casualties:        casualties,
-		Description:       req.Description,
+		IncidentID:         uuid.New(),
+		GangID:             req.GangID,
+		IncidentType:       req.IncidentType,
+		IncidentDate:       req.IncidentDate,
+		LocationDesc:       req.LocationDesc,
+		DeptCode:           req.DeptCode,
+		Commune:            req.Commune,
+		Lat:                req.Lat,
+		Lng:                req.Lng,
+		Casualties:         casualties,
+		Description:        req.Description,
 		IntelligenceSource: req.IntelligenceSource,
-		CreatedBy:         createdBy,
-		CreatedAt:         time.Now(),
+		CreatedBy:          createdBy,
+		CreatedAt:          time.Now(),
 	}
 	if err := s.incidentRepo.Create(ctx, inc); err != nil {
 		return nil, fmt.Errorf("erreur création incident: %w", err)

@@ -20,15 +20,15 @@ func NewAlertService(repo domain.AlertRepository, log *zap.Logger) *AlertService
 
 func (s *AlertService) IssueAlert(req *domain.IssueAlertRequest) (*domain.SISALAlert, error) {
 	alert := &domain.SISALAlert{
-		HazardType:   domain.HazardType(req.HazardType),
-		Severity:     domain.Severity(req.Severity),
-		Title:        req.Title,
-		MessageFR:    req.MessageFR,
-		MessageHT:    req.MessageHT,
+		HazardType:    domain.HazardType(req.HazardType),
+		Severity:      domain.Severity(req.Severity),
+		Title:         req.Title,
+		MessageFR:     req.MessageFR,
+		MessageHT:     req.MessageHT,
 		AffectedDepts: req.AffectedDepts,
-		IssuedAt:     time.Now(),
-		SourceAgency: req.SourceAgency,
-		CreatedBy:    uuid.New(),
+		IssuedAt:      time.Now(),
+		SourceAgency:  req.SourceAgency,
+		CreatedBy:     uuid.New(),
 	}
 
 	if req.AffectedPopEst != nil {

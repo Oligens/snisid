@@ -27,10 +27,10 @@ type Matcher interface {
 }
 
 type SearchService struct {
-	mu          sync.RWMutex
-	subjects    map[uuid.UUID]*domain.Subject
+	mu           sync.RWMutex
+	subjects     map[uuid.UUID]*domain.Subject
 	fingerprints map[uuid.UUID][]domain.Fingerprint
-	matcher     Matcher
+	matcher      Matcher
 }
 
 func NewSearchService() *SearchService {
@@ -83,9 +83,9 @@ func (s *SearchService) SearchTenprint(ctx context.Context, req domain.Enrollmen
 		}
 		if score >= MinMatchScore {
 			results = append(results, domain.SearchResult{
-				CandidateID:   c.CandidateID,
-				SubjectID:     c.SubjectID,
-				Score:         score,
+				CandidateID:    c.CandidateID,
+				SubjectID:      c.SubjectID,
+				Score:          score,
 				NationalAFISID: c.NationalAFISID,
 			})
 		}
@@ -131,9 +131,9 @@ func (s *SearchService) SearchLatent(ctx context.Context, latent domain.LatentPr
 		}
 		if score >= MinMatchScore {
 			results = append(results, domain.SearchResult{
-				CandidateID:   c.CandidateID,
-				SubjectID:     c.SubjectID,
-				Score:         score,
+				CandidateID:    c.CandidateID,
+				SubjectID:      c.SubjectID,
+				Score:          score,
 				NationalAFISID: c.NationalAFISID,
 			})
 		}

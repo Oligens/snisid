@@ -13,13 +13,13 @@ import (
 )
 
 type mockFovesRepo struct {
-	createVehicleFn       func(ctx context.Context, v *domain.Vehicle) error
-	findByPlateFn         func(ctx context.Context, plate string) (*domain.Vehicle, error)
-	findByVINFn           func(ctx context.Context, vin string) (*domain.Vehicle, error)
-	findByOwnerFn         func(ctx context.Context, citizenID uuid.UUID) ([]domain.Vehicle, error)
-	createTransferFn      func(ctx context.Context, t *domain.OwnershipTransfer) error
-	updateVehicleOwnerFn  func(ctx context.Context, vehicleID, newOwnerID uuid.UUID) error
-	createLicenseFn       func(ctx context.Context, l *domain.DriverLicense) error
+	createVehicleFn        func(ctx context.Context, v *domain.Vehicle) error
+	findByPlateFn          func(ctx context.Context, plate string) (*domain.Vehicle, error)
+	findByVINFn            func(ctx context.Context, vin string) (*domain.Vehicle, error)
+	findByOwnerFn          func(ctx context.Context, citizenID uuid.UUID) ([]domain.Vehicle, error)
+	createTransferFn       func(ctx context.Context, t *domain.OwnershipTransfer) error
+	updateVehicleOwnerFn   func(ctx context.Context, vehicleID, newOwnerID uuid.UUID) error
+	createLicenseFn        func(ctx context.Context, l *domain.DriverLicense) error
 	findLicenseByCitizenFn func(ctx context.Context, citizenID uuid.UUID) (*domain.DriverLicense, error)
 }
 
@@ -155,8 +155,8 @@ func TestGetByVIN(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name:  "found",
-			vin:   "1HGCM82633A004352",
+			name: "found",
+			vin:  "1HGCM82633A004352",
 			repoRes: &domain.Vehicle{
 				ID: uuid.New(), VIN: "1HGCM82633A004352", Make: "Ford",
 			},
@@ -292,10 +292,10 @@ func TestTransferOwnership(t *testing.T) {
 func TestIssueLicense(t *testing.T) {
 	citizenID := uuid.New()
 	tests := []struct {
-		name     string
-		license  *domain.DriverLicense
-		repoErr  error
-		wantErr  bool
+		name    string
+		license *domain.DriverLicense
+		repoErr error
+		wantErr bool
 	}{
 		{
 			name: "success",

@@ -59,7 +59,7 @@ func (m *mockIngesterConsumer) Start(ctx context.Context, handler func(ctx conte
 }
 
 func (m *mockIngesterConsumer) Decode(data []byte, v interface{}) error { return nil }
-func (m *mockIngesterConsumer) Close() error                             { return nil }
+func (m *mockIngesterConsumer) Close() error                            { return nil }
 
 func TestIngester_IngestSingleEvent(t *testing.T) {
 	t.Parallel()

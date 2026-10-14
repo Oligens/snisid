@@ -102,14 +102,14 @@ func (s *CounterintelService) GetActiveThreats(ctx context.Context) ([]domain.In
 func (s *CounterintelService) ReportContact(ctx context.Context, req domain.ReportContactRequest) (*domain.ForeignContact, error) {
 	now := time.Now().UTC()
 	c := &domain.ForeignContact{
-		ID:               uuid.New(),
-		SubjectID:        req.SubjectID,
-		ContactName:      req.ContactName,
+		ID:                uuid.New(),
+		SubjectID:         req.SubjectID,
+		ContactName:       req.ContactName,
 		ForeignGovernment: req.ForeignGovernment,
-		RelationshipType: domain.RelationshipType(req.RelationshipType),
-		Frequency:        strPtr(req.Frequency),
-		Notes:            strPtr(req.Notes),
-		CreatedAt:        now,
+		RelationshipType:  domain.RelationshipType(req.RelationshipType),
+		Frequency:         strPtr(req.Frequency),
+		Notes:             strPtr(req.Notes),
+		CreatedAt:         now,
 	}
 	if req.LastContactAt != "" {
 		t, err := time.Parse(time.RFC3339, req.LastContactAt)

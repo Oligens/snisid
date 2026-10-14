@@ -15,14 +15,14 @@ import (
 )
 
 type mockAccRepo struct {
-	createAuditRunFunc        func(ctx context.Context, a *domain.AuditRun) error
-	findAuditRunByIDFunc      func(ctx context.Context, id uuid.UUID) (*domain.AuditRun, error)
-	listAuditRunsFunc         func(ctx context.Context) ([]domain.AuditRun, error)
-	listViolationsByAuditFunc func(ctx context.Context, auditID uuid.UUID) ([]domain.Violation, error)
+	createAuditRunFunc          func(ctx context.Context, a *domain.AuditRun) error
+	findAuditRunByIDFunc        func(ctx context.Context, id uuid.UUID) (*domain.AuditRun, error)
+	listAuditRunsFunc           func(ctx context.Context) ([]domain.AuditRun, error)
+	listViolationsByAuditFunc   func(ctx context.Context, auditID uuid.UUID) ([]domain.Violation, error)
 	markViolationRemediatedFunc func(ctx context.Context, id uuid.UUID) error
-	getComplianceOverviewFunc func(ctx context.Context) ([]domain.AccessibilityReport, error)
-	createAuditScheduleFunc   func(ctx context.Context, s *domain.AuditSchedule) error
-	getDashboardFunc          func(ctx context.Context) ([]domain.AccessibilityReport, error)
+	getComplianceOverviewFunc   func(ctx context.Context) ([]domain.AccessibilityReport, error)
+	createAuditScheduleFunc     func(ctx context.Context, s *domain.AuditSchedule) error
+	getDashboardFunc            func(ctx context.Context) ([]domain.AccessibilityReport, error)
 }
 
 func (m *mockAccRepo) CreateAuditRun(ctx context.Context, a *domain.AuditRun) error {
@@ -47,7 +47,9 @@ func (m *mockAccRepo) GetComplianceOverview(ctx context.Context) ([]domain.Acces
 func (m *mockAccRepo) CreateAuditSchedule(ctx context.Context, s *domain.AuditSchedule) error {
 	return m.createAuditScheduleFunc(ctx, s)
 }
-func (m *mockAccRepo) ListAuditSchedules(ctx context.Context) ([]domain.AuditSchedule, error) { return nil, nil }
+func (m *mockAccRepo) ListAuditSchedules(ctx context.Context) ([]domain.AuditSchedule, error) {
+	return nil, nil
+}
 func (m *mockAccRepo) GetDashboard(ctx context.Context) ([]domain.AccessibilityReport, error) {
 	return m.getDashboardFunc(ctx)
 }

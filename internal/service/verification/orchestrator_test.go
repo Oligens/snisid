@@ -15,7 +15,7 @@ type mockConnector struct {
 	err    error
 }
 
-func (c *mockConnector) Name() string          { return c.name }
+func (c *mockConnector) Name() string { return c.name }
 func (c *mockConnector) Verify(ctx context.Context, data map[string]interface{}) (Result, error) {
 	if c.err != nil {
 		return Result{}, c.err

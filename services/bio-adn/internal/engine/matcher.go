@@ -17,12 +17,12 @@ type Locus struct {
 type STRLoci map[string]Locus
 
 type MatchResult struct {
-	Score        float64 `json:"score"`
-	MatchType    string  `json:"match_type"`
-	MatchedLoci  int     `json:"matched_loci"`
-	TotalLoci    int     `json:"total_loci"`
-	AlertLevel   string  `json:"alert_level"`
-	SampleID     string  `json:"sample_id"`
+	Score       float64 `json:"score"`
+	MatchType   string  `json:"match_type"`
+	MatchedLoci int     `json:"matched_loci"`
+	TotalLoci   int     `json:"total_loci"`
+	AlertLevel  string  `json:"alert_level"`
+	SampleID    string  `json:"sample_id"`
 }
 
 type Matcher struct{}

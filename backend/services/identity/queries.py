@@ -66,6 +66,7 @@ class IdentityResponse(BaseModel):
     """Full identity response with HATEOAS links."""
     id: str
     national_id: str
+    nif: str | None = None
     first_name: str
     last_name: str
     full_name: str
@@ -317,6 +318,7 @@ class IdentityQueryHandler:
         return IdentityDetailResponse(
             id=citizen.id,
             national_id=citizen.national_id,
+            nif=citizen.nif,
             first_name=citizen.first_name,
             last_name=citizen.last_name,
             full_name=f"{citizen.first_name} {citizen.last_name}",
@@ -394,6 +396,7 @@ class IdentityQueryHandler:
         return IdentityDetailResponse(
             id=record.id,
             national_id=record.national_id,
+            nif=record.nif,
             first_name=record.first_name,
             last_name=record.last_name,
             full_name=record.full_name,

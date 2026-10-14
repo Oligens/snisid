@@ -3,8 +3,8 @@ package rest
 import (
 	"context"
 
-	"github.com/google/uuid"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
 type contextKey string

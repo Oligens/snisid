@@ -27,10 +27,10 @@ const (
 
 // Report classifications
 const (
-	ReportClassUnclassified  = "UNCLASSIFIED"
-	ReportClassConfidential  = "CONFIDENTIAL"
-	ReportClassSecret        = "SECRET"
-	ReportClassTopSecret     = "TOP_SECRET"
+	ReportClassUnclassified = "UNCLASSIFIED"
+	ReportClassConfidential = "CONFIDENTIAL"
+	ReportClassSecret       = "SECRET"
+	ReportClassTopSecret    = "TOP_SECRET"
 )
 
 // Debriefing methods
@@ -59,27 +59,27 @@ type Source struct {
 }
 
 type IntelligenceReport struct {
-	ID                string    `json:"id"`
-	SourceCode        string    `json:"source_code"`
-	Classification    string    `json:"classification"`
-	ContentHash       string    `json:"content_hash"`
-	ThreatActors      []string  `json:"threat_actors"`
-	SectorsTargeted   []string  `json:"sectors_targeted"`
-	VeracityScore     float64   `json:"veracity_score"`
-	VerifiedBy        []string  `json:"verified_by"`
-	CreatedAt         time.Time `json:"created_at"`
+	ID              string    `json:"id"`
+	SourceCode      string    `json:"source_code"`
+	Classification  string    `json:"classification"`
+	ContentHash     string    `json:"content_hash"`
+	ThreatActors    []string  `json:"threat_actors"`
+	SectorsTargeted []string  `json:"sectors_targeted"`
+	VeracityScore   float64   `json:"veracity_score"`
+	VerifiedBy      []string  `json:"verified_by"`
+	CreatedAt       time.Time `json:"created_at"`
 }
 
 type DebriefingSession struct {
-	ID                  string    `json:"id"`
-	SourceCode          string    `json:"source_code"`
-	OfficerID           string    `json:"officer_id"`
-	SessionDate         time.Time `json:"session_date"`
-	LocationMethod      string    `json:"location_method"`
-	TopicsCovered       []string  `json:"topics_covered"`
+	ID                   string    `json:"id"`
+	SourceCode           string    `json:"source_code"`
+	OfficerID            string    `json:"officer_id"`
+	SessionDate          time.Time `json:"session_date"`
+	LocationMethod       string    `json:"location_method"`
+	TopicsCovered        []string  `json:"topics_covered"`
 	NextMeetingPlannedAt time.Time `json:"next_meeting_planned_at"`
-	RiskAssessment      string    `json:"risk_assessment"`
-	CreatedAt           time.Time `json:"created_at"`
+	RiskAssessment       string    `json:"risk_assessment"`
+	CreatedAt            time.Time `json:"created_at"`
 }
 
 // Request structs

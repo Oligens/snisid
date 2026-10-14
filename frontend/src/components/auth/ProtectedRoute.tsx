@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from 'react-oidc-context';
+import { Outlet } from 'react-router-dom';
+import { useApplicationAuth } from '../../auth/AuthProvider';
 import { useSecurityStore } from '../../store/securityStore';
 
 interface ProtectedRouteProps {
@@ -12,8 +12,20 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requiredRoles = [], 
   requiredPermissions = [] 
 }) => {
-  const auth = useAuth();
+  const auth = useApplicationAuth();
   const { hasRole, hasPermission } = useSecurityStore();
+
+  React.useEffect(() => {
+    if (
+      !auth.isLoading &&
+      !auth.isAuthenticated &&
+      !auth.isDemo &&
+      !auth.error &&
+      typeof auth.signinRedirect === 'function'
+    ) {
+      void auth.signinRedirect();
+    }
+  }, [auth.error, auth.isAuthenticated, auth.isDemo, auth.isLoading, auth.signinRedirect]);
 
   if (auth.isLoading) {
     return (
@@ -33,9 +45,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   if (!auth.isAuthenticated) {
-    // Redirect to login (Keycloak handles the actual login page)
-    auth.signinRedirect();
-    return null; // Return null while redirecting
+    return null;
   }
 
   // RBAC checks

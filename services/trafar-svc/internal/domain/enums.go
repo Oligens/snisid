@@ -16,13 +16,13 @@ const (
 type TraffickingMethod string
 
 const (
-	TraffickingMethodStrawPurchase     TraffickingMethod = "STRAW_PURCHASE"
-	TraffickingMethodStolenDiverted    TraffickingMethod = "STOLEN_DIVERTED"
-	TraffickingMethodCorruptOfficial   TraffickingMethod = "CORRUPT_OFFICIAL"
-	TraffickingMethodFalseEndUser      TraffickingMethod = "FALSE_END_USER"
-	TraffickingMethodDarkWeb           TraffickingMethod = "DARK_WEB"
-	TraffickingMethodDiplomaticPouch   TraffickingMethod = "DIPLOMATIC_POUCH"
-	TraffickingMethodConcealedCargo    TraffickingMethod = "CONCEALED_CARGO"
-	TraffickingMethodDrugsForGunsSwap  TraffickingMethod = "DRUGS_FOR_GUNS_SWAP"
-	TraffickingMethodUnknown           TraffickingMethod = "UNKNOWN"
+	TraffickingMethodStrawPurchase    TraffickingMethod = "STRAW_PURCHASE"
+	TraffickingMethodStolenDiverted   TraffickingMethod = "STOLEN_DIVERTED"
+	TraffickingMethodCorruptOfficial  TraffickingMethod = "CORRUPT_OFFICIAL"
+	TraffickingMethodFalseEndUser     TraffickingMethod = "FALSE_END_USER"
+	TraffickingMethodDarkWeb          TraffickingMethod = "DARK_WEB"
+	TraffickingMethodDiplomaticPouch  TraffickingMethod = "DIPLOMATIC_POUCH"
+	TraffickingMethodConcealedCargo   TraffickingMethod = "CONCEALED_CARGO"
+	TraffickingMethodDrugsForGunsSwap TraffickingMethod = "DRUGS_FOR_GUNS_SWAP"
+	TraffickingMethodUnknown          TraffickingMethod = "UNKNOWN"
 )

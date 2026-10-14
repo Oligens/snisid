@@ -36,7 +36,7 @@ func TestSignDocumentHandler(t *testing.T) {
 	if doc.Status != "SIGNED" {
 		t.Errorf("expected status SIGNED, got %v", doc.Status)
 	}
-	
+
 	if doc.Signature == "" {
 		t.Errorf("expected signature to be generated")
 	}

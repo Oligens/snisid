@@ -63,7 +63,11 @@ func (i *kafkaIngester) Start(ctx context.Context) {
 		status, _ := payload["status"].(string)
 		if status == "" {
 			if allowed, ok := payload["allowed"].(bool); ok {
-				if allowed { status = "success" } else { status = "denied" }
+				if allowed {
+					status = "success"
+				} else {
+					status = "denied"
+				}
 			}
 		}
 

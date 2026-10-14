@@ -21,29 +21,29 @@ const (
 )
 
 type GSPEvent struct {
-	ID        string     `json:"id"`
-	Country   string     `json:"country"`
-	Category  string     `json:"category"`
-	Risk      float64    `json:"risk"`
+	ID         string     `json:"id"`
+	Country    string     `json:"country"`
+	Category   string     `json:"category"`
+	Risk       float64    `json:"risk"`
 	AlertLevel AlertLevel `json:"alert_level"`
-	Payload   []byte     `json:"payload"`
-	Timestamp int64      `json:"timestamp"`
+	Payload    []byte     `json:"payload"`
+	Timestamp  int64      `json:"timestamp"`
 }
 
 type GlobalAlert struct {
-	ID          string     `json:"id"`
-	SourceEvent GSPEvent   `json:"source_event"`
-	Severity    AlertLevel `json:"severity"`
-	AffectedCountries []string `json:"affected_countries"`
-	PropagatedAt int64    `json:"propagated_at"`
-	AcksReceived int      `json:"acks_received"`
+	ID                string     `json:"id"`
+	SourceEvent       GSPEvent   `json:"source_event"`
+	Severity          AlertLevel `json:"severity"`
+	AffectedCountries []string   `json:"affected_countries"`
+	PropagatedAt      int64      `json:"propagated_at"`
+	AcksReceived      int        `json:"acks_received"`
 }
 
 type FederationRouter struct {
-	ActiveNodes   []string              `json:"active_nodes"`
-	nodeStatus    map[string]bool       // node -> online
-	alertHistory  []GlobalAlert         `json:"alert_history"`
-	policyCache   map[string][]string   // country -> policies
+	ActiveNodes   []string            `json:"active_nodes"`
+	nodeStatus    map[string]bool     // node -> online
+	alertHistory  []GlobalAlert       `json:"alert_history"`
+	policyCache   map[string][]string // country -> policies
 	mu            sync.RWMutex
 	propagationFn func(alert GlobalAlert, target string) error
 }
@@ -78,11 +78,11 @@ func (r *FederationRouter) RouteEvent(event GSPEvent) {
 
 	if alertLevel >= AlertCritical {
 		alert := GlobalAlert{
-			ID:          fmt.Sprintf("GA-%s-%d", event.Country, event.Timestamp),
-			SourceEvent: event,
-			Severity:    alertLevel,
+			ID:                fmt.Sprintf("GA-%s-%d", event.Country, event.Timestamp),
+			SourceEvent:       event,
+			Severity:          alertLevel,
 			AffectedCountries: r.computeAffectedCountries(event),
-			PropagatedAt: time.Now().Unix(),
+			PropagatedAt:      time.Now().Unix(),
 		}
 		r.PropagateGlobalAlert(alert)
 	}

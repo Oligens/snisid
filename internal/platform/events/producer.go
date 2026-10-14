@@ -54,15 +54,15 @@ func NewProducerWithConfig(cfg ProducerConfig) *Producer {
 		Topic:        cfg.Topic,
 		Balancer:     &kafka.LeastBytes{},
 		RequiredAcks: kafka.RequireOne,
-		Compression:  kafka.Snappy,         // Compression
-		BatchSize:    cfg.BatchSize,        // Batching
-		BatchTimeout: cfg.BatchTimeout,     // Async flush threshold
-		Async:        true,                 // High throughput async
+		Compression:  kafka.Snappy,     // Compression
+		BatchSize:    cfg.BatchSize,    // Batching
+		BatchTimeout: cfg.BatchTimeout, // Async flush threshold
+		Async:        true,             // High throughput async
 	}
 
 	dlq := &kafka.Writer{
 		Addr:         kafka.TCP(cfg.Brokers...),
-		Topic:        cfg.Topic + "-dlq",   // Dead Letter Queue
+		Topic:        cfg.Topic + "-dlq", // Dead Letter Queue
 		Balancer:     &kafka.LeastBytes{},
 		RequiredAcks: kafka.RequireOne,
 		Compression:  kafka.Snappy,
@@ -99,7 +99,7 @@ func (p *Producer) Publish(ctx context.Context, key string, event any) error {
 	// Async publish via segmentio/kafka-go handles its own internal batching logic
 	// If you require synchronous publish, disable Async: true in Config.
 	// For resilience, we wrap WriteMessages in a retry loop if synchronous mode is ever enabled.
-	
+
 	go p.publishWithRetry(context.Background(), msg, corrID)
 
 	return nil
@@ -117,17 +117,17 @@ func (p *Producer) publishWithRetry(ctx context.Context, msg kafka.Message, corr
 			return // Success
 		}
 
-		logger.Error(ctx, "kafka publish failed, retrying", err, 
+		logger.Error(ctx, "kafka publish failed, retrying", err,
 			zap.Int("attempt", attempt), zap.String("topic", p.config.Topic))
 		time.Sleep(time.Duration(attempt) * 500 * time.Millisecond) // Exponential-ish backoff
 	}
 
 	// Exhausted retries -> DLQ
 	logger.Error(ctx, "kafka max retries exhausted, routing to DLQ", err, zap.String("topic", p.config.Topic))
-	
+
 	dlqCtx, dlqCancel := context.WithTimeout(ctx, 5*time.Second)
 	defer dlqCancel()
-	
+
 	if dlqErr := p.dlq.WriteMessages(dlqCtx, msg); dlqErr != nil {
 		logger.Fatal(ctx, "CRITICAL: failed to write to DLQ, event lost", dlqErr, zap.String("topic", p.config.Topic))
 	}

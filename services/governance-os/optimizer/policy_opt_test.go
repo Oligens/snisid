@@ -33,13 +33,13 @@ func TestSuggestOptimizations_HighFPTriggersUpdate(t *testing.T) {
 	outcomes := make([]EnforcementOutcome, 10)
 	for i := range outcomes {
 		outcomes[i] = EnforcementOutcome{
-			PolicyID:      "p1",
-			Action:        "flag",
-			Success:       i < 5,
+			PolicyID:       "p1",
+			Action:         "flag",
+			Success:        i < 5,
 			FraudPrevented: 100,
-			FalsePositive: i >= 5,
-			Region:        "HTI",
-			Timestamp:     time.Now().Unix(),
+			FalsePositive:  i >= 5,
+			Region:         "HTI",
+			Timestamp:      time.Now().Unix(),
 		}
 	}
 
@@ -66,21 +66,21 @@ func TestSuggestOptimizations_LowSuccessRateTriggersRegionUpdate(t *testing.T) {
 	outcomes := make([]EnforcementOutcome, 10)
 	for i := range outcomes {
 		outcomes[i] = EnforcementOutcome{
-			PolicyID:      "p1",
-			Success:       false,
+			PolicyID:       "p1",
+			Success:        false,
 			FraudPrevented: 200,
-			FalsePositive: false,
-			Region:        "DOM",
+			FalsePositive:  false,
+			Region:         "DOM",
 		}
 	}
 	// Mix in some from HTI
 	for i := 0; i < 5; i++ {
 		outcomes = append(outcomes, EnforcementOutcome{
-			PolicyID:      "p2",
-			Success:       true,
+			PolicyID:       "p2",
+			Success:        true,
 			FraudPrevented: 300,
-			FalsePositive: false,
-			Region:        "HTI",
+			FalsePositive:  false,
+			Region:         "HTI",
 		})
 	}
 

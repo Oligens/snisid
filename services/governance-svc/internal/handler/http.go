@@ -33,13 +33,13 @@ func (h *Handler) RegisterRoutes(r *gin.RouterGroup) {
 func (h *Handler) RegisterLicense(c *gin.Context) {
 	body, _ := io.ReadAll(c.Request.Body)
 	var req struct {
-		Name         string `json:"name"`
-		SPDXID       string `json:"spdx_id"`
-		LicenseType  string `json:"license_type"`
-		Version      string `json:"version"`
-		Publisher    string `json:"publisher"`
-		IsOsiApproved bool  `json:"is_osi_approved"`
-		Text         string `json:"text,omitempty"`
+		Name          string `json:"name"`
+		SPDXID        string `json:"spdx_id"`
+		LicenseType   string `json:"license_type"`
+		Version       string `json:"version"`
+		Publisher     string `json:"publisher"`
+		IsOsiApproved bool   `json:"is_osi_approved"`
+		Text          string `json:"text,omitempty"`
 	}
 	if err := json.Unmarshal(body, &req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid JSON"})

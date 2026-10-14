@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import { AppLayout } from './components/layout/AppLayout';
+import { InstitutionalLayout } from './components/layout/InstitutionalLayout';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { RealTimeMetrics } from './pages/Dashboard/RealTimeMetrics';
 import { CaptureInterface } from './components/biometrics/CaptureInterface';
-import { IdentitiesPage } from './pages/IdentitiesPage';
+import { IdentityRegistryPage } from './pages/IdentityRegistryPage';
+import { ModuleStatusPage } from './pages/ModuleStatusPage';
 import { AuditPage } from './pages/AuditPage';
 import { GlossaryPage } from './pages/GlossaryPage';
 import SigintDashboard from './pages/SigintDashboard';
@@ -31,23 +32,41 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/preview" element={<InstitutionalLayout><RealTimeMetrics /></InstitutionalLayout>} />
         {/* Protected Routes Wrapper */}
         <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout><Outlet /></AppLayout>}>
+          <Route element={<InstitutionalLayout><Outlet /></InstitutionalLayout>}>
             {/* Dashboard — accessible à tous les agents connectés */}
             <Route path="/" element={<RealTimeMetrics />} />
+            <Route path="/dashboard" element={<RealTimeMetrics />} />
 
-            {/* Identités — RBAC géré côté API */}
-            <Route path="/identities" element={<IdentitiesPage />} />
+            {/* Identity reads use the verified FastAPI list/search contract. */}
+            <Route path="/identities" element={<IdentityRegistryPage />} />
+            <Route path="/identity/search" element={<IdentityRegistryPage />} />
+            <Route path="/identity/verify" element={<ModuleStatusPage title="Vérification d’identité" apiHint="POST /v1/identities/{identity_id}/verify" />} />
+            <Route path="/identity/history" element={<ModuleStatusPage title="Historique d’identité" apiHint="GET /v1/identities/{identity_id}/history" />} />
+            <Route path="/identity" element={<ModuleStatusPage title="Module identité" />} />
 
             {/* Biométrie — opérateur uniquement */}
             <Route element={<ProtectedRoute requiredRoles={['OPERATOR']} />}>
               <Route path="/biometrics" element={<BiometricPage />} />
+              <Route path="/biometrics/*" element={<ModuleStatusPage title="Module biométrie" />} />
             </Route>
 
             {/* Audit & Investigation forensique — auditeur uniquement */}
             <Route element={<ProtectedRoute requiredRoles={['AUDITOR']} />}>
               <Route path="/audit" element={<AuditPage />} />
+            </Route>
+
+            <Route path="/documents/*" element={<ModuleStatusPage title="Documents nationaux" apiHint="POST /v1/identities/{identity_id}/documents" />} />
+            <Route path="/iam/*" element={<ModuleStatusPage title="Gestion des identités et des accès" />} />
+            <Route path="/pki/*" element={<ModuleStatusPage title="Infrastructure à clés publiques" apiHint="/v1/pki" />} />
+            <Route path="/fraud/*" element={<ModuleStatusPage title="Fraude et risque" />} />
+            <Route path="/security/*" element={<ModuleStatusPage title="Centre de sécurité" />} />
+            <Route path="/interoperability/*" element={<ModuleStatusPage title="Interopérabilité" />} />
+            <Route path="/reports/*" element={<ModuleStatusPage title="Rapports et statistiques" />} />
+            <Route element={<ProtectedRoute requiredRoles={['SUPER_ADMIN']} />}>
+              <Route path="/admin/*" element={<ModuleStatusPage title="Administration" />} />
             </Route>
 
             {/* National Security Dashboards */}

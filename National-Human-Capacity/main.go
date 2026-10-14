@@ -10,13 +10,13 @@ import (
 
 // Engineer represents an IT staff member of the elite unit
 type Engineer struct {
-	ID                string    `json:"id"`
-	Name              string    `json:"name"`
-	Role              string    `json:"role"`
-	Status            string    `json:"status"` // "HORS-GRILLE"
-	Clearance         string    `json:"clearance"` // "SECRET", "CONFIDENTIAL"
-	Certifications    []string  `json:"certifications"`
-	ContractEndDate   time.Time `json:"contract_end_date"` // 3 years engagement
+	ID              string    `json:"id"`
+	Name            string    `json:"name"`
+	Role            string    `json:"role"`
+	Status          string    `json:"status"`    // "HORS-GRILLE"
+	Clearance       string    `json:"clearance"` // "SECRET", "CONFIDENTIAL"
+	Certifications  []string  `json:"certifications"`
+	ContractEndDate time.Time `json:"contract_end_date"` // 3 years engagement
 }
 
 var engineersDB = make(map[string]Engineer)
@@ -39,7 +39,7 @@ func enrollHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	engID := fmt.Sprintf("ENG-%d", time.Now().Unix())
-	
+
 	// Phase 16 Policy: Engagement de 3 ans
 	contractEnd := time.Now().AddDate(3, 0, 0)
 

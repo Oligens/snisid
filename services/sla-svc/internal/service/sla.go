@@ -24,13 +24,13 @@ func NewSLAService(repo repository.Repository, producer *kafka.Producer) *SLASer
 
 func (s *SLAService) DefineSLA(ctx context.Context, name, description, owner string) (*domain.SLA, error) {
 	sla := &domain.SLA{
-		SLAID:     uuid.New(),
-		Name:      name,
+		SLAID:       uuid.New(),
+		Name:        name,
 		Description: description,
-		Owner:     owner,
-		IsActive:  true,
-		CreatedAt: time.Now().UTC(),
-		UpdatedAt: time.Now().UTC(),
+		Owner:       owner,
+		IsActive:    true,
+		CreatedAt:   time.Now().UTC(),
+		UpdatedAt:   time.Now().UTC(),
 	}
 	if err := s.repo.CreateSLA(ctx, sla); err != nil {
 		return nil, fmt.Errorf("define sla: %w", err)

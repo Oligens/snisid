@@ -13,34 +13,34 @@ import (
 type NodeStatus string
 
 const (
-	StatusHealthy  NodeStatus = "HEALTHY"
-	StatusDegraded NodeStatus = "DEGRADED"
-	StatusIsolated NodeStatus = "ISOLATED"
+	StatusHealthy     NodeStatus = "HEALTHY"
+	StatusDegraded    NodeStatus = "DEGRADED"
+	StatusIsolated    NodeStatus = "ISOLATED"
 	StatusCompromised NodeStatus = "COMPROMISED"
 )
 
 type MeshNode struct {
-	ID            string     `json:"id"`
-	TrustScore    float64    `json:"trust_score"`
-	Status        NodeStatus `json:"status"`
-	LastAttested  time.Time  `json:"last_attested"`
-	SPIFFEID      string     `json:"spiffe_id"`
-	FailureCount  int        `json:"failure_count"`
+	ID           string     `json:"id"`
+	TrustScore   float64    `json:"trust_score"`
+	Status       NodeStatus `json:"status"`
+	LastAttested time.Time  `json:"last_attested"`
+	SPIFFEID     string     `json:"spiffe_id"`
+	FailureCount int        `json:"failure_count"`
 }
 
 type SelfHealingOperation struct {
-	NodeID        string    `json:"node_id"`
-	Operation     string    `json:"operation"`
-	Status        string    `json:"status"`
-	StartedAt     time.Time `json:"started_at"`
-	CompletedAt   *time.Time `json:"completed_at,omitempty"`
-	Error         string    `json:"error,omitempty"`
+	NodeID      string     `json:"node_id"`
+	Operation   string     `json:"operation"`
+	Status      string     `json:"status"`
+	StartedAt   time.Time  `json:"started_at"`
+	CompletedAt *time.Time `json:"completed_at,omitempty"`
+	Error       string     `json:"error,omitempty"`
 }
 
 type MeshHealer struct {
-	ClusterName    string
-	mu             sync.Mutex
-	operationLog   []SelfHealingOperation
+	ClusterName     string
+	mu              sync.Mutex
+	operationLog    []SelfHealingOperation
 	networkPolicies map[string]bool // nodeID -> isolated
 }
 

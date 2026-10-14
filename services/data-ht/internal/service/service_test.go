@@ -13,7 +13,7 @@ import (
 )
 
 type mockDataRepo struct {
-	listPipelinesFn             func(ctx context.Context) ([]domain.Pipeline, error)
+	listPipelinesFn              func(ctx context.Context) ([]domain.Pipeline, error)
 	createModelFn                func(ctx context.Context, m *domain.MLModel) error
 	getModelFn                   func(ctx context.Context, id uuid.UUID) (*domain.MLModel, error)
 	getGovernanceAuditsByModelFn func(ctx context.Context, modelID uuid.UUID) ([]domain.GovernanceAudit, error)

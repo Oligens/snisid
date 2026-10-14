@@ -33,16 +33,16 @@ type SltdDocument struct {
 }
 
 type SltdCheckLog struct {
-	CheckID        uuid.UUID `json:"check_id" db:"check_id"`
-	DocumentNumber string    `json:"document_number" db:"document_number"`
-	DocType        DocType   `json:"doc_type,omitempty" db:"doc_type"`
-	CheckedBy      uuid.UUID `json:"checked_by" db:"checked_by"`
-	CheckLocation  string    `json:"check_location,omitempty" db:"check_location"`
+	CheckID        uuid.UUID  `json:"check_id" db:"check_id"`
+	DocumentNumber string     `json:"document_number" db:"document_number"`
+	DocType        DocType    `json:"doc_type,omitempty" db:"doc_type"`
+	CheckedBy      uuid.UUID  `json:"checked_by" db:"checked_by"`
+	CheckLocation  string     `json:"check_location,omitempty" db:"check_location"`
 	PostID         *uuid.UUID `json:"post_id,omitempty" db:"post_id"`
-	Result         string    `json:"result" db:"result"`
-	Source         string    `json:"source" db:"source"`
+	Result         string     `json:"result" db:"result"`
+	Source         string     `json:"source" db:"source"`
 	SltdDocID      *uuid.UUID `json:"sltd_doc_id,omitempty" db:"sltd_doc_id"`
-	CheckedAt      time.Time `json:"checked_at" db:"checked_at"`
+	CheckedAt      time.Time  `json:"checked_at" db:"checked_at"`
 }
 
 type CheckResult struct {

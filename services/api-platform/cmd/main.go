@@ -28,7 +28,7 @@ func main() {
 
 	r.POST("/v1/validate", func(c *gin.Context) {
 		var req struct {
-			APIKey   string                `json:"api_key"`
+			APIKey   string                 `json:"api_key"`
 			Required apiplatform.Permission `json:"required"`
 		}
 		if err := c.BindJSON(&req); err != nil {

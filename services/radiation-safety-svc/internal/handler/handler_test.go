@@ -20,13 +20,13 @@ import (
 
 type mockRadiationSvc struct {
 	service.RadiationService
-	registerSourceFn       func(ctx context.Context, s *domain.RadioactiveSource) error
-	updateSourceStatusFn   func(ctx context.Context, id uuid.UUID, status domain.SourceStatus) error
-	createAlertFn          func(ctx context.Context, a *domain.RadiationAlert) error
-	getUnrespondedAlertsFn func(ctx context.Context) ([]domain.RadiationAlert, error)
-	registerChemicalFn     func(ctx context.Context, c *domain.ChemicalPrecursor) error
+	registerSourceFn         func(ctx context.Context, s *domain.RadioactiveSource) error
+	updateSourceStatusFn     func(ctx context.Context, id uuid.UUID, status domain.SourceStatus) error
+	createAlertFn            func(ctx context.Context, a *domain.RadiationAlert) error
+	getUnrespondedAlertsFn   func(ctx context.Context) ([]domain.RadiationAlert, error)
+	registerChemicalFn       func(ctx context.Context, c *domain.ChemicalPrecursor) error
 	getSuspiciousChemicalsFn func(ctx context.Context) ([]domain.ChemicalPrecursor, error)
-	getDashboardFn         func(ctx context.Context) (*repository.DashboardStats, error)
+	getDashboardFn           func(ctx context.Context) (*repository.DashboardStats, error)
 }
 
 func (m *mockRadiationSvc) RegisterSource(ctx context.Context, s *domain.RadioactiveSource) error {
